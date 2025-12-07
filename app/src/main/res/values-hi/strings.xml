@@ -1,0 +1,242 @@
+<resources>
+    <string name="app_name">कैलकुलेटर</string>
+    <string name="home">होम</string>
+    <string name="favorites">पसंदीदा</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="back">वापस</string>
+    <string name="calculate">गणना करें</string>
+    <string name="reset">रीसेट</string>
+    <string name="clear">साफ़ करें</string>
+    <string name="share">साझा करें</string>
+    <string name="copy">कॉपी करें</string>
+    <string name="result">परिणाम</string>
+    <string name="calculator_title">कैलकुलेटर</string>
+    <string name="error">त्रुटि</string>
+    <string name="sip_title">SIP कैलकुलेटर</string>
+    <string name="monthly_investment">मासिक निवेश</string>
+    <string name="expected_return_rate">अपेक्षित रिटर्न दर (वार्षिक)</string>
+    <string name="time_period">समय अवधि</string>
+    <string name="years">वर्ष</string>
+    <string name="invested_amount">निवेश की गई राशि</string>
+    <string name="est_returns">अनुमानित रिटर्न</string>
+    <string name="total_value">कुल मूल्य</string>
+    <string name="emi_title">EMI कैलकुलेटर</string>
+    <string name="loan_amount">ऋण राशि</string>
+    <string name="interest_rate">ब्याज दर</string>
+    <string name="loan_tenure">ऋण अवधि</string>
+    <string name="monthly_emi">मासिक EMI</string>
+    <string name="total_interest">कुल ब्याज</string>
+    <string name="total_payment">कुल भुगतान</string>
+    <string name="principal_amount">मूल राशि</string>
+    <string name="bmi_title">BMI कैलकुलेटर</string>
+    <string name="weight">वजन</string>
+    <string name="height">ऊंचाई</string>
+    <string name="kg">किग्रा</string>
+    <string name="cm">सेमी</string>
+    <string name="your_bmi">आपका BMI</string>
+    <string name="underweight">कम वजन</string>
+    <string name="normal">सामान्य</string>
+    <string name="overweight">अधिक वजन</string>
+    <string name="obese">मोटापा</string>
+    <string name="age_title">आयु कैलकुलेटर</string>
+    <string name="date_of_birth">जन्म तिथि</string>
+    <string name="today_date">आज की तारीख</string>
+    <string name="your_age">आपकी आयु</string>
+    <string name="next_birthday">अगला जन्मदिन</string>
+    <string name="months">महीने</string>
+    <string name="days">दिन</string>
+    <string name="currency_title">मुद्रा परिवर्तक</string>
+    <string name="from">से</string>
+    <string name="to">को</string>
+    <string name="amount">राशि</string>
+    <string name="converted_amount">परिवर्तित राशि</string>
+    <string name="unit_converter_title">इकाई परिवर्तक</string>
+    <string name="length">लंबाई</string>
+    <string name="area">क्षेत्रफल</string>
+    <string name="volume">आयतन</string>
+    <string name="mass">द्रव्यमान</string>
+    <string name="temperature">तापमान</string>
+    <string name="speed">गति</string>
+    <string name="time">समय</string>
+    <string name="digital_storage">डिजिटल स्टोरेज</string>
+    <string name="energy">ऊर्जा</string>
+    <string name="pressure">दबाव</string>
+    <string name="geometry_title">ज्यामिति कैलकुलेटर</string>
+    <string name="shape_2d">2D आकार</string>
+    <string name="shape_3d">3D आकार</string>
+    <string name="select_shape">आकार चुनें</string>
+    <string name="dimensions">आयाम</string>
+    <string name="surface_area">सतह क्षेत्रफल</string>
+    <string name="perimeter">परिधि</string>
+    <string name="circle">वृत्त</string>
+    <string name="square">वर्ग</string>
+    <string name="rectangle">आयत</string>
+    <string name="triangle">त्रिभुज</string>
+    <string name="cube">घन</string>
+    <string name="sphere">गोला</string>
+    <string name="cylinder">बेलन</string>
+    <string name="cone">शंकु</string>
+    <string name="radius">त्रिज्या</string>
+    <string name="side">भुजा</string>
+    <string name="width">चौड़ाई</string>
+    <string name="base">आधार</string>
+    <string name="depth">गहराई</string>
+    <string name="app_theme">ऐप थीम</string>
+    <string name="accent_color">एक्सेंट रंग</string>
+    <string name="language">भाषा</string>
+    <string name="system_default">सिस्टम डिफ़ॉल्ट</string>
+    <string name="light">लाइट</string>
+    <string name="dark">डार्क</string>
+    <string name="lang_english">अंग्रेज़ी</string>
+    <string name="lang_hindi">हिन्दी</string>
+    <string name="lang_gujarati">गुजराती</string>
+    <string name="lang_telugu">तेलुगु</string>
+    <string name="lang_marathi">मराठी</string>
+    <string name="lang_tamil">तमिल</string>
+    <string name="lang_kannada">कन्नड़</string>
+    <string name="lang_malayalam">मलयालम</string>
+    <string name="lang_norwegian">नॉर्वेजियन</string>
+    <string name="lang_swedish">स्वीडिश</string>
+    <string name="lang_danish">डैनिश</string>
+    <string name="lang_portuguese_br">पुर्तगाली (ब्राजील)</string>
+    <string name="lang_french">फ्रेंच</string>
+    <string name="lang_english_uk">अंग्रेज़ी (UK)</string>
+    <!-- HomeScreen Categories & Subtitles -->
+    <string name="cat_algebra">बीजगणित</string>
+    <string name="sub_algebra">प्रतिशत, समीकरण</string>
+    <string name="cat_geometry">ज्यामिति</string>
+    <string name="sub_geometry">आकार और निकाय</string>
+    <string name="cat_unit_converters">इकाई परिवर्तक</string>
+    <string name="sub_unit_converters">लंबाई, वजन, आदि..</string>
+    <string name="cat_finance">वित्त</string>
+    <string name="sub_finance">मुद्रा और ऋण</string>
+    <string name="cat_health">स्वास्थ्य</string>
+    <string name="sub_health">बीएमआई, शरीर में वसा</string>
+    <string name="cat_datetime">दिनांक और समय</string>
+    <string name="sub_datetime">जोड़ें, घटाएं, आदि..</string>
+
+    <!-- Calculator Names -->
+    <string name="calc_percentage">प्रतिशत</string>
+    <string name="calc_average">औसत</string>
+    <string name="calc_proportion">अनुपात</string>
+    <string name="calc_ratio">अनुपात</string>
+
+    <!-- HomeScreen UI -->
+    <string name="search_results">खोज परिणाम</string>
+    <string name="found">मिला</string>
+    <string name="no_calculators_found">कोई कैलकुलेटर नहीं मिला</string>
+    <string name="try_different_search">एक अलग खोज शब्द का प्रयास करें</string>
+    <string name="select_category_hint">कैलकुलेटर देखने के लिए एक श्रेणी चुनें</string>
+    <string name="welcome">स्वागत है</string>
+    <string name="app_title_pro">कैलकुलेटर प्रो</string>
+    <string name="categories">श्रेणियाँ</string>
+    <string name="search_hint">कैलकुलेटर खोजें...</string>
+    <string name="clear_search">खोज साफ़ करें</string>
+    <string name="add_favorite">पसंदीदा में जोड़ें</string>
+    <string name="remove_favorite">पसंदीदा से हटाएँ</string>
+
+    <!-- SipScreen -->
+    <string name="sip_result_title">SIP परिणाम</string>
+    <string name="sip_share_body">SIP गणना:\nनिवेश: %1$s\nदर: %2$s%%\nसमय: %3$s वर्ष\nकुल निवेशित: %4$s\nअनुमानित रिटर्न: %5$s\nकुल मूल्य: %6$s</string>
+    <string name="invested">निवेशित</string>
+    <string name="returns">रिटर्न</string>
+    <string name="yr">वर्ष</string>
+
+    <!-- EmiScreen -->
+    <string name="emi_result_title">EMI परिणाम</string>
+    <string name="emi_share_body">EMI गणना:\nऋण: %1$s\nदर: %2$s%%\nअवधि: %3$s वर्ष\nमासिक EMI: %4$s\nकुल ब्याज: %5$s\nकुल भुगतान: %6$s</string>
+    <string name="interest_rate_pa">ब्याज दर (प्रति वर्ष)</string>
+    <string name="principal">मूलधन</string>
+    <string name="interest">ब्याज</string>
+
+    <!-- BmiScreen -->
+    <string name="bmi_result_title">BMI परिणाम</string>
+    <string name="bmi_share_body">BMI गणना:\nवजन: %1$s किग्रा\nऊंचाई: %2$s सेमी\nBMI: %3$s\nश्रेणी: %4$s</string>
+    <string name="category_label">श्रेणी</string>
+    <string name="weight_kg">वजन (किग्रा)</string>
+    <string name="height_cm">ऊंचाई (सेमी)</string>
+
+    <!-- AgeScreen -->
+    <string name="age_result_title">आयु परिणाम</string>
+    <string name="age_share_body">आयु गणना:\nजन्म तिथि: %1$s\nआयु: %2$s वर्ष, %3$s महीने, %4$s दिन</string>
+    <string name="select_date">दिनांक चुनें</string>
+
+    <!-- CurrencyScreen -->
+    <string name="currency_result_title">मुद्रा परिणाम</string>
+    <string name="currency_share_body">मुद्रा रूपांतरण:\n%1$s %2$s = %3$s %4$s</string>
+    <string name="swap">स्वैप करें</string>
+    <string name="dropdown">ड्रॉपडाउन</string>
+    <string name="exchange_rate_display">1 %1$s = %2$s %3$s</string>
+
+    <!-- Units -->
+    <string name="unit_meters">मीटर</string>
+    <string name="unit_kilometers">किलोमीटर</string>
+    <string name="unit_feet">फीट</string>
+    <string name="unit_miles">मील</string>
+    <string name="unit_inches">इंच</string>
+    <string name="unit_centimeters">सेंटीमीटर</string>
+    <string name="unit_kilograms">किलोग्राम</string>
+    <string name="unit_grams">ग्राम</string>
+    <string name="unit_pounds">पाउंड</string>
+    <string name="unit_ounces">औंस</string>
+    <string name="unit_celsius">सेल्सियस</string>
+    <string name="unit_fahrenheit">फारेनहाइट</string>
+    <string name="unit_kelvin">केल्विन</string>
+    <string name="value_label">मान</string>
+
+    <!-- GeometryScreen -->
+    <string name="geometry_share_subject">ज्यामिति गणना</string>
+    <string name="geometry_share_body_3d">3D आकार: %1$s\nआयतन: %2$s घन इकाई\nसतह क्षेत्रफल: %3$s वर्ग इकाई</string>
+    <string name="geometry_share_body_2d">2D आकार: %1$s\nक्षेत्रफल: %2$s वर्ग इकाई\nपरिधि: %3$s इकाई</string>
+    <string name="auto_rotate">ऑटो रोटेट</string>
+    <string name="pause">रोकें</string>
+    <string name="rotate">घुमाएँ</string>
+    <string name="side_length">भुजा की लंबाई</string>
+    <string name="base_radius">आधार त्रिज्या</string>
+    <string name="base_side">आधार भुजा</string>
+    <string name="triangle_side">त्रिभुज भुजा</string>
+    <string name="major_radius">प्रमुख त्रिज्या (R)</string>
+    <string name="minor_radius">लघु त्रिज्या (r)</string>
+    <string name="units">इकाइयाँ</string>
+    <string name="cubic_units">घन इकाइयाँ</string>
+    <string name="square_units">वर्ग इकाइयाँ</string>
+    <string name="side_a">भुजा A</string>
+    <string name="side_b">भुजा B</string>
+    <string name="side_c">भुजा C</string>
+    <string name="top_base">ऊपरी आधार</string>
+    <string name="bottom_base">निचला आधार</string>
+    <string name="diagonal_1">विकर्ण 1</string>
+    <string name="diagonal_2">विकर्ण 2</string>
+    <string name="semi_axis_a">अर्ध-अक्ष A</string>
+    <string name="semi_axis_b">अर्ध-अक्ष B</string>
+    
+    <!-- Shapes -->
+    <string name="shape_pyramid">पिरामिड</string>
+    <string name="shape_rectangular_prism">आयताकार प्रिज्म</string>
+    <string name="shape_triangular_prism">त्रिकोणीय प्रिज्म</string>
+    <string name="shape_torus">टोरस</string>
+    <string name="shape_hemisphere">गोलार्ध</string>
+    <string name="shape_trapezoid">समलंब</string>
+    <string name="shape_parallelogram">समांतर चतुर्भुज</string>
+    <string name="shape_ellipse">दीर्घवृत्त</string>
+    <string name="shape_rhombus">समचतुर्भुज</string>
+    
+    <!-- Favorites Screen -->
+    <string name="no_favorites_title">अभी तक कोई पसंदीदा नहीं</string>
+    <string name="no_favorites_desc">त्वरित पहुँच के लिए अपने अक्सर उपयोग किए जाने वाले कैलकुलेटर जोड़ें</string>
+    <string name="calc_geometry">ज्यामिति</string>
+    <string name="cat_general">सामान्य</string>
+    <string name="cat_date_time_title">दिनांक और समय</string>
+    <string name="cat_unit_converter_title">इकाई परिवर्तक</string>
+
+
+    <!-- Calculator Screen -->
+    <string name="history_title">इतिहास</string>
+    <string name="no_history">अभी तक कोई इतिहास नहीं</string>
+    <string name="export_pdf">पीडीएफ निर्यात करें</string>
+    <string name="export_csv">सीएसवी निर्यात करें</string>
+    <string name="clear_history">इतिहास साफ़ करें</string>
+
+
+
+</resources>

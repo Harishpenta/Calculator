@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Bar chart for Average -->
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M5,9.2h3V19H5V9.2z"/>
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M10.5,5h3v14h-3V5z"/>
+    <path
+        android:fillColor="#FF5722"
+        android:pathData="M16,11h3v8h-3V11z"/>
+    <!-- Average line -->
+    <path
+        android:strokeWidth="2"
+        android:strokeColor="#4CAF50"
+        android:pathData="M4,12h16"/>
+</vector>

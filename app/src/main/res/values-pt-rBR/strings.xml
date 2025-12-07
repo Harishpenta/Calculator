@@ -1,0 +1,239 @@
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="home">Início</string>
+    <string name="favorites">Favoritos</string>
+    <string name="settings">Configurações</string>
+    <string name="back">Voltar</string>
+    <string name="calculate">Calcular</string>
+    <string name="reset">Redefinir</string>
+    <string name="clear">Limpar</string>
+    <string name="share">Compartilhar</string>
+    <string name="copy">Copiar</string>
+    <string name="result">Resultado</string>
+    <string name="calculator_title">Calculadora</string>
+    <string name="error">Erro</string>
+    <string name="sip_title">Calculadora SIP</string>
+    <string name="monthly_investment">Investimento Mensal</string>
+    <string name="expected_return_rate">Taxa de Retorno Esperada (a.a)</string>
+    <string name="time_period">Período</string>
+    <string name="years">Anos</string>
+    <string name="invested_amount">Valor Investido</string>
+    <string name="est_returns">Retorno Est.</string>
+    <string name="total_value">Valor Total</string>
+    <string name="emi_title">Calculadora EMI</string>
+    <string name="loan_amount">Valor do Empréstimo</string>
+    <string name="interest_rate">Taxa de Juros</string>
+    <string name="loan_tenure">Prazo do Empréstimo</string>
+    <string name="monthly_emi">EMI Mensal</string>
+    <string name="total_interest">Juros Totais</string>
+    <string name="total_payment">Pagamento Total</string>
+    <string name="principal_amount">Valor Principal</string>
+    <string name="bmi_title">Calculadora IMC</string>
+    <string name="weight">Peso</string>
+    <string name="height">Altura</string>
+    <string name="kg">kg</string>
+    <string name="cm">cm</string>
+    <string name="your_bmi">Seu IMC</string>
+    <string name="underweight">Abaixo do peso</string>
+    <string name="normal">Normal</string>
+    <string name="overweight">Sobrepeso</string>
+    <string name="obese">Obeso</string>
+    <string name="age_title">Calculadora de Idade</string>
+    <string name="date_of_birth">Data de Nascimento</string>
+    <string name="today_date">Data de Hoje</string>
+    <string name="your_age">Sua Idade</string>
+    <string name="next_birthday">Próximo Aniversário</string>
+    <string name="months">Meses</string>
+    <string name="days">Dias</string>
+    <string name="currency_title">Conversor de Moedas</string>
+    <string name="from">De</string>
+    <string name="to">Para</string>
+    <string name="amount">Valor</string>
+    <string name="converted_amount">Valor Convertido</string>
+    <string name="unit_converter_title">Conversor de Unidades</string>
+    <string name="length">Comprimento</string>
+    <string name="area">Área</string>
+    <string name="volume">Volume</string>
+    <string name="mass">Massa</string>
+    <string name="temperature">Temperatura</string>
+    <string name="speed">Velocidade</string>
+    <string name="time">Tempo</string>
+    <string name="digital_storage">Armazenamento Digital</string>
+    <string name="energy">Energia</string>
+    <string name="pressure">Pressão</string>
+    <string name="geometry_title">Calculadora de Geometria</string>
+    <string name="shape_2d">Formas 2D</string>
+    <string name="shape_3d">Formas 3D</string>
+    <string name="select_shape">Selecionar Forma</string>
+    <string name="dimensions">Dimensões</string>
+    <string name="surface_area">Área da Superfície</string>
+    <string name="perimeter">Perímetro</string>
+    <string name="circle">Círculo</string>
+    <string name="square">Quadrado</string>
+    <string name="rectangle">Retângulo</string>
+    <string name="triangle">Triângulo</string>
+    <string name="cube">Cubo</string>
+    <string name="sphere">Esfera</string>
+    <string name="cylinder">Cilindro</string>
+    <string name="cone">Cone</string>
+    <string name="radius">Raio</string>
+    <string name="side">Lado</string>
+    <string name="width">Largura</string>
+    <string name="base">Base</string>
+    <string name="depth">Profundidade</string>
+    <string name="app_theme">Tema do App</string>
+    <string name="accent_color">Cor de Destaque</string>
+    <string name="language">Idioma</string>
+    <string name="system_default">Padrão do Sistema</string>
+    <string name="light">Claro</string>
+    <string name="dark">Escuro</string>
+    <string name="lang_english">Inglês</string>
+    <string name="lang_hindi">Hindi</string>
+    <string name="lang_gujarati">Guzerate</string>
+    <string name="lang_telugu">Telugu</string>
+    <string name="lang_marathi">Marata</string>
+    <string name="lang_tamil">Tâmil</string>
+    <string name="lang_kannada">Canarês</string>
+    <string name="lang_malayalam">Malaiala</string>
+    <string name="lang_norwegian">Norueguês</string>
+    <string name="lang_swedish">Sueco</string>
+    <string name="lang_danish">Dinamarquês</string>
+    <string name="lang_portuguese_br">Português (Brasil)</string>
+    <string name="lang_french">Francês</string>
+    <string name="lang_english_uk">Inglês (UK)</string>
+    <!-- HomeScreen Categories & Subtitles -->
+    <string name="cat_algebra">Álgebra</string>
+    <string name="sub_algebra">Porcentagem, Equações</string>
+    <string name="cat_geometry">Geometria</string>
+    <string name="sub_geometry">Formas e corpos</string>
+    <string name="cat_unit_converters">Conversores de unidades</string>
+    <string name="sub_unit_converters">Comprimento, Peso, etc..</string>
+    <string name="cat_finance">Finanças</string>
+    <string name="sub_finance">Moeda e empréstimos</string>
+    <string name="cat_health">Saúde</string>
+    <string name="sub_health">IMC, Gordura corporal</string>
+    <string name="cat_datetime">Data e hora</string>
+    <string name="sub_datetime">Adicionar, Subtrair, etc..</string>
+
+    <!-- Calculator Names -->
+    <string name="calc_percentage">Porcentagem</string>
+    <string name="calc_average">Média</string>
+    <string name="calc_proportion">Proporção</string>
+    <string name="calc_ratio">Razão</string>
+
+    <!-- HomeScreen UI -->
+    <string name="search_results">Resultados da pesquisa</string>
+    <string name="found">encontrado</string>
+    <string name="no_calculators_found">Nenhuma calculadora encontrada</string>
+    <string name="try_different_search">Tente um termo de pesquisa diferente</string>
+    <string name="select_category_hint">Selecione uma categoria para ver as calculadoras</string>
+    <string name="welcome">Bem-vindo</string>
+    <string name="app_title_pro">Calculadora Pro</string>
+    <string name="categories">Categorias</string>
+    <string name="search_hint">Pesquisar calculadoras...</string>
+    <string name="clear_search">Limpar pesquisa</string>
+    <string name="add_favorite">Adicionar aos favoritos</string>
+    <string name="remove_favorite">Remover dos favoritos</string>
+
+    <!-- SipScreen -->
+    <string name="sip_result_title">SIP Result</string>
+    <string name="sip_share_body">SIP Calculation:\nInvestment: %1$s\nRate: %2$s%%\nTime: %3$s years\nTotal Invested: %4$s\nEst. Returns: %5$s\nTotal Value: %6$s</string>
+    <string name="invested">Invested</string>
+    <string name="returns">Returns</string>
+    <string name="yr">Yr</string>
+
+    <!-- EmiScreen -->
+    <string name="emi_result_title">EMI Result</string>
+    <string name="emi_share_body">EMI Calculation:\nLoan: %1$s\nRate: %2$s%%\nTenure: %3$s years\nMonthly EMI: %4$s\nTotal Interest: %5$s\nTotal Payment: %6$s</string>
+    <string name="interest_rate_pa">Interest Rate (p.a)</string>
+    <string name="principal">Principal</string>
+    <string name="interest">Interest</string>
+
+    <!-- BmiScreen -->
+    <string name="bmi_result_title">BMI Result</string>
+    <string name="bmi_share_body">BMI Calculation:\nWeight: %1$s kg\nHeight: %2$s cm\nBMI: %3$s\nCategory: %4$s</string>
+    <string name="category_label">Category</string>
+    <string name="weight_kg">Weight (kg)</string>
+    <string name="height_cm">Height (cm)</string>
+
+    <!-- AgeScreen -->
+    <string name="age_result_title">Age Result</string>
+    <string name="age_share_body">Age Calculation:\nDOB: %1$s\nAge: %2$s Years, %3$s Months, %4$s Days</string>
+    <string name="select_date">Select Date</string>
+
+    <!-- CurrencyScreen -->
+    <string name="currency_result_title">Currency Result</string>
+    <string name="currency_share_body">Currency Conversion:\n%1$s %2$s = %3$s %4$s</string>
+    <string name="swap">Swap</string>
+    <string name="dropdown">Dropdown</string>
+    <string name="exchange_rate_display">1 %1$s = %2$s %3$s</string>
+
+    <!-- Units -->
+    <string name="unit_meters">Meters</string>
+    <string name="unit_kilometers">Kilometers</string>
+    <string name="unit_feet">Feet</string>
+    <string name="unit_miles">Miles</string>
+    <string name="unit_inches">Inches</string>
+    <string name="unit_centimeters">Centimeters</string>
+    <string name="unit_kilograms">Kilograms</string>
+    <string name="unit_grams">Grams</string>
+    <string name="unit_pounds">Pounds</string>
+    <string name="unit_ounces">Ounces</string>
+    <string name="unit_celsius">Celsius</string>
+    <string name="unit_fahrenheit">Fahrenheit</string>
+    <string name="unit_kelvin">Kelvin</string>
+    <string name="value_label">Value</string>
+
+    <!-- GeometryScreen -->
+    <string name="geometry_share_subject">Geometry Calculation</string>
+    <string name="geometry_share_body_3d">3D Shape: %1$s\nVolume: %2$s cubic units\nSurface Area: %3$s square units</string>
+    <string name="geometry_share_body_2d">2D Shape: %1$s\nArea: %2$s square units\nPerimeter: %3$s units</string>
+    <string name="auto_rotate">Auto Rotate</string>
+    <string name="pause">Pause</string>
+    <string name="rotate">Rotate</string>
+    <string name="side_length">Side Length</string>
+    <string name="base_radius">Base Radius</string>
+    <string name="base_side">Base Side</string>
+    <string name="triangle_side">Triangle Side</string>
+    <string name="major_radius">Major Radius (R)</string>
+    <string name="minor_radius">Minor Radius (r)</string>
+    <string name="units">units</string>
+    <string name="cubic_units">cubic units</string>
+    <string name="square_units">square units</string>
+    <string name="side_a">Side A</string>
+    <string name="side_b">Side B</string>
+    <string name="side_c">Side C</string>
+    <string name="top_base">Top Base</string>
+    <string name="bottom_base">Bottom Base</string>
+    <string name="diagonal_1">Diagonal 1</string>
+    <string name="diagonal_2">Diagonal 2</string>
+    <string name="semi_axis_a">Semi-axis A</string>
+    <string name="semi_axis_b">Semi-axis B</string>
+    
+    <!-- Shapes -->
+    <string name="shape_pyramid">Pyramid</string>
+    <string name="shape_rectangular_prism">Rectangular Prism</string>
+    <string name="shape_triangular_prism">Triangular Prism</string>
+    <string name="shape_torus">Torus</string>
+    <string name="shape_hemisphere">Hemisphere</string>
+    <string name="shape_trapezoid">Trapezoid</string>
+    <string name="shape_parallelogram">Parallelogram</string>
+    <string name="shape_ellipse">Ellipse</string>
+    <string name="shape_rhombus">Rhombus</string>
+    
+    <!-- Favorites Screen -->
+    <string name="no_favorites_title">No favorites yet</string>
+    <string name="no_favorites_desc">Add your frequently used calculators\nfor quick access</string>
+    <string name="calc_geometry">Geometry</string>
+    <string name="cat_general">General</string>
+    <string name="cat_date_time_title">Date &amp; Time</string>
+    <string name="cat_unit_converter_title">Unit Converter</string>
+    <!-- Calculator Screen -->
+    <string name="history_title">Histórico</string>
+    <string name="no_history">Nenhum histórico ainda</string>
+    <string name="export_pdf">Exportar PDF</string>
+    <string name="export_csv">Exportar CSV</string>
+
+
+
+</resources>

@@ -1,0 +1,240 @@
+<resources>
+    <string name="app_name">Kalkylator</string>
+    <string name="home">Hem</string>
+    <string name="favorites">Favoriter</string>
+    <string name="settings">Inställningar</string>
+    <string name="back">Tillbaka</string>
+    <string name="calculate">Beräkna</string>
+    <string name="reset">Återställ</string>
+    <string name="clear">Rensa</string>
+    <string name="share">Dela</string>
+    <string name="copy">Kopiera</string>
+    <string name="result">Resultat</string>
+    <string name="calculator_title">Kalkylator</string>
+    <string name="error">Fel</string>
+    <string name="sip_title">SIP-kalkylator</string>
+    <string name="monthly_investment">Månadsinvestering</string>
+    <string name="expected_return_rate">Förväntad avkastning (p.a)</string>
+    <string name="time_period">Tidsperiod</string>
+    <string name="years">År</string>
+    <string name="invested_amount">Investerat belopp</string>
+    <string name="est_returns">Beräknad avkastning</string>
+    <string name="total_value">Totalt värde</string>
+    <string name="emi_title">EMI-kalkylator</string>
+    <string name="loan_amount">Lånebelopp</string>
+    <string name="interest_rate">Ränta</string>
+    <string name="loan_tenure">Lånetid</string>
+    <string name="monthly_emi">Månatlig EMI</string>
+    <string name="total_interest">Total ränta</string>
+    <string name="total_payment">Total betalning</string>
+    <string name="principal_amount">Kapitalbelopp</string>
+    <string name="bmi_title">BMI-kalkylator</string>
+    <string name="weight">Vikt</string>
+    <string name="height">Längd</string>
+    <string name="kg">kg</string>
+    <string name="cm">cm</string>
+    <string name="your_bmi">Ditt BMI</string>
+    <string name="underweight">Undervikt</string>
+    <string name="normal">Normal</string>
+    <string name="overweight">Övervikt</string>
+    <string name="obese">Fetma</string>
+    <string name="age_title">Ålderskalkylator</string>
+    <string name="date_of_birth">Födelsedatum</string>
+    <string name="today_date">Dagens datum</string>
+    <string name="your_age">Din ålder</string>
+    <string name="next_birthday">Nästa födelsedag</string>
+    <string name="months">Månader</string>
+    <string name="days">Dagar</string>
+    <string name="currency_title">Valutaomvandlare</string>
+    <string name="from">Från</string>
+    <string name="to">Till</string>
+    <string name="amount">Belopp</string>
+    <string name="converted_amount">Omvandlat belopp</string>
+    <string name="unit_converter_title">Enhetsomvandlare</string>
+    <string name="length">Längd</string>
+    <string name="area">Area</string>
+    <string name="volume">Volym</string>
+    <string name="mass">Massa</string>
+    <string name="temperature">Temperatur</string>
+    <string name="speed">Hastighet</string>
+    <string name="time">Tid</string>
+    <string name="digital_storage">Digital lagring</string>
+    <string name="energy">Energi</string>
+    <string name="pressure">Tryck</string>
+    <string name="geometry_title">Geometrikalkylator</string>
+    <string name="shape_2d">2D-former</string>
+    <string name="shape_3d">3D-former</string>
+    <string name="select_shape">Välj form</string>
+    <string name="dimensions">Dimensioner</string>
+    <string name="surface_area">Yta</string>
+    <string name="perimeter">Omkrets</string>
+    <string name="circle">Cirkel</string>
+    <string name="square">Kvadrat</string>
+    <string name="rectangle">Rektangel</string>
+    <string name="triangle">Triangel</string>
+    <string name="cube">Kub</string>
+    <string name="sphere">Sfär</string>
+    <string name="cylinder">Cylinder</string>
+    <string name="cone">Kon</string>
+    <string name="radius">Radie</string>
+    <string name="side">Sida</string>
+    <string name="width">Bredd</string>
+    <string name="base">Bas</string>
+    <string name="depth">Djup</string>
+    <string name="app_theme">App-tema</string>
+    <string name="accent_color">Accentfärg</string>
+    <string name="language">Språk</string>
+    <string name="system_default">Systemstandard</string>
+    <string name="light">Ljus</string>
+    <string name="dark">Mörk</string>
+    <string name="lang_english">Engelska</string>
+    <string name="lang_hindi">Hindi</string>
+    <string name="lang_gujarati">Gujarati</string>
+    <string name="lang_telugu">Telugu</string>
+    <string name="lang_marathi">Marathi</string>
+    <string name="lang_tamil">Tamil</string>
+    <string name="lang_kannada">Kannada</string>
+    <string name="lang_malayalam">Malayalam</string>
+    <string name="lang_norwegian">Norska</string>
+    <string name="lang_swedish">Svenska</string>
+    <string name="lang_danish">Danska</string>
+    <string name="lang_portuguese_br">Portugisiska (Brasilien)</string>
+    <string name="lang_french">Franska</string>
+    <string name="lang_english_uk">Engelska (UK)</string>
+    <!-- HomeScreen Categories & Subtitles -->
+    <string name="cat_algebra">Algebra</string>
+    <string name="sub_algebra">Procent, Ekvationer</string>
+    <string name="cat_geometry">Geometri</string>
+    <string name="sub_geometry">Former &amp; kroppar</string>
+    <string name="cat_unit_converters">Enhetsomvandlare</string>
+    <string name="sub_unit_converters">Längd, Vikt, etc..</string>
+    <string name="cat_finance">Ekonomi</string>
+    <string name="sub_finance">Valuta &amp; lån</string>
+    <string name="cat_health">Hälsa</string>
+    <string name="sub_health">BMI, Kroppsfett</string>
+    <string name="cat_datetime">Datum &amp; tid</string>
+    <string name="sub_datetime">Addera, Subtrahera, etc..</string>
+
+    <!-- Calculator Names -->
+    <string name="calc_percentage">Procent</string>
+    <string name="calc_average">Medelvärde</string>
+    <string name="calc_proportion">Proportion</string>
+    <string name="calc_ratio">Förhållande</string>
+
+    <!-- HomeScreen UI -->
+    <string name="search_results">Sökresultat</string>
+    <string name="found">hittades</string>
+    <string name="no_calculators_found">Inga räknare hittades</string>
+    <string name="try_different_search">Prova en annan sökterm</string>
+    <string name="select_category_hint">Välj en kategori för att se räknare</string>
+    <string name="welcome">Välkommen</string>
+    <string name="app_title_pro">Kalkylator Pro</string>
+    <string name="categories">Kategorier</string>
+    <string name="search_hint">Sök räknare...</string>
+    <string name="clear_search">Rensa sökning</string>
+    <string name="add_favorite">Lägg till i favoriter</string>
+    <string name="remove_favorite">Ta bort från favoriter</string>
+
+    <!-- SipScreen -->
+    <string name="sip_result_title">SIP-resultat</string>
+    <string name="sip_share_body">SIP-beräkning:\nInvestering: %1$s\nRänta: %2$s%%\nTid: %3$s år\nTotalt investerat: %4$s\nBeräknad avkastning: %5$s\nTotalt värde: %6$s</string>
+    <string name="invested">Investerat</string>
+    <string name="returns">Avkastning</string>
+    <string name="yr">År</string>
+
+    <!-- EmiScreen -->
+    <string name="emi_result_title">EMI-resultat</string>
+    <string name="emi_share_body">EMI-beräkning:\nLån: %1$s\nRänta: %2$s%%\nLånetid: %3$s år\nMånatlig EMI: %4$s\nTotal ränta: %5$s\nTotal betalning: %6$s</string>
+    <string name="interest_rate_pa">Ränta (p.a)</string>
+    <string name="principal">Kapital</string>
+    <string name="interest">Ränta</string>
+
+    <!-- BmiScreen -->
+    <string name="bmi_result_title">BMI-resultat</string>
+    <string name="bmi_share_body">BMI-beräkning:\nVikt: %1$s kg\nLängd: %2$s cm\nBMI: %3$s\nKategori: %4$s</string>
+    <string name="category_label">Kategori</string>
+    <string name="weight_kg">Vikt (kg)</string>
+    <string name="height_cm">Längd (cm)</string>
+
+    <!-- AgeScreen -->
+    <string name="age_result_title">Åldersresultat</string>
+    <string name="age_share_body">Åldersberäkning:\nFödelsedatum: %1$s\nÅlder: %2$s år, %3$s månader, %4$s dagar</string>
+    <string name="select_date">Välj datum</string>
+
+    <!-- CurrencyScreen -->
+    <string name="currency_result_title">Valutakonverteringsresultat</string>
+    <string name="currency_share_body">Valutakonvertering:\n%1$s %2$s = %3$s %4$s</string>
+    <string name="swap">Byt</string>
+    <string name="dropdown">Rullgardinsmeny</string>
+    <string name="exchange_rate_display">1 %1$s = %2$s %3$s</string>
+
+    <!-- Units -->
+    <string name="unit_meters">Meter</string>
+    <string name="unit_kilometers">Kilometer</string>
+    <string name="unit_feet">Fot</string>
+    <string name="unit_miles">Miles</string>
+    <string name="unit_inches">Tum</string>
+    <string name="unit_centimeters">Centimeter</string>
+    <string name="unit_kilograms">Kilogram</string>
+    <string name="unit_grams">Gram</string>
+    <string name="unit_pounds">Pund</string>
+    <string name="unit_ounces">Uns</string>
+    <string name="unit_celsius">Celsius</string>
+    <string name="unit_fahrenheit">Fahrenheit</string>
+    <string name="unit_kelvin">Kelvin</string>
+    <string name="value_label">Värde</string>
+
+    <!-- GeometryScreen -->
+    <string name="geometry_share_subject">Geometrisk beräkning</string>
+    <string name="geometry_share_body_3d">3D-form: %1$s\nVolym: %2$s kubikenheter\nYta: %3$s kvadratenheter</string>
+    <string name="geometry_share_body_2d">2D-form: %1$s\nArea: %2$s kvadratenheter\nOmkrets: %3$s enheter</string>
+    <string name="auto_rotate">Autorotera</string>
+    <string name="pause">Pausa</string>
+    <string name="rotate">Rotera</string>
+    <string name="side_length">Sidolängd</string>
+    <string name="base_radius">Basradie</string>
+    <string name="base_side">Bassida</string>
+    <string name="triangle_side">Triangelsida</string>
+    <string name="major_radius">Stor radie (R)</string>
+    <string name="minor_radius">Liten radie (r)</string>
+    <string name="units">enheter</string>
+    <string name="cubic_units">kubikenheter</string>
+    <string name="square_units">kvadratenheter</string>
+    <string name="side_a">Sida A</string>
+    <string name="side_b">Sida B</string>
+    <string name="side_c">Sida C</string>
+    <string name="top_base">Övre bas</string>
+    <string name="bottom_base">Nedre bas</string>
+    <string name="diagonal_1">Diagonal 1</string>
+    <string name="diagonal_2">Diagonal 2</string>
+    <string name="semi_axis_a">Halvaxel A</string>
+    <string name="semi_axis_b">Halvaxel B</string>
+    
+    <!-- Shapes -->
+    <string name="shape_pyramid">Pyramid</string>
+    <string name="shape_rectangular_prism">Rätblock</string>
+    <string name="shape_triangular_prism">Triangulärt prisma</string>
+    <string name="shape_torus">Torus</string>
+    <string name="shape_hemisphere">Halvsfär</string>
+    <string name="shape_trapezoid">Trapets</string>
+    <string name="shape_parallelogram">Parallellogram</string>
+    <string name="shape_ellipse">Ellips</string>
+    <string name="shape_rhombus">Romb</string>
+    
+    <!-- Favorites Screen -->
+    <string name="no_favorites_title">Inga favoriter än</string>
+    <string name="no_favorites_desc">Lägg till dina ofta använda räknare\nför snabb åtkomst</string>
+    <string name="calc_geometry">Geometri</string>
+    <string name="cat_general">Allmänt</string>
+    <string name="cat_date_time_title">Datum &amp; tid</string>
+    <string name="cat_unit_converter_title">Enhetsomvandlare</string>
+    <!-- Calculator Screen -->
+    <string name="history_title">Historik</string>
+    <string name="no_history">Ingen historik än</string>
+    <string name="export_pdf">Exportera PDF</string>
+    <string name="export_csv">Exportera CSV</string>
+    <string name="clear_history">Rensa historik</string>
+
+
+
+</resources>

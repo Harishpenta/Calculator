@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- BMI Scale -->
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10-4.48 10-10S17.52,2 12,2z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,4c4.41,0 8,3.59 8,8s-3.59,8-8,8-8-3.59-8-8 3.59-8 8-8z"/>
+    <!-- Scale meter -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M4,12a8,8 0,0 1,8-8"/>
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M12,4a8,8 0,0 1,6.93 4"/>
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M18.93,8a8,8 0,0 1,1.07 4"/>
+    <path
+        android:strokeWidth="2"
+        android:pathData="M4,12a8,8 0,0 1,8-8"
+        android:strokeColor="#4CAF50"/>
+    <path
+        android:strokeWidth="2"
+        android:pathData="M12,4a8,8 0,0 1,6.93 4"
+        android:strokeColor="#FFC107"/>
+    <path
+        android:strokeWidth="2"
+        android:pathData="M18.93,8a8,8 0,0 1,1.07 4"
+        android:strokeColor="#F44336"/>
+    <!-- Person icon -->
+    <path
+        android:fillColor="#212121"
+        android:pathData="M12,12m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"/>
+    <path
+        android:fillColor="#212121"
+        android:pathData="M12,15c-2.33,0-7,1.17-7,3.5V20h14v-1.5C19,16.17 14.33,15 12,15z"/>
+</vector>

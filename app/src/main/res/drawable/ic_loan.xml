@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Loan/Bank -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M12,2L2,7v2h20V7L12,2z"/>
+    <path
+        android:fillColor="#81C784"
+        android:pathData="M4,10v8h2V10H4zM9,10v8h2V10H9zM13,10v8h2V10h-2zM18,10v8h2V10h-2z"/>
+    <path
+        android:fillColor="#388E3C"
+        android:pathData="M2,19v2h20v-2H2z"/>
+</vector>
