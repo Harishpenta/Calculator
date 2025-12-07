@@ -62,6 +62,7 @@ import androidx.compose.material3.MaterialTheme
 fun SettingsScreen(
     state: ThemeState,
     onAction: (ThemeEvent) -> Unit,
+    onClearHistory: () -> Unit,
     onOpenDrawer: () -> Unit
 ) {
     Scaffold(
@@ -223,6 +224,59 @@ fun SettingsScreen(
                                     onClick = { onAction(ThemeEvent.UpdateTheme(theme)) }
                                 )
                             }
+                        }
+                    }
+                )
+
+                // Interactions Section
+                ThemeSettingsSection(
+                    title = "INTERACTIONS",
+                    content = {
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            TechText(
+                                text = "Haptic Feedback",
+                                fontSize = 16.sp
+                            )
+                            androidx.compose.material3.Switch(
+                                checked = state.isHapticsEnabled,
+                                onCheckedChange = { onAction(ThemeEvent.ToggleHaptics(it)) },
+                                colors = androidx.compose.material3.SwitchDefaults.colors(
+                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                                    uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    uncheckedTrackColor = MaterialTheme.colorScheme.surface
+                                )
+                            )
+                        }
+                    }
+                )
+                
+                // Data Management
+                ThemeSettingsSection(
+                    title = "DATA",
+                    content = {
+                        CyberpunkButton(
+                            text = "CLEAR HISTORY",
+                            onClick = onClearHistory,
+                            modifier = Modifier.fillMaxWidth(),
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
+                )
+
+                // About Section
+                ThemeSettingsSection(
+                    title = "ABOUT",
+                    content = {
+                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            TechText("Cyberpunk Calculator", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = MaterialTheme.colorScheme.primary)
+                            TechText("Version 1.0.0", fontSize = 14.sp, color = CyberpunkTextSecondary)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            TechText("Designed for the future.", fontSize = 12.sp, color = CyberpunkTextSecondary)
                         }
                     }
                 )

@@ -54,7 +54,13 @@ class MainActivity : ComponentActivity() {
                 interstitialAdManager.loadAd()
             }
             
-            val calculatorViewModel = viewModel<CalculatorViewModel>()
+            // Database & Repository
+            val database = com.pentadigital.calculator.data.AppDatabase.getDatabase(applicationContext)
+            val repository = com.pentadigital.calculator.data.HistoryRepository(database.historyDao())
+            
+            val calculatorViewModel = viewModel<CalculatorViewModel>(
+                factory = CalculatorViewModelFactory(repository)
+            )
             
             // Set up interstitial ad callback for calculations
             androidx.compose.runtime.LaunchedEffect(Unit) {
@@ -109,7 +115,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
             androidx.compose.runtime.key(localeKey) {
-                CalculatorTheme(themeState = themeViewModel.state) {
+                androidx.compose.runtime.CompositionLocalProvider(
+                    LocalHapticsEnabled provides themeViewModel.state.isHapticsEnabled
+                ) {
+                    CalculatorTheme(themeState = themeViewModel.state) {
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
                         containerColor = MaterialTheme.colorScheme.background,
@@ -178,8 +187,9 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
+                    }
                 }
             }
-        }
+    }
     }
 }

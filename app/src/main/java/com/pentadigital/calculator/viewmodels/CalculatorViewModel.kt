@@ -7,7 +7,12 @@ import androidx.lifecycle.ViewModel
 import kotlin.math.sqrt
 import kotlin.math.pow
 
-class CalculatorViewModel : ViewModel() {
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import com.pentadigital.calculator.data.HistoryRepository
+import com.pentadigital.calculator.data.HistoryEntity
+
+class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel() {
 
     var state by mutableStateOf(CalculatorState())
         private set
@@ -15,6 +20,18 @@ class CalculatorViewModel : ViewModel() {
     private var calculationCount = 0
     var onShowInterstitialAd: (() -> Unit)? = null
     private val MAX_DIGITS = 16
+
+    init {
+        viewModelScope.launch {
+            repository.allHistory.collect { historyList ->
+                // Map HistoryEntity to String format expected by UI
+                val formattedHistory = historyList.map { 
+                    "${it.expression} = ${it.result}" 
+                }
+                state = state.copy(history = formattedHistory)
+            }
+        }
+    }
 
     fun onAction(action: CalculatorAction) {
         when (action) {
@@ -75,13 +92,19 @@ class CalculatorViewModel : ViewModel() {
                     return
                 }
                 
-                val historyItem = "${formatDisplayNumber(state.number1)} ${state.operation?.symbol} ${formatDisplayNumber(state.number2)} = ${formatDisplayNumber(result.toString())}"
+                val expression = "${formatDisplayNumber(state.number1)} ${state.operation?.symbol} ${formatDisplayNumber(state.number2)}"
+                val resultString = formatDisplayNumber(result.toString())
+                
+                // Save to DB
+                viewModelScope.launch {
+                    repository.insert(HistoryEntity(expression = expression, result = resultString))
+                }
                 
                 state = state.copy(
                     number1 = formatResult(result),
                     number2 = "",
                     operation = null,
-                    history = state.history + historyItem,
+                    // history update handled by flow collector
                     errorMessage = null,
                     isResultDisplayed = true
                 )
@@ -119,7 +142,9 @@ class CalculatorViewModel : ViewModel() {
     }
 
     private fun clearHistory() {
-        state = state.copy(history = emptyList())
+        viewModelScope.launch {
+            repository.clear()
+        }
     }
 
     private fun enterOperation(operation: CalculatorOperation) {
@@ -230,10 +255,16 @@ class CalculatorViewModel : ViewModel() {
         val resultString = formatResult(result)
         
         if (state.operation == null) {
-            val historyItem = "√${formatDisplayNumber(currentNumber)} = ${formatDisplayNumber(resultString)}"
+            val expression = "√${formatDisplayNumber(currentNumber)}"
+            val resultFormatted = formatDisplayNumber(resultString)
+            
+            // Save to DB
+            viewModelScope.launch {
+                repository.insert(HistoryEntity(expression = expression, result = resultFormatted))
+            }
+
             state = state.copy(
                 number1 = resultString,
-                history = state.history + historyItem,
                 errorMessage = null
             )
         } else {
@@ -252,10 +283,16 @@ class CalculatorViewModel : ViewModel() {
         val resultString = formatResult(result)
         
         if (state.operation == null) {
-            val historyItem = "${formatDisplayNumber(currentNumber)}² = ${formatDisplayNumber(resultString)}"
+            val expression = "${formatDisplayNumber(currentNumber)}²"
+            val resultFormatted = formatDisplayNumber(resultString)
+            
+            // Save to DB
+            viewModelScope.launch {
+                repository.insert(HistoryEntity(expression = expression, result = resultFormatted))
+            }
+
             state = state.copy(
                 number1 = resultString,
-                history = state.history + historyItem,
                 errorMessage = null
             )
         } else {
