@@ -40,6 +40,8 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,7 +50,9 @@ import com.pentadigital.calculator.ui.theme.CyberpunkSurface
 import com.pentadigital.calculator.ui.theme.CyberpunkTextPrimary
 import com.pentadigital.calculator.ui.theme.NeonCyan
 import com.pentadigital.calculator.ui.theme.NeonGreen
-import com.pentadigital.calculator.ui.theme.NeonPurple
+import androidx.compose.runtime.compositionLocalOf
+
+val LocalHapticsEnabled = compositionLocalOf { true }
 
 @Composable
 fun CyberpunkCard(
@@ -83,9 +87,16 @@ fun CyberpunkButton(
     color: Color = MaterialTheme.colorScheme.primary
 ) {
     val shape = CutCornerShape(8.dp)
+    val haptic = LocalHapticFeedback.current
+    val isHapticsEnabled = LocalHapticsEnabled.current
     
     Button(
-        onClick = onClick,
+        onClick = {
+            if (isHapticsEnabled) {
+                haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+            }
+            onClick()
+        },
         modifier = modifier
             .shadow(8.dp, shape, spotColor = color),
         shape = shape,

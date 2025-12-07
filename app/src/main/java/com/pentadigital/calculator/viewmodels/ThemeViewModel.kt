@@ -7,6 +7,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.preferencesOf
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -43,7 +45,8 @@ enum class AppLanguage(val code: String, val displayName: String) {
 data class ThemeState(
     val appTheme: AppTheme = AppTheme.System,
     val accentColor: AccentColor = AccentColor.Orange,
-    val language: AppLanguage = AppLanguage.English
+    val language: AppLanguage = AppLanguage.English,
+    val isHapticsEnabled: Boolean = true
 )
 
 class ThemeViewModel(application: Application) : AndroidViewModel(application) {
@@ -54,6 +57,7 @@ class ThemeViewModel(application: Application) : AndroidViewModel(application) {
     private val THEME_KEY = stringPreferencesKey("app_theme")
     private val ACCENT_KEY = stringPreferencesKey("accent_color")
     private val LANGUAGE_KEY = stringPreferencesKey("app_language")
+    private val HAPTICS_KEY = booleanPreferencesKey("haptics_enabled")
 
     init {
         viewModelScope.launch {
@@ -61,11 +65,13 @@ class ThemeViewModel(application: Application) : AndroidViewModel(application) {
                 val themeName = preferences[THEME_KEY] ?: AppTheme.System.name
                 val accentName = preferences[ACCENT_KEY] ?: AccentColor.Orange.name
                 val languageCode = preferences[LANGUAGE_KEY] ?: AppLanguage.English.code
-                
+                val hapticsEnabled = preferences[HAPTICS_KEY] ?: true
+
                 ThemeState(
                     appTheme = AppTheme.valueOf(themeName),
                     accentColor = AccentColor.valueOf(accentName),
-                    language = AppLanguage.values().find { it.code == languageCode } ?: AppLanguage.English
+                    language = AppLanguage.values().find { it.code == languageCode } ?: AppLanguage.English,
+                    isHapticsEnabled = hapticsEnabled
                 )
             }.collect {
                 state = it
@@ -91,6 +97,11 @@ class ThemeViewModel(application: Application) : AndroidViewModel(application) {
                         preferences[LANGUAGE_KEY] = event.language.code
                     }
                 }
+                is ThemeEvent.ToggleHaptics -> {
+                    context.dataStore.edit { preferences ->
+                        preferences[HAPTICS_KEY] = event.enabled
+                    }
+                }
             }
         }
     }
@@ -100,6 +111,7 @@ sealed class ThemeEvent {
     data class UpdateTheme(val theme: AppTheme) : ThemeEvent()
     data class UpdateAccent(val color: AccentColor) : ThemeEvent()
     data class UpdateLanguage(val language: AppLanguage) : ThemeEvent()
+    data class ToggleHaptics(val enabled: Boolean) : ThemeEvent()
 }
 
 class ThemeViewModelFactory(private val context: Context) : androidx.lifecycle.ViewModelProvider.Factory {
