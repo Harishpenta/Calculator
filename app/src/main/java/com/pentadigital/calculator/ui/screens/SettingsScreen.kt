@@ -91,8 +91,10 @@ fun SettingsScreen(
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
         val isLandscape = isLandscape()
+        val windowSize = rememberWindowSize()
+        val isTwoPane = isLandscape || windowSize.width == WindowSizeClass.EXPANDED
 
-        if (isLandscape) {
+        if (isTwoPane) {
             Row(
                 modifier = Modifier
                     .fillMaxSize()

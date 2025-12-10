@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import android.content.res.Configuration
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.pentadigital.calculator.ui.theme.CalculatorTheme
@@ -122,74 +126,99 @@ class MainActivity : ComponentActivity() {
                     LocalSoundManager provides themeViewModel.soundManager
                 ) {
                     CalculatorTheme(themeState = themeViewModel.state) {
-                    Scaffold(
-                        modifier = Modifier.fillMaxSize(),
-                        containerColor = MaterialTheme.colorScheme.background,
-                        bottomBar = {
-                            if (showBottomNav) {
-                                BottomNavigationBar(
-                                    currentRoute = currentRoute,
-                                    onNavigate = { route ->
-                                        navController.navigate(route) {
-                                            popUpTo(Screen.Home.route) {
-                                                saveState = true
+val configuration = LocalConfiguration.current
+                        val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+                        val onNavigateToRoute: (String) -> Unit = { route ->
+                            navController.navigate(route) {
+                                popUpTo(Screen.Home.route) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        }
+
+                        val mainContent: @Composable (androidx.compose.foundation.layout.PaddingValues) -> Unit = { paddingValues ->
+                            Column(modifier = Modifier.fillMaxSize()) {
+                                Box(modifier = Modifier.weight(1f).padding(paddingValues)) {
+                                    Surface(
+                                        modifier = Modifier.fillMaxSize(),
+                                        color = MaterialTheme.colorScheme.background
+                                    ) {
+                                        AppNavigation(
+                                            navController = navController,
+                                            calculatorViewModel = calculatorViewModel,
+                                            sipViewModel = sipViewModel,
+                                            emiViewModel = emiViewModel,
+                                            bmiViewModel = bmiViewModel,
+                                            ageViewModel = ageViewModel,
+                                            currencyViewModel = currencyViewModel,
+                                            unitConverterViewModel = unitConverterViewModel,
+                                            geometryViewModel = geometryViewModel,
+                                            simpleInterestViewModel = simpleInterestViewModel,
+                                            compoundInterestViewModel = compoundInterestViewModel,
+                                            loanPrepaymentViewModel = loanPrepaymentViewModel,
+                                            goalPlannerViewModel = goalPlannerViewModel,
+                                            discountViewModel = discountViewModel,
+                                            tipViewModel = tipViewModel,
+                                            fuelCostViewModel = fuelCostViewModel,
+                                            unitPriceViewModel = unitPriceViewModel,
+                                            dateDifferenceViewModel = dateDifferenceViewModel,
+                                            timeCalculatorViewModel = timeCalculatorViewModel,
+                                            tdeeViewModel = tdeeViewModel,
+                                            bodyFatViewModel = bodyFatViewModel,
+                                            waterIntakeViewModel = waterIntakeViewModel,
+                                            themeViewModel = themeViewModel,
+                                            onOpenDrawer = {
+                                                navController.navigate(Screen.Home.route) {
+                                                    popUpTo(Screen.Home.route) { inclusive = true }
+                                                }
                                             }
-                                            launchSingleTop = true
-                                            restoreState = true
-                                        }
-                                    },
+                                        )
+                                    }
+                                }
+                                if (!showBottomNav) {
+                                    AdMobBanner()
+                                }
+                            }
+                        }
+
+                        if (isLandscape && showBottomNav) {
+                            Row(modifier = Modifier.fillMaxSize()) {
+                                AppNavigationRail(
+                                    currentRoute = currentRoute,
+                                    onNavigate = onNavigateToRoute,
                                     onCalculatorClick = {
                                         navController.navigate(Screen.Basic.route)
                                     }
                                 )
-                            }
-                        }
-                    ) { paddingValues ->
-                        Column(modifier = Modifier.fillMaxSize()) {
-                            Box(modifier = Modifier.weight(1f).padding(paddingValues)) {
-                                Surface(
-                                    modifier = Modifier.fillMaxSize(),
-                                    color = MaterialTheme.colorScheme.background
-                                ) {
-                                    AppNavigation(
-                                        navController = navController,
-                                        calculatorViewModel = calculatorViewModel,
-                                        sipViewModel = sipViewModel,
-                                        emiViewModel = emiViewModel,
-                                        bmiViewModel = bmiViewModel,
-                                        ageViewModel = ageViewModel,
-                                        currencyViewModel = currencyViewModel,
-                                        unitConverterViewModel = unitConverterViewModel,
-                                        geometryViewModel = geometryViewModel,
-                                        simpleInterestViewModel = simpleInterestViewModel,
-                                        compoundInterestViewModel = compoundInterestViewModel,
-                                        loanPrepaymentViewModel = loanPrepaymentViewModel,
-                                        goalPlannerViewModel = goalPlannerViewModel,
-                                        discountViewModel = discountViewModel,
-                            tipViewModel = tipViewModel,
-                            fuelCostViewModel = fuelCostViewModel,
-                            unitPriceViewModel = unitPriceViewModel,
-                        dateDifferenceViewModel = dateDifferenceViewModel,
-                        timeCalculatorViewModel = timeCalculatorViewModel,
-                    tdeeViewModel = tdeeViewModel,
-                    bodyFatViewModel = bodyFatViewModel,
-                    waterIntakeViewModel = waterIntakeViewModel,
-                        themeViewModel = themeViewModel,
-                                        onOpenDrawer = {
-                                            // Navigate back to home instead of opening drawer
-                                            navController.navigate(Screen.Home.route) {
-                                                popUpTo(Screen.Home.route) { inclusive = true }
-                                            }
-                                        }
-                                    )
+                                Scaffold(
+                                    modifier = Modifier.weight(1f),
+                                    containerColor = MaterialTheme.colorScheme.background
+                                ) { paddingValues ->
+                                    mainContent(paddingValues)
                                 }
                             }
-                            // Show ads only on non-home screens
-                            if (!showBottomNav) {
-                                AdMobBanner()
+                        } else {
+                            Scaffold(
+                                modifier = Modifier.fillMaxSize(),
+                                containerColor = MaterialTheme.colorScheme.background,
+                                bottomBar = {
+                                    if (showBottomNav) {
+                                        BottomNavigationBar(
+                                            currentRoute = currentRoute,
+                                            onNavigate = onNavigateToRoute,
+                                            onCalculatorClick = {
+                                                navController.navigate(Screen.Basic.route)
+                                            }
+                                        )
+                                    }
+                                }
+                            ) { paddingValues ->
+                                mainContent(paddingValues)
                             }
                         }
-                    }
                     }
                 }
             }

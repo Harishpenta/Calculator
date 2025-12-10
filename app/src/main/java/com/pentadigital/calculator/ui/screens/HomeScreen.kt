@@ -220,6 +220,13 @@ fun HomeScreen(
         allCalculators.groupBy { it.categoryId }
     }
 
+    // Calculate columns based on window size
+    val columns = when (windowSize.width) {
+        WindowSizeClass.EXPANDED -> 4
+        WindowSizeClass.MEDIUM -> 3
+        else -> 2
+    }
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         modifier = modifier.fillMaxSize()
@@ -264,7 +271,7 @@ fun HomeScreen(
                         horizontalPadding = horizontalPadding
                     )
                 } else {
-                    // Accordion List
+                    // Accordion List - Pass dynamic columns
                     LazyColumn(
                         contentPadding = PaddingValues(bottom = 80.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -280,7 +287,8 @@ fun HomeScreen(
                                 favorites = favorites,
                                 onCalculatorClick = onNavigateToCalculator,
                                 onFavoriteClick = { favoritesManager.toggleFavorite(it) },
-                                horizontalPadding = horizontalPadding
+                                horizontalPadding = horizontalPadding,
+                                columns = columns
                             )
                         }
                     }
@@ -372,7 +380,8 @@ private fun ExpandableCategoryCard(
     favorites: Set<String>,
     onCalculatorClick: (String) -> Unit,
     onFavoriteClick: (String) -> Unit,
-    horizontalPadding: Dp
+    horizontalPadding: Dp,
+    columns: Int = 2
 ) {
     val rotationState by animateFloatAsState(
         targetValue = if (isExpanded) 180f else 0f,
@@ -438,7 +447,7 @@ private fun ExpandableCategoryCard(
                 )
             }
 
-            // Content (Calculators Grid - 2 Columns)
+            // Content (Calculators Grid - Dynamic Columns)
             if (isExpanded) {
                 Column(
                     modifier = Modifier
@@ -448,8 +457,8 @@ private fun ExpandableCategoryCard(
                     GlowingDivider(color = category.iconTint.copy(alpha = 0.5f))
                     Spacer(modifier = Modifier.height(16.dp))
                     
-                    // Create rows of 2 items
-                    val chunkedCalculators = calculators.chunked(2)
+                    // Create rows of items
+                    val chunkedCalculators = calculators.chunked(columns)
                     
                     chunkedCalculators.forEach { rowItems ->
                         Row(

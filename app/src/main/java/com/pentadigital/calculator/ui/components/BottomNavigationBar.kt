@@ -189,3 +189,79 @@ private fun BottomNavItemView(
         }
     }
 }
+
+@Composable
+fun AppNavigationRail(
+    currentRoute: String,
+    onNavigate: (String) -> Unit,
+    onCalculatorClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val items = listOf(BottomNavItem.Home, BottomNavItem.Favorites)
+
+    NavigationRail(
+        modifier = modifier.fillMaxHeight(),
+        containerColor = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        header = {
+            FloatingActionButton(
+                onClick = onCalculatorClick,
+                modifier = Modifier
+                    .size(48.dp)
+                    .shadow(8.dp, RoundedCornerShape(12.dp), spotColor = NeonCyan),
+                shape = RoundedCornerShape(12.dp),
+                containerColor = MaterialTheme.colorScheme.surface,
+                contentColor = NeonCyan
+            ) {
+                 Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.surface)
+                        .border(1.dp, NeonCyan, RoundedCornerShape(12.dp)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_calculator),
+                        contentDescription = "Calculator",
+                        modifier = Modifier.size(24.dp),
+                        tint = NeonCyan
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(24.dp))
+        }
+    ) {
+        items.forEach { item ->
+            val isSelected = currentRoute == item.route
+            
+            NavigationRailItem(
+                selected = isSelected,
+                onClick = { onNavigate(item.route) },
+                icon = {
+                    Icon(
+                        painter = painterResource(id = if (isSelected) item.selectedIconRes else item.iconRes),
+                        contentDescription = item.title,
+                        modifier = Modifier.size(24.dp),
+                        tint = if (isSelected) NeonCyan else MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                },
+                label = {
+                    Text(
+                        text = item.title.uppercase(),
+                        fontSize = 10.sp,
+                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                        color = if (isSelected) NeonCyan else MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                },
+                colors = NavigationRailItemDefaults.colors(
+                    selectedIconColor = NeonCyan,
+                    selectedTextColor = NeonCyan,
+                    indicatorColor = NeonCyan.copy(alpha = 0.1f),
+                    unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+    }
+}
