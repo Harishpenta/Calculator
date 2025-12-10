@@ -320,7 +320,7 @@ private fun DisplayArea(
                 textAlign = TextAlign.Start,
                 modifier = Modifier.fillMaxWidth(),
                 fontSize = 16.sp,
-                color = NeonPurple,
+                color = MaterialTheme.colorScheme.tertiary,
                 maxLines = 1
             )
             Spacer(modifier = Modifier.height(4.dp))
@@ -397,8 +397,8 @@ private fun ButtonsGrid(
 
         // Row 1: Scientific
         Row(modifier = rowModifier, horizontalArrangement = Arrangement.spacedBy(buttonSpacing)) {
-            val opsBtnColor = NeonPurple.copy(alpha = 0.15f)
-            val opsBorderColor = NeonPurple.copy(alpha=0.5f)
+            val opsBtnColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.15f)
+            val opsBorderColor = MaterialTheme.colorScheme.tertiary.copy(alpha=0.5f)
             
             CyberpunkButton(symbol = "√", modifier = Modifier.buttonModifier(), fontSize = fontSize, onClick = { onAction(CalculatorAction.SquareRoot) })
             CyberpunkButton(symbol = "x²", modifier = Modifier.buttonModifier(), fontSize = fontSize, onClick = { onAction(CalculatorAction.Square) })
@@ -451,7 +451,7 @@ private fun CyberpunkButton(
     symbol: String,
     modifier: Modifier = Modifier,
     containerColor: Color = Color.Transparent,
-    borderColor: Color = NeonPurple.copy(alpha = 0.5f),
+    borderColor: Color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
     textColor: Color = MaterialTheme.colorScheme.onSurface,
     fontSize: androidx.compose.ui.unit.TextUnit,
     onClick: () -> Unit

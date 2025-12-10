@@ -68,7 +68,7 @@ fun BottomNavigationBar(
                 .align(Alignment.BottomCenter),
             color = MaterialTheme.colorScheme.surface,
             shadowElevation = 16.dp,
-            border = androidx.compose.foundation.BorderStroke(1.dp, NeonCyan.copy(alpha = 0.3f))
+            border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
         ) {
             Row(
                 modifier = Modifier
@@ -101,10 +101,10 @@ fun BottomNavigationBar(
                 .align(Alignment.TopCenter)
                 .offset(y = (-8).dp)
                 .size(64.dp)
-                .shadow(12.dp, RoundedCornerShape(18.dp), spotColor = NeonCyan),
+                .shadow(12.dp, RoundedCornerShape(18.dp), spotColor = MaterialTheme.colorScheme.primary),
             shape = RoundedCornerShape(18.dp),
             containerColor = MaterialTheme.colorScheme.surface,
-            contentColor = NeonCyan,
+            contentColor = MaterialTheme.colorScheme.primary,
             elevation = FloatingActionButtonDefaults.elevation(
                 defaultElevation = 8.dp,
                 pressedElevation = 12.dp
@@ -114,14 +114,14 @@ fun BottomNavigationBar(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.surface)
-                    .border(1.dp, NeonCyan, RoundedCornerShape(18.dp)),
+                    .border(1.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(18.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_calculator),
                     contentDescription = "Calculator",
                     modifier = Modifier.size(32.dp),
-                    tint = NeonCyan
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
         }
@@ -135,13 +135,13 @@ private fun BottomNavItemView(
     onClick: () -> Unit
 ) {
     val iconColor by animateColorAsState(
-        targetValue = if (isSelected) NeonCyan else MaterialTheme.colorScheme.onSurfaceVariant,
+        targetValue = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
         animationSpec = tween(200),
         label = "iconColor"
     )
     
     val textColor by animateColorAsState(
-        targetValue = if (isSelected) NeonCyan else MaterialTheme.colorScheme.onSurfaceVariant,
+        targetValue = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
         animationSpec = tween(200),
         label = "textColor"
     )
@@ -150,7 +150,7 @@ private fun BottomNavItemView(
         modifier = Modifier
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication = rememberRipple(bounded = false, radius = 32.dp, color = NeonCyan),
+                indication = rememberRipple(bounded = false, radius = 32.dp, color = MaterialTheme.colorScheme.primary),
                 onClick = onClick
             )
             .padding(8.dp),
@@ -183,8 +183,8 @@ private fun BottomNavItemView(
                 modifier = Modifier
                     .size(4.dp)
                     .clip(CircleShape)
-                    .background(NeonCyan)
-                    .shadow(4.dp, spotColor = NeonCyan)
+                    .background(MaterialTheme.colorScheme.primary)
+                    .shadow(4.dp, spotColor = MaterialTheme.colorScheme.primary)
             )
         }
     }
@@ -208,23 +208,23 @@ fun AppNavigationRail(
                 onClick = onCalculatorClick,
                 modifier = Modifier
                     .size(48.dp)
-                    .shadow(8.dp, RoundedCornerShape(12.dp), spotColor = NeonCyan),
+                    .shadow(8.dp, RoundedCornerShape(12.dp), spotColor = MaterialTheme.colorScheme.primary),
                 shape = RoundedCornerShape(12.dp),
                 containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = NeonCyan
+                contentColor = MaterialTheme.colorScheme.primary
             ) {
                  Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.surface)
-                        .border(1.dp, NeonCyan, RoundedCornerShape(12.dp)),
+                        .border(1.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(12.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_calculator),
                         contentDescription = "Calculator",
                         modifier = Modifier.size(24.dp),
-                        tint = NeonCyan
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             }
@@ -242,7 +242,7 @@ fun AppNavigationRail(
                         painter = painterResource(id = if (isSelected) item.selectedIconRes else item.iconRes),
                         contentDescription = item.title,
                         modifier = Modifier.size(24.dp),
-                        tint = if (isSelected) NeonCyan else MaterialTheme.colorScheme.onSurfaceVariant
+                        tint = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
                 label = {
@@ -250,13 +250,13 @@ fun AppNavigationRail(
                         text = item.title.uppercase(),
                         fontSize = 10.sp,
                         fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                        color = if (isSelected) NeonCyan else MaterialTheme.colorScheme.onSurfaceVariant
+                        color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
                 colors = NavigationRailItemDefaults.colors(
-                    selectedIconColor = NeonCyan,
-                    selectedTextColor = NeonCyan,
-                    indicatorColor = NeonCyan.copy(alpha = 0.1f),
+                    selectedIconColor = MaterialTheme.colorScheme.primary,
+                    selectedTextColor = MaterialTheme.colorScheme.primary,
+                    indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
                     unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                     unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
                 )

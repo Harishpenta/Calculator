@@ -150,7 +150,7 @@ fun UnitConverterScreen(
                             },
                             label = stringResource(com.pentadigital.calculator.R.string.value_label).uppercase(),
                             modifier = Modifier.fillMaxWidth(),
-                            borderColor = NeonPurple,
+                            borderColor = MaterialTheme.colorScheme.primary,
                             keyboardOptions = KeyboardOptions(
                                 keyboardType = KeyboardType.Number,
                                 imeAction = androidx.compose.ui.text.input.ImeAction.Done
@@ -198,7 +198,7 @@ fun UnitConverterScreen(
                         // Result Card
                         CyberpunkCard(
                             modifier = Modifier.fillMaxWidth(),
-                            borderColor = NeonGreen
+                            borderColor = MaterialTheme.colorScheme.secondary
                         ) {
                             Column(
                                 modifier = Modifier.padding(24.dp),
@@ -213,7 +213,7 @@ fun UnitConverterScreen(
                                 )
                                 TechText(
                                     text = String.format("%.4f", state.resultValue),
-                                    color = NeonGreen,
+                                    color = MaterialTheme.colorScheme.secondary,
                                     fontSize = 48.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -227,7 +227,7 @@ fun UnitConverterScreen(
                                 ConversionVisual(
                                     fromLabel = state.fromUnit,
                                     toLabel = state.toUnit,
-                                    accentColor = NeonGreen
+                                    accentColor = MaterialTheme.colorScheme.secondary
                                 )
                             }
                         }
@@ -257,7 +257,7 @@ fun UnitConverterScreen(
                         },
                         label = stringResource(com.pentadigital.calculator.R.string.value_label).uppercase(),
                         modifier = Modifier.fillMaxWidth(),
-                        borderColor = NeonPurple,
+                        borderColor = MaterialTheme.colorScheme.primary,
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Number,
                             imeAction = androidx.compose.ui.text.input.ImeAction.Done
@@ -296,7 +296,7 @@ fun UnitConverterScreen(
                     // Result Card
                     CyberpunkCard(
                         modifier = Modifier.fillMaxWidth(),
-                        borderColor = NeonGreen
+                        borderColor = MaterialTheme.colorScheme.secondary
                     ) {
                         Column(
                             modifier = Modifier.padding(24.dp),
@@ -311,7 +311,7 @@ fun UnitConverterScreen(
                             )
                             TechText(
                                 text = String.format("%.4f", state.resultValue),
-                                color = NeonGreen,
+                                color = MaterialTheme.colorScheme.secondary,
                                 fontSize = 48.sp,
                                 fontWeight = FontWeight.Bold
                             )
@@ -325,7 +325,7 @@ fun UnitConverterScreen(
                             ConversionVisual(
                                 fromLabel = state.fromUnit,
                                 toLabel = state.toUnit,
-                                accentColor = NeonGreen
+                                accentColor = MaterialTheme.colorScheme.secondary
                             )
                         }
                     }
@@ -368,7 +368,7 @@ fun UnitDropdown(
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
-            modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, NeonPurple, RoundedCornerShape(8.dp))
+            modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(8.dp))
         ) {
             units.forEach { unit ->
                 DropdownMenuItem(

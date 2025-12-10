@@ -1,5 +1,6 @@
 package com.pentadigital.calculator.ui.components
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -48,7 +49,7 @@ fun ShapeVisual(
                     )
                 )
             )
-            .border(1.dp, NeonCyan.copy(alpha = 0.3f), RoundedCornerShape(24.dp)),
+            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f), RoundedCornerShape(24.dp)),
         contentAlignment = Alignment.Center
     ) {
         LayoutGridBackground()
@@ -62,9 +63,9 @@ fun ShapeVisual(
             val centerY = size.height / 2
             val maxDimension = minOf(size.width, size.height)
             
-            val shapeColor = NeonPurple.copy(alpha = 0.2f)
-            val strokeColor = NeonCyan
-            val textColor = NeonGreen.toArgb()
+            val shapeColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
+            val strokeColor = MaterialTheme.colorScheme.primary
+            val textColor = MaterialTheme.colorScheme.secondary.toArgb()
             val textPaint = android.graphics.Paint().apply {
                 color = textColor
                 textSize = 40f
@@ -91,7 +92,7 @@ fun ShapeVisual(
                         style = Stroke(width = 4f)
                     )
                     drawLine(
-                        color = NeonGreen,
+                        color = MaterialTheme.colorScheme.secondary,
                         start = center,
                         end = Offset(centerX + radius, centerY),
                         strokeWidth = 2f
@@ -264,7 +265,7 @@ fun ShapeVisual(
 private fun LayoutGridBackground() {
     Canvas(modifier = Modifier.fillMaxSize()) {
         val spacing = 40.dp.toPx()
-        val gridColor = NeonCyan.copy(alpha = 0.05f)
+        val gridColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.05f)
         
         // Draw vertical lines
         for (x in 0..size.width.toInt() step spacing.toInt()) {

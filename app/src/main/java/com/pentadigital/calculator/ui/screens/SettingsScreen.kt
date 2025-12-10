@@ -358,7 +358,7 @@ private fun ThemeSettingsSection(
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         TechText(
             text = title.uppercase(),
-            color = NeonPurple,
+            color = MaterialTheme.colorScheme.primary,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold
         )
@@ -423,13 +423,13 @@ fun LanguageDropdown(
             label = { TechText(stringResource(R.string.language), color = MaterialTheme.colorScheme.onSurfaceVariant) },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = NeonCyan,
-                unfocusedBorderColor = NeonPurple,
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                 focusedTextColor = MaterialTheme.colorScheme.onSurface,
                 unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
                 focusedContainerColor = MaterialTheme.colorScheme.surface,
                 unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                cursorColor = NeonCyan
+                cursorColor = MaterialTheme.colorScheme.primary
             ),
             modifier = Modifier
                 .menuAnchor()
@@ -444,7 +444,7 @@ fun LanguageDropdown(
         ExposedDropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
-            modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, NeonPurple, RoundedCornerShape(4.dp))
+            modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(4.dp))
         ) {
             AppLanguage.values().forEach { language ->
                 DropdownMenuItem(
@@ -452,7 +452,7 @@ fun LanguageDropdown(
                         TechText(
                             text = language.displayName,
                             fontWeight = if (language == selectedLanguage) FontWeight.Bold else FontWeight.Normal,
-                            color = if (language == selectedLanguage) NeonCyan else MaterialTheme.colorScheme.onSurface
+                            color = if (language == selectedLanguage) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
                         )
                     },
                     onClick = {
@@ -462,8 +462,8 @@ fun LanguageDropdown(
                     contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
                     colors = MenuDefaults.itemColors(
                         textColor = MaterialTheme.colorScheme.onSurface,
-                        leadingIconColor = NeonCyan,
-                        trailingIconColor = NeonCyan
+                        leadingIconColor = MaterialTheme.colorScheme.primary,
+                        trailingIconColor = MaterialTheme.colorScheme.primary
                     )
                 )
             }

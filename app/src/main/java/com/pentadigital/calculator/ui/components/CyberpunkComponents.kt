@@ -73,7 +73,7 @@ val LocalSoundManager = staticCompositionLocalOf<SoundManager?> { null }
 @Composable
 fun CyberpunkCard(
     modifier: Modifier = Modifier,
-    borderColor: Color = NeonCyan,
+    borderColor: Color = MaterialTheme.colorScheme.primary,
     backgroundColor: Color = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
     content: @Composable ColumnScope.() -> Unit
 ) {
@@ -137,7 +137,7 @@ fun CyberpunkButton(
             },
         shape = shape,
         colors = ButtonDefaults.buttonColors(
-            containerColor = color.copy(alpha = 0.1f),
+            containerColor = color.copy(alpha = if (MaterialTheme.colorScheme.surface.luminance() > 0.5f) 0.3f else 0.1f),
             contentColor = color
         ),
         border = BorderStroke(1.dp, color),
@@ -193,7 +193,7 @@ fun TechText(
 
 @Composable
 fun GlowingDivider(
-    color: Color = NeonCyan,
+    color: Color = MaterialTheme.colorScheme.primary,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -219,7 +219,7 @@ fun CyberpunkInput(
     onValueChange: (String) -> Unit,
     label: String,
     modifier: Modifier = Modifier,
-    borderColor: Color = NeonCyan,
+    borderColor: Color = MaterialTheme.colorScheme.primary,
     keyboardOptions: androidx.compose.foundation.text.KeyboardOptions = androidx.compose.foundation.text.KeyboardOptions.Default,
     trailingIcon: @Composable (() -> Unit)? = null
 ) {

@@ -125,7 +125,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_algebra),
                 iconRes = R.drawable.ic_algebra,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonCyan else CyberpunkLightModeCyan
+                iconTint = MaterialTheme.colorScheme.primary
             ),
             CalculatorCategory(
                 id = "geometry",
@@ -133,7 +133,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_geometry),
                 iconRes = R.drawable.ic_geometry,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonPurple else CyberpunkLightModePurple
+                iconTint = MaterialTheme.colorScheme.primary
             ),
             CalculatorCategory(
                 id = "unit_converters",
@@ -141,7 +141,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_unit_converters),
                 iconRes = R.drawable.ic_unit_converter,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonGreen else CyberpunkLightModeGreen
+                iconTint = MaterialTheme.colorScheme.primary
             ),
             CalculatorCategory(
                 id = "finance",
@@ -149,7 +149,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_finance),
                 iconRes = R.drawable.ic_finance,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonCyan else CyberpunkLightModeCyan
+                iconTint = MaterialTheme.colorScheme.primary
             ),
             CalculatorCategory(
                 id = "health",
@@ -157,7 +157,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_health),
                 iconRes = R.drawable.ic_health,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonPurple else CyberpunkLightModePurple
+                iconTint = MaterialTheme.colorScheme.primary
             ),
             CalculatorCategory(
                 id = "datetime",
@@ -165,10 +165,11 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_datetime),
                 iconRes = R.drawable.ic_datetime,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonGreen else CyberpunkLightModeGreen
+                iconTint = MaterialTheme.colorScheme.primary
             )
         )
     }
+
     
     // Define all calculators
     val allCalculators = remember {
@@ -541,7 +542,7 @@ private fun CompactCalculatorGridItem(
             Icon(
                 imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
                 contentDescription = null,
-                tint = if (isFavorite) NeonGreen else MaterialTheme.colorScheme.onSurfaceVariant,
+                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(16.dp)
             )
         }
@@ -918,7 +919,7 @@ private fun CalculatorListItem(
                 Icon(
                     imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
                     contentDescription = if (isFavorite) stringResource(R.string.remove_favorite) else stringResource(R.string.add_favorite),
-                    tint = if (isFavorite) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+                    tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                     modifier = Modifier.size(24.dp)
                 )
             }

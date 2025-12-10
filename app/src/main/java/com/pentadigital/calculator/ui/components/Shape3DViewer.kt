@@ -1,6 +1,7 @@
 package com.pentadigital.calculator.ui.components
 
 import androidx.compose.animation.core.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -111,7 +112,7 @@ fun Shape3DViewer(
                     )
                 )
             )
-            .border(1.dp, NeonCyan.copy(alpha = 0.3f), RoundedCornerShape(24.dp))
+            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f), RoundedCornerShape(24.dp))
             .pointerInput(Unit) {
                 detectDragGestures { change, dragAmount ->
                     change.consume()
@@ -156,7 +157,7 @@ fun Shape3DViewer(
 private fun LayoutGridBackground() {
     Canvas(modifier = Modifier.fillMaxSize()) {
         val spacing = 40.dp.toPx()
-        val gridColor = NeonCyan.copy(alpha = 0.05f)
+        val gridColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.05f)
         
         // Draw vertical lines
         for (x in 0..size.width.toInt() step spacing.toInt()) {
@@ -182,7 +183,7 @@ private fun LayoutGridBackground() {
 private fun DrawScope.drawGrid(centerX: Float, centerY: Float, scale: Float, rotX: Float, rotY: Float) {
     val gridSize = 5
     val gridStep = 0.4f
-    val gridColor = NeonCyan.copy(alpha = 0.3f)
+    val gridColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
     
     for (i in -gridSize..gridSize) {
         val startPoint = Point3D(i * gridStep, 0.8f, -gridSize * gridStep).rotateX(rotX).rotateY(rotY).project(1.5f, 4f)
@@ -218,12 +219,12 @@ private fun DrawScope.drawCube(centerX: Float, centerY: Float, scale: Float, sid
     
     // Neon Cyberpunk Colors
     val faces = listOf(
-        Face3D(listOf(vertices[0], vertices[1], vertices[2], vertices[3]), NeonCyan), // Front
-        Face3D(listOf(vertices[4], vertices[5], vertices[6], vertices[7]), NeonPurple), // Back
-        Face3D(listOf(vertices[0], vertices[4], vertices[7], vertices[3]), NeonGreen), // Left
-        Face3D(listOf(vertices[1], vertices[5], vertices[6], vertices[2]), NeonCyan), // Right
-        Face3D(listOf(vertices[0], vertices[1], vertices[5], vertices[4]), NeonPurple), // Bottom
-        Face3D(listOf(vertices[3], vertices[2], vertices[6], vertices[7]), NeonGreen)  // Top
+        Face3D(listOf(vertices[0], vertices[1], vertices[2], vertices[3]), MaterialTheme.colorScheme.primary), // Front
+        Face3D(listOf(vertices[4], vertices[5], vertices[6], vertices[7]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)), // Back
+        Face3D(listOf(vertices[0], vertices[4], vertices[7], vertices[3]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)), // Left
+        Face3D(listOf(vertices[1], vertices[5], vertices[6], vertices[2]), MaterialTheme.colorScheme.primary), // Right
+        Face3D(listOf(vertices[0], vertices[1], vertices[5], vertices[4]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)), // Bottom
+        Face3D(listOf(vertices[3], vertices[2], vertices[6], vertices[7]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f))  // Top
     )
     
     drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
@@ -248,7 +249,7 @@ private fun DrawScope.drawSphere(centerX: Float, centerY: Float, scale: Float, r
             
             // Neon Gradient
             val colorValue = (i.toFloat() / rings)
-            val color = if (j % 2 == 0) NeonCyan.copy(alpha = 0.8f) else NeonPurple.copy(alpha = 0.8f)
+            val color = if (j % 2 == 0) MaterialTheme.colorScheme.primary.copy(alpha = 0.8f) else MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
             faces.add(Face3D(listOf(p1, p2, p3, p4), color))
         }
     }
@@ -270,9 +271,9 @@ private fun DrawScope.drawCylinder(centerX: Float, centerY: Float, scale: Float,
         val bottom1 = Point3D((radius * cos(angle1)).toFloat(), h, (radius * sin(angle1)).toFloat())
         val bottom2 = Point3D((radius * cos(angle2)).toFloat(), h, (radius * sin(angle2)).toFloat())
         
-        faces.add(Face3D(listOf(top1, top2, bottom2, bottom1), if(i%2==0) NeonCyan else NeonPurple))
-        faces.add(Face3D(listOf(topCenter, top1, top2), NeonGreen))
-        faces.add(Face3D(listOf(bottomCenter, bottom2, bottom1), NeonGreen))
+        faces.add(Face3D(listOf(top1, top2, bottom2, bottom1), if(i%2==0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)))
+        faces.add(Face3D(listOf(topCenter, top1, top2), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)))
+        faces.add(Face3D(listOf(bottomCenter, bottom2, bottom1), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)))
     }
     drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
 }
@@ -290,8 +291,8 @@ private fun DrawScope.drawCone(centerX: Float, centerY: Float, scale: Float, rad
         val base1 = Point3D((radius * cos(angle1)).toFloat(), h, (radius * sin(angle1)).toFloat())
         val base2 = Point3D((radius * cos(angle2)).toFloat(), h, (radius * sin(angle2)).toFloat())
         
-        faces.add(Face3D(listOf(apex, base1, base2), if(i%2==0) NeonCyan else NeonPurple))
-        faces.add(Face3D(listOf(baseCenter, base2, base1), NeonGreen))
+        faces.add(Face3D(listOf(apex, base1, base2), if(i%2==0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)))
+        faces.add(Face3D(listOf(baseCenter, base2, base1), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)))
     }
     drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
 }
@@ -303,11 +304,11 @@ private fun DrawScope.drawPyramid(centerX: Float, centerY: Float, scale: Float, 
     val base = listOf(Point3D(-s, h, -s), Point3D(s, h, -s), Point3D(s, h, s), Point3D(-s, h, s))
     
     val faces = listOf(
-        Face3D(listOf(apex, base[0], base[1]), NeonCyan),
-        Face3D(listOf(apex, base[1], base[2]), NeonPurple),
-        Face3D(listOf(apex, base[2], base[3]), NeonGreen),
-        Face3D(listOf(apex, base[3], base[0]), NeonCyan),
-        Face3D(base, NeonPurple)
+        Face3D(listOf(apex, base[0], base[1]), MaterialTheme.colorScheme.primary),
+        Face3D(listOf(apex, base[1], base[2]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)),
+        Face3D(listOf(apex, base[2], base[3]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)),
+        Face3D(listOf(apex, base[3], base[0]), MaterialTheme.colorScheme.primary),
+        Face3D(base, MaterialTheme.colorScheme.primary.copy(alpha = 0.7f))
     )
     drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
 }
@@ -321,12 +322,12 @@ private fun DrawScope.drawRectangularPrism(centerX: Float, centerY: Float, scale
         Point3D(-l, -w, d), Point3D(l, -w, d), Point3D(l, w, d), Point3D(-l, w, d)
     )
     val faces = listOf(
-        Face3D(listOf(vertices[0], vertices[1], vertices[2], vertices[3]), NeonCyan),
-        Face3D(listOf(vertices[4], vertices[5], vertices[6], vertices[7]), NeonPurple),
-        Face3D(listOf(vertices[0], vertices[4], vertices[7], vertices[3]), NeonGreen),
-        Face3D(listOf(vertices[1], vertices[5], vertices[6], vertices[2]), NeonCyan),
-        Face3D(listOf(vertices[0], vertices[1], vertices[5], vertices[4]), NeonPurple),
-        Face3D(listOf(vertices[3], vertices[2], vertices[6], vertices[7]), NeonGreen)
+        Face3D(listOf(vertices[0], vertices[1], vertices[2], vertices[3]), MaterialTheme.colorScheme.primary),
+        Face3D(listOf(vertices[4], vertices[5], vertices[6], vertices[7]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)),
+        Face3D(listOf(vertices[0], vertices[4], vertices[7], vertices[3]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)),
+        Face3D(listOf(vertices[1], vertices[5], vertices[6], vertices[2]), MaterialTheme.colorScheme.primary),
+        Face3D(listOf(vertices[0], vertices[1], vertices[5], vertices[4]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)),
+        Face3D(listOf(vertices[3], vertices[2], vertices[6], vertices[7]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f))
     )
     drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
 }
@@ -339,11 +340,11 @@ private fun DrawScope.drawTriangularPrism(centerX: Float, centerY: Float, scale:
     val backTri = listOf(Point3D(0f, -triHeight * 0.5f, h), Point3D(-s, triHeight * 0.5f, h), Point3D(s, triHeight * 0.5f, h))
     
     val faces = listOf(
-        Face3D(frontTri, NeonCyan),
-        Face3D(backTri.reversed(), NeonPurple),
-        Face3D(listOf(frontTri[0], frontTri[1], backTri[1], backTri[0]), NeonGreen),
-        Face3D(listOf(frontTri[1], frontTri[2], backTri[2], backTri[1]), NeonCyan),
-        Face3D(listOf(frontTri[2], frontTri[0], backTri[0], backTri[2]), NeonPurple)
+        Face3D(frontTri, MaterialTheme.colorScheme.primary),
+        Face3D(backTri.reversed(), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)),
+        Face3D(listOf(frontTri[0], frontTri[1], backTri[1], backTri[0]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)),
+        Face3D(listOf(frontTri[1], frontTri[2], backTri[2], backTri[1]), MaterialTheme.colorScheme.primary),
+        Face3D(listOf(frontTri[2], frontTri[0], backTri[0], backTri[2]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f))
     )
     drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
 }
@@ -370,7 +371,7 @@ private fun DrawScope.drawTorus(centerX: Float, centerY: Float, scale: Float, ma
             val p3 = torusPoint(theta2, phi2)
             val p4 = torusPoint(theta1, phi2)
             
-            val color = if ((i+j)%2==0) NeonCyan else NeonPurple
+            val color = if ((i+j)%2==0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
             faces.add(Face3D(listOf(p1, p2, p3, p4), color))
         }
     }
@@ -394,7 +395,7 @@ private fun DrawScope.drawHemisphere(centerX: Float, centerY: Float, scale: Floa
             val p3 = Point3D((radius * sin(theta2) * cos(phi2)).toFloat(), -(radius * cos(theta2)).toFloat(), (radius * sin(theta2) * sin(phi2)).toFloat())
             val p4 = Point3D((radius * sin(theta2) * cos(phi1)).toFloat(), -(radius * cos(theta2)).toFloat(), (radius * sin(theta2) * sin(phi1)).toFloat())
             
-            val color = if (j%2==0) NeonCyan else NeonGreen
+            val color = if (j%2==0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)
             faces.add(Face3D(listOf(p1, p2, p3, p4), color))
         }
     }
@@ -404,7 +405,7 @@ private fun DrawScope.drawHemisphere(centerX: Float, centerY: Float, scale: Floa
         val phi2 = 2 * PI * (j + 1) / segments
         val p1 = Point3D((radius * cos(phi1)).toFloat(), 0f, (radius * sin(phi1)).toFloat())
         val p2 = Point3D((radius * cos(phi2)).toFloat(), 0f, (radius * sin(phi2)).toFloat())
-        faces.add(Face3D(listOf(baseCenter, p2, p1), NeonPurple))
+        faces.add(Face3D(listOf(baseCenter, p2, p1), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)))
     }
     drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
 }
@@ -443,7 +444,7 @@ private fun DrawScope.drawFaces(faces: List<Face3D>, centerX: Float, centerY: Fl
                 close()
             }
             drawPath(path, litColor, style = Fill)
-            drawPath(path, NeonCyan.copy(alpha = 0.5f), style = Stroke(width = 2f))
+            drawPath(path, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f), style = Stroke(width = 2f))
         }
     }
 }
