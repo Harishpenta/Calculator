@@ -72,7 +72,7 @@ fun LoanPrepaymentScreen(
                     TechText(
                         stringResource(R.string.loan_prepayment_title).uppercase(),
                         fontWeight = FontWeight.Bold,
-                        color = NeonCyan,
+                        color = MaterialTheme.colorScheme.primary,
                         fontSize = 20.sp
                     ) 
                 },
@@ -81,7 +81,7 @@ fun LoanPrepaymentScreen(
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.back),
-                            tint = NeonCyan
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
@@ -90,14 +90,14 @@ fun LoanPrepaymentScreen(
                         Icon(
                             painter = androidx.compose.ui.res.painterResource(R.drawable.ic_download),
                             contentDescription = stringResource(R.string.save_as_pdf),
-                            tint = NeonCyan
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                     IconButton(onClick = { sharePrepaymentResult(context, state) }) {
                         Icon(
                             Icons.Default.Share,
                             contentDescription = stringResource(R.string.share),
-                            tint = NeonCyan
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
@@ -164,7 +164,7 @@ private fun PrepaymentInputs(
     val lumpsumPrepayFocus = remember { FocusRequester() }
 
     CyberpunkCard(
-        borderColor = NeonPurple,
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -184,7 +184,7 @@ private fun PrepaymentInputs(
                 },
                 label = stringResource(R.string.loan_amount).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(loanFocus),
-                borderColor = NeonCyan,
+                borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Next
@@ -204,7 +204,7 @@ private fun PrepaymentInputs(
                 },
                 label = stringResource(R.string.interest_rate).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(interestFocus),
-                borderColor = NeonCyan,
+                borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Next
@@ -224,7 +224,7 @@ private fun PrepaymentInputs(
                 },
                 label = stringResource(R.string.loan_tenure).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(tenureFocus),
-                borderColor = NeonCyan,
+                borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Next
@@ -237,11 +237,11 @@ private fun PrepaymentInputs(
         text = "PREPAYMENT OPTIONS",
         fontSize = 18.sp,
         fontWeight = FontWeight.Bold,
-        color = NeonGreen
+        color = MaterialTheme.colorScheme.secondary
     )
 
     CyberpunkCard(
-        borderColor = NeonPurple,
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -261,7 +261,7 @@ private fun PrepaymentInputs(
                 },
                 label = stringResource(R.string.monthly_prepayment).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(monthlyPrepayFocus),
-                borderColor = NeonCyan,
+                borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Next
@@ -281,7 +281,7 @@ private fun PrepaymentInputs(
                 },
                 label = stringResource(R.string.lumpsum_prepayment).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(lumpsumPrepayFocus),
-                borderColor = NeonCyan,
+                borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Done
@@ -297,7 +297,7 @@ private fun PrepaymentResults(state: LoanPrepaymentState) {
 
     // Savings Card
     CyberpunkCard(
-        borderColor = NeonGreen,
+        borderColor = MaterialTheme.colorScheme.secondary,
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -311,7 +311,7 @@ private fun PrepaymentResults(state: LoanPrepaymentState) {
             )
             TechText(
                 text = currencyFormat.format(state.interestSaved),
-                color = NeonGreen,
+                color = MaterialTheme.colorScheme.secondary,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -323,12 +323,12 @@ private fun PrepaymentResults(state: LoanPrepaymentState) {
                 Icon(
                     painter = androidx.compose.ui.res.painterResource(R.drawable.ic_launcher_foreground), // Placeholder or use a time icon if available
                     contentDescription = null,
-                    tint = NeonCyan,
+                    tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(16.dp)
                 )
                 TechText(
                     text = "${state.timeSavedMonths} ${stringResource(R.string.months)} ${stringResource(R.string.time_saved)}".uppercase(),
-                    color = NeonCyan,
+                    color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Medium
                 )
             }
@@ -337,7 +337,7 @@ private fun PrepaymentResults(state: LoanPrepaymentState) {
 
     // Comparison Details
     CyberpunkCard(
-        borderColor = NeonCyan,
+        borderColor = MaterialTheme.colorScheme.primary,
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -352,10 +352,10 @@ private fun PrepaymentResults(state: LoanPrepaymentState) {
             ResultRow(
                 label = stringResource(R.string.new_interest).uppercase(),
                 value = currencyFormat.format(state.newTotalInterest),
-                valueColor = NeonGreen,
+                valueColor = MaterialTheme.colorScheme.secondary,
                 isBold = true
             )
-            HorizontalDivider(color = NeonCyan.copy(alpha = 0.3f))
+            HorizontalDivider(color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
             ResultRow(
                 label = stringResource(R.string.original_tenure).uppercase(),
                 value = "${state.originalTenureMonths} ${stringResource(R.string.months)}".uppercase(),
@@ -364,7 +364,7 @@ private fun PrepaymentResults(state: LoanPrepaymentState) {
             ResultRow(
                 label = stringResource(R.string.new_tenure).uppercase(),
                 value = "${state.newTenureMonths} ${stringResource(R.string.months)}".uppercase(),
-                valueColor = NeonGreen,
+                valueColor = MaterialTheme.colorScheme.secondary,
                 isBold = true
             )
         }
