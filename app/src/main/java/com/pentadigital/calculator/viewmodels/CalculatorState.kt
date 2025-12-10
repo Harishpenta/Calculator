@@ -7,7 +7,8 @@ data class CalculatorState(
     val history: List<String> = emptyList(),
     val memory: String = "",
     val errorMessage: String? = null,
-    val isResultDisplayed: Boolean = false
+    val isResultDisplayed: Boolean = false,
+    val isDecoding: Boolean = false
 )
 
 sealed class CalculatorOperation(val symbol: String) {

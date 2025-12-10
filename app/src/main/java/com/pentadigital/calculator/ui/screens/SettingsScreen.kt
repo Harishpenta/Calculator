@@ -252,6 +252,27 @@ fun SettingsScreen(
                                 )
                             )
                         }
+                        
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            TechText(
+                                text = "Sound Effects",
+                                fontSize = 16.sp
+                            )
+                            androidx.compose.material3.Switch(
+                                checked = state.isSoundEnabled,
+                                onCheckedChange = { onAction(ThemeEvent.ToggleSound(it)) },
+                                colors = androidx.compose.material3.SwitchDefaults.colors(
+                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                                    uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    uncheckedTrackColor = MaterialTheme.colorScheme.surface
+                                )
+                            )
+                        }
                     }
                 )
                 
@@ -343,7 +364,7 @@ private fun ThemeSettingsSection(
             borderColor = MaterialTheme.colorScheme.primary,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Box(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 content()
             }
         }

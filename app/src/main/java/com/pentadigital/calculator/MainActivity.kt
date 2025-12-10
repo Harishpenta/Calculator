@@ -116,7 +116,10 @@ class MainActivity : ComponentActivity() {
             }
             androidx.compose.runtime.key(localeKey) {
                 androidx.compose.runtime.CompositionLocalProvider(
-                    LocalHapticsEnabled provides themeViewModel.state.isHapticsEnabled
+                    LocalHapticsEnabled provides themeViewModel.state.isHapticsEnabled,
+                    LocalSoundEnabled provides themeViewModel.state.isSoundEnabled,
+                    LocalHapticManager provides themeViewModel.hapticManager,
+                    LocalSoundManager provides themeViewModel.soundManager
                 ) {
                     CalculatorTheme(themeState = themeViewModel.state) {
                     Scaffold(

@@ -101,13 +101,35 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
                 }
                 
                 state = state.copy(
-                    number1 = formatResult(result),
-                    number2 = "",
                     operation = null,
-                    // history update handled by flow collector
                     errorMessage = null,
-                    isResultDisplayed = true
+                    isResultDisplayed = true,
+                    isDecoding = true // Trigger decoding state
                 )
+
+                // Decoding Animation
+                viewModelScope.launch {
+                    val finalResult = formatResult(result)
+                    val length = finalResult.length
+                    val chars = "0123456789ABCDEF".toCharArray()
+                    
+                    // Animate for 300ms
+                    val iterations = 10
+                    for (i in 0 until iterations) {
+                        val randomString = (1..length)
+                            .map { chars.random() }
+                            .joinToString("")
+                        state = state.copy(number1 = randomString)
+                        kotlinx.coroutines.delay(30)
+                    }
+                    
+                    // Set final result
+                    state = state.copy(
+                        number1 = finalResult,
+                        isDecoding = false,
+                        number2 = "" // Clear number2 only after decoding
+                    )
+                }
 
                 // Increment calculation count and show ad after 4-5 calculations
                 calculationCount++

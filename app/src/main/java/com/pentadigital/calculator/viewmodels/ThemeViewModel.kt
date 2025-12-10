@@ -46,7 +46,8 @@ data class ThemeState(
     val appTheme: AppTheme = AppTheme.System,
     val accentColor: AccentColor = AccentColor.Orange,
     val language: AppLanguage = AppLanguage.English,
-    val isHapticsEnabled: Boolean = true
+    val isHapticsEnabled: Boolean = true,
+    val isSoundEnabled: Boolean = true
 )
 
 class ThemeViewModel(application: Application) : AndroidViewModel(application) {
@@ -58,6 +59,11 @@ class ThemeViewModel(application: Application) : AndroidViewModel(application) {
     private val ACCENT_KEY = stringPreferencesKey("accent_color")
     private val LANGUAGE_KEY = stringPreferencesKey("app_language")
     private val HAPTICS_KEY = booleanPreferencesKey("haptics_enabled")
+    private val SOUND_KEY = booleanPreferencesKey("sound_enabled")
+    
+    // Managers
+    val hapticManager = com.pentadigital.calculator.utils.HapticManager(application)
+    val soundManager = com.pentadigital.calculator.utils.SoundManager(application)
 
     init {
         viewModelScope.launch {
@@ -66,12 +72,17 @@ class ThemeViewModel(application: Application) : AndroidViewModel(application) {
                 val accentName = preferences[ACCENT_KEY] ?: AccentColor.Orange.name
                 val languageCode = preferences[LANGUAGE_KEY] ?: AppLanguage.English.code
                 val hapticsEnabled = preferences[HAPTICS_KEY] ?: true
+                val soundEnabled = preferences[SOUND_KEY] ?: true
+
+                // Sync managers with state
+                soundManager.setSoundEnabled(soundEnabled)
 
                 ThemeState(
                     appTheme = AppTheme.valueOf(themeName),
                     accentColor = AccentColor.valueOf(accentName),
                     language = AppLanguage.values().find { it.code == languageCode } ?: AppLanguage.English,
-                    isHapticsEnabled = hapticsEnabled
+                    isHapticsEnabled = hapticsEnabled,
+                    isSoundEnabled = soundEnabled
                 )
             }.collect {
                 state = it
@@ -102,6 +113,11 @@ class ThemeViewModel(application: Application) : AndroidViewModel(application) {
                         preferences[HAPTICS_KEY] = event.enabled
                     }
                 }
+                is ThemeEvent.ToggleSound -> {
+                    context.dataStore.edit { preferences ->
+                        preferences[SOUND_KEY] = event.enabled
+                    }
+                }
             }
         }
     }
@@ -112,6 +128,7 @@ sealed class ThemeEvent {
     data class UpdateAccent(val color: AccentColor) : ThemeEvent()
     data class UpdateLanguage(val language: AppLanguage) : ThemeEvent()
     data class ToggleHaptics(val enabled: Boolean) : ThemeEvent()
+    data class ToggleSound(val enabled: Boolean) : ThemeEvent()
 }
 
 class ThemeViewModelFactory(private val context: Context) : androidx.lifecycle.ViewModelProvider.Factory {
