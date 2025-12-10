@@ -80,6 +80,8 @@ fun Shape3DViewer(
     var currentRotationX by remember { mutableStateOf(rotationX) }
     var currentRotationY by remember { mutableStateOf(rotationY) }
     
+    val primaryColor = MaterialTheme.colorScheme.primary
+
     val infiniteTransition = rememberInfiniteTransition(label = "rotation")
     val autoRotation by infiniteTransition.animateFloat(
         initialValue = 0f,
@@ -112,7 +114,7 @@ fun Shape3DViewer(
                     )
                 )
             )
-            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f), RoundedCornerShape(24.dp))
+            .border(1.dp, primaryColor.copy(alpha = 0.3f), RoundedCornerShape(24.dp))
             .pointerInput(Unit) {
                 detectDragGestures { change, dragAmount ->
                     change.consume()
@@ -125,7 +127,7 @@ fun Shape3DViewer(
             },
         contentAlignment = Alignment.Center
     ) {
-        LayoutGridBackground()
+        LayoutGridBackground(primaryColor = primaryColor)
         
         Canvas(
             modifier = Modifier
@@ -136,28 +138,28 @@ fun Shape3DViewer(
             val centerY = size.height / 2
             val scale = minOf(size.width, size.height) * 0.6f
             
-            drawGrid(centerX, centerY, scale, currentRotationX, effectiveRotationY)
+            drawGrid(centerX, centerY, scale, currentRotationX, effectiveRotationY, primaryColor)
             
             when (shape) {
-                Shape3D.CUBE -> drawCube(centerX, centerY, scale, side, currentRotationX, effectiveRotationY, rotationZ)
-                Shape3D.SPHERE -> drawSphere(centerX, centerY, scale, radius, currentRotationX, effectiveRotationY, rotationZ)
-                Shape3D.CYLINDER -> drawCylinder(centerX, centerY, scale, radius, height, currentRotationX, effectiveRotationY, rotationZ)
-                Shape3D.CONE -> drawCone(centerX, centerY, scale, radius, height, currentRotationX, effectiveRotationY, rotationZ)
-                Shape3D.PYRAMID -> drawPyramid(centerX, centerY, scale, side, height, currentRotationX, effectiveRotationY, rotationZ)
-                Shape3D.RECTANGULAR_PRISM -> drawRectangularPrism(centerX, centerY, scale, length, width, depth, currentRotationX, effectiveRotationY, rotationZ)
-                Shape3D.TRIANGULAR_PRISM -> drawTriangularPrism(centerX, centerY, scale, side, height, currentRotationX, effectiveRotationY, rotationZ)
-                Shape3D.TORUS -> drawTorus(centerX, centerY, scale, majorRadius, minorRadius, currentRotationX, effectiveRotationY, rotationZ)
-                Shape3D.HEMISPHERE -> drawHemisphere(centerX, centerY, scale, radius, currentRotationX, effectiveRotationY, rotationZ)
+                Shape3D.CUBE -> drawCube(centerX, centerY, scale, side, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
+                Shape3D.SPHERE -> drawSphere(centerX, centerY, scale, radius, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
+                Shape3D.CYLINDER -> drawCylinder(centerX, centerY, scale, radius, height, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
+                Shape3D.CONE -> drawCone(centerX, centerY, scale, radius, height, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
+                Shape3D.PYRAMID -> drawPyramid(centerX, centerY, scale, side, height, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
+                Shape3D.RECTANGULAR_PRISM -> drawRectangularPrism(centerX, centerY, scale, length, width, depth, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
+                Shape3D.TRIANGULAR_PRISM -> drawTriangularPrism(centerX, centerY, scale, side, height, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
+                Shape3D.TORUS -> drawTorus(centerX, centerY, scale, majorRadius, minorRadius, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
+                Shape3D.HEMISPHERE -> drawHemisphere(centerX, centerY, scale, radius, currentRotationX, effectiveRotationY, rotationZ, primaryColor)
             }
         }
     }
 }
 
 @Composable
-private fun LayoutGridBackground() {
+private fun LayoutGridBackground(primaryColor: Color) {
     Canvas(modifier = Modifier.fillMaxSize()) {
         val spacing = 40.dp.toPx()
-        val gridColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.05f)
+        val gridColor = primaryColor.copy(alpha = 0.05f)
         
         // Draw vertical lines
         for (x in 0..size.width.toInt() step spacing.toInt()) {
@@ -180,10 +182,10 @@ private fun LayoutGridBackground() {
     }
 }
 
-private fun DrawScope.drawGrid(centerX: Float, centerY: Float, scale: Float, rotX: Float, rotY: Float) {
+private fun DrawScope.drawGrid(centerX: Float, centerY: Float, scale: Float, rotX: Float, rotY: Float, primaryColor: Color) {
     val gridSize = 5
     val gridStep = 0.4f
-    val gridColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
+    val gridColor = primaryColor.copy(alpha = 0.3f)
     
     for (i in -gridSize..gridSize) {
         val startPoint = Point3D(i * gridStep, 0.8f, -gridSize * gridStep).rotateX(rotX).rotateY(rotY).project(1.5f, 4f)
@@ -210,27 +212,26 @@ private fun DrawScope.drawGrid(centerX: Float, centerY: Float, scale: Float, rot
     }
 }
 
-private fun DrawScope.drawCube(centerX: Float, centerY: Float, scale: Float, side: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawCube(centerX: Float, centerY: Float, scale: Float, side: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val s = side * 0.5f
     val vertices = listOf(
         Point3D(-s, -s, -s), Point3D(s, -s, -s), Point3D(s, s, -s), Point3D(-s, s, -s),
         Point3D(-s, -s, s), Point3D(s, -s, s), Point3D(s, s, s), Point3D(-s, s, s)
     )
     
-    // Neon Cyberpunk Colors
     val faces = listOf(
-        Face3D(listOf(vertices[0], vertices[1], vertices[2], vertices[3]), MaterialTheme.colorScheme.primary), // Front
-        Face3D(listOf(vertices[4], vertices[5], vertices[6], vertices[7]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)), // Back
-        Face3D(listOf(vertices[0], vertices[4], vertices[7], vertices[3]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)), // Left
-        Face3D(listOf(vertices[1], vertices[5], vertices[6], vertices[2]), MaterialTheme.colorScheme.primary), // Right
-        Face3D(listOf(vertices[0], vertices[1], vertices[5], vertices[4]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)), // Bottom
-        Face3D(listOf(vertices[3], vertices[2], vertices[6], vertices[7]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f))  // Top
+        Face3D(listOf(vertices[0], vertices[1], vertices[2], vertices[3]), primaryColor), // Front
+        Face3D(listOf(vertices[4], vertices[5], vertices[6], vertices[7]), primaryColor.copy(alpha = 0.7f)), // Back
+        Face3D(listOf(vertices[0], vertices[4], vertices[7], vertices[3]), primaryColor.copy(alpha = 0.4f)), // Left
+        Face3D(listOf(vertices[1], vertices[5], vertices[6], vertices[2]), primaryColor), // Right
+        Face3D(listOf(vertices[0], vertices[1], vertices[5], vertices[4]), primaryColor.copy(alpha = 0.7f)), // Bottom
+        Face3D(listOf(vertices[3], vertices[2], vertices[6], vertices[7]), primaryColor.copy(alpha = 0.4f))  // Top
     )
     
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawSphere(centerX: Float, centerY: Float, scale: Float, radius: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawSphere(centerX: Float, centerY: Float, scale: Float, radius: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val segments = 16
     val rings = 12
     val faces = mutableListOf<Face3D>()
@@ -247,16 +248,14 @@ private fun DrawScope.drawSphere(centerX: Float, centerY: Float, scale: Float, r
             val p3 = Point3D((radius * sin(theta2) * cos(phi2)).toFloat(), (radius * cos(theta2)).toFloat(), (radius * sin(theta2) * sin(phi2)).toFloat())
             val p4 = Point3D((radius * sin(theta2) * cos(phi1)).toFloat(), (radius * cos(theta2)).toFloat(), (radius * sin(theta2) * sin(phi1)).toFloat())
             
-            // Neon Gradient
-            val colorValue = (i.toFloat() / rings)
-            val color = if (j % 2 == 0) MaterialTheme.colorScheme.primary.copy(alpha = 0.8f) else MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
+            val color = if (j % 2 == 0) primaryColor.copy(alpha = 0.8f) else primaryColor.copy(alpha = 0.6f)
             faces.add(Face3D(listOf(p1, p2, p3, p4), color))
         }
     }
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawCylinder(centerX: Float, centerY: Float, scale: Float, radius: Float, height: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawCylinder(centerX: Float, centerY: Float, scale: Float, radius: Float, height: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val segments = 20
     val faces = mutableListOf<Face3D>()
     val h = height * 0.5f
@@ -271,14 +270,14 @@ private fun DrawScope.drawCylinder(centerX: Float, centerY: Float, scale: Float,
         val bottom1 = Point3D((radius * cos(angle1)).toFloat(), h, (radius * sin(angle1)).toFloat())
         val bottom2 = Point3D((radius * cos(angle2)).toFloat(), h, (radius * sin(angle2)).toFloat())
         
-        faces.add(Face3D(listOf(top1, top2, bottom2, bottom1), if(i%2==0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)))
-        faces.add(Face3D(listOf(topCenter, top1, top2), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)))
-        faces.add(Face3D(listOf(bottomCenter, bottom2, bottom1), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)))
+        faces.add(Face3D(listOf(top1, top2, bottom2, bottom1), if(i%2==0) primaryColor else primaryColor.copy(alpha = 0.7f)))
+        faces.add(Face3D(listOf(topCenter, top1, top2), primaryColor.copy(alpha = 0.4f)))
+        faces.add(Face3D(listOf(bottomCenter, bottom2, bottom1), primaryColor.copy(alpha = 0.4f)))
     }
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawCone(centerX: Float, centerY: Float, scale: Float, radius: Float, height: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawCone(centerX: Float, centerY: Float, scale: Float, radius: Float, height: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val segments = 20
     val faces = mutableListOf<Face3D>()
     val h = height * 0.5f
@@ -291,29 +290,29 @@ private fun DrawScope.drawCone(centerX: Float, centerY: Float, scale: Float, rad
         val base1 = Point3D((radius * cos(angle1)).toFloat(), h, (radius * sin(angle1)).toFloat())
         val base2 = Point3D((radius * cos(angle2)).toFloat(), h, (radius * sin(angle2)).toFloat())
         
-        faces.add(Face3D(listOf(apex, base1, base2), if(i%2==0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)))
-        faces.add(Face3D(listOf(baseCenter, base2, base1), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)))
+        faces.add(Face3D(listOf(apex, base1, base2), if(i%2==0) primaryColor else primaryColor.copy(alpha = 0.7f)))
+        faces.add(Face3D(listOf(baseCenter, base2, base1), primaryColor.copy(alpha = 0.4f)))
     }
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawPyramid(centerX: Float, centerY: Float, scale: Float, side: Float, height: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawPyramid(centerX: Float, centerY: Float, scale: Float, side: Float, height: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val s = side * 0.5f
     val h = height * 0.5f
     val apex = Point3D(0f, -h, 0f)
     val base = listOf(Point3D(-s, h, -s), Point3D(s, h, -s), Point3D(s, h, s), Point3D(-s, h, s))
     
     val faces = listOf(
-        Face3D(listOf(apex, base[0], base[1]), MaterialTheme.colorScheme.primary),
-        Face3D(listOf(apex, base[1], base[2]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)),
-        Face3D(listOf(apex, base[2], base[3]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)),
-        Face3D(listOf(apex, base[3], base[0]), MaterialTheme.colorScheme.primary),
-        Face3D(base, MaterialTheme.colorScheme.primary.copy(alpha = 0.7f))
+        Face3D(listOf(apex, base[0], base[1]), primaryColor),
+        Face3D(listOf(apex, base[1], base[2]), primaryColor.copy(alpha = 0.7f)),
+        Face3D(listOf(apex, base[2], base[3]), primaryColor.copy(alpha = 0.4f)),
+        Face3D(listOf(apex, base[3], base[0]), primaryColor),
+        Face3D(base, primaryColor.copy(alpha = 0.7f))
     )
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawRectangularPrism(centerX: Float, centerY: Float, scale: Float, length: Float, width: Float, depth: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawRectangularPrism(centerX: Float, centerY: Float, scale: Float, length: Float, width: Float, depth: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val l = length * 0.5f
     val w = width * 0.5f
     val d = depth * 0.5f
@@ -322,17 +321,17 @@ private fun DrawScope.drawRectangularPrism(centerX: Float, centerY: Float, scale
         Point3D(-l, -w, d), Point3D(l, -w, d), Point3D(l, w, d), Point3D(-l, w, d)
     )
     val faces = listOf(
-        Face3D(listOf(vertices[0], vertices[1], vertices[2], vertices[3]), MaterialTheme.colorScheme.primary),
-        Face3D(listOf(vertices[4], vertices[5], vertices[6], vertices[7]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)),
-        Face3D(listOf(vertices[0], vertices[4], vertices[7], vertices[3]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)),
-        Face3D(listOf(vertices[1], vertices[5], vertices[6], vertices[2]), MaterialTheme.colorScheme.primary),
-        Face3D(listOf(vertices[0], vertices[1], vertices[5], vertices[4]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)),
-        Face3D(listOf(vertices[3], vertices[2], vertices[6], vertices[7]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f))
+        Face3D(listOf(vertices[0], vertices[1], vertices[2], vertices[3]), primaryColor),
+        Face3D(listOf(vertices[4], vertices[5], vertices[6], vertices[7]), primaryColor.copy(alpha = 0.7f)),
+        Face3D(listOf(vertices[0], vertices[4], vertices[7], vertices[3]), primaryColor.copy(alpha = 0.4f)),
+        Face3D(listOf(vertices[1], vertices[5], vertices[6], vertices[2]), primaryColor),
+        Face3D(listOf(vertices[0], vertices[1], vertices[5], vertices[4]), primaryColor.copy(alpha = 0.7f)),
+        Face3D(listOf(vertices[3], vertices[2], vertices[6], vertices[7]), primaryColor.copy(alpha = 0.4f))
     )
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawTriangularPrism(centerX: Float, centerY: Float, scale: Float, side: Float, height: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawTriangularPrism(centerX: Float, centerY: Float, scale: Float, side: Float, height: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val s = side * 0.5f
     val h = height * 0.5f
     val triHeight = s * sqrt(3f) / 2
@@ -340,16 +339,16 @@ private fun DrawScope.drawTriangularPrism(centerX: Float, centerY: Float, scale:
     val backTri = listOf(Point3D(0f, -triHeight * 0.5f, h), Point3D(-s, triHeight * 0.5f, h), Point3D(s, triHeight * 0.5f, h))
     
     val faces = listOf(
-        Face3D(frontTri, MaterialTheme.colorScheme.primary),
-        Face3D(backTri.reversed(), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)),
-        Face3D(listOf(frontTri[0], frontTri[1], backTri[1], backTri[0]), MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)),
-        Face3D(listOf(frontTri[1], frontTri[2], backTri[2], backTri[1]), MaterialTheme.colorScheme.primary),
-        Face3D(listOf(frontTri[2], frontTri[0], backTri[0], backTri[2]), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f))
+        Face3D(frontTri, primaryColor),
+        Face3D(backTri.reversed(), primaryColor.copy(alpha = 0.7f)),
+        Face3D(listOf(frontTri[0], frontTri[1], backTri[1], backTri[0]), primaryColor.copy(alpha = 0.4f)),
+        Face3D(listOf(frontTri[1], frontTri[2], backTri[2], backTri[1]), primaryColor),
+        Face3D(listOf(frontTri[2], frontTri[0], backTri[0], backTri[2]), primaryColor.copy(alpha = 0.7f))
     )
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawTorus(centerX: Float, centerY: Float, scale: Float, majorRadius: Float, minorRadius: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawTorus(centerX: Float, centerY: Float, scale: Float, majorRadius: Float, minorRadius: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val majorSegments = 24
     val minorSegments = 12
     val faces = mutableListOf<Face3D>()
@@ -371,14 +370,14 @@ private fun DrawScope.drawTorus(centerX: Float, centerY: Float, scale: Float, ma
             val p3 = torusPoint(theta2, phi2)
             val p4 = torusPoint(theta1, phi2)
             
-            val color = if ((i+j)%2==0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
+            val color = if ((i+j)%2==0) primaryColor else primaryColor.copy(alpha = 0.7f)
             faces.add(Face3D(listOf(p1, p2, p3, p4), color))
         }
     }
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawHemisphere(centerX: Float, centerY: Float, scale: Float, radius: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawHemisphere(centerX: Float, centerY: Float, scale: Float, radius: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val segments = 16
     val rings = 8
     val faces = mutableListOf<Face3D>()
@@ -395,7 +394,7 @@ private fun DrawScope.drawHemisphere(centerX: Float, centerY: Float, scale: Floa
             val p3 = Point3D((radius * sin(theta2) * cos(phi2)).toFloat(), -(radius * cos(theta2)).toFloat(), (radius * sin(theta2) * sin(phi2)).toFloat())
             val p4 = Point3D((radius * sin(theta2) * cos(phi1)).toFloat(), -(radius * cos(theta2)).toFloat(), (radius * sin(theta2) * sin(phi1)).toFloat())
             
-            val color = if (j%2==0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)
+            val color = if (j%2==0) primaryColor else primaryColor.copy(alpha = 0.4f)
             faces.add(Face3D(listOf(p1, p2, p3, p4), color))
         }
     }
@@ -405,12 +404,12 @@ private fun DrawScope.drawHemisphere(centerX: Float, centerY: Float, scale: Floa
         val phi2 = 2 * PI * (j + 1) / segments
         val p1 = Point3D((radius * cos(phi1)).toFloat(), 0f, (radius * sin(phi1)).toFloat())
         val p2 = Point3D((radius * cos(phi2)).toFloat(), 0f, (radius * sin(phi2)).toFloat())
-        faces.add(Face3D(listOf(baseCenter, p2, p1), MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)))
+        faces.add(Face3D(listOf(baseCenter, p2, p1), primaryColor.copy(alpha = 0.7f)))
     }
-    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ)
+    drawFaces(faces, centerX, centerY, scale, rotX, rotY, rotZ, primaryColor)
 }
 
-private fun DrawScope.drawFaces(faces: List<Face3D>, centerX: Float, centerY: Float, scale: Float, rotX: Float, rotY: Float, rotZ: Float) {
+private fun DrawScope.drawFaces(faces: List<Face3D>, centerX: Float, centerY: Float, scale: Float, rotX: Float, rotY: Float, rotZ: Float, primaryColor: Color) {
     val transformedFaces = faces.map { face ->
         val transformedVertices = face.vertices.map { v -> v.rotateX(rotX).rotateY(rotY).rotateZ(rotZ) }
         val avgZ = transformedVertices.map { it.z }.average().toFloat()
@@ -444,7 +443,7 @@ private fun DrawScope.drawFaces(faces: List<Face3D>, centerX: Float, centerY: Fl
                 close()
             }
             drawPath(path, litColor, style = Fill)
-            drawPath(path, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f), style = Stroke(width = 2f))
+            drawPath(path, primaryColor.copy(alpha = 0.5f), style = Stroke(width = 2f))
         }
     }
 }

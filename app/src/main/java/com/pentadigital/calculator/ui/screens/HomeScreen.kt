@@ -7,6 +7,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -40,6 +41,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -98,7 +100,7 @@ fun HomeScreen(
     
     // Screen size adaptation
     val windowSize = rememberWindowSize()
-    val configuration = androidx.compose.ui.platform.LocalConfiguration.current
+    val configuration = LocalConfiguration.current
     val isLandscape = configuration.screenWidthDp > configuration.screenHeightDp
     
     // Adaptive padding
@@ -117,7 +119,8 @@ fun HomeScreen(
     val currentBg = MaterialTheme.colorScheme.background
     val isDarkTheme = remember(currentBg) { currentBg == CyberpunkDarkBG }
 
-    val categories = remember(isDarkTheme) {
+    val primaryColor = MaterialTheme.colorScheme.primary
+    val categories = remember(primaryColor) {
         listOf(
             CalculatorCategory(
                 id = "algebra",
@@ -125,7 +128,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_algebra),
                 iconRes = R.drawable.ic_algebra,
                 backgroundColor = Color.Transparent,
-                iconTint = MaterialTheme.colorScheme.primary
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "geometry",
@@ -133,7 +136,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_geometry),
                 iconRes = R.drawable.ic_geometry,
                 backgroundColor = Color.Transparent,
-                iconTint = MaterialTheme.colorScheme.primary
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "unit_converters",
@@ -141,7 +144,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_unit_converters),
                 iconRes = R.drawable.ic_unit_converter,
                 backgroundColor = Color.Transparent,
-                iconTint = MaterialTheme.colorScheme.primary
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "finance",
@@ -149,7 +152,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_finance),
                 iconRes = R.drawable.ic_finance,
                 backgroundColor = Color.Transparent,
-                iconTint = MaterialTheme.colorScheme.primary
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "health",
@@ -157,7 +160,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_health),
                 iconRes = R.drawable.ic_health,
                 backgroundColor = Color.Transparent,
-                iconTint = MaterialTheme.colorScheme.primary
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "datetime",
@@ -165,7 +168,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_datetime),
                 iconRes = R.drawable.ic_datetime,
                 backgroundColor = Color.Transparent,
-                iconTint = MaterialTheme.colorScheme.primary
+                iconTint = primaryColor
             )
         )
     }
@@ -420,7 +423,7 @@ private fun ExpandableCategoryCard(
                             painter = painterResource(id = category.iconRes),
                             contentDescription = category.name,
                             modifier = Modifier.size(20.dp),
-                            colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(category.iconTint)
+                            colorFilter = ColorFilter.tint(category.iconTint)
                         )
                     }
                     Spacer(modifier = Modifier.width(16.dp))
@@ -520,7 +523,7 @@ private fun CompactCalculatorGridItem(
                 painter = painterResource(id = calculator.iconRes),
                 contentDescription = calculator.name,
                 modifier = Modifier.size(16.dp),
-                colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(accentColor)
+                colorFilter = ColorFilter.tint(accentColor)
             )
         }
         
@@ -771,7 +774,7 @@ private fun CategoryCard(
             defaultElevation = if (isSelected) 12.dp else 2.dp
         ),
         border = if (isSelected) {
-            androidx.compose.foundation.BorderStroke(3.dp, category.iconTint)
+            BorderStroke(3.dp, category.iconTint)
         } else null
     ) {
         Column(
