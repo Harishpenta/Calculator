@@ -184,7 +184,7 @@ private fun FavoriteListItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        borderColor = NeonPurple
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
     ) {
         Row(
             modifier = Modifier
@@ -196,14 +196,14 @@ private fun FavoriteListItem(
                 modifier = Modifier
                     .size(40.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(NeonPurple.copy(alpha = 0.2f)),
+                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = iconRes),
                     contentDescription = name,
                     modifier = Modifier.size(24.dp),
-                    colorFilter = ColorFilter.tint(NeonPurple)
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                 )
             }
             
@@ -229,7 +229,7 @@ private fun FavoriteGridItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        borderColor = NeonPurple
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
     ) {
         Column(
             modifier = Modifier
@@ -242,14 +242,14 @@ private fun FavoriteGridItem(
                 modifier = Modifier
                     .size(48.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(NeonPurple.copy(alpha = 0.2f)),
+                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = iconRes),
                     contentDescription = name,
                     modifier = Modifier.size(28.dp),
-                    colorFilter = ColorFilter.tint(NeonPurple)
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                 )
             }
             
