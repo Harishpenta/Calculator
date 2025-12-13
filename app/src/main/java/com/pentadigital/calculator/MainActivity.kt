@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.compose.ui.unit.dp
 import com.pentadigital.calculator.ui.theme.CalculatorTheme
 import com.pentadigital.calculator.viewmodels.TimeCalculatorViewModel
 import com.pentadigital.calculator.viewmodels.TDEEViewModel
@@ -150,8 +151,8 @@ val configuration = LocalConfiguration.current
                                         .padding(
                                             top = paddingValues.calculateTopPadding(),
                                             start = paddingValues.calculateLeftPadding(androidx.compose.ui.unit.LayoutDirection.Ltr),
-                                            end = paddingValues.calculateRightPadding(androidx.compose.ui.unit.LayoutDirection.Ltr)
-                                            // Bottom padding is handled by the AdMobBanner/Column or NavigationBar
+                                            end = paddingValues.calculateRightPadding(androidx.compose.ui.unit.LayoutDirection.Ltr),
+                                            bottom = if (showBottomNav) paddingValues.calculateBottomPadding() else 0.dp
                                         )
                                 ) {
                                     Surface(
