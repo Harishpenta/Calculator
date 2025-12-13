@@ -7,6 +7,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -40,6 +41,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -98,7 +100,7 @@ fun HomeScreen(
     
     // Screen size adaptation
     val windowSize = rememberWindowSize()
-    val configuration = androidx.compose.ui.platform.LocalConfiguration.current
+    val configuration = LocalConfiguration.current
     val isLandscape = configuration.screenWidthDp > configuration.screenHeightDp
     
     // Adaptive padding
@@ -117,7 +119,8 @@ fun HomeScreen(
     val currentBg = MaterialTheme.colorScheme.background
     val isDarkTheme = remember(currentBg) { currentBg == CyberpunkDarkBG }
 
-    val categories = remember(isDarkTheme) {
+    val primaryColor = MaterialTheme.colorScheme.primary
+    val categories = remember(primaryColor) {
         listOf(
             CalculatorCategory(
                 id = "algebra",
@@ -125,7 +128,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_algebra),
                 iconRes = R.drawable.ic_algebra,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonCyan else CyberpunkLightModeCyan
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "geometry",
@@ -133,7 +136,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_geometry),
                 iconRes = R.drawable.ic_geometry,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonPurple else CyberpunkLightModePurple
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "unit_converters",
@@ -141,7 +144,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_unit_converters),
                 iconRes = R.drawable.ic_unit_converter,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonGreen else CyberpunkLightModeGreen
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "finance",
@@ -149,7 +152,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_finance),
                 iconRes = R.drawable.ic_finance,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonCyan else CyberpunkLightModeCyan
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "health",
@@ -157,7 +160,7 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_health),
                 iconRes = R.drawable.ic_health,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonPurple else CyberpunkLightModePurple
+                iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "datetime",
@@ -165,10 +168,11 @@ fun HomeScreen(
                 subtitle = context.getString(R.string.sub_datetime),
                 iconRes = R.drawable.ic_datetime,
                 backgroundColor = Color.Transparent,
-                iconTint = if (isDarkTheme) NeonGreen else CyberpunkLightModeGreen
+                iconTint = primaryColor
             )
         )
     }
+
     
     // Define all calculators
     val allCalculators = remember {
@@ -220,6 +224,13 @@ fun HomeScreen(
         allCalculators.groupBy { it.categoryId }
     }
 
+    // Calculate columns based on window size
+    val columns = when (windowSize.width) {
+        WindowSizeClass.EXPANDED -> 4
+        WindowSizeClass.MEDIUM -> 3
+        else -> 2
+    }
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         modifier = modifier.fillMaxSize()
@@ -264,7 +275,7 @@ fun HomeScreen(
                         horizontalPadding = horizontalPadding
                     )
                 } else {
-                    // Accordion List
+                    // Accordion List - Pass dynamic columns
                     LazyColumn(
                         contentPadding = PaddingValues(bottom = 80.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -280,7 +291,8 @@ fun HomeScreen(
                                 favorites = favorites,
                                 onCalculatorClick = onNavigateToCalculator,
                                 onFavoriteClick = { favoritesManager.toggleFavorite(it) },
-                                horizontalPadding = horizontalPadding
+                                horizontalPadding = horizontalPadding,
+                                columns = columns
                             )
                         }
                     }
@@ -372,7 +384,8 @@ private fun ExpandableCategoryCard(
     favorites: Set<String>,
     onCalculatorClick: (String) -> Unit,
     onFavoriteClick: (String) -> Unit,
-    horizontalPadding: Dp
+    horizontalPadding: Dp,
+    columns: Int = 2
 ) {
     val rotationState by animateFloatAsState(
         targetValue = if (isExpanded) 180f else 0f,
@@ -410,7 +423,7 @@ private fun ExpandableCategoryCard(
                             painter = painterResource(id = category.iconRes),
                             contentDescription = category.name,
                             modifier = Modifier.size(20.dp),
-                            colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(category.iconTint)
+                            colorFilter = ColorFilter.tint(category.iconTint)
                         )
                     }
                     Spacer(modifier = Modifier.width(16.dp))
@@ -438,7 +451,7 @@ private fun ExpandableCategoryCard(
                 )
             }
 
-            // Content (Calculators Grid - 2 Columns)
+            // Content (Calculators Grid - Dynamic Columns)
             if (isExpanded) {
                 Column(
                     modifier = Modifier
@@ -448,8 +461,8 @@ private fun ExpandableCategoryCard(
                     GlowingDivider(color = category.iconTint.copy(alpha = 0.5f))
                     Spacer(modifier = Modifier.height(16.dp))
                     
-                    // Create rows of 2 items
-                    val chunkedCalculators = calculators.chunked(2)
+                    // Create rows of items
+                    val chunkedCalculators = calculators.chunked(columns)
                     
                     chunkedCalculators.forEach { rowItems ->
                         Row(
@@ -510,7 +523,7 @@ private fun CompactCalculatorGridItem(
                 painter = painterResource(id = calculator.iconRes),
                 contentDescription = calculator.name,
                 modifier = Modifier.size(16.dp),
-                colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(accentColor)
+                colorFilter = ColorFilter.tint(accentColor)
             )
         }
         
@@ -532,7 +545,7 @@ private fun CompactCalculatorGridItem(
             Icon(
                 imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
                 contentDescription = null,
-                tint = if (isFavorite) NeonGreen else MaterialTheme.colorScheme.onSurfaceVariant,
+                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(16.dp)
             )
         }
@@ -761,7 +774,7 @@ private fun CategoryCard(
             defaultElevation = if (isSelected) 12.dp else 2.dp
         ),
         border = if (isSelected) {
-            androidx.compose.foundation.BorderStroke(3.dp, category.iconTint)
+            BorderStroke(3.dp, category.iconTint)
         } else null
     ) {
         Column(
@@ -909,7 +922,7 @@ private fun CalculatorListItem(
                 Icon(
                     imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
                     contentDescription = if (isFavorite) stringResource(R.string.remove_favorite) else stringResource(R.string.add_favorite),
-                    tint = if (isFavorite) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+                    tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                     modifier = Modifier.size(24.dp)
                 )
             }

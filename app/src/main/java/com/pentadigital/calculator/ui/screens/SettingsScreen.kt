@@ -62,6 +62,7 @@ import androidx.compose.material3.MaterialTheme
 fun SettingsScreen(
     state: ThemeState,
     onAction: (ThemeEvent) -> Unit,
+    onClearHistory: () -> Unit,
     onOpenDrawer: () -> Unit
 ) {
     Scaffold(
@@ -90,8 +91,10 @@ fun SettingsScreen(
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
         val isLandscape = isLandscape()
+        val windowSize = rememberWindowSize()
+        val isTwoPane = isLandscape || windowSize.width == WindowSizeClass.EXPANDED
 
-        if (isLandscape) {
+        if (isTwoPane) {
             Row(
                 modifier = Modifier
                     .fillMaxSize()
@@ -227,6 +230,80 @@ fun SettingsScreen(
                     }
                 )
 
+                // Interactions Section
+                ThemeSettingsSection(
+                    title = "INTERACTIONS",
+                    content = {
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            TechText(
+                                text = "Haptic Feedback",
+                                fontSize = 16.sp
+                            )
+                            androidx.compose.material3.Switch(
+                                checked = state.isHapticsEnabled,
+                                onCheckedChange = { onAction(ThemeEvent.ToggleHaptics(it)) },
+                                colors = androidx.compose.material3.SwitchDefaults.colors(
+                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                                    uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    uncheckedTrackColor = MaterialTheme.colorScheme.surface
+                                )
+                            )
+                        }
+                        
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            TechText(
+                                text = "Sound Effects",
+                                fontSize = 16.sp
+                            )
+                            androidx.compose.material3.Switch(
+                                checked = state.isSoundEnabled,
+                                onCheckedChange = { onAction(ThemeEvent.ToggleSound(it)) },
+                                colors = androidx.compose.material3.SwitchDefaults.colors(
+                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                                    uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    uncheckedTrackColor = MaterialTheme.colorScheme.surface
+                                )
+                            )
+                        }
+                    }
+                )
+                
+                // Data Management
+                ThemeSettingsSection(
+                    title = "DATA",
+                    content = {
+                        CyberpunkButton(
+                            text = "CLEAR HISTORY",
+                            onClick = onClearHistory,
+                            modifier = Modifier.fillMaxWidth(),
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
+                )
+
+                // About Section
+                ThemeSettingsSection(
+                    title = "ABOUT",
+                    content = {
+                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            TechText("Cyberpunk Calculator", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = MaterialTheme.colorScheme.primary)
+                            TechText("Version 1.0.0", fontSize = 14.sp, color = CyberpunkTextSecondary)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            TechText("Designed for the future.", fontSize = 12.sp, color = CyberpunkTextSecondary)
+                        }
+                    }
+                )
+
                 // Accent Color Section
                 ThemeSettingsSection(
                     title = stringResource(R.string.accent_color),
@@ -281,7 +358,7 @@ private fun ThemeSettingsSection(
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         TechText(
             text = title.uppercase(),
-            color = NeonPurple,
+            color = MaterialTheme.colorScheme.primary,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold
         )
@@ -289,7 +366,7 @@ private fun ThemeSettingsSection(
             borderColor = MaterialTheme.colorScheme.primary,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Box(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 content()
             }
         }
@@ -346,13 +423,13 @@ fun LanguageDropdown(
             label = { TechText(stringResource(R.string.language), color = MaterialTheme.colorScheme.onSurfaceVariant) },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = NeonCyan,
-                unfocusedBorderColor = NeonPurple,
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                 focusedTextColor = MaterialTheme.colorScheme.onSurface,
                 unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
                 focusedContainerColor = MaterialTheme.colorScheme.surface,
                 unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                cursorColor = NeonCyan
+                cursorColor = MaterialTheme.colorScheme.primary
             ),
             modifier = Modifier
                 .menuAnchor()
@@ -367,7 +444,7 @@ fun LanguageDropdown(
         ExposedDropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
-            modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, NeonPurple, RoundedCornerShape(4.dp))
+            modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(4.dp))
         ) {
             AppLanguage.values().forEach { language ->
                 DropdownMenuItem(
@@ -375,7 +452,7 @@ fun LanguageDropdown(
                         TechText(
                             text = language.displayName,
                             fontWeight = if (language == selectedLanguage) FontWeight.Bold else FontWeight.Normal,
-                            color = if (language == selectedLanguage) NeonCyan else MaterialTheme.colorScheme.onSurface
+                            color = if (language == selectedLanguage) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
                         )
                     },
                     onClick = {
@@ -385,8 +462,8 @@ fun LanguageDropdown(
                     contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
                     colors = MenuDefaults.itemColors(
                         textColor = MaterialTheme.colorScheme.onSurface,
-                        leadingIconColor = NeonCyan,
-                        trailingIconColor = NeonCyan
+                        leadingIconColor = MaterialTheme.colorScheme.primary,
+                        trailingIconColor = MaterialTheme.colorScheme.primary
                     )
                 )
             }

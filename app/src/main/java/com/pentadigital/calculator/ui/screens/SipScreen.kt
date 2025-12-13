@@ -57,7 +57,7 @@ fun SipScreen(
                 title = { 
                     TechText(
                         stringResource(com.pentadigital.calculator.R.string.sip_title).uppercase(), 
-                        color = NeonCyan,
+                        color = MaterialTheme.colorScheme.primary,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold
                     ) 
@@ -67,7 +67,7 @@ fun SipScreen(
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack, 
                             contentDescription = stringResource(com.pentadigital.calculator.R.string.back), 
-                            tint = NeonCyan
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
@@ -88,7 +88,7 @@ fun SipScreen(
                         )
                         shareResult(context, shareTitle, shareBody)
                     }) {
-                        Icon(Icons.Default.Share, contentDescription = shareIconDesc, tint = NeonCyan)
+                        Icon(Icons.Default.Share, contentDescription = shareIconDesc, tint = MaterialTheme.colorScheme.primary)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
@@ -154,7 +154,7 @@ private fun SipInputs(
     val timeFocus = remember { FocusRequester() }
 
     CyberpunkCard(
-        borderColor = NeonPurple,
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -175,7 +175,7 @@ private fun SipInputs(
                 },
                 label = stringResource(com.pentadigital.calculator.R.string.monthly_investment).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(investmentFocus),
-                borderColor = NeonCyan,
+                borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Next
@@ -196,7 +196,7 @@ private fun SipInputs(
                 },
                 label = stringResource(com.pentadigital.calculator.R.string.expected_return_rate).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(returnFocus),
-                borderColor = NeonCyan,
+                borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Next
@@ -217,7 +217,7 @@ private fun SipInputs(
                 },
                 label = stringResource(com.pentadigital.calculator.R.string.time_period).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(timeFocus),
-                borderColor = NeonCyan,
+                borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Done
@@ -230,7 +230,7 @@ private fun SipInputs(
 @Composable
 private fun SipResults(state: SipState) {
     CyberpunkCard(
-        borderColor = NeonGreen,
+        borderColor = MaterialTheme.colorScheme.secondary,
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -245,8 +245,8 @@ private fun SipResults(state: SipState) {
             
             PieChart(
                 data = listOf(
-                    PieChartData(state.investedAmount, NeonCyan.copy(alpha = 0.3f), stringResource(com.pentadigital.calculator.R.string.invested).uppercase()),
-                    PieChartData(state.estimatedReturns, NeonGreen, stringResource(com.pentadigital.calculator.R.string.returns).uppercase())
+                    PieChartData(state.investedAmount, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f), stringResource(com.pentadigital.calculator.R.string.invested).uppercase()),
+                    PieChartData(state.estimatedReturns, MaterialTheme.colorScheme.secondary, stringResource(com.pentadigital.calculator.R.string.returns).uppercase())
                 ),
                 chartSize = 200.dp
             )
@@ -265,7 +265,7 @@ private fun SipResults(state: SipState) {
                 )
                 TechText(
                     text = NumberFormat.getCurrencyInstance(Locale("en", "IN")).format(state.totalValue),
-                    color = NeonGreen,
+                    color = MaterialTheme.colorScheme.secondary,
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,

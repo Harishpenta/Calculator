@@ -116,7 +116,7 @@ private fun DiscountInputs(
     val taxFocus = remember { FocusRequester() }
 
     CyberpunkCard(
-        borderColor = NeonPurple,
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -191,7 +191,7 @@ private fun DiscountResults(state: DiscountState) {
     val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
 
     CyberpunkCard(
-        borderColor = NeonGreen,
+        borderColor = MaterialTheme.colorScheme.secondary,
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -205,7 +205,7 @@ private fun DiscountResults(state: DiscountState) {
             )
             TechText(
                 text = currencyFormat.format(state.finalPrice),
-                color = NeonGreen,
+                color = MaterialTheme.colorScheme.secondary,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -213,7 +213,7 @@ private fun DiscountResults(state: DiscountState) {
     }
 
     CyberpunkCard(
-        borderColor = NeonPurple,
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -223,7 +223,7 @@ private fun DiscountResults(state: DiscountState) {
             ResultRow(
                 label = stringResource(R.string.you_save).uppercase(),
                 value = currencyFormat.format(state.amountSaved),
-                valueColor = NeonGreen,
+                valueColor = MaterialTheme.colorScheme.secondary,
                 isBold = true
             )
             ResultRow(

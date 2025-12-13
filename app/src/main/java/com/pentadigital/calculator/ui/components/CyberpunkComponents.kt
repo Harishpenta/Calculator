@@ -1,5 +1,6 @@
 package com.pentadigital.calculator.ui.components
 
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -40,6 +41,15 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,12 +58,23 @@ import com.pentadigital.calculator.ui.theme.CyberpunkSurface
 import com.pentadigital.calculator.ui.theme.CyberpunkTextPrimary
 import com.pentadigital.calculator.ui.theme.NeonCyan
 import com.pentadigital.calculator.ui.theme.NeonGreen
-import com.pentadigital.calculator.ui.theme.NeonPurple
+import androidx.compose.runtime.compositionLocalOf
+
+import com.pentadigital.calculator.utils.HapticManager
+import com.pentadigital.calculator.utils.SoundManager
+import com.pentadigital.calculator.utils.CyberpunkHapticType
+import com.pentadigital.calculator.utils.CyberpunkSound
+import androidx.compose.runtime.staticCompositionLocalOf
+
+val LocalHapticsEnabled = compositionLocalOf { true }
+val LocalSoundEnabled = compositionLocalOf { true }
+val LocalHapticManager = staticCompositionLocalOf<HapticManager?> { null }
+val LocalSoundManager = staticCompositionLocalOf<SoundManager?> { null }
 
 @Composable
 fun CyberpunkCard(
     modifier: Modifier = Modifier,
-    borderColor: Color = NeonCyan,
+    borderColor: Color = MaterialTheme.colorScheme.primary,
     backgroundColor: Color = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
     content: @Composable ColumnScope.() -> Unit
 ) {
@@ -80,17 +101,44 @@ fun CyberpunkButton(
     text: String,
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
-    color: Color = MaterialTheme.colorScheme.primary
+    color: Color = MaterialTheme.colorScheme.primary,
+    fontSize: androidx.compose.ui.unit.TextUnit = 14.sp
 ) {
     val shape = CutCornerShape(8.dp)
+    val hapticManager = LocalHapticManager.current
+    val soundManager = LocalSoundManager.current
+    val isHapticsEnabled = LocalHapticsEnabled.current
+    val isSoundEnabled = LocalSoundEnabled.current
+    
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    
+    // Glitch effect: Random offset when pressed
+    val glitchOffsetX by animateFloatAsState(
+        targetValue = if (isPressed) 5f else 0f,
+        animationSpec = tween(50), 
+        label = "glitchX"
+    )
     
     Button(
-        onClick = onClick,
+        onClick = {
+            if (isHapticsEnabled) {
+                hapticManager?.performHapticFeedback(CyberpunkHapticType.MediumClick)
+            }
+            if (isSoundEnabled) {
+                soundManager?.playSound(CyberpunkSound.Click)
+            }
+            onClick()
+        },
+        interactionSource = interactionSource,
         modifier = modifier
-            .shadow(8.dp, shape, spotColor = color),
+            .shadow(8.dp, shape, spotColor = color)
+            .graphicsLayer {
+                translationX = if (isPressed) glitchOffsetX else 0f
+            },
         shape = shape,
         colors = ButtonDefaults.buttonColors(
-            containerColor = color.copy(alpha = 0.1f),
+            containerColor = color.copy(alpha = if (MaterialTheme.colorScheme.surface.luminance() > 0.5f) 0.3f else 0.1f),
             contentColor = color
         ),
         border = BorderStroke(1.dp, color),
@@ -110,7 +158,8 @@ fun CyberpunkButton(
                 text = text.uppercase(),
                 fontWeight = FontWeight.Bold,
                 letterSpacing = 1.5.sp,
-                fontFamily = FontFamily.Monospace
+                fontFamily = FontFamily.Monospace,
+                fontSize = fontSize
             )
         }
     }
@@ -125,7 +174,8 @@ fun TechText(
     fontWeight: FontWeight = FontWeight.Normal,
     textAlign: androidx.compose.ui.text.style.TextAlign? = null,
     maxLines: Int = Int.MAX_VALUE,
-    overflow: androidx.compose.ui.text.style.TextOverflow = androidx.compose.ui.text.style.TextOverflow.Clip
+    overflow: androidx.compose.ui.text.style.TextOverflow = androidx.compose.ui.text.style.TextOverflow.Clip,
+    softWrap: Boolean = true
 ) {
     Text(
         text = text,
@@ -137,13 +187,14 @@ fun TechText(
         letterSpacing = 0.5.sp,
         textAlign = textAlign,
         maxLines = maxLines,
-        overflow = overflow
+        overflow = overflow,
+        softWrap = softWrap
     )
 }
 
 @Composable
 fun GlowingDivider(
-    color: Color = NeonCyan,
+    color: Color = MaterialTheme.colorScheme.primary,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -169,7 +220,7 @@ fun CyberpunkInput(
     onValueChange: (String) -> Unit,
     label: String,
     modifier: Modifier = Modifier,
-    borderColor: Color = NeonCyan,
+    borderColor: Color = MaterialTheme.colorScheme.primary,
     keyboardOptions: androidx.compose.foundation.text.KeyboardOptions = androidx.compose.foundation.text.KeyboardOptions.Default,
     trailingIcon: @Composable (() -> Unit)? = null
 ) {

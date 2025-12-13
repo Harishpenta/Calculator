@@ -7,6 +7,7 @@ import com.pentadigital.calculator.ui.theme.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -259,6 +260,48 @@ fun CalculatorScreen(
     }
 }
 
+// Reusable Responsive Text Component
+@Composable
+fun ResponsiveText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colorScheme.onSurface,
+    maxFontSize: androidx.compose.ui.unit.TextUnit,
+    minFontSize: androidx.compose.ui.unit.TextUnit = 12.sp,
+    fontWeight: FontWeight = FontWeight.Normal,
+    textAlign: TextAlign = TextAlign.End
+) {
+    BoxWithConstraints(modifier = modifier) {
+        val density = androidx.compose.ui.platform.LocalDensity.current
+        
+        // Estimation: Monospace char width is roughly 0.6 * fontSize
+        val estimatedCharWidthRatio = 0.6f 
+        
+        val calculatedFontSize = with(density) {
+            val availableWidthPx = maxWidth.toPx()
+            val charCount = text.length.coerceAtLeast(1)
+            // Safety buffer of 0.9 to prevent edge touching
+            val maxFontSizePx = (availableWidthPx * 0.9f) / (charCount * estimatedCharWidthRatio)
+            maxFontSizePx.toSp()
+        }
+        
+        val finalFontSize = if (calculatedFontSize > maxFontSize) maxFontSize 
+                            else if (calculatedFontSize < minFontSize) minFontSize 
+                            else calculatedFontSize
+
+        TechText(
+            text = text,
+            textAlign = textAlign,
+            modifier = Modifier.fillMaxWidth(),
+            fontWeight = fontWeight,
+            fontSize = finalFontSize,
+            color = color,
+            maxLines = 1,
+            softWrap = false
+        )
+    }
+}
+
 @Composable
 private fun DisplayArea(
     state: CalculatorState,
@@ -277,7 +320,7 @@ private fun DisplayArea(
                 textAlign = TextAlign.Start,
                 modifier = Modifier.fillMaxWidth(),
                 fontSize = 16.sp,
-                color = NeonPurple,
+                color = MaterialTheme.colorScheme.tertiary,
                 maxLines = 1
             )
             Spacer(modifier = Modifier.height(4.dp))
@@ -295,15 +338,16 @@ private fun DisplayArea(
             Spacer(modifier = Modifier.height(8.dp))
         }
         
+        // Secondary Text (Formula) - Now Responsive
         val secondaryText = if (state.operation != null) "${formatNumber(state.number1)} ${state.operation.symbol}" else ""
-        TechText(
+        ResponsiveText(
             text = secondaryText,
-            textAlign = TextAlign.End,
             modifier = Modifier.fillMaxWidth(),
-            fontSize = 32.sp,
-            color = CyberpunkTextSecondary,
-            maxLines = 1
+            maxFontSize = 32.sp,
+            minFontSize = 16.sp,
+            color = CyberpunkTextSecondary
         )
+        
         Spacer(modifier = Modifier.height(8.dp))
         
         val mainText = when {
@@ -312,14 +356,15 @@ private fun DisplayArea(
             state.number1.isNotBlank() -> formatNumber(state.number1)
             else -> "0"
         }
-        TechText(
+        
+        // Main Text - Responsive
+        ResponsiveText(
             text = mainText,
-            textAlign = TextAlign.End,
             modifier = Modifier.fillMaxWidth(),
+            maxFontSize = 64.sp,
+            minFontSize = 20.sp,
             fontWeight = FontWeight.Light,
-            fontSize = 64.sp,
-            color = if (state.errorMessage != null) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
-            maxLines = 1
+            color = if (state.errorMessage != null) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
         )
     }
 }
@@ -352,8 +397,8 @@ private fun ButtonsGrid(
 
         // Row 1: Scientific
         Row(modifier = rowModifier, horizontalArrangement = Arrangement.spacedBy(buttonSpacing)) {
-            val opsBtnColor = NeonPurple.copy(alpha = 0.15f)
-            val opsBorderColor = NeonPurple.copy(alpha=0.5f)
+            val opsBtnColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.15f)
+            val opsBorderColor = MaterialTheme.colorScheme.tertiary.copy(alpha=0.5f)
             
             CyberpunkButton(symbol = "√", modifier = Modifier.buttonModifier(), fontSize = fontSize, onClick = { onAction(CalculatorAction.SquareRoot) })
             CyberpunkButton(symbol = "x²", modifier = Modifier.buttonModifier(), fontSize = fontSize, onClick = { onAction(CalculatorAction.Square) })
@@ -406,7 +451,7 @@ private fun CyberpunkButton(
     symbol: String,
     modifier: Modifier = Modifier,
     containerColor: Color = Color.Transparent,
-    borderColor: Color = NeonPurple.copy(alpha = 0.5f),
+    borderColor: Color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
     textColor: Color = MaterialTheme.colorScheme.onSurface,
     fontSize: androidx.compose.ui.unit.TextUnit,
     onClick: () -> Unit

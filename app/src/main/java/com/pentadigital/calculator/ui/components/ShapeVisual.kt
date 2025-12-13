@@ -1,5 +1,6 @@
 package com.pentadigital.calculator.ui.components
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -34,6 +35,15 @@ fun ShapeVisual(
     state: GeometryState,
     modifier: Modifier = Modifier
 ) {
+    val primaryColor = MaterialTheme.colorScheme.primary
+    val secondaryColor = MaterialTheme.colorScheme.secondary
+    
+    // Pre-calculate colors accessed inside Canvas
+    val shapeColor = primaryColor.copy(alpha = 0.2f)
+    val strokeColor = primaryColor
+    val textColor = secondaryColor.toArgb()
+    val secondaryColorCompose = secondaryColor
+
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -48,10 +58,10 @@ fun ShapeVisual(
                     )
                 )
             )
-            .border(1.dp, NeonCyan.copy(alpha = 0.3f), RoundedCornerShape(24.dp)),
+            .border(1.dp, primaryColor.copy(alpha = 0.3f), RoundedCornerShape(24.dp)),
         contentAlignment = Alignment.Center
     ) {
-        LayoutGridBackground()
+        LayoutGridBackground(primaryColor = primaryColor)
 
         Canvas(
             modifier = Modifier
@@ -62,9 +72,6 @@ fun ShapeVisual(
             val centerY = size.height / 2
             val maxDimension = minOf(size.width, size.height)
             
-            val shapeColor = NeonPurple.copy(alpha = 0.2f)
-            val strokeColor = NeonCyan
-            val textColor = NeonGreen.toArgb()
             val textPaint = android.graphics.Paint().apply {
                 color = textColor
                 textSize = 40f
@@ -91,7 +98,7 @@ fun ShapeVisual(
                         style = Stroke(width = 4f)
                     )
                     drawLine(
-                        color = NeonGreen,
+                        color = secondaryColorCompose,
                         start = center,
                         end = Offset(centerX + radius, centerY),
                         strokeWidth = 2f
@@ -261,10 +268,10 @@ fun ShapeVisual(
 }
 
 @Composable
-private fun LayoutGridBackground() {
+private fun LayoutGridBackground(primaryColor: Color) {
     Canvas(modifier = Modifier.fillMaxSize()) {
         val spacing = 40.dp.toPx()
-        val gridColor = NeonCyan.copy(alpha = 0.05f)
+        val gridColor = primaryColor.copy(alpha = 0.05f)
         
         // Draw vertical lines
         for (x in 0..size.width.toInt() step spacing.toInt()) {

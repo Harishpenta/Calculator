@@ -134,7 +134,7 @@ private fun TDEEInputs(
 ) {
     CyberpunkCard(
         modifier = Modifier.fillMaxWidth(),
-        borderColor = NeonPurple
+        borderColor = MaterialTheme.colorScheme.primary
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -213,7 +213,7 @@ private fun TDEEInputs(
                         .fillMaxWidth()
                         .height(200.dp)
                         .background(MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(16.dp))
-                        .border(1.dp, NeonGreen.copy(alpha = 0.3f), RoundedCornerShape(16.dp))
+                        .border(1.dp, MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f), RoundedCornerShape(16.dp))
                 )
             }
             
@@ -297,7 +297,7 @@ private fun TDEEResults(state: TDEEState) {
     if (state.tdee > 0) {
         CyberpunkCard(
             modifier = Modifier.fillMaxWidth(),
-            borderColor = NeonGreen
+            borderColor = MaterialTheme.colorScheme.secondary
         ) {
             Column(
                 modifier = Modifier.padding(8.dp),
@@ -305,19 +305,19 @@ private fun TDEEResults(state: TDEEState) {
             ) {
                 TechText(
                     text = stringResource(R.string.maintenance_calories).uppercase(),
-                    color = NeonGreen.copy(alpha = 0.8f),
+                    color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.8f),
                     fontSize = 14.sp
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 TechText(
                     text = "${state.maintenance} KCAL",
-                    color = NeonGreen,
+                    color = MaterialTheme.colorScheme.secondary,
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold
                 )
                 TechText(
                     text = "PER DAY",
-                    color = NeonGreen.copy(alpha = 0.6f),
+                    color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.6f),
                     fontSize = 12.sp
                 )
             }
@@ -335,9 +335,9 @@ private fun TDEEResults(state: TDEEState) {
             ) {
                 ResultRow(stringResource(R.string.bmr), "${state.bmr} KCAL")
                 GlowingDivider(color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
-                ResultRow(stringResource(R.string.cutting), "${state.cutting} KCAL", NeonPurple)
+                ResultRow(stringResource(R.string.cutting), "${state.cutting} KCAL", MaterialTheme.colorScheme.primary)
                 GlowingDivider(color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
-                ResultRow(stringResource(R.string.bulking), "${state.bulking} KCAL", NeonGreen)
+                ResultRow(stringResource(R.string.bulking), "${state.bulking} KCAL", MaterialTheme.colorScheme.secondary)
             }
         }
     }

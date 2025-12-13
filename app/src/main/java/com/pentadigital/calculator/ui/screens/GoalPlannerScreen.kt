@@ -162,7 +162,7 @@ private fun GoalInputs(
     val rateFocus = remember { FocusRequester() }
 
     CyberpunkCard(
-        borderColor = NeonPurple,
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -178,7 +178,7 @@ private fun GoalInputs(
                 label = stringResource(R.string.target_amount).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(targetFocus),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
-                borderColor = NeonCyan
+                borderColor = MaterialTheme.colorScheme.primary
             )
 
             CyberpunkInput(
@@ -190,7 +190,7 @@ private fun GoalInputs(
                 label = stringResource(R.string.time_period).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(timeFocus),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
-                borderColor = NeonCyan
+                borderColor = MaterialTheme.colorScheme.primary
             )
 
             CyberpunkInput(
@@ -202,7 +202,7 @@ private fun GoalInputs(
                 label = stringResource(R.string.expected_return).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(rateFocus),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
-                borderColor = NeonCyan
+                borderColor = MaterialTheme.colorScheme.primary
             )
         }
     }
@@ -214,7 +214,7 @@ private fun GoalResults(state: GoalPlannerState) {
 
     // Required Monthly Investment Card
     CyberpunkCard(
-        borderColor = NeonGreen,
+        borderColor = MaterialTheme.colorScheme.secondary,
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -228,7 +228,7 @@ private fun GoalResults(state: GoalPlannerState) {
             )
             TechText(
                 text = currencyFormat.format(state.requiredMonthlyInvestment),
-                color = NeonGreen,
+                color = MaterialTheme.colorScheme.secondary,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -237,7 +237,7 @@ private fun GoalResults(state: GoalPlannerState) {
 
     // Chart and Details
     CyberpunkCard(
-        borderColor = NeonPurple,
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -248,7 +248,7 @@ private fun GoalResults(state: GoalPlannerState) {
             PieChart(
                 data = listOf(
                     PieChartData(state.totalInvestment, CyberpunkTextSecondary, stringResource(R.string.total_investment)),
-                    PieChartData(state.totalReturns, NeonGreen, stringResource(R.string.total_returns))
+                    PieChartData(state.totalReturns, MaterialTheme.colorScheme.secondary, stringResource(R.string.total_returns))
                 ),
                 chartSize = 160.dp
             )
@@ -265,7 +265,7 @@ private fun GoalResults(state: GoalPlannerState) {
                 ResultRow(
                     label = stringResource(R.string.total_returns).uppercase(),
                     value = currencyFormat.format(state.totalReturns),
-                    valueColor = NeonGreen,
+                    valueColor = MaterialTheme.colorScheme.secondary,
                     isBold = true
                 )
             }

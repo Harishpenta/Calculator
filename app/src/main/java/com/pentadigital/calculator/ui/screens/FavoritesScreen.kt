@@ -127,8 +127,8 @@ fun FavoritesScreen(
                 if (isLandscape) {
                     LazyVerticalGrid(
                         columns = GridCells.Adaptive(minSize = 180.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp),
-                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         items(favorites.toList()) { calculatorId ->
                             val details = calculatorDetails[calculatorId]
@@ -149,7 +149,7 @@ fun FavoritesScreen(
                     }
                 } else {
                     LazyColumn(
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         items(favorites.toList()) { calculatorId ->
                             val details = calculatorDetails[calculatorId]
@@ -184,34 +184,34 @@ private fun FavoriteListItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        borderColor = NeonPurple
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
                 modifier = Modifier
-                    .size(40.dp)
+                    .size(36.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(NeonPurple.copy(alpha = 0.2f)),
+                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = iconRes),
                     contentDescription = name,
-                    modifier = Modifier.size(24.dp),
-                    colorFilter = ColorFilter.tint(NeonPurple)
+                    modifier = Modifier.size(20.dp),
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                 )
             }
             
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(12.dp))
             
             TechText(
                 text = name.uppercase(),
-                fontSize = 16.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
             )
@@ -229,27 +229,27 @@ private fun FavoriteGridItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        borderColor = NeonPurple
+        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             Box(
                 modifier = Modifier
-                    .size(48.dp)
+                    .size(40.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(NeonPurple.copy(alpha = 0.2f)),
+                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = iconRes),
                     contentDescription = name,
-                    modifier = Modifier.size(28.dp),
-                    colorFilter = ColorFilter.tint(NeonPurple)
+                    modifier = Modifier.size(24.dp),
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                 )
             }
             
@@ -257,7 +257,7 @@ private fun FavoriteGridItem(
             
             TechText(
                 text = name.uppercase(),
-                fontSize = 14.sp,
+                fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center
