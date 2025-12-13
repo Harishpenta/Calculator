@@ -152,7 +152,7 @@ val configuration = LocalConfiguration.current
                                             top = paddingValues.calculateTopPadding(),
                                             start = paddingValues.calculateLeftPadding(androidx.compose.ui.unit.LayoutDirection.Ltr),
                                             end = paddingValues.calculateRightPadding(androidx.compose.ui.unit.LayoutDirection.Ltr),
-                                            bottom = if (showBottomNav) paddingValues.calculateBottomPadding() else 0.dp
+                                            bottom = paddingValues.calculateBottomPadding()
                                         )
                                 ) {
                                     Surface(
@@ -191,9 +191,10 @@ val configuration = LocalConfiguration.current
                                         )
                                     }
                                 }
-                                if (!showBottomNav) {
-                                    AdMobBanner(modifier = Modifier.navigationBarsPadding())
-                                }
+                                // AdMobBanner removed as per user request
+                                // if (!showBottomNav) {
+                                //     AdMobBanner(modifier = Modifier.navigationBarsPadding())
+                                // }
                             }
                         }
 

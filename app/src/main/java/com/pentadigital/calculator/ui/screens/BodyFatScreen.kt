@@ -14,6 +14,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.size
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -355,7 +357,44 @@ private fun BodyFatResults(state: BodyFatState) {
                     bmi = state.bodyFatPercentage.toFloat(), // Reusing BMI bar logic but mapping value
                     category = "" // Category already shown above
                 )
+                
+                BodyFatLegend(modifier = Modifier.padding(top = 16.dp))
             }
         }
+
+    }
+}
+
+@Composable
+private fun BodyFatLegend(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        LegendItem(color = Color(0xFF00E5FF), label = "ESSENTIAL")
+        LegendItem(color = NeonGreen, label = "FITNESS")
+        LegendItem(color = Color(0xFFFFB74D), label = "AVERAGE")
+        LegendItem(color = NeonRed, label = "OBESE")
+    }
+}
+
+@Composable
+private fun LegendItem(color: Color, label: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .size(8.dp)
+                .clip(androidx.compose.foundation.shape.CircleShape)
+                .background(color)
+        )
+        TechText(
+            text = label, 
+            fontSize = 10.sp, 
+            color = CyberpunkTextSecondary,
+            fontWeight = FontWeight.Bold
+        )
     }
 }

@@ -11,6 +11,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.pentadigital.calculator.ui.screens.ProfileScreen
 import com.pentadigital.calculator.ui.screens.AgeScreen
 import com.pentadigital.calculator.ui.screens.BmiScreen
 import com.pentadigital.calculator.ui.screens.CalculatorScreen
@@ -65,6 +66,7 @@ sealed class Screen(val route: String, val title: String) {
     object BodyFat : Screen("body_fat", "Body Fat Calculator")
     object WaterIntake : Screen("water_intake", "Water Intake Calculator")
     object Settings : Screen("settings", "Settings")
+    object Profile : Screen("profile", "Profile")
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -132,6 +134,9 @@ fun AppNavigation(
                 },
                 onNavigateToSettings = {
                     navController.navigate(Screen.Settings.route)
+                },
+                onNavigateToProfile = {
+                    navController.navigate(Screen.Profile.route)
                 }
             )
         }
@@ -297,6 +302,12 @@ fun AppNavigation(
                 onAction = themeViewModel::onEvent,
                 onClearHistory = { calculatorViewModel.onAction(com.pentadigital.calculator.viewmodels.CalculatorAction.ClearHistory) },
                 onOpenDrawer = onOpenDrawer
+            )
+        }
+        composable(Screen.Profile.route) {
+            ProfileScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToSettings = { navController.navigate(Screen.Settings.route) }
             )
         }
     }

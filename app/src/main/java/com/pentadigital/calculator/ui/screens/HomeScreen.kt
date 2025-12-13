@@ -92,6 +92,7 @@ data class CalculatorItem(
 fun HomeScreen(
     onNavigateToCalculator: (String) -> Unit,
     onNavigateToSettings: () -> Unit,
+    onNavigateToProfile: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -250,6 +251,7 @@ fun HomeScreen(
                 // Header Section
                 HeaderSection(
                     onSettingsClick = onNavigateToSettings,
+                    onProfileClick = { onNavigateToProfile() },
                     horizontalPadding = horizontalPadding
                 )
                 
@@ -555,6 +557,7 @@ private fun CompactCalculatorGridItem(
 @Composable
 private fun HeaderSection(
     onSettingsClick: () -> Unit,
+    onProfileClick: () -> Unit,
     horizontalPadding: Dp = 20.dp
 ) {
     Row(
@@ -566,7 +569,8 @@ private fun HeaderSection(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.clickable { onProfileClick() }
         ) {
             // Profile Avatar (Cyberpunk Style)
             Box(

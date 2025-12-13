@@ -16,6 +16,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Share
@@ -172,6 +175,8 @@ fun BmiScreen(
                                 bmi = state.bmi.toFloat(),
                                 category = if (state.category.isNotEmpty()) stringResource(getLabelForCategory(state.category)) else ""
                             )
+                            
+                            BmiLegend(modifier = Modifier.padding(top = 16.dp))
                         }
                     }
                 }
@@ -254,6 +259,8 @@ fun BmiScreen(
                             bmi = state.bmi.toFloat(),
                             category = if (state.category.isNotEmpty()) stringResource(getLabelForCategory(state.category)) else ""
                         )
+                        
+                        BmiLegend(modifier = Modifier.padding(top = 16.dp))
                     }
                 }
             }
@@ -279,5 +286,40 @@ fun getLabelForCategory(category: String): Int {
         "Overweight" -> com.pentadigital.calculator.R.string.overweight
         "Obese" -> com.pentadigital.calculator.R.string.obese
         else -> com.pentadigital.calculator.R.string.error
+    }
+}
+
+
+@Composable
+private fun BmiLegend(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        LegendItem(color = Color(0xFF00E5FF), label = stringResource(com.pentadigital.calculator.R.string.underweight))
+        LegendItem(color = NeonGreen, label = stringResource(com.pentadigital.calculator.R.string.normal))
+        LegendItem(color = Color(0xFFFFB74D), label = stringResource(com.pentadigital.calculator.R.string.overweight))
+        LegendItem(color = Color(0xFFFF5252), label = stringResource(com.pentadigital.calculator.R.string.obese))
+    }
+}
+
+@Composable
+private fun LegendItem(color: Color, label: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .size(8.dp)
+                .clip(androidx.compose.foundation.shape.CircleShape)
+                .background(color)
+        )
+        TechText(
+            text = label, 
+            fontSize = 10.sp, 
+            color = CyberpunkTextSecondary,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
