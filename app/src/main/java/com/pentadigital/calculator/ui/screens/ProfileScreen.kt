@@ -39,15 +39,20 @@ import com.pentadigital.calculator.ui.components.CyberpunkCard
 import com.pentadigital.calculator.ui.components.TechText
 import com.pentadigital.calculator.ui.theme.*
 import com.pentadigital.calculator.data.FavoritesManager
+import com.pentadigital.calculator.viewmodels.ProfileViewModel
+import com.pentadigital.calculator.R
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun ProfileScreen(
     onNavigateBack: () -> Unit,
-    onNavigateToSettings: () -> Unit
+    onNavigateToSettings: () -> Unit,
+    profileViewModel: ProfileViewModel
 ) {
     val context = LocalContext.current
     val favoritesManager = remember { FavoritesManager.getInstance(context) }
     val favoritesCount by favoritesManager.favorites.collectAsState(initial = emptySet())
+    val calculationsCount by profileViewModel.calculationCount.collectAsState()
 
     // Animation for gradient background
     val infiniteTransition = rememberInfiniteTransition(label = "profile_bg")
@@ -110,7 +115,7 @@ fun ProfileScreen(
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 TechText(
-                    text = "PROFILE",
+                    text = stringResource(R.string.profile_title).uppercase(),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface
@@ -184,7 +189,7 @@ fun ProfileScreen(
                         Spacer(modifier = Modifier.height(16.dp))
 
                         TechText(
-                            text = "Cyberpunk User",
+                            text = stringResource(R.string.default_user_name),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurface
@@ -199,7 +204,7 @@ fun ProfileScreen(
                                 .padding(horizontal = 16.dp, vertical = 6.dp)
                         ) {
                             TechText(
-                                text = "PRO MEMBER",
+                                text = stringResource(R.string.pro_member).uppercase(),
                                 fontSize = 12.sp,
                                 color = NeonPurple,
                                 fontWeight = FontWeight.Bold
@@ -216,13 +221,13 @@ fun ProfileScreen(
                     ) {
                         ProfileStatCard(
                             modifier = Modifier.weight(1f),
-                            label = "Calculations",
-                            value = "1,248",
+                            label = stringResource(R.string.calculations_label),
+                            value = calculationsCount.toString(),
                             icon = Icons.Default.Settings // Using generic settings icon as cog/calculator placeholder
                         )
                         ProfileStatCard(
                             modifier = Modifier.weight(1f),
-                            label = "Favorites",
+                            label = stringResource(R.string.favorites_label),
                             value = favoritesCount.size.toString(),
                             icon = Icons.Default.Star
                         )
@@ -232,7 +237,7 @@ fun ProfileScreen(
                 // Menu Options
                 item {
                     Text(
-                        text = "SETTINGS & PRIVACY",
+                        text = stringResource(R.string.settings_privacy_header),
                         fontSize = 14.sp,
                         color = MaterialTheme.colorScheme.secondary,
                         fontWeight = FontWeight.Bold,
@@ -244,29 +249,29 @@ fun ProfileScreen(
                     ) {
                         ProfileMenuItem(
                             icon = Icons.Default.Settings,
-                            title = "App Settings",
-                            subtitle = "Theme, Haptics, Language",
+                            title = stringResource(R.string.app_settings_title),
+                            subtitle = stringResource(R.string.app_settings_desc),
                             onClick = onNavigateToSettings
                         )
                         
                         ProfileMenuItem(
                             icon = Icons.Outlined.Lock,
-                            title = "Privacy Policy",
-                            subtitle = "Data usage and protection",
+                            title = stringResource(R.string.privacy_policy_title),
+                            subtitle = stringResource(R.string.privacy_policy_desc),
                             onClick = { /* Open Privacy Policy */ }
                         )
                         
                         ProfileMenuItem(
                             icon = Icons.Default.Info,
-                            title = "Help & Support",
-                            subtitle = "FAQs and Contact",
+                            title = stringResource(R.string.help_support_title),
+                            subtitle = stringResource(R.string.help_support_desc),
                             onClick = { /* Open Help */ }
                         )
 
                         ProfileMenuItem(
                             icon = Icons.Default.Share,
-                            title = "Share App",
-                            subtitle = "Invite friends to join",
+                            title = stringResource(R.string.share_app_title),
+                            subtitle = stringResource(R.string.share_app_desc),
                             onClick = { /* Share App Intent */ }
                         )
                     }
@@ -294,7 +299,7 @@ fun ProfileScreen(
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Text(
-                            text = "LOG OUT",
+                            text = stringResource(R.string.logout).uppercase(),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
                         )

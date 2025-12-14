@@ -409,4 +409,27 @@
     <string name="frequency_monthly">Monthly</string>
     <string name="ci_share_body">Compound Interest Calculation:\nPrincipal: %1$s\nRate: %2$s%%\nTime: %3$s years\nFrequency: %4$s\nInterest: %5$s\nTotal: %6$s</string>
     <string name="ci_result_title">Compound Interest Result</string>
+    
+    <!-- Profile Screen -->
+    <string name="profile_title">Profile</string>
+    <string name="pro_member">Pro Member</string>
+    <string name="calculations_label">Calculations</string>
+    <string name="favorites_label">Favorites</string>
+    <string name="settings_privacy_header">Settings &amp; Privacy</string>
+    <string name="app_settings_title">App Settings</string>
+    <string name="app_settings_desc">Theme, Haptics, Language</string>
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_policy_desc">Data usage and protection</string>
+    <string name="help_support_title">Help &amp; Support</string>
+    <string name="help_support_desc">FAQs and Contact</string>
+    <string name="share_app_title">Share App</string>
+    <string name="share_app_desc">Invite friends to join</string>
+    <string name="logout">Log Out</string>
+    <string name="default_user_name">Cyberpunk User</string>
+
+    <!-- Body Fat Screen Additional -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Average</string>
+    <string name="obese_label">Obese</string>
+    <string name="essential_fat_label">Essential</string>
 </resources>

@@ -35,13 +35,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.layout.WindowInsets
 
 private fun sharePrepaymentResult(context: Context, state: LoanPrepaymentState) {
     val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
     val subject = context.getString(R.string.prepayment_share_subject)
     val body = context.getString(
         R.string.prepayment_share_body,
-        currencyFormat.format(state.loanAmount),
+        currencyFormat.format(state.loanAmount.toDoubleOrNull() ?: 0.0),
         currencyFormat.format(state.interestSaved),
         state.timeSavedMonths.toString()
     )
@@ -53,6 +54,7 @@ private fun sharePrepaymentResult(context: Context, state: LoanPrepaymentState) 
     }
     context.startActivity(Intent.createChooser(intent, "Share via"))
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -101,10 +103,12 @@ fun LoanPrepaymentScreen(
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         if (isLandscape) {
             Row(
@@ -172,16 +176,8 @@ private fun PrepaymentInputs(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             CyberpunkInput(
-                value = if (state.loanAmount == 0.0) "" else if (state.loanAmount % 1.0 == 0.0) state.loanAmount.toInt().toString() else state.loanAmount.toString(),
-                onValueChange = {
-                    if (it.isEmpty()) {
-                        onAction(LoanPrepaymentEvent.UpdateLoanAmount(0.0))
-                    } else {
-                        it.toDoubleOrNull()?.let { num ->
-                            onAction(LoanPrepaymentEvent.UpdateLoanAmount(num))
-                        }
-                    }
-                },
+                value = state.loanAmount,
+                onValueChange = { onAction(LoanPrepaymentEvent.UpdateLoanAmount(it)) },
                 label = stringResource(R.string.loan_amount).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(loanFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
@@ -192,16 +188,8 @@ private fun PrepaymentInputs(
             )
 
             CyberpunkInput(
-                value = if (state.interestRate == 0.0) "" else if (state.interestRate % 1.0 == 0.0) state.interestRate.toInt().toString() else state.interestRate.toString(),
-                onValueChange = {
-                    if (it.isEmpty()) {
-                        onAction(LoanPrepaymentEvent.UpdateInterestRate(0.0))
-                    } else {
-                        it.toDoubleOrNull()?.let { num ->
-                            onAction(LoanPrepaymentEvent.UpdateInterestRate(num))
-                        }
-                    }
-                },
+                value = state.interestRate,
+                onValueChange = { onAction(LoanPrepaymentEvent.UpdateInterestRate(it)) },
                 label = stringResource(R.string.interest_rate).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(interestFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
@@ -212,16 +200,8 @@ private fun PrepaymentInputs(
             )
 
             CyberpunkInput(
-                value = if (state.tenureYears == 0) "" else state.tenureYears.toString(),
-                onValueChange = {
-                    if (it.isEmpty()) {
-                        onAction(LoanPrepaymentEvent.UpdateTenure(0))
-                    } else {
-                        it.toIntOrNull()?.let { num ->
-                            onAction(LoanPrepaymentEvent.UpdateTenure(num))
-                        }
-                    }
-                },
+                value = state.tenureYears,
+                onValueChange = { onAction(LoanPrepaymentEvent.UpdateTenure(it)) },
                 label = stringResource(R.string.loan_tenure).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(tenureFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
@@ -249,16 +229,8 @@ private fun PrepaymentInputs(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             CyberpunkInput(
-                value = if (state.monthlyPrepayment == 0.0) "" else if (state.monthlyPrepayment % 1.0 == 0.0) state.monthlyPrepayment.toInt().toString() else state.monthlyPrepayment.toString(),
-                onValueChange = {
-                    if (it.isEmpty()) {
-                        onAction(LoanPrepaymentEvent.UpdateMonthlyPrepayment(0.0))
-                    } else {
-                        it.toDoubleOrNull()?.let { num ->
-                            onAction(LoanPrepaymentEvent.UpdateMonthlyPrepayment(num))
-                        }
-                    }
-                },
+                value = state.monthlyPrepayment,
+                onValueChange = { onAction(LoanPrepaymentEvent.UpdateMonthlyPrepayment(it)) },
                 label = stringResource(R.string.monthly_prepayment).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(monthlyPrepayFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
@@ -269,16 +241,8 @@ private fun PrepaymentInputs(
             )
 
             CyberpunkInput(
-                value = if (state.lumpsumPrepayment == 0.0) "" else if (state.lumpsumPrepayment % 1.0 == 0.0) state.lumpsumPrepayment.toInt().toString() else state.lumpsumPrepayment.toString(),
-                onValueChange = {
-                    if (it.isEmpty()) {
-                        onAction(LoanPrepaymentEvent.UpdateLumpsumPrepayment(0.0))
-                    } else {
-                        it.toDoubleOrNull()?.let { num ->
-                            onAction(LoanPrepaymentEvent.UpdateLumpsumPrepayment(num))
-                        }
-                    }
-                },
+                value = state.lumpsumPrepayment,
+                onValueChange = { onAction(LoanPrepaymentEvent.UpdateLumpsumPrepayment(it)) },
                 label = stringResource(R.string.lumpsum_prepayment).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(lumpsumPrepayFocus),
                 borderColor = MaterialTheme.colorScheme.primary,

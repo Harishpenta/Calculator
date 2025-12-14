@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModel
 import kotlin.math.pow
 
 data class SipState(
-    val monthlyInvestment: Double = 5000.0,
-    val expectedReturnRate: Double = 12.0,
-    val timePeriodYears: Int = 10,
+    val monthlyInvestment: String = "5000.0",
+    val expectedReturnRate: String = "12.0",
+    val timePeriodYears: String = "10",
     val investedAmount: Double = 0.0,
     val estimatedReturns: Double = 0.0,
     val totalValue: Double = 0.0
@@ -41,12 +41,15 @@ class SipViewModel : ViewModel() {
     }
 
     private fun calculateSip() {
-        val P = state.monthlyInvestment
-        val i = (state.expectedReturnRate / 100) / 12
-        val n = state.timePeriodYears * 12
+        val P = state.monthlyInvestment.toDoubleOrNull() ?: 0.0
+        val r = state.expectedReturnRate.toDoubleOrNull() ?: 0.0
+        val years = state.timePeriodYears.toIntOrNull() ?: 0
+        
+        val i = (r / 100) / 12
+        val n = years * 12
 
         // M = P × ({[1 + i]^n - 1} / i) × (1 + i)
-        val M = P * ((1 + i).pow(n) - 1) / i * (1 + i)
+        val M = if (i != 0.0) P * ((1 + i).pow(n) - 1) / i * (1 + i) else P * n
         val invested = P * n
         val returns = M - invested
 
@@ -59,7 +62,7 @@ class SipViewModel : ViewModel() {
 }
 
 sealed class SipEvent {
-    data class UpdateInvestment(val amount: Double) : SipEvent()
-    data class UpdateReturnRate(val rate: Double) : SipEvent()
-    data class UpdateTimePeriod(val years: Int) : SipEvent()
+    data class UpdateInvestment(val amount: String) : SipEvent()
+    data class UpdateReturnRate(val rate: String) : SipEvent()
+    data class UpdateTimePeriod(val years: String) : SipEvent()
 }

@@ -64,10 +64,12 @@ fun BodyFatScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
-                )
+                ),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         if (isLandscape) {
             Row(
@@ -371,10 +373,10 @@ private fun BodyFatLegend(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        LegendItem(color = Color(0xFF00E5FF), label = "ESSENTIAL")
-        LegendItem(color = NeonGreen, label = "FITNESS")
-        LegendItem(color = Color(0xFFFFB74D), label = "AVERAGE")
-        LegendItem(color = NeonRed, label = "OBESE")
+        LegendItem(color = Color(0xFF00E5FF), label = stringResource(R.string.essential_fat_label))
+        LegendItem(color = NeonGreen, label = stringResource(R.string.fitness_label))
+        LegendItem(color = Color(0xFFFFB74D), label = stringResource(R.string.average_label))
+        LegendItem(color = NeonRed, label = stringResource(R.string.obese_label))
     }
 }
 

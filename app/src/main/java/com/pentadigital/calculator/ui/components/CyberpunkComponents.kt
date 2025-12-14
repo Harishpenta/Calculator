@@ -172,6 +172,7 @@ fun TechText(
     color: Color = MaterialTheme.colorScheme.onBackground,
     fontSize: androidx.compose.ui.unit.TextUnit = 14.sp,
     fontWeight: FontWeight = FontWeight.Normal,
+    letterSpacing: androidx.compose.ui.unit.TextUnit = 0.5.sp, // Added parameter
     textAlign: androidx.compose.ui.text.style.TextAlign? = null,
     maxLines: Int = Int.MAX_VALUE,
     overflow: androidx.compose.ui.text.style.TextOverflow = androidx.compose.ui.text.style.TextOverflow.Clip,
@@ -184,7 +185,7 @@ fun TechText(
         fontSize = fontSize,
         fontWeight = fontWeight,
         fontFamily = FontFamily.Monospace,
-        letterSpacing = 0.5.sp,
+        letterSpacing = letterSpacing, // Use parameter
         textAlign = textAlign,
         maxLines = maxLines,
         overflow = overflow,

@@ -236,4 +236,40 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Enkel Rente</string>
+    <string name="compound_interest_title">Rentesrente</string>
+    <string name="loan_prepayment_title">Lån Forskuddsbetaling</string>
+    <string name="goal_planner_title">Målplanlegger</string>
+    <string name="discount_calculator_title">Rabattkalkulator</string>
+    <string name="tip_calculator_title">Tips</string>
+    <string name="fuel_cost_calculator_title">Drivstoffkostnad</string>
+    <string name="unit_price_comparator_title">Enhetsprissammenligning</string>
+    <string name="date_difference_title">Datoforskjell</string>
+    <string name="time_calculator_title">Tidskalkulator</string>
+    <string name="tdee_title">TDEE-kalkulator</string>
+    <string name="water_intake_title">Vanninntak</string>
+    <string name="body_fat_title">Kroppsfett</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profil</string>
+    <string name="pro_member">Pro-medlem</string>
+    <string name="calculations_label">Beregninger</string>
+    <string name="favorites_label">Favoritter</string>
+    <string name="settings_privacy_header">Innstillinger</string>
+    <string name="app_settings_title">Appinnstillinger</string>
+    <string name="app_settings_desc">Tema, Språk</string>
+    <string name="privacy_policy_title">Personvernerklæring</string>
+    <string name="privacy_policy_desc">Databruk</string>
+    <string name="help_support_title">Hjelp</string>
+    <string name="help_support_desc">Kontakt</string>
+    <string name="share_app_title">Del App</string>
+    <string name="share_app_desc">Inviter venner</string>
+    <string name="logout">Logg ut</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Gjennomsnitt</string>
+    <string name="obese_label">Fedme</string>
+    <string name="essential_fat_label">Vesentlig</string>
 </resources>

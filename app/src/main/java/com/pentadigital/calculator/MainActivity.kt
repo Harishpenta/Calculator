@@ -97,6 +97,7 @@ class MainActivity : ComponentActivity() {
         val bodyFatViewModel: BodyFatViewModel = viewModel()
         val waterIntakeViewModel: WaterIntakeViewModel = viewModel()
         val themeViewModel: ThemeViewModel = viewModel(factory = ThemeViewModelFactory(applicationContext))
+        val profileViewModel: ProfileViewModel = viewModel(factory = ProfileViewModelFactory(repository))
 
             // Determine if we should show bottom navigation
             val showBottomNav = currentRoute in listOf(
@@ -183,6 +184,7 @@ val configuration = LocalConfiguration.current
                                             bodyFatViewModel = bodyFatViewModel,
                                             waterIntakeViewModel = waterIntakeViewModel,
                                             themeViewModel = themeViewModel,
+                                            profileViewModel = profileViewModel,
                                             onOpenDrawer = {
                                                 navController.navigate(Screen.Home.route) {
                                                     popUpTo(Screen.Home.route) { inclusive = true }

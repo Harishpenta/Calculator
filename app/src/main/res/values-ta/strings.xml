@@ -236,4 +236,40 @@
     <string name="cat_general">General</string>
     <string name="cat_date_time_title">Date &amp; Time</string>
     <string name="cat_unit_converter_title">Unit Converter</string>
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">எளிய வட்டி</string>
+    <string name="compound_interest_title">கூட்டு வட்டி</string>
+    <string name="loan_prepayment_title">கடன் முன்பணம்</string>
+    <string name="goal_planner_title">இலக்கு திட்டமிடல்</string>
+    <string name="discount_calculator_title">தள்ளுபடி கால்குலேட்டர்</string>
+    <string name="tip_calculator_title">டிப்ஸ் கால்குலேட்டர்</string>
+    <string name="fuel_cost_calculator_title">எரிபொருள் செலவு</string>
+    <string name="unit_price_comparator_title">விலை ஒப்பீடு</string>
+    <string name="date_difference_title">தேதி வேறுபாடு</string>
+    <string name="time_calculator_title">நேர கால்குலேட்டர்</string>
+    <string name="tdee_title">TDEE கால்குலேட்டர்</string>
+    <string name="water_intake_title">நீர் அளவு</string>
+    <string name="body_fat_title">உடல் கொழுப்பு</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">சுயவிவரம்</string>
+    <string name="pro_member">ப்ரோ உறுப்பினர்</string>
+    <string name="calculations_label">கணக்கீடுகள்</string>
+    <string name="favorites_label">பிடித்தவை</string>
+    <string name="settings_privacy_header">அமைப்புகள் &amp; தனியுரிமை</string>
+    <string name="app_settings_title">பயன்பாட்டு அமைப்புகள்</string>
+    <string name="app_settings_desc">தீம், மொழி</string>
+    <string name="privacy_policy_title">தனியுரிமைக் கொள்கை</string>
+    <string name="privacy_policy_desc">தரவு பயன்பாடு</string>
+    <string name="help_support_title">உதவி &amp; ஆதரவு</string>
+    <string name="help_support_desc">தொடர்புக்கு</string>
+    <string name="share_app_title">பயன்பாட்டைப் பகிரவும்</string>
+    <string name="share_app_desc">நண்பர்களை அழைக்கவும்</string>
+    <string name="logout">வெளியேறு</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">உடற்தகுதி</string>
+    <string name="average_label">சராசரி</string>
+    <string name="obese_label">பருமன்</string>
+    <string name="essential_fat_label">அவசியம்</string>
 </resources>

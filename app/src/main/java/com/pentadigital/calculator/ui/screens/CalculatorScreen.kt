@@ -339,7 +339,10 @@ private fun DisplayArea(
         }
         
         // Secondary Text (Formula) - Now Responsive
-        val secondaryText = if (state.operation != null) "${formatNumber(state.number1)} ${state.operation.symbol}" else ""
+        val secondaryText = if (state.operation != null) 
+            "${formatNumber(state.number1)} ${state.operation.symbol}" 
+        else 
+            state.lastExpression
         ResponsiveText(
             text = secondaryText,
             modifier = Modifier.fillMaxWidth(),

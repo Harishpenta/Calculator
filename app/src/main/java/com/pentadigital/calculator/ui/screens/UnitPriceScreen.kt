@@ -31,6 +31,8 @@ import com.pentadigital.calculator.viewmodels.UnitPriceState
 import java.text.NumberFormat
 import java.util.Locale
 
+import androidx.compose.foundation.layout.WindowInsets
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UnitPriceScreen(
@@ -63,10 +65,12 @@ fun UnitPriceScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
-                )
+                ),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         if (isLandscape) {
             Row(
