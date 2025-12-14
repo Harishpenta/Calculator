@@ -232,7 +232,43 @@
     <string name="no_favorites_title">No favorites yet</string>
     <string name="no_favorites_desc">Add your frequently used calculators\nfor quick access</string>
     <string name="calc_geometry">Geometry</string>
-    <string name="cat_general">General</string>
-    <string name="cat_date_time_title">Date &amp; Time</string>
-    <string name="cat_unit_converter_title">Unit Converter</string>
+    <string name="cat_general">સામાન્ય</string>
+    <string name="cat_date_time_title">તારીખ અને સમય</string>
+    <string name="cat_unit_converter_title">એકમ કન્વર્ટર</string>
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">સાદું વ્યાજ</string>
+    <string name="compound_interest_title">ચક્રવૃદ્ધિ વ્યાજ</string>
+    <string name="loan_prepayment_title">લોન પૂર્વ ચુકવણી</string>
+    <string name="goal_planner_title">ધ્યેય આયોજક</string>
+    <string name="discount_calculator_title">ડિસ્કાઉન્ટ કેલ્ક્યુલેટર</string>
+    <string name="tip_calculator_title">ટીપ કેલ્ક્યુલેટર</string>
+    <string name="fuel_cost_calculator_title">બળતણ ખર્ચ</string>
+    <string name="unit_price_comparator_title">એકમ કિંમત તુલના</string>
+    <string name="date_difference_title">તારીખ તફાવત</string>
+    <string name="time_calculator_title">સમય કેલ્ક્યુલેટર</string>
+    <string name="tdee_title">TDEE કેલ્ક્યુલેટર</string>
+    <string name="water_intake_title">પાણીનું સેવન</string>
+    <string name="body_fat_title">શરીરની ચરબી</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">પ્રોફાઇલ</string>
+    <string name="pro_member">પ્રો સભ્ય</string>
+    <string name="calculations_label">ગણતરીઓ</string>
+    <string name="favorites_label">મનપસંદ</string>
+    <string name="settings_privacy_header">સેટિંગ્સ અને ગોપનીયતા</string>
+    <string name="app_settings_title">એપ્લિકેશન સેટિંગ્સ</string>
+    <string name="app_settings_desc">થીમ, ભાષા</string>
+    <string name="privacy_policy_title">ગોપનીયતા નીતિ</string>
+    <string name="privacy_policy_desc">ડેટા વપરાશ</string>
+    <string name="help_support_title">મદદ અને સમર્થન</string>
+    <string name="help_support_desc">સંપર્ક</string>
+    <string name="share_app_title">એપ્લિકેશન શેર કરો</string>
+    <string name="share_app_desc">મિત્રોને આમંત્રિત કરો</string>
+    <string name="logout">લોગ આઉટ</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">ફિટનેસ</string>
+    <string name="average_label">સરેરાશ</string>
+    <string name="obese_label">મેદસ્વી</string>
+    <string name="essential_fat_label">આવશ્યક</string>
 </resources>

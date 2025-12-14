@@ -8,6 +8,7 @@ data class CalculatorState(
     val memory: String = "",
     val errorMessage: String? = null,
     val isResultDisplayed: Boolean = false,
+    val lastExpression: String = "",
     val isDecoding: Boolean = false
 )
 

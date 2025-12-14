@@ -232,7 +232,43 @@
     <string name="no_favorites_title">No favorites yet</string>
     <string name="no_favorites_desc">Add your frequently used calculators\nfor quick access</string>
     <string name="calc_geometry">Geometry</string>
-    <string name="cat_general">General</string>
-    <string name="cat_date_time_title">Date &amp; Time</string>
-    <string name="cat_unit_converter_title">Unit Converter</string>
+    <string name="cat_general">Général</string>
+    <string name="cat_date_time_title">Date et Heure</string>
+    <string name="cat_unit_converter_title">Convertisseur d\'unités</string>
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Intérêt Simple</string>
+    <string name="compound_interest_title">Intérêts Composés</string>
+    <string name="loan_prepayment_title">Paiement Anticipé</string>
+    <string name="goal_planner_title">Planificateur d\'Objectifs</string>
+    <string name="discount_calculator_title">Calculatrice de Remise</string>
+    <string name="tip_calculator_title">Calculatrice de Pourboire</string>
+    <string name="fuel_cost_calculator_title">Coût du Carburant</string>
+    <string name="unit_price_comparator_title">Comparateur de Prix</string>
+    <string name="date_difference_title">Différence de Date</string>
+    <string name="time_calculator_title">Calculatrice de Temps</string>
+    <string name="tdee_title">Calculatrice TDEE</string>
+    <string name="water_intake_title">Consommation d\'Eau</string>
+    <string name="body_fat_title">Graisse Corporelle</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profil</string>
+    <string name="pro_member">Membre Pro</string>
+    <string name="calculations_label">Calculs</string>
+    <string name="favorites_label">Favoris</string>
+    <string name="settings_privacy_header">Paramètres et Confidentialité</string>
+    <string name="app_settings_title">Paramètres de l\'App</string>
+    <string name="app_settings_desc">Thème, Langue</string>
+    <string name="privacy_policy_title">Politique de Confidentialité</string>
+    <string name="privacy_policy_desc">Protection des données</string>
+    <string name="help_support_title">Aide et Support</string>
+    <string name="help_support_desc">FAQ et Contact</string>
+    <string name="share_app_title">Partager l\'App</string>
+    <string name="share_app_desc">Inviter des amis</string>
+    <string name="logout">Se Déconnecter</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Forme</string>
+    <string name="average_label">Moyenne</string>
+    <string name="obese_label">Obèse</string>
+    <string name="essential_fat_label">Essentiel</string>
 </resources>

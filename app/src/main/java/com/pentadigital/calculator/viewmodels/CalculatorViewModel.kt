@@ -104,7 +104,8 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
                     operation = null,
                     errorMessage = null,
                     isResultDisplayed = true,
-                    isDecoding = true // Trigger decoding state
+                    isDecoding = true, // Trigger decoding state
+                    lastExpression = expression // Set the expression for display
                 )
 
                 // Decoding Animation
@@ -188,7 +189,8 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
             state = state.copy(
                 number1 = "0.",
                 isResultDisplayed = false,
-                errorMessage = null
+                errorMessage = null,
+                lastExpression = "" // Clear last expression when starting decimal
             )
             return
         }
@@ -226,7 +228,8 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
             state = state.copy(
                 number1 = number.toString(),
                 isResultDisplayed = false,
-                errorMessage = null
+                errorMessage = null,
+                lastExpression = "" // Clear last expression when starting new number
             )
             return
         }
@@ -287,7 +290,8 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
 
             state = state.copy(
                 number1 = resultString,
-                errorMessage = null
+                errorMessage = null,
+                lastExpression = expression
             )
         } else {
             state = state.copy(
@@ -315,7 +319,8 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
 
             state = state.copy(
                 number1 = resultString,
-                errorMessage = null
+                errorMessage = null,
+                lastExpression = expression
             )
         } else {
             state = state.copy(

@@ -35,15 +35,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.layout.WindowInsets
 
 private fun shareGoalResult(context: Context, state: GoalPlannerState) {
     val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
     val subject = context.getString(R.string.goal_share_subject)
     val body = context.getString(
         R.string.goal_share_body,
-        currencyFormat.format(state.targetAmount),
+        currencyFormat.format(state.targetAmount.toDoubleOrNull() ?: 0.0),
         currencyFormat.format(state.requiredMonthlyInvestment),
-        state.timePeriodYears.toString()
+        state.timePeriodYears
     )
     
     val intent = Intent(Intent.ACTION_SEND).apply {
@@ -53,6 +54,7 @@ private fun shareGoalResult(context: Context, state: GoalPlannerState) {
     }
     context.startActivity(Intent.createChooser(intent, "Share via"))
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -101,10 +103,12 @@ fun GoalPlannerScreen(
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         if (isLandscape) {
             Row(
@@ -170,11 +174,8 @@ private fun GoalInputs(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             CyberpunkInput(
-                value = if (state.targetAmount == 0.0) "" else if (state.targetAmount % 1.0 == 0.0) state.targetAmount.toLong().toString() else state.targetAmount.toString(),
-                onValueChange = { 
-                    if (it.isEmpty()) onAction(GoalPlannerEvent.UpdateTargetAmount(0.0))
-                    else it.toDoubleOrNull()?.let { num -> onAction(GoalPlannerEvent.UpdateTargetAmount(num)) }
-                },
+                value = state.targetAmount,
+                onValueChange = { onAction(GoalPlannerEvent.UpdateTargetAmount(it)) },
                 label = stringResource(R.string.target_amount).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(targetFocus),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
@@ -182,11 +183,8 @@ private fun GoalInputs(
             )
 
             CyberpunkInput(
-                value = if (state.timePeriodYears == 0) "" else state.timePeriodYears.toString(),
-                onValueChange = { 
-                    if (it.isEmpty()) onAction(GoalPlannerEvent.UpdateTimePeriod(0))
-                    else it.toIntOrNull()?.let { num -> onAction(GoalPlannerEvent.UpdateTimePeriod(num)) }
-                },
+                value = state.timePeriodYears,
+                onValueChange = { onAction(GoalPlannerEvent.UpdateTimePeriod(it)) },
                 label = stringResource(R.string.time_period).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(timeFocus),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
@@ -194,12 +192,9 @@ private fun GoalInputs(
             )
 
             CyberpunkInput(
-                value = if (state.expectedReturnRate == 0.0) "" else state.expectedReturnRate.toString(),
-                onValueChange = { 
-                    if (it.isEmpty()) onAction(GoalPlannerEvent.UpdateReturnRate(0.0))
-                    else it.toDoubleOrNull()?.let { num -> onAction(GoalPlannerEvent.UpdateReturnRate(num)) }
-                },
-                label = stringResource(R.string.expected_return).uppercase(),
+                value = state.expectedReturnRate,
+                onValueChange = { onAction(GoalPlannerEvent.UpdateReturnRate(it)) },
+                label = stringResource(R.string.expected_return_rate).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(rateFocus),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                 borderColor = MaterialTheme.colorScheme.primary

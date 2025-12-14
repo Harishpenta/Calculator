@@ -237,4 +237,40 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Enkel Ränta</string>
+    <string name="compound_interest_title">Ränta på Ränta</string>
+    <string name="loan_prepayment_title">Lån Förskottsbetalning</string>
+    <string name="goal_planner_title">Målplanerare</string>
+    <string name="discount_calculator_title">Rabattkalkylator</string>
+    <string name="tip_calculator_title">Drickskalkylator</string>
+    <string name="fuel_cost_calculator_title">Bränslekostnad</string>
+    <string name="unit_price_comparator_title">Enhetsprisjämförelse</string>
+    <string name="date_difference_title">Datumskillnad</string>
+    <string name="time_calculator_title">Tidskalkylator</string>
+    <string name="tdee_title">TDEE-kalkylator</string>
+    <string name="water_intake_title">Vattenintag</string>
+    <string name="body_fat_title">Kroppsfett</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profil</string>
+    <string name="pro_member">Pro-medlem</string>
+    <string name="calculations_label">Beräkningar</string>
+    <string name="favorites_label">Favoriter</string>
+    <string name="settings_privacy_header">Inställningar</string>
+    <string name="app_settings_title">Appinställningar</string>
+    <string name="app_settings_desc">Tema, Språk</string>
+    <string name="privacy_policy_title">Sekretesspolicy</string>
+    <string name="privacy_policy_desc">Dataanvändning</string>
+    <string name="help_support_title">Hjälp</string>
+    <string name="help_support_desc">Kontakt</string>
+    <string name="share_app_title">Dela App</string>
+    <string name="share_app_desc">Bjud in vänner</string>
+    <string name="logout">Logga ut</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Medel</string>
+    <string name="obese_label">Fetma</string>
+    <string name="essential_fat_label">Väsentlig</string>
 </resources>

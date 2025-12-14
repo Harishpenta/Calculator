@@ -7,11 +7,11 @@ import androidx.lifecycle.ViewModel
 import kotlin.math.pow
 
 data class LoanPrepaymentState(
-    val loanAmount: Double = 5000000.0,
-    val interestRate: Double = 9.0,
-    val tenureYears: Int = 20,
-    val monthlyPrepayment: Double = 0.0,
-    val lumpsumPrepayment: Double = 0.0,
+    val loanAmount: String = "5000000.0",
+    val interestRate: String = "9.0",
+    val tenureYears: String = "20",
+    val monthlyPrepayment: String = "0.0",
+    val lumpsumPrepayment: String = "0.0",
     
     // Results
     val originalEmi: Double = 0.0,
@@ -59,15 +59,20 @@ class LoanPrepaymentViewModel : ViewModel() {
     }
 
     private fun calculatePrepayment() {
-        val P = state.loanAmount
-        val r = (state.interestRate / 100) / 12
-        val n = state.tenureYears * 12
+        val P = state.loanAmount.toDoubleOrNull() ?: 0.0
+        val rVal = state.interestRate.toDoubleOrNull() ?: 0.0
+        val years = state.tenureYears.toIntOrNull() ?: 0
+        
+        val r = (rVal / 100) / 12
+        val n = years * 12
         
         // 1. Calculate Original EMI
-        val originalEmi = if (r != 0.0) {
+        val originalEmi = if (r != 0.0 && n > 0) {
             (P * r * (1 + r).pow(n)) / ((1 + r).pow(n) - 1)
-        } else {
+        } else if (n > 0) {
             P / n
+        } else {
+            0.0
         }
 
         val originalTotalPayment = originalEmi * n
@@ -78,17 +83,10 @@ class LoanPrepaymentViewModel : ViewModel() {
         var totalInterestPaid = 0.0
         var monthsElapsed = 0
         
-        // Apply lumpsum at the start (simplified for this version, or could be applied at specific month)
-        // For this feature, let's assume lumpsum is paid at the beginning or spread? 
-        // Usually lumpsum is a one-time payment. Let's assume it's paid after 1st month or immediately reducing principal.
-        // Let's treat lumpsum as an immediate reduction for simplicity, or we can add a "Lumpsum Month" input later.
-        // For now, let's assume lumpsum is paid along with the first EMI for maximum impact, or we can just subtract it from Principal if it's a "down payment" style, 
-        // but "Prepayment" usually implies during the loan.
-        // Let's apply lumpsum at month 1 for better realism.
+        val monthlyPrepay = state.monthlyPrepayment.toDoubleOrNull() ?: 0.0
+        val lumpsumPrepay = state.lumpsumPrepayment.toDoubleOrNull() ?: 0.0
         
-        // Actually, let's stick to a standard amortization loop.
-        
-        while (balance > 0 && monthsElapsed < n * 2) { // Cap at 2x tenure to prevent infinite loops if logic fails
+        while (balance > 0 && monthsElapsed < n * 2 && n > 0) { // Cap at 2x tenure
             // Interest for this month
             val interest = balance * r
             totalInterestPaid += interest
@@ -98,9 +96,9 @@ class LoanPrepaymentViewModel : ViewModel() {
             
             // Total payment this month = EMI + Monthly Prepayment
             // If it's month 1, add lumpsum too (simplification)
-            var payment = originalEmi + state.monthlyPrepayment
+            var payment = originalEmi + monthlyPrepay
             if (monthsElapsed == 0) {
-                payment += state.lumpsumPrepayment
+                payment += lumpsumPrepay
             }
             
             // Principal paid
@@ -109,8 +107,6 @@ class LoanPrepaymentViewModel : ViewModel() {
             // Check if we are overpaying the balance
             if (principalPaid > balance) {
                 principalPaid = balance
-                // Adjust payment for last month
-                // payment = balance + interest
             }
             
             balance -= principalPaid
@@ -139,9 +135,9 @@ class LoanPrepaymentViewModel : ViewModel() {
 }
 
 sealed class LoanPrepaymentEvent {
-    data class UpdateLoanAmount(val amount: Double) : LoanPrepaymentEvent()
-    data class UpdateInterestRate(val rate: Double) : LoanPrepaymentEvent()
-    data class UpdateTenure(val years: Int) : LoanPrepaymentEvent()
-    data class UpdateMonthlyPrepayment(val amount: Double) : LoanPrepaymentEvent()
-    data class UpdateLumpsumPrepayment(val amount: Double) : LoanPrepaymentEvent()
+    data class UpdateLoanAmount(val amount: String) : LoanPrepaymentEvent()
+    data class UpdateInterestRate(val rate: String) : LoanPrepaymentEvent()
+    data class UpdateTenure(val years: String) : LoanPrepaymentEvent()
+    data class UpdateMonthlyPrepayment(val amount: String) : LoanPrepaymentEvent()
+    data class UpdateLumpsumPrepayment(val amount: String) : LoanPrepaymentEvent()
 }

@@ -234,7 +234,8 @@ fun HomeScreen(
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         // Center content on large screens
         Box(
@@ -557,68 +558,52 @@ private fun CompactCalculatorGridItem(
 @Composable
 private fun HeaderSection(
     onSettingsClick: () -> Unit,
-    onProfileClick: () -> Unit,
+    onProfileClick: () -> Unit, // Kept for compatibility but unused for now
     horizontalPadding: Dp = 20.dp
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPadding)
-            .padding(top = 16.dp),
+            .padding(top = 8.dp, bottom = 8.dp), // Reduced top padding to 8.dp
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.clickable { onProfileClick() }
+        // Welcome Text Section (Profile Icon Hidden)
+        Column(
+            modifier = Modifier.weight(1f) // Allow text to take available space
         ) {
-            // Profile Avatar (Cyberpunk Style)
-            Box(
-                modifier = Modifier
-                    .size(56.dp)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.surface)
-                    .border(2.dp, MaterialTheme.colorScheme.primary, CircleShape)
-                    .shadow(8.dp, CircleShape, spotColor = MaterialTheme.colorScheme.primary),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "👤",
-                    fontSize = 24.sp
-                )
-            }
-            
-            Spacer(modifier = Modifier.width(12.dp))
-            
-            Column {
-                TechText(
-                    text = stringResource(R.string.welcome).uppercase(),
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.Bold
-                )
-                TechText(
-                    text = stringResource(R.string.app_title_pro).uppercase(),
-                    fontSize = 20.sp,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    fontWeight = FontWeight.Bold
-                )
-            }
+            TechText(
+                text = stringResource(R.string.welcome).uppercase(),
+                fontSize = 14.sp, // Slightly larger
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 1.sp
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            TechText(
+                text = stringResource(R.string.app_title_pro).uppercase(),
+                fontSize = 28.sp, // Much larger for "Cool UI" impact
+                color = MaterialTheme.colorScheme.onSurface,
+                fontWeight = FontWeight.Black, // Heavier weight
+                letterSpacing = 0.5.sp
+            )
         }
         
         // Settings Icon
         IconButton(
             onClick = onSettingsClick,
             modifier = Modifier
-                .size(44.dp)
+                .size(48.dp) // Slightly larger touch target
                 .clip(CircleShape)
                 .background(MaterialTheme.colorScheme.surface)
-                .border(1.dp, MaterialTheme.colorScheme.primary, CircleShape)
+                .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f), CircleShape)
         ) {
             Icon(
                 imageVector = Icons.Outlined.Settings,
                 contentDescription = stringResource(R.string.settings),
-                tint = MaterialTheme.colorScheme.primary
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(24.dp)
             )
         }
     }

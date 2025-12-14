@@ -43,6 +43,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import java.text.NumberFormat
 import java.util.Locale
 
+import androidx.compose.foundation.layout.WindowInsets
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SipScreen(
@@ -91,10 +93,12 @@ fun SipScreen(
                         Icon(Icons.Default.Share, contentDescription = shareIconDesc, tint = MaterialTheme.colorScheme.primary)
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         val isLandscape = isLandscape()
 
@@ -163,16 +167,8 @@ private fun SipInputs(
         ) {
             // Monthly Investment
             CyberpunkInput(
-                value = if (state.monthlyInvestment == 0.0) "" else if (state.monthlyInvestment % 1.0 == 0.0) state.monthlyInvestment.toInt().toString() else state.monthlyInvestment.toString(),
-                onValueChange = {
-                    if (it.isEmpty()) {
-                        onAction(SipEvent.UpdateInvestment(0.0))
-                    } else {
-                        it.toDoubleOrNull()?.let { num ->
-                            onAction(SipEvent.UpdateInvestment(num))
-                        }
-                    }
-                },
+                value = state.monthlyInvestment,
+                onValueChange = { onAction(SipEvent.UpdateInvestment(it)) },
                 label = stringResource(com.pentadigital.calculator.R.string.monthly_investment).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(investmentFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
@@ -184,16 +180,8 @@ private fun SipInputs(
 
             // Expected Return Rate
             CyberpunkInput(
-                value = if (state.expectedReturnRate == 0.0) "" else if (state.expectedReturnRate % 1.0 == 0.0) state.expectedReturnRate.toInt().toString() else state.expectedReturnRate.toString(),
-                onValueChange = {
-                    if (it.isEmpty()) {
-                        onAction(SipEvent.UpdateReturnRate(0.0))
-                    } else {
-                        it.toDoubleOrNull()?.let { num ->
-                            onAction(SipEvent.UpdateReturnRate(num))
-                        }
-                    }
-                },
+                value = state.expectedReturnRate,
+                onValueChange = { onAction(SipEvent.UpdateReturnRate(it)) },
                 label = stringResource(com.pentadigital.calculator.R.string.expected_return_rate).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(returnFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
@@ -205,16 +193,8 @@ private fun SipInputs(
 
             // Time Period
             CyberpunkInput(
-                value = if (state.timePeriodYears == 0) "" else state.timePeriodYears.toString(),
-                onValueChange = {
-                    if (it.isEmpty()) {
-                        onAction(SipEvent.UpdateTimePeriod(0))
-                    } else {
-                        it.toIntOrNull()?.let { num ->
-                            onAction(SipEvent.UpdateTimePeriod(num))
-                        }
-                    }
-                },
+                value = state.timePeriodYears,
+                onValueChange = { onAction(SipEvent.UpdateTimePeriod(it)) },
                 label = stringResource(com.pentadigital.calculator.R.string.time_period).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(timeFocus),
                 borderColor = MaterialTheme.colorScheme.primary,

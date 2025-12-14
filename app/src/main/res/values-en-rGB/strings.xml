@@ -144,4 +144,40 @@
     <string name="error">Error</string>
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Simple Interest</string>
+    <string name="compound_interest_title">Compound Interest</string>
+    <string name="loan_prepayment_title">Loan Prepayment</string>
+    <string name="goal_planner_title">Goal Planner</string>
+    <string name="discount_calculator_title">Discount Calculator</string>
+    <string name="tip_calculator_title">Tip Calculator</string>
+    <string name="fuel_cost_calculator_title">Fuel Cost Calculator</string>
+    <string name="unit_price_comparator_title">Unit Price Comparator</string>
+    <string name="date_difference_title">Date Difference</string>
+    <string name="time_calculator_title">Time Calculator</string>
+    <string name="tdee_title">TDEE Calculator</string>
+    <string name="water_intake_title">Water Intake Calculator</string>
+    <string name="body_fat_title">Body Fat Calculator</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profile</string>
+    <string name="pro_member">Pro Member</string>
+    <string name="calculations_label">Calculations</string>
+    <string name="favorites_label">Favourites</string>
+    <string name="settings_privacy_header">Settings &amp; Privacy</string>
+    <string name="app_settings_title">App Settings</string>
+    <string name="app_settings_desc">Theme, Haptics, Language</string>
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_policy_desc">Data usage and protection</string>
+    <string name="help_support_title">Help &amp; Support</string>
+    <string name="help_support_desc">FAQs and Contact</string>
+    <string name="share_app_title">Share App</string>
+    <string name="share_app_desc">Invite friends to join</string>
+    <string name="logout">Log Out</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Average</string>
+    <string name="obese_label">Obese</string>
+    <string name="essential_fat_label">Essential</string>
 </resources>

@@ -225,7 +225,43 @@
     <string name="no_favorites_title">No favorites yet</string>
     <string name="no_favorites_desc">Add your frequently used calculators\nfor quick access</string>
     <string name="calc_geometry">Geometry</string>
-    <string name="cat_general">General</string>
-    <string name="cat_date_time_title">Date &amp; Time</string>
-    <string name="cat_unit_converter_title">Unit Converter</string>
+    <string name="cat_general">Generelt</string>
+    <string name="cat_date_time_title">Dato &amp; Tid</string>
+    <string name="cat_unit_converter_title">Enhedsomregner</string>
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Rente</string>
+    <string name="compound_interest_title">Renteudbytte</string>
+    <string name="loan_prepayment_title">Lån Forudbetaling</string>
+    <string name="goal_planner_title">Mål Planlægger</string>
+    <string name="discount_calculator_title">Rabatberegner</string>
+    <string name="tip_calculator_title">Drikkepenge</string>
+    <string name="fuel_cost_calculator_title">Brændstofomkostninger</string>
+    <string name="unit_price_comparator_title">Enhedsprissammenlign</string>
+    <string name="date_difference_title">Datoforskel</string>
+    <string name="time_calculator_title">Tidsberegner</string>
+    <string name="tdee_title">TDEE-beregner</string>
+    <string name="water_intake_title">Vandindtag</string>
+    <string name="body_fat_title">Kropsfedt</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profil</string>
+    <string name="pro_member">Pro Medlem</string>
+    <string name="calculations_label">Beregninger</string>
+    <string name="favorites_label">Favoritter</string>
+    <string name="settings_privacy_header">Indstillinger &amp; Privatliv</string>
+    <string name="app_settings_title">Appindstillinger</string>
+    <string name="app_settings_desc">Tema, Sprog</string>
+    <string name="privacy_policy_title">Privatlivspolitik</string>
+    <string name="privacy_policy_desc">Databrug</string>
+    <string name="help_support_title">Hjælp &amp; Support</string>
+    <string name="help_support_desc">Kontakt</string>
+    <string name="share_app_title">Del App</string>
+    <string name="share_app_desc">Inviter venner</string>
+    <string name="logout">Log ud</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Gennemsnit</string>
+    <string name="obese_label">Fedme</string>
+    <string name="essential_fat_label">Væsentlig</string>
 </resources>

@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 data class CurrencyState(
-    val amount: Double = 1.0,
+    val amount: String = "1.0",
     val fromCurrency: String = "USD",
     val toCurrency: String = "INR",
     val convertedAmount: Double = 0.0
@@ -58,7 +58,8 @@ class CurrencyViewModel : ViewModel() {
         val toRate = rates[state.toCurrency] ?: 1.0
         
         // Convert to USD first, then to target currency
-        val amountInUsd = state.amount / fromRate
+        val amountVal = state.amount.toDoubleOrNull() ?: 0.0
+        val amountInUsd = amountVal / fromRate
         val finalAmount = amountInUsd * toRate
         
         state = state.copy(convertedAmount = finalAmount)
@@ -66,7 +67,7 @@ class CurrencyViewModel : ViewModel() {
 }
 
 sealed class CurrencyEvent {
-    data class UpdateAmount(val amount: Double) : CurrencyEvent()
+    data class UpdateAmount(val amount: String) : CurrencyEvent()
     data class UpdateFromCurrency(val currency: String) : CurrencyEvent()
     data class UpdateToCurrency(val currency: String) : CurrencyEvent()
     object SwapCurrencies : CurrencyEvent()

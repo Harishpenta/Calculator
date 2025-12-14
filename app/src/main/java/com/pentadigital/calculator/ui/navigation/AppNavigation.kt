@@ -96,6 +96,7 @@ fun AppNavigation(
     bodyFatViewModel: BodyFatViewModel,
     waterIntakeViewModel: WaterIntakeViewModel,
     themeViewModel: ThemeViewModel,
+    profileViewModel: ProfileViewModel,
     onOpenDrawer: () -> Unit
 ) {
     NavHost(
@@ -307,7 +308,8 @@ fun AppNavigation(
         composable(Screen.Profile.route) {
             ProfileScreen(
                 onNavigateBack = { navController.popBackStack() },
-                onNavigateToSettings = { navController.navigate(Screen.Settings.route) }
+                onNavigateToSettings = { navController.navigate(Screen.Settings.route) },
+                profileViewModel = profileViewModel
             )
         }
     }

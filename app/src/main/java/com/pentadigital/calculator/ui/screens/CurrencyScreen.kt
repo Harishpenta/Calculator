@@ -47,6 +47,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+import androidx.compose.foundation.layout.WindowInsets
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CurrencyScreen(
@@ -95,10 +97,12 @@ fun CurrencyScreen(
                         Icon(Icons.Default.Share, contentDescription = shareIconDesc, tint = MaterialTheme.colorScheme.primary)
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         val isLandscape = isLandscape()
 
@@ -119,16 +123,8 @@ fun CurrencyScreen(
                 ) {
                     // Amount Input
                     CyberpunkInput(
-                        value = if (state.amount == 0.0) "" else if (state.amount % 1.0 == 0.0) state.amount.toInt().toString() else state.amount.toString(),
-                        onValueChange = {
-                            if (it.isEmpty()) {
-                                onAction(CurrencyEvent.UpdateAmount(0.0))
-                            } else {
-                                it.toDoubleOrNull()?.let { num ->
-                                    onAction(CurrencyEvent.UpdateAmount(num))
-                                }
-                            }
-                        },
+                        value = state.amount,
+                        onValueChange = { onAction(CurrencyEvent.UpdateAmount(it)) },
                         label = stringResource(com.pentadigital.calculator.R.string.amount).uppercase(),
                         modifier = Modifier.fillMaxWidth(),
                         borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
@@ -199,7 +195,7 @@ fun CurrencyScreen(
                                 text = stringResource(
                                     com.pentadigital.calculator.R.string.exchange_rate_display,
                                     state.fromCurrency,
-                                    String.format("%.4f", state.convertedAmount / state.amount),
+                                    String.format("%.4f", state.convertedAmount / (state.amount.toDoubleOrNull() ?: 1.0)),
                                     state.toCurrency
                                 ).uppercase(),
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -226,16 +222,8 @@ fun CurrencyScreen(
             ) {
                 // Amount Input
                 CyberpunkInput(
-                    value = if (state.amount == 0.0) "" else if (state.amount % 1.0 == 0.0) state.amount.toInt().toString() else state.amount.toString(),
-                    onValueChange = {
-                        if (it.isEmpty()) {
-                            onAction(CurrencyEvent.UpdateAmount(0.0))
-                        } else {
-                            it.toDoubleOrNull()?.let { num ->
-                                onAction(CurrencyEvent.UpdateAmount(num))
-                            }
-                        }
-                    },
+                    value = state.amount,
+                    onValueChange = { onAction(CurrencyEvent.UpdateAmount(it)) },
                     label = stringResource(com.pentadigital.calculator.R.string.amount).uppercase(),
                     modifier = Modifier.fillMaxWidth(),
                     borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
@@ -299,7 +287,7 @@ fun CurrencyScreen(
                             text = stringResource(
                                 com.pentadigital.calculator.R.string.exchange_rate_display,
                                 state.fromCurrency,
-                                String.format("%.4f", state.convertedAmount / state.amount),
+                                String.format("%.4f", state.convertedAmount / (state.amount.toDoubleOrNull() ?: 1.0)),
                                 state.toCurrency
                             ).uppercase(),
                             color = MaterialTheme.colorScheme.onSurfaceVariant,

@@ -238,4 +238,40 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">सरळ व्याज</string>
+    <string name="compound_interest_title">चक्रवाढ व्याज</string>
+    <string name="loan_prepayment_title">कर्जाची पूर्वफेड</string>
+    <string name="goal_planner_title">ध्येय नियोजक</string>
+    <string name="discount_calculator_title">सवलत कॅल्क्युलेटर</string>
+    <string name="tip_calculator_title">टिप कॅल्क्युलेटर</string>
+    <string name="fuel_cost_calculator_title">इंधन खर्च</string>
+    <string name="unit_price_comparator_title">एकक किंमत तुलना</string>
+    <string name="date_difference_title">तारीख फरक</string>
+    <string name="time_calculator_title">वेळ कॅल्क्युलेटर</string>
+    <string name="tdee_title">TDEE कॅल्क्युलेटर</string>
+    <string name="water_intake_title">पाण्याचे सेवन</string>
+    <string name="body_fat_title">शरीरातील चरबी</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">प्रोफाइल</string>
+    <string name="pro_member">प्रो सदस्य</string>
+    <string name="calculations_label">गणना</string>
+    <string name="favorites_label">आवडते</string>
+    <string name="settings_privacy_header">सेटिंग्ज आणि गोपनीयता</string>
+    <string name="app_settings_title">अॅप सेटिंग्ज</string>
+    <string name="app_settings_desc">थीम, भाषा</string>
+    <string name="privacy_policy_title">गोपनीयता धोरण</string>
+    <string name="privacy_policy_desc">डेटा वापर</string>
+    <string name="help_support_title">मदत आणि समर्थन</string>
+    <string name="help_support_desc">संपर्क</string>
+    <string name="share_app_title">अॅप शेअर करा</string>
+    <string name="share_app_desc">मित्रांना आमंत्रित करा</string>
+    <string name="logout">लॉग आउट</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">फिटनेस</string>
+    <string name="average_label">सरासरी</string>
+    <string name="obese_label">लठ्ठपणा</string>
+    <string name="essential_fat_label">आवश्यक</string>
 </resources>

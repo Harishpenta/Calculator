@@ -237,4 +237,40 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">ಸರಳ ಬಡ್ಡಿ</string>
+    <string name="compound_interest_title">ಚಕ್ರಬಡ್ಡಿ</string>
+    <string name="loan_prepayment_title">ಸಾಲದ ಮುಂಗಡ ಪಾವತಿ</string>
+    <string name="goal_planner_title">ಗುರಿ ಯೋಜಕ</string>
+    <string name="discount_calculator_title">ರಿಯಾಯಿತಿ ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="tip_calculator_title">ಟಿಪ್ ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="fuel_cost_calculator_title">ಇಂಧನ ವೆಚ್ಚ</string>
+    <string name="unit_price_comparator_title">ಘಟಕ ಬೆಲೆ ಹೋಲಿಕೆ</string>
+    <string name="date_difference_title">ದಿನಾಂಕ ವ್ಯತ್ಯಾಸ</string>
+    <string name="time_calculator_title">ಸಮಯ ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="tdee_title">TDEE ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="water_intake_title">ನೀರಿನ ಸೇವನೆ</string>
+    <string name="body_fat_title">ದೇಹದ ಕೊಬ್ಬು</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">ಪ್ರೊಫೈಲ್</string>
+    <string name="pro_member">ಪ್ರೊ ಸದಸ್ಯ</string>
+    <string name="calculations_label">ಲೆಕ್ಕಾಚಾರಗಳು</string>
+    <string name="favorites_label">ಮೆಚ್ಚಿನವುಗಳು</string>
+    <string name="settings_privacy_header">ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ಗೌಪ್ಯತೆ</string>
+    <string name="app_settings_title">ಅಪ್ಲಿಕೇಶನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="app_settings_desc">ಥೀಮ್, ಭಾಷೆ</string>
+    <string name="privacy_policy_title">ಗೌಪ್ಯತಾ ನೀತಿ</string>
+    <string name="privacy_policy_desc">ಡೇಟಾ ಬಳಕೆ</string>
+    <string name="help_support_title">ಸಹಾಯ ಮತ್ತು ಬೆಂಬಲ</string>
+    <string name="help_support_desc">ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="share_app_title">ಅಪ್ಲಿಕೇಶನ್ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="share_app_desc">ಸ್ನೇಹಿತರನ್ನು ಆಹ್ವಾನಿಸಿ</string>
+    <string name="logout">ಲಾಗ್ ಔಟ್</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">ಫಿಟ್‌ನೆಸ್</string>
+    <string name="average_label">ಸರಾಸರಿ</string>
+    <string name="obese_label">ಬೊಜ್ಜು</string>
+    <string name="essential_fat_label">ಅತ್ಯಗತ್ಯ</string>
 </resources>
