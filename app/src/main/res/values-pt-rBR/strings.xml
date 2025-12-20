@@ -272,4 +272,36 @@
     <string name="average_label">Média</string>
     <string name="obese_label">Obeso</string>
     <string name="essential_fat_label">Essencial</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">Linha do Tempo da Vida</string>
+    <string name="simulation_monthly_investment">SIMULAÇÃO: Investimento Mensal</string>
+    <string name="simulation_hint">Aumente sua poupança mensal para alcançar seus objetivos mais cedo!</string>
+    <string name="life_insight">Insight de Vida</string>
+    <string name="prime_freedom_years">Você tem %1$d anos de Liberdade Prime!</string>
+    <string name="prime_freedom_desc">Você atinge seu objetivo aos %1$d anos, ainda em seus melhores anos de saúde (até ~%2$d). Excelente trabalho!</string>
+    <string name="prime_warning_title">Aviso: Objetivo projetado após Anos Prime</string>
+    <string name="prime_warning_desc">Você atinge seu objetivo aos %1$d anos, mas seus melhores anos de saúde diminuem estatisticamente por volta dos %2$d. Tente aumentar sua poupança para aproveitar sua riqueza com saúde!</string>
+    <string name="personalize_timeline">Personalizar Linha do Tempo</string>
+    <string name="select_dob">Selecionar Data de Nascimento</string>
+    <string name="retirement_goal_age_label">Idade Alvo de Aposentadoria: %1$d</string>
+    <string name="financial_goal_label">Objetivo Financeiro (₹)</string>
+    <string name="current_savings_label">Poupança Mensal Atual (₹)</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Agora</string>
+    <string name="event_now_desc">Você está aqui</string>
+    <string name="event_debt_free">Livre de Dívidas</string>
+    <string name="event_debt_free_desc">Empréstimo da casa pago</string>
+    <string name="event_goal_reached">Objetivo Alcançado</string>
+    <string name="event_goal_reached_desc">Corpus de ₹%1$d Cr</string>
+    <string name="event_prime_health_ends">Fim da Saúde Prime</string>
+    <string name="event_prime_health_desc">Declínio estatístico</string>
+    <string name="event_life_expectancy">Expectativa de Vida</string>
+    <string name="event_life_expectancy_desc">Estimativa Atuarial</string>
+    <string name="event_retirement_goal">Objetivo de Aposentadoria</string>
+    <string name="event_retirement_goal_desc">Aposentadoria Planejada</string>
 </resources>

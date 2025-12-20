@@ -273,5 +273,37 @@
     <string name="fitness_label">फिटनेस</string>
     <string name="average_label">सरासरी</string>
     <string name="obese_label">लठ्ठपणा</string>
-    <string name="essential_fat_label">आवश्यक</string>
+    <string name="essential_fat_label">आवश्यक चरबी</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">जीवन घटनाक्रम</string>
+    <string name="simulation_monthly_investment">सिम्युलेशन: मासिक गुंतवणूक</string>
+    <string name="simulation_hint">तुमचे ध्येय लवकर गाठण्यासाठी तुमची मासिक बचत वाढवा!</string>
+    <string name="life_insight">जीवन दृष्टीकोन</string>
+    <string name="prime_freedom_years">तुमच्याकडे प्राईम फ्रीडमची %1$d वर्षे आहेत!</string>
+    <string name="prime_freedom_desc">तुम्ही %1$d वयात तुमचे ध्येय गाठता, तरीही तुम्ही तुमच्या मुख्य आरोग्याच्या वर्षांमध्ये असता (सुमारे ~%2$d पर्यंत). उत्तम काम!</string>
+    <string name="prime_warning_title">चेतावणी: मुख्य वर्षांनंतर ध्येय</string>
+    <string name="prime_warning_desc">तुम्ही %1$d वयात ध्येय गाठता, परंतु तुमची मुख्य आरोग्याची वर्षे सांख्यिकीयदृष्ट्या %2$d च्या आसपास कमी होतात. निरोगी असताना तुमच्या संपत्तीचा आनंद घेण्यासाठी बचत वाढवण्याचा प्रयत्न करा!</string>
+    <string name="personalize_timeline">घटनाक्रम वैयक्तिकृत करा</string>
+    <string name="select_dob">जन्म तारीख निवडा</string>
+    <string name="retirement_goal_age_label">निवृत्तीचे लक्ष्य वय: %1$d</string>
+    <string name="financial_goal_label">आर्थिक ध्येय (₹)</string>
+    <string name="current_savings_label">सध्याची मासिक बचत (₹)</string>
+    <string name="save">जतन करा</string>
+    <string name="cancel">रद्द करा</string>
+    <string name="ok_button">ठीक आहे</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">आता</string>
+    <string name="event_now_desc">तुम्ही येथे आहात</string>
+    <string name="event_debt_free">कर्जमुक्त</string>
+    <string name="event_debt_free_desc">गृह कर्ज फेडले</string>
+    <string name="event_goal_reached">ध्येय साध्य</string>
+    <string name="event_goal_reached_desc">₹%1$d कोटी निधी</string>
+    <string name="event_prime_health_ends">मुख्य आरोग्य संपते</string>
+    <string name="event_prime_health_desc">सांख्यिकीय घट</string>
+    <string name="event_life_expectancy">आयुर्मान</string>
+    <string name="event_life_expectancy_desc">विमा अंदाज</string>
+    <string name="event_retirement_goal">निवृत्तीचे ध्येय</string>
+    <string name="event_retirement_goal_desc">नियोजित निवृत्ती</string>
 </resources>

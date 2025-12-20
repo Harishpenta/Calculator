@@ -65,7 +65,8 @@ class MainActivity : ComponentActivity() {
             // Database & Repository
             val database = com.pentadigital.calculator.data.AppDatabase.getDatabase(applicationContext)
             val repository = com.pentadigital.calculator.data.HistoryRepository(database.historyDao())
-            
+            val userPreferencesRepository = com.pentadigital.calculator.data.UserPreferencesRepository(applicationContext)
+
             val calculatorViewModel = viewModel<CalculatorViewModel>(
                 factory = CalculatorViewModelFactory(repository)
             )
@@ -98,6 +99,7 @@ class MainActivity : ComponentActivity() {
         val waterIntakeViewModel: WaterIntakeViewModel = viewModel()
         val themeViewModel: ThemeViewModel = viewModel(factory = ThemeViewModelFactory(applicationContext))
         val profileViewModel: ProfileViewModel = viewModel(factory = ProfileViewModelFactory(repository))
+        val lifeTimelineViewModel: LifeTimelineViewModel = viewModel(factory = LifeTimelineViewModelFactory(userPreferencesRepository))
 
             // Determine if we should show bottom navigation
             val showBottomNav = currentRoute in listOf(
@@ -185,6 +187,7 @@ val configuration = LocalConfiguration.current
                                             waterIntakeViewModel = waterIntakeViewModel,
                                             themeViewModel = themeViewModel,
                                             profileViewModel = profileViewModel,
+                                            lifeTimelineViewModel = lifeTimelineViewModel,
                                             onOpenDrawer = {
                                                 navController.navigate(Screen.Home.route) {
                                                     popUpTo(Screen.Home.route) { inclusive = true }

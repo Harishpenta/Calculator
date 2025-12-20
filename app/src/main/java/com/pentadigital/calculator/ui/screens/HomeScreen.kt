@@ -38,6 +38,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -93,6 +94,7 @@ fun HomeScreen(
     onNavigateToCalculator: (String) -> Unit,
     onNavigateToSettings: () -> Unit,
     onNavigateToProfile: () -> Unit,
+    onNavigateToLifeTimeline: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -257,6 +259,14 @@ fun HomeScreen(
                 )
                 
                 Spacer(modifier = Modifier.height(20.dp))
+                
+                // Life Timeline Banner
+                LifeTimelineBanner(
+                    onClick = onNavigateToLifeTimeline,
+                    modifier = Modifier.padding(horizontal = horizontalPadding)
+                )
+
+                Spacer(modifier = Modifier.height(24.dp))
                 
                 // Search Bar
                 CalculatorSearchBar(
@@ -928,5 +938,48 @@ private fun getCategoryLabel(categoryId: String): Int {
         "health" -> R.string.cat_health
         "datetime" -> R.string.cat_date_time_title
         else -> R.string.calculator_title
+    }
+}
+
+@Composable
+private fun LifeTimelineBanner(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    CyberpunkCard(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
+        borderColor = NeonPurple
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                TechText(
+                    text = "LIFE TIMELINE",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = NeonPurple
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                TechText(
+                    text = "Visualize your financial freedom & health span.",
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowDown, 
+                contentDescription = null, 
+                tint = NeonPurple,
+                modifier = Modifier.rotate(-90f) 
+            )
+        }
     }
 }

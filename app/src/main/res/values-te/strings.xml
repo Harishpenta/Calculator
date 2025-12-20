@@ -273,4 +273,36 @@
     <string name="average_label">సగటు</string>
     <string name="obese_label">ఊబకాయం</string>
     <string name="essential_fat_label">ఆవశ్యక కొవ్వు</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">జీవిత కాలక్రమం</string>
+    <string name="simulation_monthly_investment">సిమ్యులేషన్: నెలవారీ పెట్టుబడి</string>
+    <string name="simulation_hint">మీ లక్ష్యాలను త్వరగా చేరుకోవడానికి మీ నెలవారీ పొదుపును పెంచండి!</string>
+    <string name="life_insight">జీవిత అంతర్దృష్టి</string>
+    <string name="prime_freedom_years">మీకు %1$d సంవత్సరాల ప్రైమ్ ఫ్రీడమ్ ఉంది!</string>
+    <string name="prime_freedom_desc">మీరు %1$d సంవత్సరాల వయస్సులో మీ లక్ష్యాన్ని చేరుకుంటారు, అప్పుడు కూడా మీరు మీ ప్రైమ్ హెల్త్ ఇయర్స్ లో ఉంటారు (సుమారు ~%2$d వరకు). అద్భుతమైన పని!</string>
+    <string name="prime_warning_title">హెచ్చరిక: ప్రైమ్ ఇయర్స్ తర్వాత లక్ష్యం</string>
+    <string name="prime_warning_desc">మీరు %1$d సంవత్సరాల వయస్సులో లక్ష్యాన్ని చేరుకుంటారు, కానీ గణాంకాల ప్రకారం మీ ప్రైమ్ హెల్త్ ఇయర్స్ %2$d చుట్టూ తగ్గుతాయి. ఆరోగ్యంగా ఉన్నప్పుడే మీ సంపదను ఆస్వాదించడానికి పొదుపును పెంచడానికి ప్రయత్నించండి!</string>
+    <string name="personalize_timeline">కాలక్రమాన్ని వ్యక్తిగతీకరించండి</string>
+    <string name="select_dob">పుట్టిన తేదీని ఎంచుకోండి</string>
+    <string name="retirement_goal_age_label">పదవీ విరమణ లక్ష్య వయస్సు: %1$d</string>
+    <string name="financial_goal_label">ఆర్థిక లక్ష్యం (₹)</string>
+    <string name="current_savings_label">ప్రస్తుత నెలవారీ పొదుపు (₹)</string>
+    <string name="save">సేవ్ చేయండి</string>
+    <string name="cancel">రద్దు చేయండి</string>
+    <string name="ok_button">సరే</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">ఇప్పుడు</string>
+    <string name="event_now_desc">మీరు ఇక్కడ ఉన్నారు</string>
+    <string name="event_debt_free">రుణ విముక్తి</string>
+    <string name="event_debt_free_desc">గృహ రుణం చెల్లించబడింది</string>
+    <string name="event_goal_reached">లక్ష్యం చేరుకుంది</string>
+    <string name="event_goal_reached_desc">₹%1$d కోట్ల కార్పస్</string>
+    <string name="event_prime_health_ends">ప్రైమ్ హెల్త్ ముగుస్తుంది</string>
+    <string name="event_prime_health_desc">గణాంక క్షీణత</string>
+    <string name="event_life_expectancy">జీవిత కాలం అంచనా</string>
+    <string name="event_life_expectancy_desc">వాస్తవ అంచనా</string>
+    <string name="event_retirement_goal">పదవీ విరమణ లక్ష్యం</string>
+    <string name="event_retirement_goal_desc">ప్రణాళికాబద్ధ పదవీ విరమణ</string>
 </resources>

@@ -432,4 +432,36 @@
     <string name="average_label">Average</string>
     <string name="obese_label">Obese</string>
     <string name="essential_fat_label">Essential</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">LIFE TIMELINE</string>
+    <string name="simulation_monthly_investment">SIMULATION: Monthly Investment</string>
+    <string name="simulation_hint">Increase your monthly savings to see how much earlier you reach your goals!</string>
+    <string name="life_insight">LIFE INSIGHT</string>
+    <string name="prime_freedom_years">You have %1$d years of Prime Freedom!</string>
+    <string name="prime_freedom_desc">You reach your goal at age %1$d, while still in your prime health years (until ~%2$d). Excellent work!</string>
+    <string name="prime_warning_title">Warning: Goal projected after Prime Years</string>
+    <string name="prime_warning_desc">You reach your goal at age %1$d, but your prime health years statistically taper off around %2$d. Try increasing your savings to enjoy your wealth while healthy!</string>
+    <string name="personalize_timeline">Personalize Timeline</string>
+    <string name="select_dob">Select Date of Birth</string>
+    <string name="retirement_goal_age_label">Retirement Goal Age: %1$d</string>
+    <string name="financial_goal_label">Financial Goal (₹)</string>
+    <string name="current_savings_label">Current Monthly Savings (₹)</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Now</string>
+    <string name="event_now_desc">You are here</string>
+    <string name="event_debt_free">Debt Free</string>
+    <string name="event_debt_free_desc">Home Loan paid off</string>
+    <string name="event_goal_reached">Goal Reached</string>
+    <string name="event_goal_reached_desc">₹%1$d Cr Corpus</string>
+    <string name="event_prime_health_ends">Prime Health Ends</string>
+    <string name="event_prime_health_desc">Statistical decline</string>
+    <string name="event_life_expectancy">Life Expectancy</string>
+    <string name="event_life_expectancy_desc">Actuarial Estimate</string>
+    <string name="event_retirement_goal">Retirement Goal</string>
+    <string name="event_retirement_goal_desc">Planned Retirement</string>
 </resources>

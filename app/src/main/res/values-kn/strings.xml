@@ -272,5 +272,37 @@
     <string name="fitness_label">ಫಿಟ್‌ನೆಸ್</string>
     <string name="average_label">ಸರಾಸರಿ</string>
     <string name="obese_label">ಬೊಜ್ಜು</string>
-    <string name="essential_fat_label">ಅತ್ಯಗತ್ಯ</string>
+    <string name="essential_fat_label">ಅಗತ್ಯ ಕೊಬ್ಬು</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">ಜೀವನ ಕಾಲಮಿತಿ</string>
+    <string name="simulation_monthly_investment">ಸಿಮ್ಯುಲೇಶನ್: ಮಾಸಿಕ ಹೂಡಿಕೆ</string>
+    <string name="simulation_hint">ನಿಮ್ಮ ಗುರಿಗಳನ್ನು ಬೇಗನೆ ತಲುಪಲು ನಿಮ್ಮ ಮಾಸಿಕ ಉಳಿತಾಯವನ್ನು ಹೆಚ್ಚಿಸಿ!</string>
+    <string name="life_insight">ಜೀವನ ಒಳನೋಟ</string>
+    <string name="prime_freedom_years">ನಿಮಗೆ %1$d ವರ್ಷಗಳ ಪ್ರಧಾನ ಸ್ವಾತಂತ್ರ್ಯವಿದೆ!</string>
+    <string name="prime_freedom_desc">ನೀವು %1$d ವಯಸ್ಸಿನಲ್ಲಿ ನಿಮ್ಮ ಗುರಿಯನ್ನು ತಲುಪುತ್ತೀರಿ, ಆಗಲೂ ನೀವು ನಿಮ್ಮ ಪ್ರಧಾನ ಆರೋಗ್ಯ ವರ್ಷಗಳಲ್ಲಿ ಇರುತ್ತೀರಿ (~%2$d ವರೆಗೆ). ಅತ್ಯುತ್ತಮ ಕೆಲಸ!</string>
+    <string name="prime_warning_title">ಎಚ್ಚರಿಕೆ: ಪ್ರಧಾನ ವರ್ಷಗಳ ನಂತರ ಗುರಿ</string>
+    <string name="prime_warning_desc">ನೀವು %1$d ವಯಸ್ಸಿನಲ್ಲಿ ಗುರಿಯನ್ನು ತಲುಪುತ್ತೀರಿ, ಆದರೆ ಅಂಕಿಅಂಶಗಳ ಪ್ರಕಾರ ನಿಮ್ಮ ಪ್ರಧಾನ ಆರೋಗ್ಯ ವರ್ಷಗಳು %2$d ಹತ್ತಿರ ಕಡಿಮೆಯಾಗುತ್ತವೆ. ಆರೋಗ್ಯವಾಗಿದ್ದಾಗಲೇ ನಿಮ್ಮ ಸಂಪತ್ತನ್ನು ಆನಂದಿಸಲು ಉಳಿತಾಯವನ್ನು ಹೆಚ್ಚಿಸಲು ಪ್ರಯತ್ನಿಸಿ!</string>
+    <string name="personalize_timeline">ಕಾಲಮಿತಿಯನ್ನು ವೈಯಕ್ತೀಕರಿಸಿ</string>
+    <string name="select_dob">ಹುಟ್ಟಿದ ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="retirement_goal_age_label">ನಿವೃತ್ತಿ ಗುರಿ ವಯಸ್ಸು: %1$d</string>
+    <string name="financial_goal_label">ಆರ್ಥಿಕ ಗುರಿ (₹)</string>
+    <string name="current_savings_label">ಪ್ರಸ್ತುತ ಮಾಸಿಕ ಉಳಿತಾಯ (₹)</string>
+    <string name="save">ಉಳಿಸಿ</string>
+    <string name="cancel">ರದ್ದುಮಾಡಿ</string>
+    <string name="ok_button">ಸರಿ</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">ಈಗ</string>
+    <string name="event_now_desc">ನೀವು ಇಲ್ಲಿದ್ದೀರಿ</string>
+    <string name="event_debt_free">ಸಾಲ ಮುಕ್ತ</string>
+    <string name="event_debt_free_desc">ಗೃಹ ಸಾಲ ತೀರಿಸಲಾಗಿದೆ</string>
+    <string name="event_goal_reached">ಗುರಿ ತಲುಪಿದೆ</string>
+    <string name="event_goal_reached_desc">₹%1$d ಕೋಟಿ ಕಾರ್ಪಸ್</string>
+    <string name="event_prime_health_ends">ಪ್ರಧಾನ ಆರೋಗ್ಯ ಮುಗಿಯುತ್ತದೆ</string>
+    <string name="event_prime_health_desc">ಅಂಕಿಅಂಶಗಳ ಕುಸಿತ</string>
+    <string name="event_life_expectancy">ಜೀವಿತಾವಧಿ</string>
+    <string name="event_life_expectancy_desc">ವಿಮಾ ಅಂದಾಜು</string>
+    <string name="event_retirement_goal">ನಿವೃತ್ತಿ ಗುರಿ</string>
+    <string name="event_retirement_goal_desc">ಯೋಜಿತ ನಿವೃತ್ತಿ</string>
 </resources>
