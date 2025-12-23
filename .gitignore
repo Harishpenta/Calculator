@@ -17,3 +17,6 @@ keystore.properties
 *.iws
 *.ipr
 .DS_Store
+
+# Markdown files
+*.md
