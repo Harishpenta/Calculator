@@ -142,6 +142,7 @@ fun FavoritesScreen(
                                     onClick = {
                                         val route = when(calculatorId) {
                                             "unit" -> "unit_converter"
+                                            "percentage", "average", "proportion", "ratio" -> "basic"
                                             else -> calculatorId
                                         }
                                         onNavigateToCalculator(route) 
@@ -163,6 +164,7 @@ fun FavoritesScreen(
                                     onClick = { 
                                         val route = when(calculatorId) {
                                             "unit" -> "unit_converter"
+                                            "percentage", "average", "proportion", "ratio" -> "basic"
                                             else -> calculatorId
                                         }
                                         onNavigateToCalculator(route)
