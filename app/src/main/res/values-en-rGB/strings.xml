@@ -144,4 +144,73 @@
     <string name="error">Error</string>
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Simple Interest</string>
+    <string name="compound_interest_title">Compound Interest</string>
+    <string name="loan_prepayment_title">Loan Prepayment</string>
+    <string name="goal_planner_title">Goal Planner</string>
+    <string name="discount_calculator_title">Discount Calculator</string>
+    <string name="tip_calculator_title">Tip Calculator</string>
+    <string name="fuel_cost_calculator_title">Fuel Cost Calculator</string>
+    <string name="unit_price_comparator_title">Unit Price Comparator</string>
+    <string name="date_difference_title">Date Difference</string>
+    <string name="time_calculator_title">Time Calculator</string>
+    <string name="tdee_title">TDEE Calculator</string>
+    <string name="water_intake_title">Water Intake Calculator</string>
+    <string name="body_fat_title">Body Fat Calculator</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profile</string>
+    <string name="pro_member">Pro Member</string>
+    <string name="calculations_label">Calculations</string>
+    <string name="favorites_label">Favourites</string>
+    <string name="settings_privacy_header">Settings &amp; Privacy</string>
+    <string name="app_settings_title">App Settings</string>
+    <string name="app_settings_desc">Theme, Haptics, Language</string>
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_policy_desc">Data usage and protection</string>
+    <string name="help_support_title">Help &amp; Support</string>
+    <string name="help_support_desc">FAQs and Contact</string>
+    <string name="share_app_title">Share App</string>
+    <string name="share_app_desc">Invite friends to join</string>
+    <string name="logout">Log Out</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Average</string>
+    <string name="obese_label">Obese</string>
+    <string name="essential_fat_label">Essential</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">Life Timeline</string>
+    <string name="life_timeline_subtitle">Design your future</string>
+    <string name="simulation_monthly_investment">SIMULATION: Monthly Investment</string>
+    <string name="simulation_hint">Increase your monthly savings to reach your goals sooner!</string>
+    <string name="life_insight">Life Insight</string>
+    <string name="prime_freedom_years">You have %1$d years of Prime Freedom!</string>
+    <string name="prime_freedom_desc">You reach your goal at age %1$d, while still in your best health years (up to ~%2$d). Great job!</string>
+    <string name="prime_warning_title">Warning: Goal Projected After Prime Years</string>
+    <string name="prime_warning_desc">You reach your goal at age %1$d, but your best health years statistically decline around %2$d. Try increasing savings to enjoy your wealth in good health!</string>
+    <string name="personalize_timeline">Personalise Timeline</string>
+    <string name="select_dob">Select Date of Birth</string>
+    <string name="retirement_goal_age_label">Retirement Goal Age: %1$d</string>
+    <string name="financial_goal_label">Financial Goal (₹)</string>
+    <string name="current_savings_label">Current Monthly Savings (₹)</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Now</string>
+    <string name="event_now_desc">You are here</string>
+    <string name="event_debt_free">Debt Free</string>
+    <string name="event_debt_free_desc">Home loan paid off</string>
+    <string name="event_goal_reached">Goal Reached</string>
+    <string name="event_goal_reached_desc">Corpus of ₹%1$d Cr</string>
+    <string name="event_prime_health_ends">Prime Health Ends</string>
+    <string name="event_prime_health_desc">Statistical decline</string>
+    <string name="event_life_expectancy">Life Expectancy</string>
+    <string name="event_life_expectancy_desc">Actuarial Estimate</string>
+    <string name="event_retirement_goal">Retirement Goal</string>
+    <string name="event_retirement_goal_desc">Planned Retirement</string>
 </resources>

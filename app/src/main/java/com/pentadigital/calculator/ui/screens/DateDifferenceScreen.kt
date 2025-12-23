@@ -63,10 +63,12 @@ fun DateDifferenceScreen(
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         if (isLandscape) {
             Row(

@@ -237,4 +237,72 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">ಸರಳ ಬಡ್ಡಿ</string>
+    <string name="compound_interest_title">ಚಕ್ರಬಡ್ಡಿ</string>
+    <string name="loan_prepayment_title">ಸಾಲದ ಮುಂಗಡ ಪಾವತಿ</string>
+    <string name="goal_planner_title">ಗುರಿ ಯೋಜಕ</string>
+    <string name="discount_calculator_title">ರಿಯಾಯಿತಿ ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="tip_calculator_title">ಟಿಪ್ ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="fuel_cost_calculator_title">ಇಂಧನ ವೆಚ್ಚ</string>
+    <string name="unit_price_comparator_title">ಘಟಕ ಬೆಲೆ ಹೋಲಿಕೆ</string>
+    <string name="date_difference_title">ದಿನಾಂಕ ವ್ಯತ್ಯಾಸ</string>
+    <string name="time_calculator_title">ಸಮಯ ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="tdee_title">TDEE ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="water_intake_title">ನೀರಿನ ಸೇವನೆ</string>
+    <string name="body_fat_title">ದೇಹದ ಕೊಬ್ಬು</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">ಪ್ರೊಫೈಲ್</string>
+    <string name="pro_member">ಪ್ರೊ ಸದಸ್ಯ</string>
+    <string name="calculations_label">ಲೆಕ್ಕಾಚಾರಗಳು</string>
+    <string name="favorites_label">ಮೆಚ್ಚಿನವುಗಳು</string>
+    <string name="settings_privacy_header">ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ಗೌಪ್ಯತೆ</string>
+    <string name="app_settings_title">ಅಪ್ಲಿಕೇಶನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="app_settings_desc">ಥೀಮ್, ಭಾಷೆ</string>
+    <string name="privacy_policy_title">ಗೌಪ್ಯತಾ ನೀತಿ</string>
+    <string name="privacy_policy_desc">ಡೇಟಾ ಬಳಕೆ</string>
+    <string name="help_support_title">ಸಹಾಯ ಮತ್ತು ಬೆಂಬಲ</string>
+    <string name="help_support_desc">ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="share_app_title">ಅಪ್ಲಿಕೇಶನ್ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="share_app_desc">ಸ್ನೇಹಿತರನ್ನು ಆಹ್ವಾನಿಸಿ</string>
+    <string name="logout">ಲಾಗ್ ಔಟ್</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">ಫಿಟ್‌ನೆಸ್</string>
+    <string name="average_label">ಸರಾಸರಿ</string>
+    <string name="obese_label">ಬೊಜ್ಜು</string>
+    <string name="essential_fat_label">ಅಗತ್ಯ ಕೊಬ್ಬು</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">ಜೀವನ ಕಾಲಮಿತಿ</string>
+    <string name="simulation_monthly_investment">ಸಿಮ್ಯುಲೇಶನ್: ಮಾಸಿಕ ಹೂಡಿಕೆ</string>
+    <string name="simulation_hint">ನಿಮ್ಮ ಗುರಿಗಳನ್ನು ಬೇಗನೆ ತಲುಪಲು ನಿಮ್ಮ ಮಾಸಿಕ ಉಳಿತಾಯವನ್ನು ಹೆಚ್ಚಿಸಿ!</string>
+    <string name="life_insight">ಜೀವನ ಒಳನೋಟ</string>
+    <string name="prime_freedom_years">ನಿಮಗೆ %1$d ವರ್ಷಗಳ ಪ್ರಧಾನ ಸ್ವಾತಂತ್ರ್ಯವಿದೆ!</string>
+    <string name="prime_freedom_desc">ನೀವು %1$d ವಯಸ್ಸಿನಲ್ಲಿ ನಿಮ್ಮ ಗುರಿಯನ್ನು ತಲುಪುತ್ತೀರಿ, ಆಗಲೂ ನೀವು ನಿಮ್ಮ ಪ್ರಧಾನ ಆರೋಗ್ಯ ವರ್ಷಗಳಲ್ಲಿ ಇರುತ್ತೀರಿ (~%2$d ವರೆಗೆ). ಅತ್ಯುತ್ತಮ ಕೆಲಸ!</string>
+    <string name="prime_warning_title">ಎಚ್ಚರಿಕೆ: ಪ್ರಧಾನ ವರ್ಷಗಳ ನಂತರ ಗುರಿ</string>
+    <string name="prime_warning_desc">ನೀವು %1$d ವಯಸ್ಸಿನಲ್ಲಿ ಗುರಿಯನ್ನು ತಲುಪುತ್ತೀರಿ, ಆದರೆ ಅಂಕಿಅಂಶಗಳ ಪ್ರಕಾರ ನಿಮ್ಮ ಪ್ರಧಾನ ಆರೋಗ್ಯ ವರ್ಷಗಳು %2$d ಹತ್ತಿರ ಕಡಿಮೆಯಾಗುತ್ತವೆ. ಆರೋಗ್ಯವಾಗಿದ್ದಾಗಲೇ ನಿಮ್ಮ ಸಂಪತ್ತನ್ನು ಆನಂದಿಸಲು ಉಳಿತಾಯವನ್ನು ಹೆಚ್ಚಿಸಲು ಪ್ರಯತ್ನಿಸಿ!</string>
+    <string name="personalize_timeline">ಕಾಲಮಿತಿಯನ್ನು ವೈಯಕ್ತೀಕರಿಸಿ</string>
+    <string name="select_dob">ಹುಟ್ಟಿದ ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="retirement_goal_age_label">ನಿವೃತ್ತಿ ಗುರಿ ವಯಸ್ಸು: %1$d</string>
+    <string name="financial_goal_label">ಆರ್ಥಿಕ ಗುರಿ (₹)</string>
+    <string name="current_savings_label">ಪ್ರಸ್ತುತ ಮಾಸಿಕ ಉಳಿತಾಯ (₹)</string>
+    <string name="save">ಉಳಿಸಿ</string>
+    <string name="cancel">ರದ್ದುಮಾಡಿ</string>
+    <string name="ok_button">ಸರಿ</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">ಈಗ</string>
+    <string name="event_now_desc">ನೀವು ಇಲ್ಲಿದ್ದೀರಿ</string>
+    <string name="event_debt_free">ಸಾಲ ಮುಕ್ತ</string>
+    <string name="event_debt_free_desc">ಗೃಹ ಸಾಲ ತೀರಿಸಲಾಗಿದೆ</string>
+    <string name="event_goal_reached">ಗುರಿ ತಲುಪಿದೆ</string>
+    <string name="event_goal_reached_desc">₹%1$d ಕೋಟಿ ಕಾರ್ಪಸ್</string>
+    <string name="event_prime_health_ends">ಪ್ರಧಾನ ಆರೋಗ್ಯ ಮುಗಿಯುತ್ತದೆ</string>
+    <string name="event_prime_health_desc">ಅಂಕಿಅಂಶಗಳ ಕುಸಿತ</string>
+    <string name="event_life_expectancy">ಜೀವಿತಾವಧಿ</string>
+    <string name="event_life_expectancy_desc">ವಿಮಾ ಅಂದಾಜು</string>
+    <string name="event_retirement_goal">ನಿವೃತ್ತಿ ಗುರಿ</string>
+    <string name="event_retirement_goal_desc">ಯೋಜಿತ ನಿವೃತ್ತಿ</string>
 </resources>

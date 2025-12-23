@@ -49,9 +49,9 @@ fun AdMobBanner(modifier: Modifier = Modifier) {
             }
         )
     } else {
-        // Invisible AdView to load the ad
+        // Invisible AdView to load the ad, respecting the modifier (padding)
         androidx.compose.ui.viewinterop.AndroidView(
-            modifier = Modifier.height(0.dp),
+            modifier = modifier.height(0.dp), // Height 0 but respects padding/insets
             factory = { ctx ->
                 AdView(ctx).apply {
                     setAdSize(AdSize.BANNER)

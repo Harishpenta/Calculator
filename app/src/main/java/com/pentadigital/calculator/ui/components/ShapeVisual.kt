@@ -122,8 +122,10 @@ fun ShapeVisual(
                 }
                 Shape2D.RECTANGLE -> {
                     // Dynamic aspect ratio
-                    val inputW = if (state.width > 0) state.width else 1.0
-                    val inputL = if (state.length > 0) state.length else 1.5
+                    val wVal = state.width.toDoubleOrNull() ?: 0.0
+                    val lVal = state.length.toDoubleOrNull() ?: 0.0
+                    val inputW = if (wVal > 0) wVal else 1.0
+                    val inputL = if (lVal > 0) lVal else 1.5
                     val ratio = (inputL / inputW).toFloat()
                     
                     // Constrain ratio to avoid extreme shapes
@@ -213,8 +215,10 @@ fun ShapeVisual(
                     drawLabel("h", centerX + w / 2, centerY)
                 }
                 Shape2D.ELLIPSE -> {
-                    val inputA = if (state.semiAxisA > 0) state.semiAxisA else 2.0
-                    val inputB = if (state.semiAxisB > 0) state.semiAxisB else 1.0
+                    val saA = state.semiAxisA.toDoubleOrNull() ?: 0.0
+                    val saB = state.semiAxisB.toDoubleOrNull() ?: 0.0
+                    val inputA = if (saA > 0) saA else 2.0
+                    val inputB = if (saB > 0) saB else 1.0
                     val ratio = (inputA / inputB).toFloat()
                     val constrainedRatio = ratio.coerceIn(0.5f, 2.0f)
                     

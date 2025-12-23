@@ -237,4 +237,72 @@
     <string name="clear_history">చరిత్రను క్లియర్ చేయండి</string>
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">సాధారణ వడ్డీ</string>
+    <string name="compound_interest_title">చక్రవడ్డీ</string>
+    <string name="loan_prepayment_title">రుణ ముందస్తు చెల్లింపు</string>
+    <string name="goal_planner_title">లక్ష్య ప్రణాళిక</string>
+    <string name="discount_calculator_title">తగ్గింపు కాలిక్యులేటర్</string>
+    <string name="tip_calculator_title">టిప్ కాలిక్యులేటర్</string>
+    <string name="fuel_cost_calculator_title">ఇంధన ఖర్చు కాలిక్యులేటర్</string>
+    <string name="unit_price_comparator_title">యూనిట్ ధర పోలిక</string>
+    <string name="date_difference_title">తేదీ తేడా</string>
+    <string name="time_calculator_title">సమయ కాలిక్యులేటర్</string>
+    <string name="tdee_title">TDEE కాలిక్యులేటర్</string>
+    <string name="water_intake_title">నీటి వినియోగం</string>
+    <string name="body_fat_title">శరీర కొవ్వు</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">ప్రొఫైల్</string>
+    <string name="pro_member">ప్రో మెంబర్</string>
+    <string name="calculations_label">లెక్కలు</string>
+    <string name="favorites_label">ఇష్టమైనవి</string>
+    <string name="settings_privacy_header">సెట్టింగ్‌లు &amp; గోప్యత</string>
+    <string name="app_settings_title">యాప్ సెట్టింగ్‌లు</string>
+    <string name="app_settings_desc">థీమ్, హాప్టిక్స్, భాష</string>
+    <string name="privacy_policy_title">గోప్యతా విధానం</string>
+    <string name="privacy_policy_desc">డేటా వినియోగం మరియు రక్షణ</string>
+    <string name="help_support_title">సహాయం &amp; మద్దతు</string>
+    <string name="help_support_desc">FAQలు మరియు సంప్రదించండి</string>
+    <string name="share_app_title">యాప్‌ని షేర్ చేయండి</string>
+    <string name="share_app_desc">చేరమని స్నేహితులను ఆహ్వానించండి</string>
+    <string name="logout">లాగ్ అవుట్</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">ఫిట్‌నెస్</string>
+    <string name="average_label">సగటు</string>
+    <string name="obese_label">ఊబకాయం</string>
+    <string name="essential_fat_label">ఆవశ్యక కొవ్వు</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">జీవిత కాలక్రమం</string>
+    <string name="simulation_monthly_investment">సిమ్యులేషన్: నెలవారీ పెట్టుబడి</string>
+    <string name="simulation_hint">మీ లక్ష్యాలను త్వరగా చేరుకోవడానికి మీ నెలవారీ పొదుపును పెంచండి!</string>
+    <string name="life_insight">జీవిత అంతర్దృష్టి</string>
+    <string name="prime_freedom_years">మీకు %1$d సంవత్సరాల ప్రైమ్ ఫ్రీడమ్ ఉంది!</string>
+    <string name="prime_freedom_desc">మీరు %1$d సంవత్సరాల వయస్సులో మీ లక్ష్యాన్ని చేరుకుంటారు, అప్పుడు కూడా మీరు మీ ప్రైమ్ హెల్త్ ఇయర్స్ లో ఉంటారు (సుమారు ~%2$d వరకు). అద్భుతమైన పని!</string>
+    <string name="prime_warning_title">హెచ్చరిక: ప్రైమ్ ఇయర్స్ తర్వాత లక్ష్యం</string>
+    <string name="prime_warning_desc">మీరు %1$d సంవత్సరాల వయస్సులో లక్ష్యాన్ని చేరుకుంటారు, కానీ గణాంకాల ప్రకారం మీ ప్రైమ్ హెల్త్ ఇయర్స్ %2$d చుట్టూ తగ్గుతాయి. ఆరోగ్యంగా ఉన్నప్పుడే మీ సంపదను ఆస్వాదించడానికి పొదుపును పెంచడానికి ప్రయత్నించండి!</string>
+    <string name="personalize_timeline">కాలక్రమాన్ని వ్యక్తిగతీకరించండి</string>
+    <string name="select_dob">పుట్టిన తేదీని ఎంచుకోండి</string>
+    <string name="retirement_goal_age_label">పదవీ విరమణ లక్ష్య వయస్సు: %1$d</string>
+    <string name="financial_goal_label">ఆర్థిక లక్ష్యం (₹)</string>
+    <string name="current_savings_label">ప్రస్తుత నెలవారీ పొదుపు (₹)</string>
+    <string name="save">సేవ్ చేయండి</string>
+    <string name="cancel">రద్దు చేయండి</string>
+    <string name="ok_button">సరే</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">ఇప్పుడు</string>
+    <string name="event_now_desc">మీరు ఇక్కడ ఉన్నారు</string>
+    <string name="event_debt_free">రుణ విముక్తి</string>
+    <string name="event_debt_free_desc">గృహ రుణం చెల్లించబడింది</string>
+    <string name="event_goal_reached">లక్ష్యం చేరుకుంది</string>
+    <string name="event_goal_reached_desc">₹%1$d కోట్ల కార్పస్</string>
+    <string name="event_prime_health_ends">ప్రైమ్ హెల్త్ ముగుస్తుంది</string>
+    <string name="event_prime_health_desc">గణాంక క్షీణత</string>
+    <string name="event_life_expectancy">జీవిత కాలం అంచనా</string>
+    <string name="event_life_expectancy_desc">వాస్తవ అంచనా</string>
+    <string name="event_retirement_goal">పదవీ విరమణ లక్ష్యం</string>
+    <string name="event_retirement_goal_desc">ప్రణాళికాబద్ధ పదవీ విరమణ</string>
 </resources>

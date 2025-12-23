@@ -2,6 +2,7 @@ package com.pentadigital.calculator.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -95,10 +96,12 @@ fun FavoritesScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
-                )
+                ),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         Box(
             modifier = Modifier
@@ -180,42 +183,39 @@ private fun FavoriteListItem(
     iconRes: Int,
     onClick: () -> Unit
 ) {
-    CyberpunkCard(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick),
-        borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
+            .clip(RoundedCornerShape(12.dp))
+            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.5f))
+            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.2f), RoundedCornerShape(12.dp))
+            .clickable(onClick = onClick)
+            .padding(8.dp), // Compact padding
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .size(32.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
+            contentAlignment = Alignment.Center
         ) {
-            Box(
-                modifier = Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(id = iconRes),
-                    contentDescription = name,
-                    modifier = Modifier.size(20.dp),
-                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
-                )
-            }
-            
-            Spacer(modifier = Modifier.width(12.dp))
-            
-            TechText(
-                text = name.uppercase(),
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface
+            Image(
+                painter = painterResource(id = iconRes),
+                contentDescription = name,
+                modifier = Modifier.size(16.dp),
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
             )
         }
+        
+        Spacer(modifier = Modifier.width(12.dp))
+        
+        TechText(
+            text = name.uppercase(),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onSurface
+        )
     }
 }
 

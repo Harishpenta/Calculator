@@ -28,6 +28,8 @@ import com.pentadigital.calculator.viewmodels.Climate
 import com.pentadigital.calculator.viewmodels.WaterIntakeEvent
 import com.pentadigital.calculator.viewmodels.WaterIntakeState
 
+import androidx.compose.foundation.layout.WindowInsets
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WaterIntakeScreen(
@@ -60,10 +62,12 @@ fun WaterIntakeScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
-                )
+                ),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         if (isLandscape) {
             Row(

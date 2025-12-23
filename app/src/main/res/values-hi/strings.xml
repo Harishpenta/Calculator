@@ -239,4 +239,72 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">साधारण ब्याज</string>
+    <string name="compound_interest_title">चक्रवृद्धि ब्याज</string>
+    <string name="loan_prepayment_title">ऋण पूर्व भुगतान</string>
+    <string name="goal_planner_title">लक्ष्य योजना</string>
+    <string name="discount_calculator_title">छूट कैलकुलेटर</string>
+    <string name="tip_calculator_title">टिप कैलकुलेटर</string>
+    <string name="fuel_cost_calculator_title">ईंधन लागत कैलकुलेटर</string>
+    <string name="unit_price_comparator_title">इकाई मूल्य तुलनित्र</string>
+    <string name="date_difference_title">दिनांक अंतर</string>
+    <string name="time_calculator_title">समय कैलकुलेटर</string>
+    <string name="tdee_title">TDEE कैलकुलेटर</string>
+    <string name="water_intake_title">जल सेवन</string>
+    <string name="body_fat_title">शरीर में वसा</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">प्रोफ़ाइल</string>
+    <string name="pro_member">प्रो सदस्य</string>
+    <string name="calculations_label">गणनाएँ</string>
+    <string name="favorites_label">पसंदीदा</string>
+    <string name="settings_privacy_header">सेटिंग्स और गोपनीयता</string>
+    <string name="app_settings_title">ऐप सेटिंग्स</string>
+    <string name="app_settings_desc">थीम, हैप्टिक्स, भाषा</string>
+    <string name="privacy_policy_title">गोपनीयता नीति</string>
+    <string name="privacy_policy_desc">डेटा उपयोग और सुरक्षा</string>
+    <string name="help_support_title">सहायता और समर्थन</string>
+    <string name="help_support_desc">साधारण प्रश्न और संपर्क</string>
+    <string name="share_app_title">ऐप साझा करें</string>
+    <string name="share_app_desc">दोस्तों को आमंत्रित करें</string>
+    <string name="logout">लॉग आउट</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">फिटनेस</string>
+    <string name="average_label">औसत</string>
+    <string name="obese_label">मोटापा</string>
+    <string name="essential_fat_label">आवश्यक वसा</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">जीवन समयरेखा</string>
+    <string name="simulation_monthly_investment">सिमुलेशन: मासिक निवेश</string>
+    <string name="simulation_hint">अपने लक्ष्यों को जल्दी हासिल करने के लिए अपनी मासिक बचत बढ़ाएँ!</string>
+    <string name="life_insight">जीवन अंतर्दृष्टि</string>
+    <string name="prime_freedom_years">आपके पास मुख्य स्वतंत्रता के %1$d वर्ष हैं!</string>
+    <string name="prime_freedom_desc">आप %1$d वर्ष की आयु में अपने लक्ष्य तक पहुंच जाते हैं, जबकि आप अभी भी अपने मुख्य स्वास्थ्य वर्षों (लगभग %2$d तक) में हैं। बहुत बढ़िया!</string>
+    <string name="prime_warning_title">चेतावनी: मुख्य वर्षों के बाद लक्ष्य</string>
+    <string name="prime_warning_desc">आप %1$d वर्ष की आयु में लक्ष्य तक पहुँचते हैं, लेकिन आपके मुख्य स्वास्थ्य वर्ष सांख्यिकीय रूप से %2$d के आसपास कम हो जाते हैं। स्वस्थ रहते हुए अपने धन का आनंद लेने के लिए बचत बढ़ाने का प्रयास करें!</string>
+    <string name="personalize_timeline">समयरेखा को निजीकृत करें</string>
+    <string name="select_dob">जन्म तिथि चुनें</string>
+    <string name="retirement_goal_age_label">सेवानिवृत्ति लक्ष्य आयु: %1$d</string>
+    <string name="financial_goal_label">वित्तीय लक्ष्य (₹)</string>
+    <string name="current_savings_label">वर्तमान मासिक बचत (₹)</string>
+    <string name="save">सहेजें</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="ok_button">ठीक है</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">अभी</string>
+    <string name="event_now_desc">आप यहां हैं</string>
+    <string name="event_debt_free">ऋण मुक्त</string>
+    <string name="event_debt_free_desc">गृह ऋण चुकाया गया</string>
+    <string name="event_goal_reached">लक्ष्य प्राप्त</string>
+    <string name="event_goal_reached_desc">₹%1$d करोड़ कोष</string>
+    <string name="event_prime_health_ends">मुख्य स्वास्थ्य समाप्त</string>
+    <string name="event_prime_health_desc">सांख्यिकीय गिरावट</string>
+    <string name="event_life_expectancy">जीवन प्रत्याशा</string>
+    <string name="event_life_expectancy_desc">बीमांकिक अनुमान</string>
+    <string name="event_retirement_goal">सेवानिवृत्ति लक्ष्य</string>
+    <string name="event_retirement_goal_desc">नियोजित सेवानिवृत्ति</string>
 </resources>

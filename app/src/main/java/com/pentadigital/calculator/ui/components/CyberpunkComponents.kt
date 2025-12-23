@@ -76,6 +76,7 @@ fun CyberpunkCard(
     modifier: Modifier = Modifier,
     borderColor: Color = MaterialTheme.colorScheme.primary,
     backgroundColor: Color = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
+    contentPadding: PaddingValues = PaddingValues(16.dp),
     content: @Composable ColumnScope.() -> Unit
 ) {
     // Cut corners shape
@@ -89,7 +90,7 @@ fun CyberpunkCard(
         colors = CardDefaults.cardColors(containerColor = backgroundColor)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(contentPadding),
             content = content
         )
     }
@@ -172,6 +173,7 @@ fun TechText(
     color: Color = MaterialTheme.colorScheme.onBackground,
     fontSize: androidx.compose.ui.unit.TextUnit = 14.sp,
     fontWeight: FontWeight = FontWeight.Normal,
+    letterSpacing: androidx.compose.ui.unit.TextUnit = 0.5.sp, // Added parameter
     textAlign: androidx.compose.ui.text.style.TextAlign? = null,
     maxLines: Int = Int.MAX_VALUE,
     overflow: androidx.compose.ui.text.style.TextOverflow = androidx.compose.ui.text.style.TextOverflow.Clip,
@@ -184,7 +186,7 @@ fun TechText(
         fontSize = fontSize,
         fontWeight = fontWeight,
         fontFamily = FontFamily.Monospace,
-        letterSpacing = 0.5.sp,
+        letterSpacing = letterSpacing, // Use parameter
         textAlign = textAlign,
         maxLines = maxLines,
         overflow = overflow,

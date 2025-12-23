@@ -41,25 +41,25 @@ enum class GeometryTab {
 
 // State for Geometry Calculator
 data class GeometryState(
-    val selectedTab: GeometryTab = GeometryTab.SHAPES_3D,
+    val selectedTab: GeometryTab = GeometryTab.SHAPES_2D,
     
     // 2D Shape
     val selected2DShape: Shape2D = Shape2D.CIRCLE,
-    val radius: Double = 5.0,
-    val side: Double = 5.0,
-    val length: Double = 8.0,
-    val width: Double = 5.0,
-    val base: Double = 6.0,
-    val height: Double = 4.0,
-    val sideA: Double = 3.0,
-    val sideB: Double = 4.0,
-    val sideC: Double = 5.0,
-    val topBase: Double = 4.0,
-    val bottomBase: Double = 6.0,
-    val diagonal1: Double = 6.0,
-    val diagonal2: Double = 4.0,
-    val semiAxisA: Double = 5.0,
-    val semiAxisB: Double = 3.0,
+    val radius: String = "5.0",
+    val side: String = "5.0",
+    val length: String = "8.0",
+    val width: String = "5.0",
+    val base: String = "6.0",
+    val height: String = "4.0",
+    val sideA: String = "3.0",
+    val sideB: String = "4.0",
+    val sideC: String = "5.0",
+    val topBase: String = "4.0",
+    val bottomBase: String = "6.0",
+    val diagonal1: String = "6.0",
+    val diagonal2: String = "4.0",
+    val semiAxisA: String = "5.0",
+    val semiAxisB: String = "3.0",
     
     // 2D Results
     val area2D: Double = 0.0,
@@ -67,16 +67,16 @@ data class GeometryState(
     
     // 3D Shape
     val selected3DShape: Shape3D = Shape3D.CUBE,
-    val radius3D: Double = 3.0,
-    val height3D: Double = 5.0,
-    val side3D: Double = 4.0,
-    val length3D: Double = 6.0,
-    val width3D: Double = 4.0,
-    val depth3D: Double = 3.0,
-    val baseRadius: Double = 3.0,
-    val majorRadius: Double = 4.0,
-    val minorRadius: Double = 1.5,
-    val slantHeight: Double = 5.0,
+    val radius3D: String = "3.0",
+    val height3D: String = "5.0",
+    val side3D: String = "4.0",
+    val length3D: String = "6.0",
+    val width3D: String = "4.0",
+    val depth3D: String = "3.0",
+    val baseRadius: String = "3.0",
+    val majorRadius: String = "4.0",
+    val minorRadius: String = "1.5",
+    val slantHeight: String = "5.0",
     
     // 3D Results
     val volume: Double = 0.0,
@@ -95,34 +95,34 @@ sealed class GeometryEvent {
     
     // 2D Shape events
     data class Select2DShape(val shape: Shape2D) : GeometryEvent()
-    data class UpdateRadius(val value: Double) : GeometryEvent()
-    data class UpdateSide(val value: Double) : GeometryEvent()
-    data class UpdateLength(val value: Double) : GeometryEvent()
-    data class UpdateWidth(val value: Double) : GeometryEvent()
-    data class UpdateBase(val value: Double) : GeometryEvent()
-    data class UpdateHeight(val value: Double) : GeometryEvent()
-    data class UpdateSideA(val value: Double) : GeometryEvent()
-    data class UpdateSideB(val value: Double) : GeometryEvent()
-    data class UpdateSideC(val value: Double) : GeometryEvent()
-    data class UpdateTopBase(val value: Double) : GeometryEvent()
-    data class UpdateBottomBase(val value: Double) : GeometryEvent()
-    data class UpdateDiagonal1(val value: Double) : GeometryEvent()
-    data class UpdateDiagonal2(val value: Double) : GeometryEvent()
-    data class UpdateSemiAxisA(val value: Double) : GeometryEvent()
-    data class UpdateSemiAxisB(val value: Double) : GeometryEvent()
+    data class UpdateRadius(val value: String) : GeometryEvent()
+    data class UpdateSide(val value: String) : GeometryEvent()
+    data class UpdateLength(val value: String) : GeometryEvent()
+    data class UpdateWidth(val value: String) : GeometryEvent()
+    data class UpdateBase(val value: String) : GeometryEvent()
+    data class UpdateHeight(val value: String) : GeometryEvent()
+    data class UpdateSideA(val value: String) : GeometryEvent()
+    data class UpdateSideB(val value: String) : GeometryEvent()
+    data class UpdateSideC(val value: String) : GeometryEvent()
+    data class UpdateTopBase(val value: String) : GeometryEvent()
+    data class UpdateBottomBase(val value: String) : GeometryEvent()
+    data class UpdateDiagonal1(val value: String) : GeometryEvent()
+    data class UpdateDiagonal2(val value: String) : GeometryEvent()
+    data class UpdateSemiAxisA(val value: String) : GeometryEvent()
+    data class UpdateSemiAxisB(val value: String) : GeometryEvent()
     
     // 3D Shape events
     data class Select3DShape(val shape: Shape3D) : GeometryEvent()
-    data class UpdateRadius3D(val value: Double) : GeometryEvent()
-    data class UpdateHeight3D(val value: Double) : GeometryEvent()
-    data class UpdateSide3D(val value: Double) : GeometryEvent()
-    data class UpdateLength3D(val value: Double) : GeometryEvent()
-    data class UpdateWidth3D(val value: Double) : GeometryEvent()
-    data class UpdateDepth3D(val value: Double) : GeometryEvent()
-    data class UpdateBaseRadius(val value: Double) : GeometryEvent()
-    data class UpdateMajorRadius(val value: Double) : GeometryEvent()
-    data class UpdateMinorRadius(val value: Double) : GeometryEvent()
-    data class UpdateSlantHeight(val value: Double) : GeometryEvent()
+    data class UpdateRadius3D(val value: String) : GeometryEvent()
+    data class UpdateHeight3D(val value: String) : GeometryEvent()
+    data class UpdateSide3D(val value: String) : GeometryEvent()
+    data class UpdateLength3D(val value: String) : GeometryEvent()
+    data class UpdateWidth3D(val value: String) : GeometryEvent()
+    data class UpdateDepth3D(val value: String) : GeometryEvent()
+    data class UpdateBaseRadius(val value: String) : GeometryEvent()
+    data class UpdateMajorRadius(val value: String) : GeometryEvent()
+    data class UpdateMinorRadius(val value: String) : GeometryEvent()
+    data class UpdateSlantHeight(val value: String) : GeometryEvent()
     
     // Rotation events
     data class UpdateRotationX(val value: Float) : GeometryEvent()
@@ -280,52 +280,69 @@ class GeometryViewModel : ViewModel() {
     }
     
     private fun calculate2D() {
+        // Parse inputs
+        val r = state.radius.toDoubleOrNull() ?: 0.0
+        val side = state.side.toDoubleOrNull() ?: 0.0
+        val len = state.length.toDoubleOrNull() ?: 0.0
+        val wid = state.width.toDoubleOrNull() ?: 0.0
+        val bs = state.base.toDoubleOrNull() ?: 0.0
+        val h = state.height.toDoubleOrNull() ?: 0.0
+        val sA = state.sideA.toDoubleOrNull() ?: 0.0
+        val sB = state.sideB.toDoubleOrNull() ?: 0.0
+        val sC = state.sideC.toDoubleOrNull() ?: 0.0
+        val tb = state.topBase.toDoubleOrNull() ?: 0.0
+        val bb = state.bottomBase.toDoubleOrNull() ?: 0.0
+        val d1 = state.diagonal1.toDoubleOrNull() ?: 0.0
+        val d2 = state.diagonal2.toDoubleOrNull() ?: 0.0
+        val saA = state.semiAxisA.toDoubleOrNull() ?: 0.0
+        val saB = state.semiAxisB.toDoubleOrNull() ?: 0.0
+    
         val (area, perimeter) = when (state.selected2DShape) {
             Shape2D.CIRCLE -> {
-                val a = PI * state.radius.pow(2)
-                val p = 2 * PI * state.radius
+                val a = PI * r.pow(2)
+                val p = 2 * PI * r
                 Pair(a, p)
             }
             Shape2D.SQUARE -> {
-                val a = state.side.pow(2)
-                val p = 4 * state.side
+                val a = side.pow(2)
+                val p = 4 * side
                 Pair(a, p)
             }
             Shape2D.RECTANGLE -> {
-                val a = state.length * state.width
-                val p = 2 * (state.length + state.width)
+                val a = len * wid
+                val p = 2 * (len + wid)
                 Pair(a, p)
             }
             Shape2D.TRIANGLE -> {
                 // Using Heron's formula for area
-                val s = (state.sideA + state.sideB + state.sideC) / 2
-                val a = sqrt(s * (s - state.sideA) * (s - state.sideB) * (s - state.sideC))
-                val p = state.sideA + state.sideB + state.sideC
+                val s = (sA + sB + sC) / 2
+                val a = if (s > sA && s > sB && s > sC) sqrt(s * (s - sA) * (s - sB) * (s - sC)) else 0.0
+                val p = sA + sB + sC
                 Pair(a, p)
             }
             Shape2D.TRAPEZOID -> {
-                val a = ((state.topBase + state.bottomBase) / 2) * state.height
+                val a = ((tb + bb) / 2) * h
                 // Assuming isosceles trapezoid for perimeter estimation
-                val leg = sqrt(state.height.pow(2) + ((state.bottomBase - state.topBase) / 2).pow(2))
-                val p = state.topBase + state.bottomBase + 2 * leg
+                val leg = sqrt(h.pow(2) + ((bb - tb) / 2).pow(2))
+                val p = tb + bb + 2 * leg
                 Pair(a, p)
             }
             Shape2D.PARALLELOGRAM -> {
-                val a = state.base * state.height
-                val p = 2 * (state.base + state.side)
+                val a = bs * h
+                val p = 2 * (bs + side) // Using side as side length
                 Pair(a, p)
             }
             Shape2D.ELLIPSE -> {
-                val a = PI * state.semiAxisA * state.semiAxisB
+                val a = PI * saA * saB
                 // Ramanujan's approximation for perimeter
-                val h = ((state.semiAxisA - state.semiAxisB) / (state.semiAxisA + state.semiAxisB)).pow(2)
-                val p = PI * (state.semiAxisA + state.semiAxisB) * (1 + (3 * h) / (10 + sqrt(4 - 3 * h)))
+                val h_val = ((saA - saB) / (saA + saB)).pow(2)
+                val p = PI * (saA + saB) * (1 + (3 * h_val) / (10 + sqrt(4 - 3 * h_val)))
                 Pair(a, p)
             }
             Shape2D.RHOMBUS -> {
-                val a = (state.diagonal1 * state.diagonal2) / 2
-                val side = sqrt((state.diagonal1 / 2).pow(2) + (state.diagonal2 / 2).pow(2))
-                val p = 4 * side
+                val a = (d1 * d2) / 2
+                val s_val = sqrt((d1 / 2).pow(2) + (d2 / 2).pow(2))
+                val p = 4 * s_val
                 Pair(a, p)
             }
         }
@@ -333,55 +350,67 @@ class GeometryViewModel : ViewModel() {
     }
     
     private fun calculate3D() {
+        // Parse inputs
+        val r3d = state.radius3D.toDoubleOrNull() ?: 0.0
+        val h3d = state.height3D.toDoubleOrNull() ?: 0.0
+        val s3d = state.side3D.toDoubleOrNull() ?: 0.0
+        val l3d = state.length3D.toDoubleOrNull() ?: 0.0
+        val w3d = state.width3D.toDoubleOrNull() ?: 0.0
+        val d3d = state.depth3D.toDoubleOrNull() ?: 0.0
+        val br = state.baseRadius.toDoubleOrNull() ?: 0.0
+        val majR = state.majorRadius.toDoubleOrNull() ?: 0.0
+        val minR = state.minorRadius.toDoubleOrNull() ?: 0.0
+        val sh = state.slantHeight.toDoubleOrNull() ?: 0.0
+    
         val (volume, surfaceArea) = when (state.selected3DShape) {
             Shape3D.CUBE -> {
-                val v = state.side3D.pow(3)
-                val sa = 6 * state.side3D.pow(2)
+                val v = s3d.pow(3)
+                val sa = 6 * s3d.pow(2)
                 Pair(v, sa)
             }
             Shape3D.SPHERE -> {
-                val v = (4.0 / 3.0) * PI * state.radius3D.pow(3)
-                val sa = 4 * PI * state.radius3D.pow(2)
+                val v = (4.0 / 3.0) * PI * r3d.pow(3)
+                val sa = 4 * PI * r3d.pow(2)
                 Pair(v, sa)
             }
             Shape3D.CYLINDER -> {
-                val v = PI * state.radius3D.pow(2) * state.height3D
-                val sa = 2 * PI * state.radius3D * (state.radius3D + state.height3D)
+                val v = PI * r3d.pow(2) * h3d
+                val sa = 2 * PI * r3d * (r3d + h3d)
                 Pair(v, sa)
             }
             Shape3D.CONE -> {
-                val v = (1.0 / 3.0) * PI * state.baseRadius.pow(2) * state.height3D
-                val slant = sqrt(state.baseRadius.pow(2) + state.height3D.pow(2))
-                val sa = PI * state.baseRadius * (state.baseRadius + slant)
+                val v = (1.0 / 3.0) * PI * br.pow(2) * h3d
+                val slant = sqrt(br.pow(2) + h3d.pow(2))
+                val sa = PI * br * (br + slant)
                 Pair(v, sa)
             }
             Shape3D.PYRAMID -> {
                 // Square base pyramid
-                val v = (1.0 / 3.0) * state.side3D.pow(2) * state.height3D
-                val slant = sqrt((state.side3D / 2).pow(2) + state.height3D.pow(2))
-                val sa = state.side3D.pow(2) + 2 * state.side3D * slant
+                val v = (1.0 / 3.0) * s3d.pow(2) * h3d
+                val slant = sqrt((s3d / 2).pow(2) + h3d.pow(2))
+                val sa = s3d.pow(2) + 2 * s3d * slant
                 Pair(v, sa)
             }
             Shape3D.RECTANGULAR_PRISM -> {
-                val v = state.length3D * state.width3D * state.depth3D
-                val sa = 2 * (state.length3D * state.width3D + state.width3D * state.depth3D + state.depth3D * state.length3D)
+                val v = l3d * w3d * d3d
+                val sa = 2 * (l3d * w3d + w3d * d3d + d3d * l3d)
                 Pair(v, sa)
             }
             Shape3D.TRIANGULAR_PRISM -> {
                 // Equilateral triangle base
-                val baseArea = (sqrt(3.0) / 4) * state.side3D.pow(2)
-                val v = baseArea * state.height3D
-                val sa = 2 * baseArea + 3 * state.side3D * state.height3D
+                val baseArea = (sqrt(3.0) / 4) * s3d.pow(2)
+                val v = baseArea * h3d
+                val sa = 2 * baseArea + 3 * s3d * h3d
                 Pair(v, sa)
             }
             Shape3D.TORUS -> {
-                val v = 2 * PI.pow(2) * state.majorRadius * state.minorRadius.pow(2)
-                val sa = 4 * PI.pow(2) * state.majorRadius * state.minorRadius
+                val v = 2 * PI.pow(2) * majR * minR.pow(2)
+                val sa = 4 * PI.pow(2) * majR * minR
                 Pair(v, sa)
             }
             Shape3D.HEMISPHERE -> {
-                val v = (2.0 / 3.0) * PI * state.radius3D.pow(3)
-                val sa = 3 * PI * state.radius3D.pow(2)
+                val v = (2.0 / 3.0) * PI * r3d.pow(3)
+                val sa = 3 * PI * r3d.pow(2)
                 Pair(v, sa)
             }
         }

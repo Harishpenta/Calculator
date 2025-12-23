@@ -4,7 +4,9 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.compose.ui.unit.dp
 import com.pentadigital.calculator.ui.theme.CalculatorTheme
 import com.pentadigital.calculator.viewmodels.TimeCalculatorViewModel
 import com.pentadigital.calculator.viewmodels.TDEEViewModel
@@ -37,6 +40,7 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             val navController = androidx.navigation.compose.rememberNavController()
             val currentBackStackEntry by navController.currentBackStackEntryAsState()
@@ -61,7 +65,8 @@ class MainActivity : ComponentActivity() {
             // Database & Repository
             val database = com.pentadigital.calculator.data.AppDatabase.getDatabase(applicationContext)
             val repository = com.pentadigital.calculator.data.HistoryRepository(database.historyDao())
-            
+            val userPreferencesRepository = com.pentadigital.calculator.data.UserPreferencesRepository(applicationContext)
+
             val calculatorViewModel = viewModel<CalculatorViewModel>(
                 factory = CalculatorViewModelFactory(repository)
             )
@@ -93,6 +98,8 @@ class MainActivity : ComponentActivity() {
         val bodyFatViewModel: BodyFatViewModel = viewModel()
         val waterIntakeViewModel: WaterIntakeViewModel = viewModel()
         val themeViewModel: ThemeViewModel = viewModel(factory = ThemeViewModelFactory(applicationContext))
+        val profileViewModel: ProfileViewModel = viewModel(factory = ProfileViewModelFactory(repository))
+        val lifeTimelineViewModel: LifeTimelineViewModel = viewModel(factory = LifeTimelineViewModelFactory(userPreferencesRepository))
 
             // Determine if we should show bottom navigation
             val showBottomNav = currentRoute in listOf(
@@ -141,7 +148,16 @@ val configuration = LocalConfiguration.current
 
                         val mainContent: @Composable (androidx.compose.foundation.layout.PaddingValues) -> Unit = { paddingValues ->
                             Column(modifier = Modifier.fillMaxSize()) {
-                                Box(modifier = Modifier.weight(1f).padding(paddingValues)) {
+                                Box(
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .padding(
+                                            top = paddingValues.calculateTopPadding(),
+                                            start = paddingValues.calculateLeftPadding(androidx.compose.ui.unit.LayoutDirection.Ltr),
+                                            end = paddingValues.calculateRightPadding(androidx.compose.ui.unit.LayoutDirection.Ltr),
+                                            bottom = paddingValues.calculateBottomPadding()
+                                        )
+                                ) {
                                     Surface(
                                         modifier = Modifier.fillMaxSize(),
                                         color = MaterialTheme.colorScheme.background
@@ -170,6 +186,8 @@ val configuration = LocalConfiguration.current
                                             bodyFatViewModel = bodyFatViewModel,
                                             waterIntakeViewModel = waterIntakeViewModel,
                                             themeViewModel = themeViewModel,
+                                            profileViewModel = profileViewModel,
+                                            lifeTimelineViewModel = lifeTimelineViewModel,
                                             onOpenDrawer = {
                                                 navController.navigate(Screen.Home.route) {
                                                     popUpTo(Screen.Home.route) { inclusive = true }
@@ -178,9 +196,10 @@ val configuration = LocalConfiguration.current
                                         )
                                     }
                                 }
-                                if (!showBottomNav) {
-                                    AdMobBanner()
-                                }
+                                // AdMobBanner removed as per user request
+                                // if (!showBottomNav) {
+                                //     AdMobBanner(modifier = Modifier.navigationBarsPadding())
+                                // }
                             }
                         }
 

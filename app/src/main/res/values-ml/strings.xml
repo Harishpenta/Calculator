@@ -236,4 +236,72 @@
     <string name="cat_general">General</string>
     <string name="cat_date_time_title">Date &amp; Time</string>
     <string name="cat_unit_converter_title">Unit Converter</string>
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">ലളിത പലിശ</string>
+    <string name="compound_interest_title">കൂട്ടു പലിശ</string>
+    <string name="loan_prepayment_title">വായ്പ മുൻകൂർ അടവ്</string>
+    <string name="goal_planner_title">ലക്ഷ്യ പ്ലാനർ</string>
+    <string name="discount_calculator_title">കിഴിവ് കാൽക്കുലേറ്റർ</string>
+    <string name="tip_calculator_title">ടിപ്പ് കാൽക്കുലേറ്റർ</string>
+    <string name="fuel_cost_calculator_title">ഇന്ധന ചെലവ്</string>
+    <string name="unit_price_comparator_title">വില താരതമ്യം</string>
+    <string name="date_difference_title">തീയതി വ്യത്യാസം</string>
+    <string name="time_calculator_title">സമയ കാൽക്കുലേറ്റർ</string>
+    <string name="tdee_title">TDEE കാൽക്കുലേറ്റർ</string>
+    <string name="water_intake_title">ജല ഉപഭോഗം</string>
+    <string name="body_fat_title">ശരീര കൊഴുപ്പ്</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">പ്രൊഫൈൽ</string>
+    <string name="pro_member">പ്രോ അംഗം</string>
+    <string name="calculations_label">കണക്കുകൂട്ടലുകൾ</string>
+    <string name="favorites_label">പ്രിയപ്പെട്ടവ</string>
+    <string name="settings_privacy_header">ക്രമീകരണങ്ങളും സ്വകാര്യതയും</string>
+    <string name="app_settings_title">ആപ്പ് ക്രമീകരണങ്ങൾ</string>
+    <string name="app_settings_desc">തീം, ഭാഷ</string>
+    <string name="privacy_policy_title">സ്വകാര്യതാ നയം</string>
+    <string name="privacy_policy_desc">ഡാറ്റ സംരക്ഷണം</string>
+    <string name="help_support_title">സഹായം</string>
+    <string name="help_support_desc">ബന്ധപ്പെടുക</string>
+    <string name="share_app_title">ആപ്പ് പങ്കിടുക</string>
+    <string name="share_app_desc">സുഹൃത്തുക്കളെ ക്ഷണിക്കുക</string>
+    <string name="logout">ലോഗ് ഔട്ട്</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">ഫിറ്റ്നസ്</string>
+    <string name="average_label">ശരാശരി</string>
+    <string name="obese_label">അമിതവണ്ണം</string>
+    <string name="essential_fat_label">അവശ്യമായ കൊഴുപ്പ്</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">ജീവിത ടൈംലൈൻ</string>
+    <string name="simulation_monthly_investment">സിമുലേഷൻ: പ്രതിമാസ നിക്ഷേപം</string>
+    <string name="simulation_hint">ലക്ഷ്യങ്ങൾ വേഗത്തിൽ നേടാൻ പ്രതിമാസ സമ്പാദ്യം വർദ്ധിപ്പിക്കുക!</string>
+    <string name="life_insight">ജീവിത ഉൾക്കാഴ്ച</string>
+    <string name="prime_freedom_years">നിങ്ങൾക്ക് %1$d വർഷത്തെ പ്രൈം ഫ്രീഡം ഉണ്ട്!</string>
+    <string name="prime_freedom_desc">%1$d വയസ്സിൽ നിങ്ങൾ ലക്ഷ്യം നേടുന്നു, അപ്പോഴും നിങ്ങൾ മികച്ച ആരോഗ്യത്തിലായിരിക്കും (~%2$d വരെ). മികച്ച പ്രവർത്തനം!</string>
+    <string name="prime_warning_title">മുന്നറിയിപ്പ്: ലക്ഷ്യം വൈകി മാത്രം</string>
+    <string name="prime_warning_desc">%1$d വയസ്സിലാണ് ലക്ഷ്യം കാണുന്നത്, എന്നാൽ നിങ്ങളുടെ മികച്ച ആരോഗ്യ കാലം %2$d-ഓടെ കുറഞ്ഞേക്കാം. ആരോഗ്യമുള്ളപ്പോൾ സമ്പത്ത് അനുഭവിക്കാൻ സമ്പാദ്യം വർദ്ധിപ്പിക്കുക!</string>
+    <string name="personalize_timeline">ടൈംലൈൻ വ്യക്തിഗതമാക്കുക</string>
+    <string name="select_dob">ജനനത്തീയതി തിരഞ്ഞെടുക്കുക</string>
+    <string name="retirement_goal_age_label">വിരമിക്കൽ ലക്ഷ്യ വയസ്സ്: %1$d</string>
+    <string name="financial_goal_label">സാമ്പത്തിക ലക്ഷ്യം (₹)</string>
+    <string name="current_savings_label">നിലവിലെ പ്രതിമാസ സമ്പാദ്യം (₹)</string>
+    <string name="save">സേവ് ചെയ്യുക</string>
+    <string name="cancel">റദ്ദാക്കുക</string>
+    <string name="ok_button">ശരി</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">ഇപ്പോൾ</string>
+    <string name="event_now_desc">നിങ്ങൾ ഇവിടെയാണ്</string>
+    <string name="event_debt_free">കടബാധ്യത തീർന്നു</string>
+    <string name="event_debt_free_desc">ഭവന വായ്പ അടച്ചുതീർത്തു</string>
+    <string name="event_goal_reached">ലക്ഷ്യം നേടി</string>
+    <string name="event_goal_reached_desc">₹%1$d കോടി സമ്പാദ്യം</string>
+    <string name="event_prime_health_ends">മികച്ച ആരോഗ്യം കുറയുന്നു</string>
+    <string name="event_prime_health_desc">സ്ഥിതിവിവരക്കണക്ക് ഇടിവ്</string>
+    <string name="event_life_expectancy">ആയുർദൈർഘ്യം</string>
+    <string name="event_life_expectancy_desc">ആക്ച്വറിയൽ മതിപ്പ്</string>
+    <string name="event_retirement_goal">വിരമിക്കൽ ലക്ഷ്യം</string>
+    <string name="event_retirement_goal_desc">ആസൂത്രതി വിരമിക്കൽ</string>
 </resources>

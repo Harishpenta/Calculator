@@ -27,6 +27,8 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.ui.platform.LocalConfiguration
 import com.pentadigital.calculator.utils.isLandscape
 
+import androidx.compose.foundation.layout.WindowInsets
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GeometryScreen(
@@ -52,10 +54,12 @@ fun GeometryScreen(
                         Icon(Icons.Default.Share, contentDescription = "Share", tint = MaterialTheme.colorScheme.primary)
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { paddingValues ->
         Column(
             modifier = modifier
@@ -206,102 +210,102 @@ private fun InputsSection2D(state: GeometryState, onAction: (GeometryEvent) -> U
         when (state.selected2DShape) {
             Shape2D.CIRCLE -> {
                 CyberpunkInput(
-                    value = state.radius.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateRadius(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.radius,
+                    onValueChange = { onAction(GeometryEvent.UpdateRadius(it)) },
                     label = "Radius"
                 )
             }
             Shape2D.SQUARE -> {
                 CyberpunkInput(
-                    value = state.side.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSide(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.side,
+                    onValueChange = { onAction(GeometryEvent.UpdateSide(it)) },
                     label = "Side"
                 )
             }
             Shape2D.RECTANGLE -> {
                 CyberpunkInput(
-                    value = state.length.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateLength(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.length,
+                    onValueChange = { onAction(GeometryEvent.UpdateLength(it)) },
                     label = "Length"
                 )
                 CyberpunkInput(
-                    value = state.width.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateWidth(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.width,
+                    onValueChange = { onAction(GeometryEvent.UpdateWidth(it)) },
                     label = "Width"
                 )
             }
             Shape2D.TRIANGLE -> {
                 CyberpunkInput(
-                    value = state.sideA.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSideA(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.sideA,
+                    onValueChange = { onAction(GeometryEvent.UpdateSideA(it)) },
                     label = "Side A"
                 )
                 CyberpunkInput(
-                    value = state.sideB.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSideB(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.sideB,
+                    onValueChange = { onAction(GeometryEvent.UpdateSideB(it)) },
                     label = "Side B"
                 )
                 CyberpunkInput(
-                    value = state.sideC.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSideC(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.sideC,
+                    onValueChange = { onAction(GeometryEvent.UpdateSideC(it)) },
                     label = "Side C"
                 )
             }
             Shape2D.TRAPEZOID -> {
                 CyberpunkInput(
-                    value = state.topBase.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateTopBase(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.topBase,
+                    onValueChange = { onAction(GeometryEvent.UpdateTopBase(it)) },
                     label = "Top Base"
                 )
                 CyberpunkInput(
-                    value = state.bottomBase.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateBottomBase(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.bottomBase,
+                    onValueChange = { onAction(GeometryEvent.UpdateBottomBase(it)) },
                     label = "Bottom Base"
                 )
                 CyberpunkInput(
-                    value = state.height.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateHeight(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.height,
+                    onValueChange = { onAction(GeometryEvent.UpdateHeight(it)) },
                     label = "Height"
                 )
             }
             Shape2D.PARALLELOGRAM -> {
                 CyberpunkInput(
-                    value = state.base.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateBase(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.base,
+                    onValueChange = { onAction(GeometryEvent.UpdateBase(it)) },
                     label = "Base"
                 )
                 CyberpunkInput(
-                    value = state.height.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateHeight(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.height,
+                    onValueChange = { onAction(GeometryEvent.UpdateHeight(it)) },
                     label = "Height"
                 )
                 CyberpunkInput(
-                    value = state.side.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSide(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.side,
+                    onValueChange = { onAction(GeometryEvent.UpdateSide(it)) },
                     label = "Side (for Perimeter)"
                 )
             }
             Shape2D.ELLIPSE -> {
                 CyberpunkInput(
-                    value = state.semiAxisA.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSemiAxisA(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.semiAxisA,
+                    onValueChange = { onAction(GeometryEvent.UpdateSemiAxisA(it)) },
                     label = "Semi-Axis A"
                 )
                 CyberpunkInput(
-                    value = state.semiAxisB.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSemiAxisB(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.semiAxisB,
+                    onValueChange = { onAction(GeometryEvent.UpdateSemiAxisB(it)) },
                     label = "Semi-Axis B"
                 )
             }
             Shape2D.RHOMBUS -> {
                 CyberpunkInput(
-                    value = state.diagonal1.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateDiagonal1(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.diagonal1,
+                    onValueChange = { onAction(GeometryEvent.UpdateDiagonal1(it)) },
                     label = "Diagonal 1"
                 )
                 CyberpunkInput(
-                    value = state.diagonal2.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateDiagonal2(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.diagonal2,
+                    onValueChange = { onAction(GeometryEvent.UpdateDiagonal2(it)) },
                     label = "Diagonal 2"
                 )
             }
@@ -461,14 +465,15 @@ private fun Shapes3DContent(
                                 onAction(GeometryEvent.UpdateRotationX(x))
                                 onAction(GeometryEvent.UpdateRotationY(y))
                             },
-                             side = state.side3D.toFloat(),
-                            radius = state.radius3D.toFloat(),
-                            height = state.height3D.toFloat(),
-                            length = state.length3D.toFloat(),
-                            width = state.width3D.toFloat(),
-                            depth = state.depth3D.toFloat(),
-                            majorRadius = state.majorRadius.toFloat(),
-                            minorRadius = state.minorRadius.toFloat()
+
+                             side = state.side3D.toFloatOrNull() ?: 0f,
+                            radius = state.radius3D.toFloatOrNull() ?: 0f,
+                            height = state.height3D.toFloatOrNull() ?: 0f,
+                            length = state.length3D.toFloatOrNull() ?: 0f,
+                            width = state.width3D.toFloatOrNull() ?: 0f,
+                            depth = state.depth3D.toFloatOrNull() ?: 0f,
+                            majorRadius = state.majorRadius.toFloatOrNull() ?: 0f,
+                            minorRadius = state.minorRadius.toFloatOrNull() ?: 0f
                         )
                         
                         Spacer(modifier = Modifier.height(8.dp))
@@ -524,99 +529,99 @@ private fun InputsSection3D(state: GeometryState, onAction: (GeometryEvent) -> U
         when (state.selected3DShape) {
             Shape3D.CUBE -> {
                 CyberpunkInput(
-                    value = state.side3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSide3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.side3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateSide3D(it)) },
                     label = "Side"
                 )
             }
             Shape3D.SPHERE -> {
                 CyberpunkInput(
-                    value = state.radius3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateRadius3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.radius3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateRadius3D(it)) },
                     label = "Radius"
                 )
             }
             Shape3D.CYLINDER -> {
                 CyberpunkInput(
-                    value = state.radius3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateRadius3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.radius3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateRadius3D(it)) },
                     label = "Radius"
                 )
                 CyberpunkInput(
-                    value = state.height3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateHeight3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.height3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateHeight3D(it)) },
                     label = "Height"
                 )
             }
             Shape3D.CONE -> {
                 CyberpunkInput(
-                    value = state.baseRadius.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateBaseRadius(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.baseRadius,
+                    onValueChange = { onAction(GeometryEvent.UpdateBaseRadius(it)) },
                     label = "Base Radius"
                 )
                 CyberpunkInput(
-                    value = state.height3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateHeight3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.height3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateHeight3D(it)) },
                     label = "Height"
                 )
             }
             Shape3D.PYRAMID -> {
                 CyberpunkInput(
-                    value = state.side3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSide3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.side3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateSide3D(it)) },
                     label = "Base Side"
                 )
                 CyberpunkInput(
-                    value = state.height3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateHeight3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.height3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateHeight3D(it)) },
                     label = "Height"
                 )
             }
             Shape3D.RECTANGULAR_PRISM -> {
                 CyberpunkInput(
-                    value = state.length3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateLength3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.length3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateLength3D(it)) },
                     label = "Length"
                 )
                 CyberpunkInput(
-                    value = state.width3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateWidth3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.width3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateWidth3D(it)) },
                     label = "Width"
                 )
                 CyberpunkInput(
-                    value = state.depth3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateDepth3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.depth3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateDepth3D(it)) },
                     label = "Depth"
                 )
             }
             Shape3D.TRIANGULAR_PRISM -> {
                 CyberpunkInput(
-                    value = state.side3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateSide3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.side3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateSide3D(it)) },
                     label = "Base Triangle Side"
                 )
                 CyberpunkInput(
-                    value = state.height3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateHeight3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.height3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateHeight3D(it)) },
                     label = "Prism Height"
                 )
             }
             Shape3D.TORUS -> {
                 CyberpunkInput(
-                    value = state.majorRadius.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateMajorRadius(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.majorRadius,
+                    onValueChange = { onAction(GeometryEvent.UpdateMajorRadius(it)) },
                     label = "Major Radius (R)"
                 )
                 CyberpunkInput(
-                    value = state.minorRadius.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateMinorRadius(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.minorRadius,
+                    onValueChange = { onAction(GeometryEvent.UpdateMinorRadius(it)) },
                     label = "Minor Radius (r)"
                 )
             }
             Shape3D.HEMISPHERE -> {
                 CyberpunkInput(
-                    value = state.radius3D.toString(),
-                    onValueChange = { onAction(GeometryEvent.UpdateRadius3D(it.toDoubleOrNull() ?: 0.0)) },
+                    value = state.radius3D,
+                    onValueChange = { onAction(GeometryEvent.UpdateRadius3D(it)) },
                     label = "Radius"
                 )
             }

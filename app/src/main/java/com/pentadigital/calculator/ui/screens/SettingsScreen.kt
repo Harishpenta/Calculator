@@ -57,6 +57,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 
+import androidx.compose.foundation.layout.WindowInsets
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
@@ -85,10 +87,12 @@ fun SettingsScreen(
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
+                windowInsets = WindowInsets(0.dp)
             )
         },
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets(0.dp)
     ) { padding ->
         val isLandscape = isLandscape()
         val windowSize = rememberWindowSize()

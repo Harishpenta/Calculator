@@ -236,4 +236,72 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Enkel Rente</string>
+    <string name="compound_interest_title">Rentesrente</string>
+    <string name="loan_prepayment_title">Lån Forskuddsbetaling</string>
+    <string name="goal_planner_title">Målplanlegger</string>
+    <string name="discount_calculator_title">Rabattkalkulator</string>
+    <string name="tip_calculator_title">Tips</string>
+    <string name="fuel_cost_calculator_title">Drivstoffkostnad</string>
+    <string name="unit_price_comparator_title">Enhetsprissammenligning</string>
+    <string name="date_difference_title">Datoforskjell</string>
+    <string name="time_calculator_title">Tidskalkulator</string>
+    <string name="tdee_title">TDEE-kalkulator</string>
+    <string name="water_intake_title">Vanninntak</string>
+    <string name="body_fat_title">Kroppsfett</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profil</string>
+    <string name="pro_member">Pro-medlem</string>
+    <string name="calculations_label">Beregninger</string>
+    <string name="favorites_label">Favoritter</string>
+    <string name="settings_privacy_header">Innstillinger</string>
+    <string name="app_settings_title">Appinnstillinger</string>
+    <string name="app_settings_desc">Tema, Språk</string>
+    <string name="privacy_policy_title">Personvernerklæring</string>
+    <string name="privacy_policy_desc">Databruk</string>
+    <string name="help_support_title">Hjelp</string>
+    <string name="help_support_desc">Kontakt</string>
+    <string name="share_app_title">Del App</string>
+    <string name="share_app_desc">Inviter venner</string>
+    <string name="logout">Logg ut</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Gjennomsnitt</string>
+    <string name="obese_label">Fedme</string>
+    <string name="essential_fat_label">Essensiell</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">Livstidslinje</string>
+    <string name="simulation_monthly_investment">SIMULERING: Månedlig investering</string>
+    <string name="simulation_hint">Øk din månedlige sparing for å nå målene dine tidligere!</string>
+    <string name="life_insight">Livsinnsikt</string>
+    <string name="prime_freedom_years">Du har %1$d år med Prime Freedom!</string>
+    <string name="prime_freedom_desc">Du når målet ditt ved %1$d år, mens du fortsatt er i dine beste helseår (opp til ~%2$d). Godt jobba!</string>
+    <string name="prime_warning_title">Advarsel: Mål anslått etter Prime-årene</string>
+    <string name="prime_warning_desc">Du når målet ditt ved %1$d år, men dine beste helseår avtar statistisk rundt %2$d. Prøv å øke sparingen for å nyte rikdommen din med god helse!</string>
+    <string name="personalize_timeline">Tilpass tidslinjen</string>
+    <string name="select_dob">Velg fødselsdato</string>
+    <string name="retirement_goal_age_label">Mål for pensjonsalder: %1$d</string>
+    <string name="financial_goal_label">Finansielt mål (₹)</string>
+    <string name="current_savings_label">Nåværende månedlig sparing (₹)</string>
+    <string name="save">Lagre</string>
+    <string name="cancel">Avbryt</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Nå</string>
+    <string name="event_now_desc">Du er her</string>
+    <string name="event_debt_free">Gjeldsfri</string>
+    <string name="event_debt_free_desc">Boliglån nedbetalt</string>
+    <string name="event_goal_reached">Mål nådd</string>
+    <string name="event_goal_reached_desc">Formue på ₹%1$d Cr</string>
+    <string name="event_prime_health_ends">Slutt på Prime Helse</string>
+    <string name="event_prime_health_desc">Statistisk nedgang</string>
+    <string name="event_life_expectancy">Forventet levealder</string>
+    <string name="event_life_expectancy_desc">Aktuarmessig estimat</string>
+    <string name="event_retirement_goal">Pensjonsmål</string>
+    <string name="event_retirement_goal_desc">Planlagt pensjonering</string>
 </resources>

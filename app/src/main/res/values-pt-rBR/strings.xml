@@ -225,9 +225,9 @@
     <string name="no_favorites_title">No favorites yet</string>
     <string name="no_favorites_desc">Add your frequently used calculators\nfor quick access</string>
     <string name="calc_geometry">Geometry</string>
-    <string name="cat_general">General</string>
-    <string name="cat_date_time_title">Date &amp; Time</string>
-    <string name="cat_unit_converter_title">Unit Converter</string>
+    <string name="cat_general">Geral</string>
+    <string name="cat_date_time_title">Data e Hora</string>
+    <string name="cat_unit_converter_title">Conversor de Unidades</string>
     <!-- Calculator Screen -->
     <string name="history_title">Histórico</string>
     <string name="no_history">Nenhum histórico ainda</string>
@@ -236,4 +236,72 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Juros Simples</string>
+    <string name="compound_interest_title">Juros Compostos</string>
+    <string name="loan_prepayment_title">Pagamento Antecipado</string>
+    <string name="goal_planner_title">Planejador de Metas</string>
+    <string name="discount_calculator_title">Calculadora de Desconto</string>
+    <string name="tip_calculator_title">Calculadora de Gorjeta</string>
+    <string name="fuel_cost_calculator_title">Custo de Combustível</string>
+    <string name="unit_price_comparator_title">Comparador de Preços</string>
+    <string name="date_difference_title">Diferença de Datas</string>
+    <string name="time_calculator_title">Calculadora de Tempo</string>
+    <string name="tdee_title">Calculadora TDEE</string>
+    <string name="water_intake_title">Ingestão de Água</string>
+    <string name="body_fat_title">Gordura Corporal</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Perfil</string>
+    <string name="pro_member">Membro Pro</string>
+    <string name="calculations_label">Cálculos</string>
+    <string name="favorites_label">Favoritos</string>
+    <string name="settings_privacy_header">Configurações e Privacidade</string>
+    <string name="app_settings_title">Configurações do App</string>
+    <string name="app_settings_desc">Tema, Idioma</string>
+    <string name="privacy_policy_title">Política de Privacidade</string>
+    <string name="privacy_policy_desc">Uso de dados</string>
+    <string name="help_support_title">Ajuda e Suporte</string>
+    <string name="help_support_desc">Contato</string>
+    <string name="share_app_title">Compartilhar App</string>
+    <string name="share_app_desc">Convidar amigos</string>
+    <string name="logout">Sair</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Média</string>
+    <string name="obese_label">Obeso</string>
+    <string name="essential_fat_label">Essencial</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">Linha do Tempo da Vida</string>
+    <string name="simulation_monthly_investment">SIMULAÇÃO: Investimento Mensal</string>
+    <string name="simulation_hint">Aumente sua poupança mensal para alcançar seus objetivos mais cedo!</string>
+    <string name="life_insight">Insight de Vida</string>
+    <string name="prime_freedom_years">Você tem %1$d anos de Liberdade Prime!</string>
+    <string name="prime_freedom_desc">Você atinge seu objetivo aos %1$d anos, ainda em seus melhores anos de saúde (até ~%2$d). Excelente trabalho!</string>
+    <string name="prime_warning_title">Aviso: Objetivo projetado após Anos Prime</string>
+    <string name="prime_warning_desc">Você atinge seu objetivo aos %1$d anos, mas seus melhores anos de saúde diminuem estatisticamente por volta dos %2$d. Tente aumentar sua poupança para aproveitar sua riqueza com saúde!</string>
+    <string name="personalize_timeline">Personalizar Linha do Tempo</string>
+    <string name="select_dob">Selecionar Data de Nascimento</string>
+    <string name="retirement_goal_age_label">Idade Alvo de Aposentadoria: %1$d</string>
+    <string name="financial_goal_label">Objetivo Financeiro (₹)</string>
+    <string name="current_savings_label">Poupança Mensal Atual (₹)</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Agora</string>
+    <string name="event_now_desc">Você está aqui</string>
+    <string name="event_debt_free">Livre de Dívidas</string>
+    <string name="event_debt_free_desc">Empréstimo da casa pago</string>
+    <string name="event_goal_reached">Objetivo Alcançado</string>
+    <string name="event_goal_reached_desc">Corpus de ₹%1$d Cr</string>
+    <string name="event_prime_health_ends">Fim da Saúde Prime</string>
+    <string name="event_prime_health_desc">Declínio estatístico</string>
+    <string name="event_life_expectancy">Expectativa de Vida</string>
+    <string name="event_life_expectancy_desc">Estimativa Atuarial</string>
+    <string name="event_retirement_goal">Objetivo de Aposentadoria</string>
+    <string name="event_retirement_goal_desc">Aposentadoria Planejada</string>
 </resources>

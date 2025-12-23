@@ -16,7 +16,7 @@ android {
         applicationId = "com.pentadigital.calculator"
         minSdk = 24
         targetSdk = 35
-        versionCode = 4
+        versionCode = 5
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

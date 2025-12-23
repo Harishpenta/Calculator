@@ -27,18 +27,18 @@ enum class AccentColor {
 
 enum class AppLanguage(val code: String, val displayName: String) {
     English("en", "English"),
-    Hindi("hi", "Hindi"),
-    Gujarati("gu", "Gujarati"),
-    Telugu("te", "Telugu"),
-    Marathi("mr", "Marathi"),
-    Tamil("ta", "Tamil"),
-    Kannada("kn", "Kannada"),
-    Malayalam("ml", "Malayalam"),
-    Norwegian("no", "Norwegian"),
-    Swedish("sv", "Swedish"),
-    Danish("da", "Danish"),
-    PortugueseBR("pt-rBR", "Portuguese (Brazil)"),
-    French("fr", "French"),
+    Hindi("hi", "हिन्दी"),
+    Gujarati("gu", "ગુજરાતી"),
+    Telugu("te", "తెలుగు"),
+    Marathi("mr", "मराठी"),
+    Tamil("ta", "தமிழ்"),
+    Kannada("kn", "ಕನ್ನಡ"),
+    Malayalam("ml", "മലയാളം"),
+    Norwegian("no", "Norsk"),
+    Swedish("sv", "Svenska"),
+    Danish("da", "Dansk"),
+    PortugueseBR("pt-rBR", "Português (Brasil)"),
+    French("fr", "Français"),
     EnglishUK("en-rGB", "English (UK)")
 }
 

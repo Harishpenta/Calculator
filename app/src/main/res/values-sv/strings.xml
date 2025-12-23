@@ -237,4 +237,72 @@
 
 
 
+    <!-- Missing Calculator Titles -->
+    <string name="simple_interest_title">Enkel Ränta</string>
+    <string name="compound_interest_title">Ränta på Ränta</string>
+    <string name="loan_prepayment_title">Lån Förskottsbetalning</string>
+    <string name="goal_planner_title">Målplanerare</string>
+    <string name="discount_calculator_title">Rabattkalkylator</string>
+    <string name="tip_calculator_title">Drickskalkylator</string>
+    <string name="fuel_cost_calculator_title">Bränslekostnad</string>
+    <string name="unit_price_comparator_title">Enhetsprisjämförelse</string>
+    <string name="date_difference_title">Datumskillnad</string>
+    <string name="time_calculator_title">Tidskalkylator</string>
+    <string name="tdee_title">TDEE-kalkylator</string>
+    <string name="water_intake_title">Vattenintag</string>
+    <string name="body_fat_title">Kroppsfett</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profil</string>
+    <string name="pro_member">Pro-medlem</string>
+    <string name="calculations_label">Beräkningar</string>
+    <string name="favorites_label">Favoriter</string>
+    <string name="settings_privacy_header">Inställningar</string>
+    <string name="app_settings_title">Appinställningar</string>
+    <string name="app_settings_desc">Tema, Språk</string>
+    <string name="privacy_policy_title">Sekretesspolicy</string>
+    <string name="privacy_policy_desc">Dataanvändning</string>
+    <string name="help_support_title">Hjälp</string>
+    <string name="help_support_desc">Kontakt</string>
+    <string name="share_app_title">Dela App</string>
+    <string name="share_app_desc">Bjud in vänner</string>
+    <string name="logout">Logga ut</string>
+    
+    <!-- Labels -->
+    <string name="fitness_label">Fitness</string>
+    <string name="average_label">Medel</string>
+    <string name="obese_label">Fetma</string>
+    <string name="essential_fat_label">Väsentlig</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">Livstidslinje</string>
+    <string name="simulation_monthly_investment">SIMULERING: Månatlig investering</string>
+    <string name="simulation_hint">Öka ditt månatliga sparande för att nå dina mål tidigare!</string>
+    <string name="life_insight">Livsinsikt</string>
+    <string name="prime_freedom_years">Du har %1$d år av Prime Freedom!</string>
+    <string name="prime_freedom_desc">Du når ditt mål vid %1$d års ålder, medan du fortfarande är vid bästa hälsa (upp till ~%2$d). Bra jobbat!</string>
+    <string name="prime_warning_title">Varning: Målet beräknas nås efter Prime-åren</string>
+    <string name="prime_warning_desc">Du når ditt mål vid %1$d års ålder, men din bästa hälsa avtar statistiskt sett runt %2$d. Försök att öka sparandet för att njuta av din rikedom med god hälsa!</string>
+    <string name="personalize_timeline">Anpassa tidslinjen</string>
+    <string name="select_dob">Välj födelsedatum</string>
+    <string name="retirement_goal_age_label">Mål för pensionsålder: %1$d</string>
+    <string name="financial_goal_label">Finansiellt mål (₹)</string>
+    <string name="current_savings_label">Nuvarande månadssparande (₹)</string>
+    <string name="save">Spara</string>
+    <string name="cancel">Avbryt</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Nu</string>
+    <string name="event_now_desc">Du är här</string>
+    <string name="event_debt_free">Skuldfri</string>
+    <string name="event_debt_free_desc">Bostadslån avbetalat</string>
+    <string name="event_goal_reached">Målet nått</string>
+    <string name="event_goal_reached_desc">Förmögenhet på ₹%1$d Cr</string>
+    <string name="event_prime_health_ends">Slut på Prime Hälsa</string>
+    <string name="event_prime_health_desc">Statistisk nedgång</string>
+    <string name="event_life_expectancy">Förväntad livslängd</string>
+    <string name="event_life_expectancy_desc">Aktuariell uppskattning</string>
+    <string name="event_retirement_goal">Pensionsmål</string>
+    <string name="event_retirement_goal_desc">Planerad pensionering</string>
 </resources>
