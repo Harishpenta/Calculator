@@ -478,6 +478,7 @@ private fun ExpandableCategoryCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp)
+                        .padding(horizontal = 12.dp) // Add internal indentation
                 ) {
                     GlowingDivider(color = category.iconTint.copy(alpha = 0.5f))
                     Spacer(modifier = Modifier.height(16.dp))
@@ -525,19 +526,19 @@ private fun CompactCalculatorGridItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
-            .background(accentColor.copy(alpha = 0.1f))
-            .border(1.dp, accentColor.copy(alpha = 0.3f), RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(12.dp)) // Softer corners
+            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.5f)) // distinct surface
+            .border(1.dp, accentColor.copy(alpha = 0.2f), RoundedCornerShape(12.dp))
             .clickable(onClick = onClick)
-            .padding(8.dp),
+            .padding(8.dp), // Comfortable padding
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Icon
+        // Icon in Box (Restored for structure)
         Box(
             modifier = Modifier
                 .size(32.dp)
-                .clip(RoundedCornerShape(6.dp))
-                .background(accentColor.copy(alpha = 0.2f)),
+                .clip(RoundedCornerShape(8.dp))
+                .background(accentColor.copy(alpha = 0.1f)),
             contentAlignment = Alignment.Center
         ) {
             Image(
@@ -548,17 +549,19 @@ private fun CompactCalculatorGridItem(
             )
         }
         
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = Modifier.width(12.dp))
         
         TechText(
             text = calculator.name,
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
         
-        // Favorite star icon (smaller)
+        // Favorite star icon
         IconButton(
             onClick = onFavoriteClick,
             modifier = Modifier.size(24.dp)
@@ -566,7 +569,7 @@ private fun CompactCalculatorGridItem(
             Icon(
                 imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
                 contentDescription = null,
-                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f),
                 modifier = Modifier.size(16.dp)
             )
         }
@@ -872,67 +875,62 @@ private fun CalculatorListItem(
     onClick: () -> Unit,
     onFavoriteClick: () -> Unit
 ) {
-    Card(
+    // Determine accent color (using primary as default for consistency in search)
+    val accentColor = MaterialTheme.colorScheme.primary
+
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = rememberRipple(bounded = true),
-                onClick = onClick
-            ),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.5f)) // Glassy feel
+            .border(1.dp, accentColor.copy(alpha = 0.2f), RoundedCornerShape(12.dp))
+            .clickable(onClick = onClick)
+            .padding(10.dp), // Compact padding
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
+        // Icon
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .size(40.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(accentColor.copy(alpha = 0.1f)),
+            contentAlignment = Alignment.Center
         ) {
-            // Icon
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(id = calculator.iconRes),
-                    contentDescription = calculator.name,
-                    modifier = Modifier.size(28.dp)
-                )
-            }
-            
-            Spacer(modifier = Modifier.width(16.dp))
-            
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = calculator.name,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Text(
-                    text = stringResource(getCategoryLabel(calculator.categoryId)),
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-            
-            // Favorite star icon
-            IconButton(
-                onClick = onFavoriteClick,
-                modifier = Modifier.size(40.dp)
-            ) {
-                Icon(
-                    imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
-                    contentDescription = if (isFavorite) stringResource(R.string.remove_favorite) else stringResource(R.string.add_favorite),
-                    tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
-                    modifier = Modifier.size(24.dp)
-                )
-            }
+            Image(
+                painter = painterResource(id = calculator.iconRes),
+                contentDescription = calculator.name,
+                modifier = Modifier.size(20.dp),
+                colorFilter = ColorFilter.tint(accentColor)
+            )
+        }
+        
+        Spacer(modifier = Modifier.width(12.dp))
+        
+        Column(modifier = Modifier.weight(1f)) {
+            TechText(
+                text = calculator.name,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            TechText(
+                text = stringResource(getCategoryLabel(calculator.categoryId)),
+                fontSize = 11.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        
+        // Favorite star icon
+        IconButton(
+            onClick = onFavoriteClick,
+            modifier = Modifier.size(32.dp)
+        ) {
+            Icon(
+                imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
+                contentDescription = if (isFavorite) stringResource(R.string.remove_favorite) else stringResource(R.string.add_favorite),
+                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f),
+                modifier = Modifier.size(20.dp)
+            )
         }
     }
 }
