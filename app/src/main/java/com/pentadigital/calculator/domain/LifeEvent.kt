@@ -1,9 +1,5 @@
 package com.pentadigital.calculator.domain
 
-import androidx.compose.ui.graphics.Color
-import com.pentadigital.calculator.ui.theme.NeonGreen
-import com.pentadigital.calculator.ui.theme.NeonRed
-
 enum class EventType {
     FINANCE_POSITIVE, // e.g., Goal Reached, Debt Free
     FINANCE_NEGATIVE, // e.g., Loan Start

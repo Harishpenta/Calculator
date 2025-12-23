@@ -435,6 +435,7 @@
 
     <!-- Life Timeline -->
     <string name="life_timeline_title">LIFE TIMELINE</string>
+    <string name="life_timeline_subtitle">Design your future</string>
     <string name="simulation_monthly_investment">SIMULATION: Monthly Investment</string>
     <string name="simulation_hint">Increase your monthly savings to see how much earlier you reach your goals!</string>
     <string name="life_insight">LIFE INSIGHT</string>

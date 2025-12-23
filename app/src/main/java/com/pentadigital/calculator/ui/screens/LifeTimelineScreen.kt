@@ -1,25 +1,52 @@
 package com.pentadigital.calculator.ui.screens
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableDoubleStateOf
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
@@ -28,16 +55,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pentadigital.calculator.R
-import com.pentadigital.calculator.domain.LifeEvent
 import com.pentadigital.calculator.domain.TimelineState
 import com.pentadigital.calculator.ui.components.CyberpunkCard
 import com.pentadigital.calculator.ui.components.TechText
-import com.pentadigital.calculator.ui.theme.NeonBlue
 import com.pentadigital.calculator.ui.theme.NeonCyan
 import com.pentadigital.calculator.ui.theme.NeonGreen
 import com.pentadigital.calculator.ui.theme.NeonPurple
 import com.pentadigital.calculator.ui.theme.NeonRed
-import com.pentadigital.calculator.ui.theme.CyberpunkDarkBG
 import com.pentadigital.calculator.viewmodels.LifeTimelineViewModel
 import kotlin.math.roundToInt
 
@@ -238,9 +262,10 @@ fun TimelineSettingsDialog(
 
 @Composable
 fun TimelineCanvas(state: TimelineState) {
-    val textPaint = remember {
+    val textColor = MaterialTheme.colorScheme.onSurface.toArgb()
+    val textPaint = remember(textColor) {
         android.graphics.Paint().apply {
-            color = android.graphics.Color.WHITE
+            color = textColor
             textSize = 30f
             textAlign = android.graphics.Paint.Align.CENTER
         }
@@ -372,7 +397,7 @@ fun SimulationControls(
             Text(
                 text = "₹${sliderValue.toInt()}",
                 style = MaterialTheme.typography.headlineMedium,
-                color = Color.White,
+                color = MaterialTheme.colorScheme.onSurface,
                 fontWeight = FontWeight.Bold
             )
             
@@ -427,7 +452,7 @@ fun TimelineInsights(state: TimelineState) {
                 Text(
                     text = stringResource(R.string.prime_freedom_desc, freedomAge, primeEnd),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             } else {
                 Text(
@@ -439,7 +464,7 @@ fun TimelineInsights(state: TimelineState) {
                 Text(
                     text = stringResource(R.string.prime_warning_desc, freedomAge, primeEnd),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         }

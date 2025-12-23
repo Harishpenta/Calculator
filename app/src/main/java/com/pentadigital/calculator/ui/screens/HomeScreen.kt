@@ -11,6 +11,10 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.Canvas
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Path
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -26,6 +30,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.Search
@@ -410,57 +416,59 @@ private fun ExpandableCategoryCard(
             .fillMaxWidth()
             .padding(horizontal = horizontalPadding)
             .animateContentSize(),
-        borderColor = category.iconTint
+        borderColor = category.iconTint,
+        contentPadding = PaddingValues(0.dp) // Reset default padding
     ) {
         Column {
             // Header
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onToggle() },
+                    .clickable { onToggle() }
+                    .padding(vertical = 10.dp, horizontal = 12.dp) // Compact internal padding
+                    .height(48.dp), // Fixed compact height
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Box(
                         modifier = Modifier
-                            .size(40.dp)
+                            .size(32.dp) // Even smaller icon container
                             .clip(RoundedCornerShape(8.dp))
                             .background(
-                                category.iconTint.copy(alpha = 0.2f)
+                                category.iconTint.copy(alpha = 0.1f)
                             )
-                            .border(1.dp, category.iconTint.copy(alpha = 0.5f), RoundedCornerShape(8.dp)),
+                            .border(1.dp, category.iconTint.copy(alpha = 0.3f), RoundedCornerShape(8.dp)),
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
                             painter = painterResource(id = category.iconRes),
                             contentDescription = category.name,
-                            modifier = Modifier.size(20.dp),
+                            modifier = Modifier.size(16.dp),
                             colorFilter = ColorFilter.tint(category.iconTint)
                         )
                     }
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Column {
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Column(verticalArrangement = Arrangement.Center) {
                         TechText(
                             text = category.name.uppercase(),
-                            fontSize = 16.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface
+                            color = MaterialTheme.colorScheme.onSurface,
+                            letterSpacing = 0.5.sp
                         )
-                        TechText(
-                            text = category.subtitle,
-                            fontSize = 10.sp,
-                            color = category.iconTint.copy(alpha = 0.8f)
-                        )
+                        // Removed Subtitle for compactness
                     }
                 }
                 
+                // Animated Arrow
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowDown,
                     contentDescription = if (isExpanded) "Collapse" else "Expand",
+                    tint = category.iconTint,
                     modifier = Modifier
-                        .graphicsLayer(rotationZ = rotationState),
-                    tint = category.iconTint
+                        .size(20.dp)
+                        .graphicsLayer(rotationZ = rotationState)
                 )
             }
 
@@ -946,39 +954,111 @@ private fun LifeTimelineBanner(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    CyberpunkCard(
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick),
-        borderColor = NeonPurple
+            .height(72.dp) // Compact fixed height
+            .clip(RoundedCornerShape(16.dp))
+            .background(
+                Brush.horizontalGradient(
+                    colors = listOf(
+                        NeonPurple.copy(alpha = 0.1f),
+                        NeonCyan.copy(alpha = 0.1f)
+                    )
+                )
+            )
+            .border(
+                1.dp,
+                Brush.horizontalGradient(
+                    colors = listOf(NeonPurple.copy(alpha = 0.5f), NeonCyan.copy(alpha = 0.5f))
+                ),
+                RoundedCornerShape(16.dp)
+            )
+            .clickable(onClick = onClick)
     ) {
+        // Background Timeline Graphic
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            val width = size.width
+            val height = size.height
+            val path = androidx.compose.ui.graphics.Path().apply {
+                moveTo(0f, height * 0.7f)
+                cubicTo(
+                    width * 0.3f, height * 0.7f,
+                    width * 0.4f, height * 0.3f,
+                    width * 0.6f, height * 0.5f
+                )
+                cubicTo(
+                    width * 0.8f, height * 0.7f,
+                    width * 0.9f, height * 0.2f,
+                    width, height * 0.5f
+                )
+            }
+            
+            drawPath(
+                path = path,
+                brush = Brush.horizontalGradient(
+                    colors = listOf(NeonPurple.copy(alpha = 0.2f), NeonCyan.copy(alpha = 0.2f))
+                ),
+                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 3.dp.toPx())
+            )
+            
+            // Add some glowing dots
+            drawCircle(
+                color = NeonPurple,
+                radius = 4.dp.toPx(),
+                center = Offset(width * 0.6f, height * 0.5f)
+            )
+        }
+
+        // Content
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+                .fillMaxSize()
+                .padding(horizontal = 20.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Column(modifier = Modifier.weight(1f)) {
-                TechText(
-                    text = "LIFE TIMELINE",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = NeonPurple
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                TechText(
-                    text = "Visualize your financial freedom & health span.",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                // Animated Icon Placeholder
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(NeonPurple.copy(alpha = 0.2f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.DateRange, // Using DateRange as timeline icon
+                        contentDescription = null,
+                        tint = NeonPurple,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+                
+                Spacer(modifier = Modifier.width(16.dp))
+                
+                Column {
+                    TechText(
+                        text = stringResource(R.string.life_timeline_title).uppercase(),
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        letterSpacing = 1.sp
+                    )
+                    TechText(
+                        text = stringResource(R.string.life_timeline_subtitle), // Hardcoded for now or add to strings
+                        fontSize = 10.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
-            Spacer(modifier = Modifier.width(16.dp))
+
+            // Arrow
             Icon(
-                imageVector = Icons.Default.KeyboardArrowDown, 
-                contentDescription = null, 
-                tint = NeonPurple,
-                modifier = Modifier.rotate(-90f) 
+                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                contentDescription = null,
+                tint = NeonCyan,
+                modifier = Modifier.size(20.dp)
             )
         }
     }
