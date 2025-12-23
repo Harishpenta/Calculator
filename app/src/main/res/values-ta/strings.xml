@@ -271,5 +271,37 @@
     <string name="fitness_label">உடற்தகுதி</string>
     <string name="average_label">சராசரி</string>
     <string name="obese_label">பருமன்</string>
-    <string name="essential_fat_label">அவசியம்</string>
+    <string name="essential_fat_label">அத்தியாவசிய கொழுப்பு</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">வாழ்க்கை காலவரிசை</string>
+    <string name="simulation_monthly_investment">உருவகப்படுத்துதல்: மாத முதலீடு</string>
+    <string name="simulation_hint">உங்கள் இலக்குகளை விரைவில் அடைய உங்கள் மாத சேமிப்பை அதிகரிக்கவும்!</string>
+    <string name="life_insight">வாழ்க்கை நுண்ணறிவு</string>
+    <string name="prime_freedom_years">உங்களுக்கு %1$d ஆண்டுகள் முதன்மை சுதந்திரம் உள்ளது!</string>
+    <string name="prime_freedom_desc">நீங்கள் %1$d வயதில் உங்கள் இலக்கை அடைகிறீர்கள், அப்போது நீங்கள் இன்னும் உங்கள் முதன்மை ஆரோக்கிய ஆண்டுகளில் இருப்பீர்கள் (சுமார் ~%2$d வரை). அருமையான வேலை!</string>
+    <string name="prime_warning_title">எச்சரிக்கை: முதன்மை ஆண்டுகளுக்குப் பிறகு இலக்கு</string>
+    <string name="prime_warning_desc">நீங்கள் %1$d வயதில் இலக்கை அடைகிறீர்கள், ஆனால் உங்கள் முதன்மை ஆரோக்கிய ஆண்டுகள் புள்ளியியல் ரீதியாக %2$d இல் குறைகிறது. ஆரோக்கியமாக இருக்கும்போதே உங்கள் செல்வத்தை அனுபவிக்க சேமிப்பை அதிகரிக்க முயற்சிக்கவும்!</string>
+    <string name="personalize_timeline">காலவரிசையைத் தனிப்பயனாக்குங்கள்</string>
+    <string name="select_dob">பிறந்த தேதியைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="retirement_goal_age_label">ஓய்வுக்கால இலக்கு வயது: %1$d</string>
+    <string name="financial_goal_label">நிதி இலக்கு (₹)</string>
+    <string name="current_savings_label">தற்போதைய மாத சேமிப்பு (₹)</string>
+    <string name="save">சேமி</string>
+    <string name="cancel">ரத்துசெய்</string>
+    <string name="ok_button">சரி</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">இப்போது</string>
+    <string name="event_now_desc">நீங்கள் இங்கே இருக்கிறீர்கள்</string>
+    <string name="event_debt_free">கடன் அற்றவர்</string>
+    <string name="event_debt_free_desc">வீட்டுக் கடன் அடைக்கப்பட்டது</string>
+    <string name="event_goal_reached">இலக்கு அடையப்பட்டது</string>
+    <string name="event_goal_reached_desc">₹%1$d கோடி நிதி</string>
+    <string name="event_prime_health_ends">முதன்மை ஆரோக்கியம் முடிகிறது</string>
+    <string name="event_prime_health_desc">புள்ளிவிவரச் சரிவு</string>
+    <string name="event_life_expectancy">வாழ்க்கை எதிர்பார்ப்பு</string>
+    <string name="event_life_expectancy_desc">காப்பீட்டு மதிப்பீடு</string>
+    <string name="event_retirement_goal">ஓய்வுக்கால இலக்கு</string>
+    <string name="event_retirement_goal_desc">திட்டமிடப்பட்ட ஓய்வு</string>
 </resources>

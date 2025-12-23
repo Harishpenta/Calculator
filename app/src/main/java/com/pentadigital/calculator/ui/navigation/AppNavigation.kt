@@ -67,6 +67,7 @@ sealed class Screen(val route: String, val title: String) {
     object WaterIntake : Screen("water_intake", "Water Intake Calculator")
     object Settings : Screen("settings", "Settings")
     object Profile : Screen("profile", "Profile")
+    object LifeTimeline : Screen("life_timeline", "Life Timeline")
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -97,6 +98,7 @@ fun AppNavigation(
     waterIntakeViewModel: WaterIntakeViewModel,
     themeViewModel: ThemeViewModel,
     profileViewModel: ProfileViewModel,
+    lifeTimelineViewModel: LifeTimelineViewModel,
     onOpenDrawer: () -> Unit
 ) {
     NavHost(
@@ -138,6 +140,9 @@ fun AppNavigation(
                 },
                 onNavigateToProfile = {
                     navController.navigate(Screen.Profile.route)
+                },
+                onNavigateToLifeTimeline = {
+                    navController.navigate(Screen.LifeTimeline.route)
                 }
             )
         }
@@ -310,6 +315,12 @@ fun AppNavigation(
                 onNavigateBack = { navController.popBackStack() },
                 onNavigateToSettings = { navController.navigate(Screen.Settings.route) },
                 profileViewModel = profileViewModel
+            )
+        }
+        composable(Screen.LifeTimeline.route) {
+            com.pentadigital.calculator.ui.screens.LifeTimelineScreen(
+                viewModel = lifeTimelineViewModel,
+                onOpenDrawer = onOpenDrawer
             )
         }
     }

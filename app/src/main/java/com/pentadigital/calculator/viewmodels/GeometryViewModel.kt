@@ -41,7 +41,7 @@ enum class GeometryTab {
 
 // State for Geometry Calculator
 data class GeometryState(
-    val selectedTab: GeometryTab = GeometryTab.SHAPES_3D,
+    val selectedTab: GeometryTab = GeometryTab.SHAPES_2D,
     
     // 2D Shape
     val selected2DShape: Shape2D = Shape2D.CIRCLE,

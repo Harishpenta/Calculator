@@ -273,4 +273,36 @@
     <string name="average_label">Medel</string>
     <string name="obese_label">Fetma</string>
     <string name="essential_fat_label">Väsentlig</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">Livstidslinje</string>
+    <string name="simulation_monthly_investment">SIMULERING: Månatlig investering</string>
+    <string name="simulation_hint">Öka ditt månatliga sparande för att nå dina mål tidigare!</string>
+    <string name="life_insight">Livsinsikt</string>
+    <string name="prime_freedom_years">Du har %1$d år av Prime Freedom!</string>
+    <string name="prime_freedom_desc">Du når ditt mål vid %1$d års ålder, medan du fortfarande är vid bästa hälsa (upp till ~%2$d). Bra jobbat!</string>
+    <string name="prime_warning_title">Varning: Målet beräknas nås efter Prime-åren</string>
+    <string name="prime_warning_desc">Du når ditt mål vid %1$d års ålder, men din bästa hälsa avtar statistiskt sett runt %2$d. Försök att öka sparandet för att njuta av din rikedom med god hälsa!</string>
+    <string name="personalize_timeline">Anpassa tidslinjen</string>
+    <string name="select_dob">Välj födelsedatum</string>
+    <string name="retirement_goal_age_label">Mål för pensionsålder: %1$d</string>
+    <string name="financial_goal_label">Finansiellt mål (₹)</string>
+    <string name="current_savings_label">Nuvarande månadssparande (₹)</string>
+    <string name="save">Spara</string>
+    <string name="cancel">Avbryt</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Nu</string>
+    <string name="event_now_desc">Du är här</string>
+    <string name="event_debt_free">Skuldfri</string>
+    <string name="event_debt_free_desc">Bostadslån avbetalat</string>
+    <string name="event_goal_reached">Målet nått</string>
+    <string name="event_goal_reached_desc">Förmögenhet på ₹%1$d Cr</string>
+    <string name="event_prime_health_ends">Slut på Prime Hälsa</string>
+    <string name="event_prime_health_desc">Statistisk nedgång</string>
+    <string name="event_life_expectancy">Förväntad livslängd</string>
+    <string name="event_life_expectancy_desc">Aktuariell uppskattning</string>
+    <string name="event_retirement_goal">Pensionsmål</string>
+    <string name="event_retirement_goal_desc">Planerad pensionering</string>
 </resources>

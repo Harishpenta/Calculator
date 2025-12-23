@@ -271,4 +271,36 @@
     <string name="average_label">Moyenne</string>
     <string name="obese_label">Obèse</string>
     <string name="essential_fat_label">Essentiel</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">Chronologie de Vie</string>
+    <string name="simulation_monthly_investment">SIMULATION: Investissement Mensuel</string>
+    <string name="simulation_hint">Augmentez votre épargne mensuelle pour atteindre vos objectifs plus tôt !</string>
+    <string name="life_insight">Aperçu de Vie</string>
+    <string name="prime_freedom_years">Vous avez %1$d années de Liberté Prime !</string>
+    <string name="prime_freedom_desc">Vous atteignez votre objectif à %1$d ans, tout en étant dans vos meilleures années de santé (jusqu\'à ~%2$d). Excellent travail !</string>
+    <string name="prime_warning_title">Attention : Objectif projeté après les années Prime</string>
+    <string name="prime_warning_desc">Vous atteignez votre objectif à %1$d ans, mais vos meilleures années de santé diminuent statistiquement vers %2$d ans. Essayez d\'augmenter votre épargne pour profiter de votre richesse en bonne santé !</string>
+    <string name="personalize_timeline">Personnaliser la Chronologie</string>
+    <string name="select_dob">Sélectionner la Date de Naissance</string>
+    <string name="retirement_goal_age_label">Âge de Retraite Visé : %1$d</string>
+    <string name="financial_goal_label">Objectif Financier (₹)</string>
+    <string name="current_savings_label">Épargne Mensuelle Actuelle (₹)</string>
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Maintenant</string>
+    <string name="event_now_desc">Vous êtes ici</string>
+    <string name="event_debt_free">Sans Dette</string>
+    <string name="event_debt_free_desc">Prêt immobilier remboursé</string>
+    <string name="event_goal_reached">Objectif Atteint</string>
+    <string name="event_goal_reached_desc">Corpus de ₹%1$d Cr</string>
+    <string name="event_prime_health_ends">Fin Santé Prime</string>
+    <string name="event_prime_health_desc">Déclin statistique</string>
+    <string name="event_life_expectancy">Espérance de Vie</string>
+    <string name="event_life_expectancy_desc">Estimation Actuarielle</string>
+    <string name="event_retirement_goal">Objectif Retraite</string>
+    <string name="event_retirement_goal_desc">Retraite Planifiée</string>
 </resources>

@@ -76,6 +76,7 @@ fun CyberpunkCard(
     modifier: Modifier = Modifier,
     borderColor: Color = MaterialTheme.colorScheme.primary,
     backgroundColor: Color = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
+    contentPadding: PaddingValues = PaddingValues(16.dp),
     content: @Composable ColumnScope.() -> Unit
 ) {
     // Cut corners shape
@@ -89,7 +90,7 @@ fun CyberpunkCard(
         colors = CardDefaults.cardColors(containerColor = backgroundColor)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(contentPadding),
             content = content
         )
     }

@@ -264,4 +264,36 @@
     <string name="average_label">Gennemsnit</string>
     <string name="obese_label">Fedme</string>
     <string name="essential_fat_label">Væsentlig</string>
+
+    <!-- Life Timeline -->
+    <string name="life_timeline_title">Livstidslinje</string>
+    <string name="simulation_monthly_investment">SIMULERING: Månedlig investering</string>
+    <string name="simulation_hint">Forøg din månedlige opsparing for at nå dine mål tidligere!</string>
+    <string name="life_insight">Livsindsigt</string>
+    <string name="prime_freedom_years">Du har %1$d år med Prime Freedom!</string>
+    <string name="prime_freedom_desc">Du når dit mål ved %1$d år, mens du stadig er ved godt helbred (op til ~%2$d). Godt gået!</string>
+    <string name="prime_warning_title">Advarsel: Mål forventes nået efter Prime-årene</string>
+    <string name="prime_warning_desc">Du når dit mål ved %1$d år, men dit gode helbred aftager statistisk set omkring %2$d. Prøv at øge din opsparing for at nyde din rigdom med et godt helbred!</string>
+    <string name="personalize_timeline">Tilpas tidslinje</string>
+    <string name="select_dob">Vælg fødselsdato</string>
+    <string name="retirement_goal_age_label">Mål for pensionsalder: %1$d</string>
+    <string name="financial_goal_label">Finansielt mål (₹)</string>
+    <string name="current_savings_label">Nuværende månedlig opsparing (₹)</string>
+    <string name="save">Gem</string>
+    <string name="cancel">Annuller</string>
+    <string name="ok_button">OK</string>
+    
+    <!-- Timeline Events -->
+    <string name="event_now">Nu</string>
+    <string name="event_now_desc">Du er her</string>
+    <string name="event_debt_free">Gældfri</string>
+    <string name="event_debt_free_desc">Boliglån betalt ud</string>
+    <string name="event_goal_reached">Mål nået</string>
+    <string name="event_goal_reached_desc">Formue på ₹%1$d Cr</string>
+    <string name="event_prime_health_ends">Slut på Prime helbred</string>
+    <string name="event_prime_health_desc">Statistisk tilbagegang</string>
+    <string name="event_life_expectancy">Forventet levealder</string>
+    <string name="event_life_expectancy_desc">Aktuarmæssigt estimat</string>
+    <string name="event_retirement_goal">Pensionsmål</string>
+    <string name="event_retirement_goal_desc">Planlagt pensionering</string>
 </resources>
