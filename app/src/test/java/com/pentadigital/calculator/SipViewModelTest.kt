@@ -20,7 +20,7 @@ class SipViewModelTest {
 
     @Test
     fun `update investment updates calculation`() {
-        viewModel.onEvent(SipEvent.UpdateInvestment(10000.0))
+        viewModel.onEvent(SipEvent.UpdateInvestment("10000"))
         // Should be double the default
         assertEquals(2323390.0, viewModel.state.totalValue, 200.0)
     }

@@ -35,6 +35,7 @@ import com.pentadigital.calculator.ui.components.*
 import com.pentadigital.calculator.ui.navigation.AppNavigation
 import com.pentadigital.calculator.ui.navigation.Screen
 import com.pentadigital.calculator.utils.InterstitialAdManager
+import com.pentadigital.calculator.ui.screens.compound.CompoundInterestViewModel
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)

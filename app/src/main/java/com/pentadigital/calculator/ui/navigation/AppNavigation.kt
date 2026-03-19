@@ -23,7 +23,7 @@ import com.pentadigital.calculator.ui.screens.HomeScreen
 import com.pentadigital.calculator.ui.screens.SettingsScreen
 import com.pentadigital.calculator.ui.screens.SipScreen
 import com.pentadigital.calculator.ui.screens.SimpleInterestScreen
-import com.pentadigital.calculator.ui.screens.CompoundInterestScreen
+import com.pentadigital.calculator.ui.screens.compound.CompoundInterestScreen
 import com.pentadigital.calculator.ui.screens.DiscountScreen
 import com.pentadigital.calculator.ui.screens.LoanPrepaymentScreen
 import com.pentadigital.calculator.ui.screens.GoalPlannerScreen
@@ -40,6 +40,7 @@ import com.pentadigital.calculator.viewmodels.*
 import com.pentadigital.calculator.viewmodels.TDEEViewModel
 import com.pentadigital.calculator.viewmodels.BodyFatViewModel
 import com.pentadigital.calculator.viewmodels.WaterIntakeViewModel
+import com.pentadigital.calculator.ui.screens.compound.CompoundInterestViewModel
 
 sealed class Screen(val route: String, val title: String) {
     object Home : Screen("home", "Home")
@@ -220,9 +221,7 @@ fun AppNavigation(
         }
         composable(Screen.CompoundInterest.route) {
             CompoundInterestScreen(
-                state = compoundInterestViewModel.state,
-                onAction = compoundInterestViewModel::onEvent,
-                onOpenDrawer = onOpenDrawer
+                viewModel = compoundInterestViewModel
             )
         }
         composable(Screen.LoanPrepayment.route) {
