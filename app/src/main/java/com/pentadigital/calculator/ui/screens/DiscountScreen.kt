@@ -140,7 +140,7 @@ private fun DiscountInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(originalPriceFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -160,7 +160,7 @@ private fun DiscountInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(discountFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -180,7 +180,7 @@ private fun DiscountInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(taxFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Done
                 )
             )

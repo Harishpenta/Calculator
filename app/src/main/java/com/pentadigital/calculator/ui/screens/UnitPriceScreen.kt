@@ -150,7 +150,7 @@ private fun UnitPriceInputs(
                     modifier = Modifier.fillMaxWidth().focusRequester(priceAFocus),
                     borderColor = MaterialTheme.colorScheme.primary,
                     keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
+                        keyboardType = KeyboardType.Decimal,
                         imeAction = ImeAction.Next
                     )
                 )
@@ -164,7 +164,7 @@ private fun UnitPriceInputs(
                     modifier = Modifier.fillMaxWidth().focusRequester(qtyAFocus),
                     borderColor = MaterialTheme.colorScheme.primary,
                     keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
+                        keyboardType = KeyboardType.Decimal,
                         imeAction = ImeAction.Next
                     )
                 )
@@ -197,7 +197,7 @@ private fun UnitPriceInputs(
                     modifier = Modifier.fillMaxWidth().focusRequester(priceBFocus),
                     borderColor = MaterialTheme.colorScheme.primary,
                     keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
+                        keyboardType = KeyboardType.Decimal,
                         imeAction = ImeAction.Next
                     )
                 )
@@ -211,7 +211,7 @@ private fun UnitPriceInputs(
                     modifier = Modifier.fillMaxWidth().focusRequester(qtyBFocus),
                     borderColor = MaterialTheme.colorScheme.primary,
                     keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
+                        keyboardType = KeyboardType.Decimal,
                         imeAction = ImeAction.Done
                     )
                 )

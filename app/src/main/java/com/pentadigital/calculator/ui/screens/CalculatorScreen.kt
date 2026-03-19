@@ -307,14 +307,17 @@ private fun DisplayArea(
     state: CalculatorState,
     modifier: Modifier = Modifier
 ) {
-    Column(
+    TechDisplayContainer(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 16.dp)
-            .padding(end = 16.dp),
-        verticalArrangement = Arrangement.Center
+            .padding(vertical = 8.dp)
+            .padding(bottom = 16.dp)
     ) {
-        if (state.memory.isNotBlank()) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center
+        ) {
+            if (state.memory.isNotBlank()) {
             TechText(
                 text = "M: ${formatNumber(state.memory)}",
                 textAlign = TextAlign.Start,
@@ -369,6 +372,7 @@ private fun DisplayArea(
             fontWeight = FontWeight.Light,
             color = if (state.errorMessage != null) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
         )
+        }
     }
 }
 
@@ -472,6 +476,11 @@ fun formatNumber(number: String): String {
     if (number == ".") return "0."
     val isNegative = number.startsWith("-")
     val cleanNumber = if (isNegative) number.substring(1) else number
+    
+    if (cleanNumber == "Error" || cleanNumber == "Infinity" || cleanNumber == "NaN" || cleanNumber.contains("E", ignoreCase = true)) {
+        return number
+    }
+    
     val parts = cleanNumber.split(".")
     val integerPart = parts[0].toLongOrNull() ?: return number
     val formattedInteger = java.text.NumberFormat.getInstance().format(integerPart)

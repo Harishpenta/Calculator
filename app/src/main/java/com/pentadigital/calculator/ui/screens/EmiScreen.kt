@@ -181,7 +181,7 @@ private fun EmiInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(loanFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -202,7 +202,7 @@ private fun EmiInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(interestFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -223,7 +223,7 @@ private fun EmiInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(tenureFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Done
                 )
             )

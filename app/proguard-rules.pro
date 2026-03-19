@@ -57,3 +57,11 @@
     public static *** i(...);
 }
 -dontwarn org.slf4j.**
+
+# iText7 PDF Library Missing Classes
+-dontwarn javax.xml.stream.**
+-dontwarn org.codehaus.stax2.**
+-dontwarn sharpen.config.**
+-dontwarn com.ctc.wstx.**
+-dontwarn com.itextpdf.bouncycastle.**
+-dontwarn com.itextpdf.bouncycastlefips.**

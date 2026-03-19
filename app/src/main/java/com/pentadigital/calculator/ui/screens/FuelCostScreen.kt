@@ -143,7 +143,7 @@ private fun FuelCostInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(distanceFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -163,7 +163,7 @@ private fun FuelCostInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(mileageFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -183,7 +183,7 @@ private fun FuelCostInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(priceFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Done
                 )
             )

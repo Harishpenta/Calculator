@@ -169,7 +169,7 @@ private fun SimpleInterestInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(principalFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -189,7 +189,7 @@ private fun SimpleInterestInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(rateFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -209,7 +209,7 @@ private fun SimpleInterestInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(timeFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Done
                 )
             )

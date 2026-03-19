@@ -233,7 +233,7 @@ fun TimelineSettingsDialog(
                     value = java.math.BigDecimal.valueOf(goalAmount).stripTrailingZeros().toPlainString(),
                     onValueChange = { goalAmount = it.toDoubleOrNull() ?: 0.0 },
                     label = { Text(stringResource(R.string.financial_goal_label)) },
-                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
+                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Decimal),
                     modifier = Modifier.fillMaxWidth()
                 )
                 
@@ -242,7 +242,7 @@ fun TimelineSettingsDialog(
                     value = java.math.BigDecimal.valueOf(currentSavings).stripTrailingZeros().toPlainString(),
                     onValueChange = { currentSavings = it.toDoubleOrNull() ?: 0.0 },
                     label = { Text(stringResource(R.string.current_savings_label)) },
-                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
+                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Decimal),
                     modifier = Modifier.fillMaxWidth()
                 )
             }
@@ -276,6 +276,8 @@ fun TimelineCanvas(state: TimelineState) {
         val title = event.titleRes?.let { androidx.compose.ui.platform.LocalContext.current.getString(it) } ?: event.title
         event to title
     }
+
+    val onSurfaceColor = MaterialTheme.colorScheme.onSurface
 
     Canvas(
         modifier = Modifier
@@ -345,9 +347,12 @@ fun TimelineCanvas(state: TimelineState) {
             val stickEndOffset = baseHeight + (staggerIndex * heightStep)
             val labelOffset = stickEndOffset + 8.dp.toPx()
             
+            // Adapt hardcoded White to the current theme's onSurface color for Light Mode visibility
+            val adaptiveColor = if (event.color == Color.White) onSurfaceColor else event.color
+            
             // Flag Stick
             drawLine(
-                color = event.color,
+                color = adaptiveColor,
                 start = Offset(eventX, centerY),
                 end = Offset(eventX, centerY - stickEndOffset),
                 strokeWidth = 2.dp.toPx()
@@ -359,7 +364,7 @@ fun TimelineCanvas(state: TimelineState) {
                 eventX,
                 centerY - labelOffset,
                 textPaint.apply { 
-                    color = event.color.toArgb() 
+                    color = adaptiveColor.toArgb() 
                     textSize = 16.sp.toPx() 
                     isFakeBoldText = true 
                 }
@@ -367,7 +372,7 @@ fun TimelineCanvas(state: TimelineState) {
             
             // Dot on line
             drawCircle(
-                color = event.color,
+                color = adaptiveColor,
                 radius = 4.dp.toPx(),
                 center = Offset(eventX, centerY)
             )

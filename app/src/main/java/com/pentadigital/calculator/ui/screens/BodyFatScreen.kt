@@ -171,7 +171,7 @@ private fun BodyFatInputs(
                 onValueChange = { if (it.all { char -> char.isDigit() }) onAction(BodyFatEvent.UpdateAge(it)) },
                 label = { TechText(stringResource(R.string.age), color = CyberpunkTextSecondary) },
                 modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                 singleLine = true,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = MaterialTheme.colorScheme.primary,

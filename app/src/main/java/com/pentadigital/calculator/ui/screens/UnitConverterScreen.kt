@@ -156,7 +156,7 @@ fun UnitConverterScreen(
                             modifier = Modifier.fillMaxWidth(),
                             borderColor = MaterialTheme.colorScheme.primary,
                             keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Number,
+                                keyboardType = KeyboardType.Decimal,
                                 imeAction = androidx.compose.ui.text.input.ImeAction.Done
                             )
                         )
@@ -263,7 +263,7 @@ fun UnitConverterScreen(
                         modifier = Modifier.fillMaxWidth(),
                         borderColor = MaterialTheme.colorScheme.primary,
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Number,
+                            keyboardType = KeyboardType.Decimal,
                             imeAction = androidx.compose.ui.text.input.ImeAction.Done
                         )
                     )
