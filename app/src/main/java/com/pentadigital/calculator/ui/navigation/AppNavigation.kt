@@ -100,6 +100,7 @@ fun AppNavigation(
     themeViewModel: ThemeViewModel,
     profileViewModel: ProfileViewModel,
     lifeTimelineViewModel: LifeTimelineViewModel,
+    homeViewModel: HomeViewModel,
     onOpenDrawer: () -> Unit
 ) {
     NavHost(
@@ -144,7 +145,8 @@ fun AppNavigation(
                 },
                 onNavigateToLifeTimeline = {
                     navController.navigate(Screen.LifeTimeline.route)
-                }
+                },
+                homeViewModel = homeViewModel
             )
         }
         composable(Screen.Favorites.route) {

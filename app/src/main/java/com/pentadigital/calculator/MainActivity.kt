@@ -31,6 +31,7 @@ import com.pentadigital.calculator.viewmodels.BodyFatViewModel
 import com.pentadigital.calculator.viewmodels.WaterIntakeViewModel
 import com.pentadigital.calculator.viewmodels.TipViewModel
 import com.pentadigital.calculator.viewmodels.*
+import com.pentadigital.calculator.viewmodels.HomeViewModel
 import com.pentadigital.calculator.ui.components.*
 import com.pentadigital.calculator.ui.navigation.AppNavigation
 import com.pentadigital.calculator.ui.navigation.Screen
@@ -101,6 +102,7 @@ class MainActivity : ComponentActivity() {
         val themeViewModel: ThemeViewModel = viewModel(factory = ThemeViewModelFactory(applicationContext))
         val profileViewModel: ProfileViewModel = viewModel(factory = ProfileViewModelFactory(repository))
         val lifeTimelineViewModel: LifeTimelineViewModel = viewModel(factory = LifeTimelineViewModelFactory(userPreferencesRepository))
+        val homeViewModel: HomeViewModel = viewModel()
 
             // Determine if we should show bottom navigation
             val showBottomNav = currentRoute in listOf(
@@ -189,6 +191,7 @@ val configuration = LocalConfiguration.current
                                             themeViewModel = themeViewModel,
                                             profileViewModel = profileViewModel,
                                             lifeTimelineViewModel = lifeTimelineViewModel,
+                                            homeViewModel = homeViewModel,
                                             onOpenDrawer = {
                                                 navController.navigate(Screen.Home.route) {
                                                     popUpTo(Screen.Home.route) { inclusive = true }

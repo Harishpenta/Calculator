@@ -20,7 +20,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -56,7 +56,7 @@ fun BmiScreen(
                 title = { TechText(stringResource(com.pentadigital.calculator.R.string.bmi_title).uppercase(), color = MaterialTheme.colorScheme.primary, fontSize = 20.sp, fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = onOpenDrawer) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = stringResource(com.pentadigital.calculator.R.string.back), tint = MaterialTheme.colorScheme.primary)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(com.pentadigital.calculator.R.string.back), tint = MaterialTheme.colorScheme.primary)
                     }
                 },
                 actions = {
@@ -274,10 +274,10 @@ fun BmiScreen(
 
 fun getColorForCategory(category: String): Color {
     return when (category) {
-        "Underweight" -> Color(0xFF00E5FF) // Light Blue Cyan
-        "Normal" -> NeonGreen // Green
-        "Overweight" -> Color(0xFFFFB74D) // Orange
-        "Obese" -> Color(0xFFFF5252) // Red
+        "Underweight" -> BmiUnderweightColor
+        "Normal" -> NeonGreen
+        "Overweight" -> BmiOverweightColor
+        "Obese" -> BmiObeseColor
         else -> Color.White
     }
 }
@@ -300,10 +300,10 @@ private fun BmiLegend(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        LegendItem(color = Color(0xFF00E5FF), label = stringResource(com.pentadigital.calculator.R.string.underweight))
+        LegendItem(color = BmiUnderweightColor, label = stringResource(com.pentadigital.calculator.R.string.underweight))
         LegendItem(color = NeonGreen, label = stringResource(com.pentadigital.calculator.R.string.normal))
-        LegendItem(color = Color(0xFFFFB74D), label = stringResource(com.pentadigital.calculator.R.string.overweight))
-        LegendItem(color = Color(0xFFFF5252), label = stringResource(com.pentadigital.calculator.R.string.obese))
+        LegendItem(color = BmiOverweightColor, label = stringResource(com.pentadigital.calculator.R.string.overweight))
+        LegendItem(color = BmiObeseColor, label = stringResource(com.pentadigital.calculator.R.string.obese))
     }
 }
 

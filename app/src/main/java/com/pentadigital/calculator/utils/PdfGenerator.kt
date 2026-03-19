@@ -104,10 +104,10 @@ object PdfGenerator {
         
         try {
             pdfDocument.writeTo(FileOutputStream(file))
-            Toast.makeText(context, "PDF Saved: ${file.absolutePath}", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, context.getString(R.string.pdf_saved_success), Toast.LENGTH_SHORT).show()
         } catch (e: IOException) {
             e.printStackTrace()
-            Toast.makeText(context, "Error saving PDF: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.pdf_save_error), Toast.LENGTH_SHORT).show()
             return null
         } finally {
             pdfDocument.close()
@@ -189,10 +189,10 @@ object PdfGenerator {
 
         try {
             pdfDocument.writeTo(FileOutputStream(file))
-            Toast.makeText(context, "PDF Saved: ${file.absolutePath}", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, context.getString(R.string.pdf_saved_success), Toast.LENGTH_SHORT).show()
         } catch (e: IOException) {
             e.printStackTrace()
-            Toast.makeText(context, "Error saving PDF: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.pdf_save_error), Toast.LENGTH_SHORT).show()
             return null
         } finally {
             pdfDocument.close()

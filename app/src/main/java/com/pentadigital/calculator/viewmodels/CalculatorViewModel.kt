@@ -385,4 +385,9 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
         val memoryValue = state.memory.toDoubleOrNull() ?: 0.0
         state = state.copy(memory = formatResult(memoryValue - number))
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        onShowInterstitialAd = null
+    }
 }

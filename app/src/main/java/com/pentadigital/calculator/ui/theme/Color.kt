@@ -92,6 +92,11 @@ val CyberpunkLightModeCyan = Color(0xFF00838F)
 val CyberpunkLightModePurple = Color(0xFF7B1FA2)
 val CyberpunkLightModeGreen = Color(0xFF2E7D32)
 
+// BMI Category Colors
+val BmiUnderweightColor = Color(0xFF00E5FF)  // Cyan
+val BmiOverweightColor = Color(0xFFFFB74D)   // Amber
+val BmiObeseColor = Color(0xFFFF5252)        // Red
+
 // New Pro Light Tech Colors
 val LightTechBlue = Color(0xFF2962FF) // Deep Electric Blue
 val LightTechGreen = Color(0xFF00C853) // Vivid Malachite
