@@ -173,7 +173,7 @@ private fun SipInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(investmentFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -186,7 +186,7 @@ private fun SipInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(returnFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Next
                 )
             )
@@ -199,7 +199,7 @@ private fun SipInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(timeFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Done
                 )
             )

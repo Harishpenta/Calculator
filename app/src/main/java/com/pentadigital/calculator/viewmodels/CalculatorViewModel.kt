@@ -145,7 +145,12 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
     }
     
     private fun formatResult(result: Double): String {
+        if (result.isInfinite() || result.isNaN()) return "Error"
         return when {
+            result >= Long.MAX_VALUE || result <= Long.MIN_VALUE -> {
+                val scientific = String.format("%.${MAX_DIGITS - 7}e", result)
+                scientific.replace("e", "E")
+            }
             result == result.toLong().toDouble() -> result.toLong().toString()
             result.toString().length > MAX_DIGITS -> {
                 val scientific = String.format("%.${MAX_DIGITS - 7}e", result)
@@ -157,6 +162,10 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
     
     private fun formatDisplayNumber(number: String): String {
         val double = number.toDoubleOrNull() ?: return number
+        if (double.isInfinite() || double.isNaN()) return "Error"
+        if (number.contains("E", ignoreCase = true) || double >= Long.MAX_VALUE || double <= Long.MIN_VALUE) {
+            return number
+        }
         return if (double == double.toLong().toDouble()) {
             double.toLong().toString()
         } else {

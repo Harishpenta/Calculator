@@ -129,7 +129,7 @@ fun CurrencyScreen(
                         modifier = Modifier.fillMaxWidth(),
                         borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Number,
+                            keyboardType = KeyboardType.Decimal,
                             imeAction = androidx.compose.ui.text.input.ImeAction.Done
                         )
                     )
@@ -228,7 +228,7 @@ fun CurrencyScreen(
                     modifier = Modifier.fillMaxWidth(),
                     borderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
                     keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
+                        keyboardType = KeyboardType.Decimal,
                         imeAction = androidx.compose.ui.text.input.ImeAction.Done
                     )
                 )

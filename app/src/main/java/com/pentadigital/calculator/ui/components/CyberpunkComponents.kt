@@ -47,6 +47,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -133,16 +134,16 @@ fun CyberpunkButton(
         },
         interactionSource = interactionSource,
         modifier = modifier
-            .shadow(8.dp, shape, spotColor = color)
+            .shadow(if (isPressed) 4.dp else 12.dp, shape, spotColor = color)
             .graphicsLayer {
                 translationX = if (isPressed) glitchOffsetX else 0f
             },
         shape = shape,
         colors = ButtonDefaults.buttonColors(
-            containerColor = color.copy(alpha = if (MaterialTheme.colorScheme.surface.luminance() > 0.5f) 0.3f else 0.1f),
+            containerColor = color.copy(alpha = if (MaterialTheme.colorScheme.surface.luminance() > 0.5f) 0.3f else 0.15f),
             contentColor = color
         ),
-        border = BorderStroke(1.dp, color),
+        border = remember(color) { BorderStroke(1.dp, Brush.linearGradient(listOf(color, color.copy(alpha = 0.2f)))) },
         contentPadding = PaddingValues(horizontal = 24.dp, vertical = 12.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -167,6 +168,28 @@ fun CyberpunkButton(
 }
 
 @Composable
+fun TechDisplayContainer(
+    modifier: Modifier = Modifier,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    val shape = remember { RoundedCornerShape(16.dp) }
+    val color = MaterialTheme.colorScheme.primary
+    val borderStroke = remember(color) { 
+        BorderStroke(2.dp, Brush.linearGradient(listOf(color, color.copy(alpha = 0.1f), color))) 
+    }
+    
+    Box(
+        modifier = modifier
+            .shadow(16.dp, shape, spotColor = color.copy(alpha = 0.5f))
+            .background(com.pentadigital.calculator.ui.theme.CyberpunkDisplayBg, shape)
+            .border(borderStroke, shape)
+            .padding(16.dp)
+    ) {
+        Column(content = content)
+    }
+}
+
+@Composable
 fun TechText(
     text: String,
     modifier: Modifier = Modifier,
@@ -179,6 +202,15 @@ fun TechText(
     overflow: androidx.compose.ui.text.style.TextOverflow = androidx.compose.ui.text.style.TextOverflow.Clip,
     softWrap: Boolean = true
 ) {
+    val textStyle = remember(color) {
+        androidx.compose.ui.text.TextStyle(
+            shadow = androidx.compose.ui.graphics.Shadow(
+                color = color.copy(alpha = 0.6f),
+                blurRadius = 12f
+            )
+        )
+    }
+
     Text(
         text = text,
         modifier = modifier,
@@ -186,11 +218,12 @@ fun TechText(
         fontSize = fontSize,
         fontWeight = fontWeight,
         fontFamily = FontFamily.Monospace,
-        letterSpacing = letterSpacing, // Use parameter
+        letterSpacing = letterSpacing,
         textAlign = textAlign,
         maxLines = maxLines,
         overflow = overflow,
-        softWrap = softWrap
+        softWrap = softWrap,
+        style = textStyle
     )
 }
 
@@ -199,19 +232,21 @@ fun GlowingDivider(
     color: Color = MaterialTheme.colorScheme.primary,
     modifier: Modifier = Modifier
 ) {
+    val brush = remember(color) {
+        Brush.horizontalGradient(
+            colors = listOf(
+                Color.Transparent,
+                color,
+                Color.Transparent
+            )
+        )
+    }
+
     Box(
         modifier = modifier
             .fillMaxWidth()
             .size(1.dp)
-            .background(
-                brush = Brush.horizontalGradient(
-                    colors = listOf(
-                        Color.Transparent,
-                        color,
-                        Color.Transparent
-                    )
-                )
-            )
+            .background(brush = brush)
             .shadow(4.dp, spotColor = color)
     )
 }
@@ -226,9 +261,27 @@ fun CyberpunkInput(
     keyboardOptions: androidx.compose.foundation.text.KeyboardOptions = androidx.compose.foundation.text.KeyboardOptions.Default,
     trailingIcon: @Composable (() -> Unit)? = null
 ) {
+    var text by remember { androidx.compose.runtime.mutableStateOf(value) }
+    
+    // Sync with parent ONLY if the numerical value actually changed remotely (e.g. from a Reset button)
+    // This prevents the parent from trimming trailing dots (e.g., "5.") or zeros (e.g., "5.10") while typing
+    androidx.compose.runtime.LaunchedEffect(value) {
+        val parentNum = value.toDoubleOrNull()
+        val currentNum = text.toDoubleOrNull()
+        
+        // If string differs but numbers are equal (like "5" vs "5."), DO NOT overwrite local text.
+        // Otherwise, sync it (e.g., if parent forces a Reset or loads new data).
+        if (value != text && parentNum != currentNum) {
+            text = value
+        }
+    }
+
     androidx.compose.material3.OutlinedTextField(
-        value = value,
-        onValueChange = onValueChange,
+        value = text,
+        onValueChange = { 
+            text = it
+            onValueChange(it) 
+        },
         label = { TechText(label, color = borderColor.copy(alpha = 0.7f), fontSize = 12.sp) },
         modifier = modifier,
         textStyle = androidx.compose.ui.text.TextStyle(

@@ -168,7 +168,7 @@ private fun TDEEInputs(
                 onValueChange = { newValue -> if (newValue.all { char -> char.isDigit() }) onAction(TDEEEvent.UpdateAgeValue(newValue)) },
                 label = { TechText(stringResource(R.string.age), color = CyberpunkTextSecondary) },
                 modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                 singleLine = true,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = MaterialTheme.colorScheme.primary,

@@ -245,7 +245,7 @@ private fun TimeTextField(
         label = label,
         modifier = modifier.focusRequester(focusRequester),
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Number,
+            keyboardType = KeyboardType.Decimal,
             imeAction = imeAction
         ),
         borderColor = NeonCyan

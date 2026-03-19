@@ -38,8 +38,8 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Star
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.*
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -299,7 +299,7 @@ fun HomeScreen(
                         contentPadding = PaddingValues(bottom = 80.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        items(categories) { category ->
+                        items(categories, key = { it.id }) { category ->
                             ExpandableCategoryCard(
                                 category = category,
                                 calculators = groupedCalculators[category.id] ?: emptyList(),
@@ -380,7 +380,7 @@ private fun SearchResultsList(
                 }
             }
         } else {
-            items(calculators) { calculator ->
+            items(calculators, key = { it.id }) { calculator ->
                 Box(modifier = Modifier.padding(horizontal = horizontalPadding)) {
                     CalculatorListItem(
                         calculator = calculator,
@@ -523,110 +523,120 @@ private fun CompactCalculatorGridItem(
     onFavoriteClick: () -> Unit,
     accentColor: Color
 ) {
-    Row(
+    // Clean up the name to avoid truncation (e.g., "SIP Calculator" -> "SIP")
+    val cleanName = calculator.name
+        .replace(" Calculator", "")
+        .replace(" Comparator", "")
+        .replace(" Converter", "")
+
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp)) // Softer corners
-            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.5f)) // distinct surface
-            .border(1.dp, accentColor.copy(alpha = 0.2f), RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp, topEnd = 4.dp, bottomStart = 4.dp)) // Asymmetrical Cyberpunk cut
+            .background(MaterialTheme.colorScheme.surface)
+            .border(1.dp, accentColor.copy(alpha = 0.3f), RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp, topEnd = 4.dp, bottomStart = 4.dp))
             .clickable(onClick = onClick)
-            .padding(8.dp), // Comfortable padding
-        verticalAlignment = Alignment.CenterVertically
+            .padding(12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        // Icon in Box (Restored for structure)
-        Box(
-            modifier = Modifier
-                .size(32.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(accentColor.copy(alpha = 0.1f)),
-            contentAlignment = Alignment.Center
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.Top
         ) {
-            Image(
-                painter = painterResource(id = calculator.iconRes),
-                contentDescription = calculator.name,
-                modifier = Modifier.size(16.dp),
-                colorFilter = ColorFilter.tint(accentColor)
-            )
+            // Icon Hologram Box
+            Box(
+                modifier = Modifier
+                    .size(36.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(accentColor.copy(alpha = 0.15f))
+                    .border(1.dp, accentColor.copy(alpha = 0.5f), RoundedCornerShape(8.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(id = calculator.iconRes),
+                    contentDescription = calculator.name,
+                    modifier = Modifier.size(20.dp),
+                    colorFilter = ColorFilter.tint(accentColor)
+                )
+            }
+            
+            // Favorite star icon
+            IconButton(
+                onClick = onFavoriteClick,
+                modifier = Modifier.size(24.dp)
+            ) {
+                Icon(
+                    imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
+                    contentDescription = null,
+                    tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f),
+                    modifier = Modifier.size(16.dp)
+                )
+            }
         }
         
-        Spacer(modifier = Modifier.width(12.dp))
+        Spacer(modifier = Modifier.height(12.dp))
         
         TechText(
-            text = calculator.name,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.SemiBold,
+            text = cleanName.uppercase(),
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.weight(1f),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+            modifier = Modifier.fillMaxWidth(),
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Start,
+            letterSpacing = 0.5.sp
         )
-        
-        // Favorite star icon
-        IconButton(
-            onClick = onFavoriteClick,
-            modifier = Modifier.size(24.dp)
-        ) {
-            Icon(
-                imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
-                contentDescription = null,
-                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f),
-                modifier = Modifier.size(16.dp)
-            )
-        }
     }
 }
 
 @Composable
 private fun HeaderSection(
     onSettingsClick: () -> Unit,
-    onProfileClick: () -> Unit, // Kept for compatibility but unused for now
+    onProfileClick: () -> Unit, 
     horizontalPadding: Dp = 20.dp
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = horizontalPadding)
-            .padding(top = 8.dp, bottom = 8.dp), // Reduced top padding to 8.dp
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        // Welcome Text Section (Profile Icon Hidden)
-        Column(
-            modifier = Modifier.weight(1f) // Allow text to take available space
-        ) {
-            TechText(
-                text = stringResource(R.string.welcome).uppercase(),
-                fontSize = 14.sp, // Slightly larger
-                color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 1.sp
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            TechText(
-                text = stringResource(R.string.app_title_pro).uppercase(),
-                fontSize = 28.sp, // Much larger for "Cool UI" impact
-                color = MaterialTheme.colorScheme.onSurface,
-                fontWeight = FontWeight.Black, // Heavier weight
-                letterSpacing = 0.5.sp
-            )
-        }
-        
-        // Settings Icon
-        IconButton(
-            onClick = onSettingsClick,
+    Column {
+        Row(
             modifier = Modifier
-                .size(48.dp) // Slightly larger touch target
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surface)
-                .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f), CircleShape)
+                .fillMaxWidth()
+                .padding(horizontal = horizontalPadding)
+                .padding(top = 16.dp, bottom = 8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(
-                imageVector = Icons.Outlined.Settings,
-                contentDescription = stringResource(R.string.settings),
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(24.dp)
-            )
+            Column(
+                modifier = Modifier.weight(1f) 
+            ) {
+                TechText(
+                    text = stringResource(R.string.app_title_pro).uppercase(),
+                    fontSize = 24.sp, 
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontWeight = FontWeight.Black, 
+                    letterSpacing = 1.sp
+                )
+            }
+            
+            // Settings Icon
+            IconButton(
+                onClick = onSettingsClick,
+                modifier = Modifier
+                    .size(42.dp) 
+                    .clip(RoundedCornerShape(12.dp)) // Techier shape
+                    .background(MaterialTheme.colorScheme.surface)
+                    .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f), RoundedCornerShape(12.dp))
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Settings,
+                    contentDescription = stringResource(R.string.settings),
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(22.dp)
+                )
+            }
         }
+        GlowingDivider(modifier = Modifier.padding(horizontal = horizontalPadding))
     }
 }
 
@@ -773,7 +783,7 @@ private fun CategoryCard(
             }
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication = rememberRipple(bounded = true),
+                indication = ripple(bounded = true),
                 onClick = onClick
             ),
         shape = RoundedCornerShape(20.dp),
@@ -955,56 +965,45 @@ private fun LifeTimelineBanner(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(72.dp) // Compact fixed height
-            .clip(RoundedCornerShape(16.dp))
-            .background(
-                Brush.horizontalGradient(
-                    colors = listOf(
-                        NeonPurple.copy(alpha = 0.1f),
-                        NeonCyan.copy(alpha = 0.1f)
-                    )
-                )
-            )
+            .height(84.dp) // Slightly taller for impact
+            .clip(RoundedCornerShape(topStart = 24.dp, bottomEnd = 24.dp, topEnd = 4.dp, bottomStart = 4.dp))
+            .background(MaterialTheme.colorScheme.surface)
             .border(
                 1.dp,
                 Brush.horizontalGradient(
-                    colors = listOf(NeonPurple.copy(alpha = 0.5f), NeonCyan.copy(alpha = 0.5f))
+                    colors = listOf(NeonPurple, NeonCyan.copy(alpha = 0.5f))
                 ),
-                RoundedCornerShape(16.dp)
+                RoundedCornerShape(topStart = 24.dp, bottomEnd = 24.dp, topEnd = 4.dp, bottomStart = 4.dp)
             )
             .clickable(onClick = onClick)
     ) {
-        // Background Timeline Graphic
+        // High-tech static mesh background
         Canvas(modifier = Modifier.fillMaxSize()) {
-            val width = size.width
-            val height = size.height
-            val path = androidx.compose.ui.graphics.Path().apply {
-                moveTo(0f, height * 0.7f)
-                cubicTo(
-                    width * 0.3f, height * 0.7f,
-                    width * 0.4f, height * 0.3f,
-                    width * 0.6f, height * 0.5f
-                )
-                cubicTo(
-                    width * 0.8f, height * 0.7f,
-                    width * 0.9f, height * 0.2f,
-                    width, height * 0.5f
+            val w = size.width
+            val h = size.height
+            
+            // Draw subtle horizontal scanlines
+            for (i in 0..h.toInt() step 8) {
+                drawLine(
+                    color = NeonCyan.copy(alpha = 0.05f),
+                    start = Offset(0f, i.toFloat()),
+                    end = Offset(w, i.toFloat()),
+                    strokeWidth = 1f
                 )
             }
-            
+            // Draw an angled accent shape in the background
+            val path = Path().apply {
+                moveTo(w * 0.6f, 0f)
+                lineTo(w, 0f)
+                lineTo(w, h)
+                lineTo(w * 0.4f, h)
+                close()
+            }
             drawPath(
                 path = path,
                 brush = Brush.horizontalGradient(
-                    colors = listOf(NeonPurple.copy(alpha = 0.2f), NeonCyan.copy(alpha = 0.2f))
-                ),
-                style = androidx.compose.ui.graphics.drawscope.Stroke(width = 3.dp.toPx())
-            )
-            
-            // Add some glowing dots
-            drawCircle(
-                color = NeonPurple,
-                radius = 4.dp.toPx(),
-                center = Offset(width * 0.6f, height * 0.5f)
+                    colors = listOf(Color.Transparent, NeonPurple.copy(alpha = 0.15f))
+                )
             )
         }
 
@@ -1017,44 +1016,47 @@ private fun LifeTimelineBanner(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                // Animated Icon Placeholder
+                // Icon Box
                 Box(
                     modifier = Modifier
-                        .size(40.dp)
-                        .clip(CircleShape)
-                        .background(NeonPurple.copy(alpha = 0.2f)),
+                        .size(42.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(NeonPurple.copy(alpha = 0.2f))
+                        .border(1.dp, NeonPurple.copy(alpha = 0.5f), RoundedCornerShape(10.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        imageVector = Icons.Default.DateRange, // Using DateRange as timeline icon
-                        contentDescription = null,
+                        imageVector = Icons.Default.DateRange,
+                        contentDescription = "Life Timeline",
                         tint = NeonPurple,
-                        modifier = Modifier.size(20.dp)
+                        modifier = Modifier.size(24.dp)
                     )
                 }
-                
+
                 Spacer(modifier = Modifier.width(16.dp))
-                
+
                 Column {
                     TechText(
-                        text = stringResource(R.string.life_timeline_title).uppercase(),
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
+                        text = stringResource(R.string.life_timeline_title),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Black,
                         color = MaterialTheme.colorScheme.onSurface,
-                        letterSpacing = 1.sp
+                        letterSpacing = 2.sp
                     )
+                    Spacer(modifier = Modifier.height(2.dp))
                     TechText(
-                        text = stringResource(R.string.life_timeline_subtitle), // Hardcoded for now or add to strings
+                        text = stringResource(R.string.life_timeline_subtitle).uppercase(),
                         fontSize = 10.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = NeonCyan,
+                        letterSpacing = 1.sp
                     )
                 }
             }
 
-            // Arrow
+            // High-tech Arrow
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                contentDescription = null,
+                contentDescription = "Go",
                 tint = NeonCyan,
                 modifier = Modifier.size(20.dp)
             )

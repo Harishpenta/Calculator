@@ -150,7 +150,7 @@ private fun TipInputs(
                 modifier = Modifier.fillMaxWidth().focusRequester(billFocus),
                 borderColor = MaterialTheme.colorScheme.primary,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.Decimal,
                     imeAction = ImeAction.Done
                 )
             )

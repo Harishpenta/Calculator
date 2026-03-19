@@ -77,6 +77,10 @@ val NeonBlue = Color(0xFF2979FF)
 val HoloBlue = Color(0xFF2DE2E6)
 val CyberpunkTextPrimary = Color(0xFFE0E0E0)
 val CyberpunkTextSecondary = Color(0xFF94A3B8)
+val CyberpunkNeonPink = Color(0xFFFF007F)
+val CyberpunkNeonYellow = Color(0xFFFFEA00)
+val CyberpunkNeonOrange = Color(0xFFFF5E00)
+val CyberpunkDisplayBg = Color(0xFF0A0F1D)
 
 // Cyberpunk Light Theme Colors
 val CyberpunkLightBG = Color(0xFFF0F2F5) // Clean cool gray

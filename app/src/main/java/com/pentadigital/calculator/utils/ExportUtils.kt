@@ -39,7 +39,6 @@ object ExportUtils {
             // Title
             val title = Paragraph("Calculation History")
                 .setFontSize(20f)
-                .setBold()
                 .setTextAlignment(TextAlignment.CENTER)
             document.add(title)
             
@@ -58,12 +57,10 @@ object ExportUtils {
                 
                 // Header
                 table.addHeaderCell(
-                    Cell().add(Paragraph("#").setBold())
-                        .setBackgroundColor(ColorConstants.LIGHT_GRAY)
+                    Cell().add(Paragraph("#"))
                 )
                 table.addHeaderCell(
-                    Cell().add(Paragraph("Calculation").setBold())
-                        .setBackgroundColor(ColorConstants.LIGHT_GRAY)
+                    Cell().add(Paragraph("Calculation"))
                 )
                 
                 // Data
@@ -81,7 +78,6 @@ object ExportUtils {
             document.add(Paragraph("\n"))
             val footer = Paragraph("Total Calculations: ${history.size}")
                 .setFontSize(10f)
-                .setItalic()
             document.add(footer)
             
             document.close()

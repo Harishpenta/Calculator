@@ -178,7 +178,7 @@ private fun GoalInputs(
                 onValueChange = { onAction(GoalPlannerEvent.UpdateTargetAmount(it)) },
                 label = stringResource(R.string.target_amount).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(targetFocus),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = ImeAction.Next),
                 borderColor = MaterialTheme.colorScheme.primary
             )
 
@@ -187,7 +187,7 @@ private fun GoalInputs(
                 onValueChange = { onAction(GoalPlannerEvent.UpdateTimePeriod(it)) },
                 label = stringResource(R.string.time_period).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(timeFocus),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = ImeAction.Next),
                 borderColor = MaterialTheme.colorScheme.primary
             )
 
@@ -196,7 +196,7 @@ private fun GoalInputs(
                 onValueChange = { onAction(GoalPlannerEvent.UpdateReturnRate(it)) },
                 label = stringResource(R.string.expected_return_rate).uppercase(),
                 modifier = Modifier.fillMaxWidth().focusRequester(rateFocus),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = ImeAction.Done),
                 borderColor = MaterialTheme.colorScheme.primary
             )
         }
