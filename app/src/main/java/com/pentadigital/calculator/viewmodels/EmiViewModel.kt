@@ -12,7 +12,8 @@ data class EmiState(
     val tenureYears: Int = 5,
     val emi: Double = 0.0,
     val totalInterest: Double = 0.0,
-    val totalPayment: Double = 0.0
+    val totalPayment: Double = 0.0,
+    val errorMessage: String? = null
 )
 
 class EmiViewModel : ViewModel() {
@@ -42,8 +43,26 @@ class EmiViewModel : ViewModel() {
 
     private fun calculateEmi() {
         val P = state.loanAmount
-        val r = (state.interestRate / 100) / 12
-        val n = state.tenureYears * 12.0
+        val rate = state.interestRate
+        val years = state.tenureYears
+
+        when {
+            P <= 0 -> {
+                state = state.copy(emi = 0.0, totalInterest = 0.0, totalPayment = 0.0, errorMessage = "Loan amount must be greater than 0")
+                return
+            }
+            rate < 0 || rate > 100 -> {
+                state = state.copy(emi = 0.0, totalInterest = 0.0, totalPayment = 0.0, errorMessage = "Interest rate must be between 0 and 100")
+                return
+            }
+            years <= 0 -> {
+                state = state.copy(emi = 0.0, totalInterest = 0.0, totalPayment = 0.0, errorMessage = "Tenure must be at least 1 year")
+                return
+            }
+        }
+
+        val r = (rate / 100) / 12
+        val n = years * 12.0
 
         // E = P * r * (1 + r)^n / ((1 + r)^n - 1)
         val emi = if (r != 0.0) {
@@ -58,7 +77,8 @@ class EmiViewModel : ViewModel() {
         state = state.copy(
             emi = emi,
             totalInterest = totalInterest,
-            totalPayment = totalPayment
+            totalPayment = totalPayment,
+            errorMessage = null
         )
     }
 }

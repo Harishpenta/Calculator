@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">Calculator</string>
     
+    <!-- PDF Export -->
+    <string name="pdf_saved_success">PDF saved successfully</string>
+    <string name="pdf_save_error">Failed to save PDF</string>
+
+    <!-- Input Validation -->
+    <string name="error_loan_amount_invalid">Loan amount must be greater than 0</string>
+    <string name="error_interest_rate_invalid">Interest rate must be between 0 and 100</string>
+    <string name="error_tenure_invalid">Tenure must be at least 1 year</string>
+    <string name="error_weight_invalid">Weight must be between 1 and 500 kg</string>
+    <string name="error_height_invalid">Height must be between 50 and 300 cm</string>
+    <string name="error_invalid_amount">Please enter a valid amount</string>
+
     <!-- Navigation & Common -->
     <string name="home">Home</string>
     <string name="favorites">Favorites</string>

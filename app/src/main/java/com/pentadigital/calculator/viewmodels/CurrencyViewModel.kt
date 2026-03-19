@@ -9,7 +9,8 @@ data class CurrencyState(
     val amount: String = "1.0",
     val fromCurrency: String = "USD",
     val toCurrency: String = "INR",
-    val convertedAmount: Double = 0.0
+    val convertedAmount: Double = 0.0,
+    val errorMessage: String? = null
 )
 
 class CurrencyViewModel : ViewModel() {
@@ -54,15 +55,21 @@ class CurrencyViewModel : ViewModel() {
     }
 
     private fun calculateConversion() {
-        val fromRate = rates[state.fromCurrency] ?: 1.0
-        val toRate = rates[state.toCurrency] ?: 1.0
-        
+        val amountVal = state.amount.toDoubleOrNull()
+        if (amountVal == null) {
+            state = state.copy(convertedAmount = 0.0, errorMessage = "Invalid amount")
+            return
+        }
+        val fromRate = rates[state.fromCurrency]
+        val toRate = rates[state.toCurrency]
+        if (fromRate == null || toRate == null) {
+            state = state.copy(convertedAmount = 0.0, errorMessage = "Unsupported currency")
+            return
+        }
+
         // Convert to USD first, then to target currency
-        val amountVal = state.amount.toDoubleOrNull() ?: 0.0
-        val amountInUsd = amountVal / fromRate
-        val finalAmount = amountInUsd * toRate
-        
-        state = state.copy(convertedAmount = finalAmount)
+        val finalAmount = (amountVal / fromRate) * toRate
+        state = state.copy(convertedAmount = finalAmount, errorMessage = null)
     }
 }
 

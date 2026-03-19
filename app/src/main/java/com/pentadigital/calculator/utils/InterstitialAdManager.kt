@@ -3,6 +3,7 @@ package com.pentadigital.calculator.utils
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import com.pentadigital.calculator.BuildConfig
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -15,10 +16,9 @@ class InterstitialAdManager(private val context: Context) {
 
     fun loadAd() {
         val adRequest = AdRequest.Builder().build()
-        // Real Interstitial Ad Unit ID
         InterstitialAd.load(
             context,
-            "ca-app-pub-3360377725254476/8667008833",
+            BuildConfig.INTERSTITIAL_AD_UNIT_ID,
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {

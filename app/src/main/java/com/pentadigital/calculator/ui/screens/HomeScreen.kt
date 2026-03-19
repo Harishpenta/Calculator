@@ -65,6 +65,7 @@ import com.pentadigital.calculator.data.FavoritesManager
 import com.pentadigital.calculator.ui.theme.*
 import com.pentadigital.calculator.utils.WindowSizeClass
 import com.pentadigital.calculator.utils.rememberWindowSize
+import com.pentadigital.calculator.viewmodels.HomeViewModel
 
 import com.pentadigital.calculator.ui.components.CyberpunkCard
 import com.pentadigital.calculator.ui.components.TechText
@@ -101,32 +102,27 @@ fun HomeScreen(
     onNavigateToSettings: () -> Unit,
     onNavigateToProfile: () -> Unit,
     onNavigateToLifeTimeline: () -> Unit,
+    homeViewModel: HomeViewModel,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
     val favoritesManager = remember { FavoritesManager.getInstance(context) }
     val favorites by favoritesManager.favorites.collectAsState()
-    
+
+    val searchQuery = homeViewModel.searchQuery
+    val expandedCategoryId = homeViewModel.expandedCategoryId
+    val filteredCalculators = homeViewModel.filteredCalculators
+    val groupedCalculators = homeViewModel.groupedCalculators
+
     // Screen size adaptation
     val windowSize = rememberWindowSize()
-    val configuration = LocalConfiguration.current
-    val isLandscape = configuration.screenWidthDp > configuration.screenHeightDp
-    
+
     // Adaptive padding
     val horizontalPadding = when {
         windowSize.width == WindowSizeClass.EXPANDED -> 32.dp
         windowSize.width == WindowSizeClass.MEDIUM -> 24.dp
         else -> 20.dp
     }
-    
-    var searchQuery by remember { mutableStateOf("") }
-    // Track expanded category - default to Finance or null
-    var expandedCategoryId by remember { mutableStateOf<String?>(null) }
-    
-    // Define categories
-    // Detect theme based on background color (since MaterialTheme is already set by CalculatorTheme)
-    val currentBg = MaterialTheme.colorScheme.background
-    val isDarkTheme = remember(currentBg) { currentBg == CyberpunkDarkBG }
 
     val primaryColor = MaterialTheme.colorScheme.primary
     val categories = remember(primaryColor) {
@@ -182,57 +178,6 @@ fun HomeScreen(
         )
     }
 
-    
-    // Define all calculators
-    val allCalculators = remember {
-        listOf(
-            // Algebra
-            CalculatorItem("percentage", context.getString(R.string.calc_percentage), "algebra", R.drawable.ic_percentage, "basic"),
-            CalculatorItem("average", context.getString(R.string.calc_average), "algebra", R.drawable.ic_average, "basic"),
-            CalculatorItem("proportion", context.getString(R.string.calc_proportion), "algebra", R.drawable.ic_proportion, "basic"),
-            CalculatorItem("ratio", context.getString(R.string.calc_ratio), "algebra", R.drawable.ic_ratio, "basic"),
-            // Geometry
-            CalculatorItem("geometry", context.getString(R.string.geometry_title), "geometry", R.drawable.ic_geometry, "geometry"),
-            // Finance
-            CalculatorItem("sip", context.getString(R.string.sip_title), "finance", R.drawable.ic_investment, "sip"),
-            CalculatorItem("emi", context.getString(R.string.emi_title), "finance", R.drawable.ic_loan, "emi"),
-            CalculatorItem("simple_interest", context.getString(R.string.simple_interest_title), "finance", R.drawable.ic_percentage, "simple_interest"),
-            CalculatorItem("compound_interest", context.getString(R.string.compound_interest_title), "finance", R.drawable.ic_investment, "compound_interest"),
-            CalculatorItem("loan_prepayment", context.getString(R.string.loan_prepayment_title), "finance", R.drawable.ic_loan, "loan_prepayment"),
-            CalculatorItem("goal_planner", context.getString(R.string.goal_planner_title), "finance", R.drawable.ic_investment, "goal_planner"),
-            CalculatorItem("discount", context.getString(R.string.discount_calculator_title), "finance", R.drawable.ic_percentage, "discount"),
-            CalculatorItem("tip", context.getString(R.string.tip_calculator_title), "finance", R.drawable.ic_currency, "tip"),
-            CalculatorItem("fuel_cost", context.getString(R.string.fuel_cost_calculator_title), "finance", R.drawable.ic_currency, "fuel_cost"),
-            CalculatorItem("unit_price", context.getString(R.string.unit_price_comparator_title), "finance", R.drawable.ic_currency, "unit_price"),
-            CalculatorItem("currency", context.getString(R.string.currency_title), "finance", R.drawable.ic_currency, "currency"),
-            // Health
-            CalculatorItem("bmi", context.getString(R.string.bmi_title), "health", R.drawable.ic_bmi, "bmi"),
-            CalculatorItem("tdee", context.getString(R.string.tdee_title), "health", R.drawable.ic_tdee, "tdee"),
-            CalculatorItem("body_fat", context.getString(R.string.body_fat_title), "health", R.drawable.ic_body_fat, "body_fat"),
-            CalculatorItem("water_intake", context.getString(R.string.water_intake_title), "health", R.drawable.ic_water_intake, "water_intake"),
-            // Date & Time
-            CalculatorItem("age", context.getString(R.string.age_title), "datetime", R.drawable.ic_age, "age"),
-            CalculatorItem("date_difference", context.getString(R.string.date_difference_title), "datetime", R.drawable.ic_date_difference, "date_difference"),
-            CalculatorItem("time_calculator", context.getString(R.string.time_calculator_title), "datetime", R.drawable.ic_time_calculator, "time_calculator"),
-            // Unit Converters
-            CalculatorItem("unit", context.getString(R.string.unit_converter_title), "unit_converters", R.drawable.ic_unit_converter, "unit_converter")
-        )
-    }
-    
-    // Filter calculators based on search
-    val filteredCalculators = remember(searchQuery) {
-        if (searchQuery.isEmpty()) allCalculators else {
-            allCalculators.filter { calc ->
-                calc.name.lowercase().contains(searchQuery.lowercase())
-            }
-        }
-    }
-    
-    // Group calculators by category
-    val groupedCalculators = remember(allCalculators) {
-        allCalculators.groupBy { it.categoryId }
-    }
-
     // Calculate columns based on window size
     val columns = when (windowSize.width) {
         WindowSizeClass.EXPANDED -> 4
@@ -277,7 +222,7 @@ fun HomeScreen(
                 // Search Bar
                 CalculatorSearchBar(
                     query = searchQuery,
-                    onQueryChange = { searchQuery = it },
+                    onQueryChange = { homeViewModel.onSearchQueryChange(it) },
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 )
             
@@ -304,9 +249,7 @@ fun HomeScreen(
                                 category = category,
                                 calculators = groupedCalculators[category.id] ?: emptyList(),
                                 isExpanded = expandedCategoryId == category.id,
-                                onToggle = {
-                                    expandedCategoryId = if (expandedCategoryId == category.id) null else category.id
-                                },
+                                onToggle = { homeViewModel.onToggleCategory(category.id) },
                                 favorites = favorites,
                                 onCalculatorClick = onNavigateToCalculator,
                                 onFavoriteClick = { favoritesManager.toggleFavorite(it) },

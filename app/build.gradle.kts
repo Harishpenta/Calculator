@@ -24,6 +24,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField("String", "INTERSTITIAL_AD_UNIT_ID", "\"ca-app-pub-3360377725254476/8667008833\"")
     }
 
     signingConfigs {
@@ -64,6 +66,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     packaging {
         resources {

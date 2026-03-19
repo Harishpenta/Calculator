@@ -10,7 +10,8 @@ data class BmiState(
     val weightKg: Double = 70.0,
     val heightCm: Double = 170.0,
     val bmi: Double = 0.0,
-    val category: String = ""
+    val category: String = "",
+    val errorMessage: String? = null
 )
 
 class BmiViewModel : ViewModel() {
@@ -36,18 +37,28 @@ class BmiViewModel : ViewModel() {
 
     private fun calculateBmi() {
         val weight = state.weightKg
-        val heightM = state.heightCm / 100.0
-        
-        if (heightM > 0) {
-            val bmi = weight / heightM.pow(2)
-            val category = when {
-                bmi < 18.5 -> "Underweight"
-                bmi < 25.0 -> "Normal"
-                bmi < 30.0 -> "Overweight"
-                else -> "Obese"
+        val heightCm = state.heightCm
+
+        when {
+            weight !in 1.0..500.0 -> {
+                state = state.copy(bmi = 0.0, category = "", errorMessage = "Weight must be between 1 and 500 kg")
+                return
             }
-            state = state.copy(bmi = bmi, category = category)
+            heightCm !in 50.0..300.0 -> {
+                state = state.copy(bmi = 0.0, category = "", errorMessage = "Height must be between 50 and 300 cm")
+                return
+            }
         }
+
+        val heightM = heightCm / 100.0
+        val bmi = weight / heightM.pow(2)
+        val category = when {
+            bmi < 18.5 -> "Underweight"
+            bmi < 25.0 -> "Normal"
+            bmi < 30.0 -> "Overweight"
+            else -> "Obese"
+        }
+        state = state.copy(bmi = bmi, category = category, errorMessage = null)
     }
 }
 
