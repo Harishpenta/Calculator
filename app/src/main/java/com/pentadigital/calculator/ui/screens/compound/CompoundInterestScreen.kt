@@ -87,7 +87,7 @@ fun CicInputSection(
             // Currency Dropdown
             CurrencyDropdown(
                 selected = state.selectedCurrency,
-                options = CurrencyInfo.values().toList(),
+                options = CurrencyInfo.entries,
                 onSelect = { viewModel.onEvent(CompoundInterestEvent.UpdateCurrency(it)) },
                 modifier = Modifier.weight(0.45f)
             )
@@ -120,7 +120,7 @@ fun CicInputSection(
                 Spacer(modifier = Modifier.height(4.dp))
                 FrequencyDropdown(
                     selected = state.compoundingFrequency.name,
-                    options = CompoundingFrequency.values().map { it.name },
+                    options = CompoundingFrequency.entries.map { it.name },
                     onSelect = { viewModel.onEvent(CompoundInterestEvent.UpdateCompoundingFrequency(CompoundingFrequency.valueOf(it))) }
                 )
             }
@@ -229,7 +229,7 @@ fun CicContributionSection(
                     Spacer(modifier = Modifier.height(4.dp))
                     FrequencyDropdown(
                         selected = state.contributionFrequency.name,
-                        options = ContributionFrequency.values().map { it.name },
+                        options = ContributionFrequency.entries.map { it.name },
                         onSelect = { viewModel.onEvent(CompoundInterestEvent.UpdateContributionFrequency(ContributionFrequency.valueOf(it))) }
                     )
                 }
@@ -265,13 +265,13 @@ fun FrequencyDropdown(
         onExpandedChange = { expanded = !expanded }
     ) {
         OutlinedTextField(
-            value = selected.lowercase().capitalize(),
+            value = selected.lowercase().replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() },
             onValueChange = {},
             readOnly = true,
             textStyle = androidx.compose.ui.text.TextStyle(fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace),
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
             colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
-            modifier = Modifier.menuAnchor().fillMaxWidth(),
+            modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, true).fillMaxWidth(),
             shape = androidx.compose.foundation.shape.CutCornerShape(8.dp)
         )
 
@@ -318,7 +318,7 @@ fun CurrencyDropdown(
                 focusedBorderColor = MaterialTheme.colorScheme.primary,
                 unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
             ),
-            modifier = Modifier.menuAnchor().fillMaxWidth(),
+            modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, true).fillMaxWidth(),
             shape = androidx.compose.foundation.shape.CutCornerShape(8.dp)
         )
 

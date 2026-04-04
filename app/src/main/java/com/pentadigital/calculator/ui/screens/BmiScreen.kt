@@ -76,7 +76,7 @@ fun BmiScreen(
                             shareBodyTemplate,
                             "${state.weightKg}",
                             "${state.heightCm}",
-                            String.format("%.1f", state.bmi),
+                            String.format(java.util.Locale.US, "%.1f", state.bmi),
                             categoryLabel
                         )
                         shareResult(context, shareTitle, shareBody)
@@ -168,7 +168,7 @@ fun BmiScreen(
                                 fontWeight = FontWeight.Medium
                             )
                             TechText(
-                                text = if (state.bmi > 0) String.format("%.1f", state.bmi) else "--.-",
+                                text = if (state.bmi > 0) String.format(java.util.Locale.US, "%.1f", state.bmi) else "--.-",
                                 color = if (state.category.isNotEmpty()) getColorForCategory(state.category) else MaterialTheme.colorScheme.primary,
                                 fontSize = 48.sp,
                                 fontWeight = FontWeight.Bold
@@ -252,7 +252,7 @@ fun BmiScreen(
                             fontWeight = FontWeight.Medium
                         )
                         TechText(
-                            text = if (state.bmi > 0) String.format("%.1f", state.bmi) else "--.-",
+                            text = if (state.bmi > 0) String.format(java.util.Locale.US, "%.1f", state.bmi) else "--.-",
                             color = if (state.category.isNotEmpty()) getColorForCategory(state.category) else MaterialTheme.colorScheme.primary,
                             fontSize = 48.sp,
                             fontWeight = FontWeight.Bold

@@ -67,7 +67,7 @@ fun InputSection(
                     )
                 }
                 BasicTextField(
-                    value = if (value == 0.0) "" else if (value % 1.0 == 0.0) value.toInt().toString() else String.format("%.1f", value),
+                    value = if (value == 0.0) "" else if (value % 1.0 == 0.0) value.toInt().toString() else String.format(java.util.Locale.US, "%.1f", value),
                     onValueChange = {
                         if (it.isEmpty()) {
                             onValueChange(0f)

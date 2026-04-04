@@ -115,7 +115,7 @@ class MainActivity : ComponentActivity() {
 
             androidx.compose.runtime.LaunchedEffect(currentLanguage) {
                 val parts = currentLanguage.code.split("-")
-                val locale = if (parts.size > 1) java.util.Locale(parts[0], parts[1]) else java.util.Locale(parts[0])
+                val locale = if (parts.size > 1) java.util.Locale.Builder().setLanguage(parts[0]).setRegion(parts[1]).build() else java.util.Locale.Builder().setLanguage(parts[0]).build()
                 val config = resources.configuration
                 
                 // Check if update is needed to avoid loops

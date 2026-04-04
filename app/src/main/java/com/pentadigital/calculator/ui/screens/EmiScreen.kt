@@ -84,9 +84,9 @@ fun EmiScreen(
                             "₹${state.loanAmount}",
                             "${state.interestRate}",
                             "${state.tenureYears}",
-                            "₹${String.format("%.2f", state.emi)}",
-                            "₹${String.format("%.2f", state.totalInterest)}",
-                            "₹${String.format("%.2f", state.totalPayment)}"
+                            "₹${String.format(java.util.Locale.US, "%.2f", state.emi)}",
+                            "₹${String.format(java.util.Locale.US, "%.2f", state.totalInterest)}",
+                            "₹${String.format(java.util.Locale.US, "%.2f", state.totalPayment)}"
                         )
                         shareResult(context, shareTitle, shareBody)
                     }) {
@@ -253,7 +253,7 @@ private fun EmiResults(state: EmiState) {
                     fontWeight = FontWeight.Medium
                 )
                 TechText(
-                    text = NumberFormat.getCurrencyInstance(Locale("en", "IN")).format(state.emi),
+                    text = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build()).format(state.emi),
                     color = MaterialTheme.colorScheme.secondary,
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
@@ -283,7 +283,7 @@ private fun EmiResults(state: EmiState) {
 
 @Composable
 private fun ResultRow(label: String, amount: Double, isTotal: Boolean = false) {
-    val format = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val format = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
     val formattedAmount = format.format(amount)
 
     Row(

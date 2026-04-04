@@ -80,7 +80,7 @@ class ThemeViewModel(application: Application) : AndroidViewModel(application) {
                 ThemeState(
                     appTheme = AppTheme.valueOf(themeName),
                     accentColor = AccentColor.valueOf(accentName),
-                    language = AppLanguage.values().find { it.code == languageCode } ?: AppLanguage.English,
+                    language = AppLanguage.entries.find { it.code == languageCode } ?: AppLanguage.English,
                     isHapticsEnabled = hapticsEnabled,
                     isSoundEnabled = soundEnabled
                 )

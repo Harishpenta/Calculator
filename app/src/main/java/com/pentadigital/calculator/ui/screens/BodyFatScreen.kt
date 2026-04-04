@@ -197,7 +197,7 @@ private fun BodyFatInputs(
                 )
                 CyberpunkWeightGauge(
                     value = state.weight.toFloatOrNull() ?: 70f,
-                    onValueChange = { onAction(BodyFatEvent.UpdateWeight(String.format("%.1f", it))) },
+                    onValueChange = { onAction(BodyFatEvent.UpdateWeight(String.format(java.util.Locale.US, "%.1f", it))) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(120.dp)
@@ -215,7 +215,7 @@ private fun BodyFatInputs(
                 Spacer(modifier = Modifier.height(8.dp))
                 CyberpunkHeightRuler(
                     value = state.height.toFloatOrNull() ?: 170f,
-                    onValueChange = { onAction(BodyFatEvent.UpdateHeight(String.format("%.1f", it))) },
+                    onValueChange = { onAction(BodyFatEvent.UpdateHeight(String.format(java.util.Locale.US, "%.1f", it))) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(200.dp)
@@ -236,7 +236,7 @@ private fun BodyFatInputs(
                 Spacer(modifier = Modifier.height(8.dp))
                 CyberpunkWeightGauge(
                     value = state.neck.toFloatOrNull() ?: 40f,
-                    onValueChange = { onAction(BodyFatEvent.UpdateNeck(String.format("%.1f", it))) },
+                    onValueChange = { onAction(BodyFatEvent.UpdateNeck(String.format(java.util.Locale.US, "%.1f", it))) },
                     range = 20f..80f,
                     unit = "CM",
                     modifier = Modifier
@@ -256,7 +256,7 @@ private fun BodyFatInputs(
                 Spacer(modifier = Modifier.height(8.dp))
                 CyberpunkWeightGauge(
                     value = state.waist.toFloatOrNull() ?: 80f,
-                    onValueChange = { onAction(BodyFatEvent.UpdateWaist(String.format("%.1f", it))) },
+                    onValueChange = { onAction(BodyFatEvent.UpdateWaist(String.format(java.util.Locale.US, "%.1f", it))) },
                     range = 40f..150f,
                     unit = "CM",
                     modifier = Modifier
@@ -278,7 +278,7 @@ private fun BodyFatInputs(
                 Spacer(modifier = Modifier.height(8.dp))
                 CyberpunkWeightGauge(
                     value = state.hip.toFloatOrNull() ?: 90f,
-                    onValueChange = { onAction(BodyFatEvent.UpdateHip(String.format("%.1f", it))) },
+                    onValueChange = { onAction(BodyFatEvent.UpdateHip(String.format(java.util.Locale.US, "%.1f", it))) },
                     range = 40f..150f,
                     unit = "CM",
                     modifier = Modifier
@@ -338,7 +338,7 @@ private fun BodyFatResults(state: BodyFatState) {
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 TechText(
-                    text = String.format("%.1f%%", state.bodyFatPercentage),
+                    text = String.format(java.util.Locale.US, "%.1f%%", state.bodyFatPercentage),
                     color = NeonRed,
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold

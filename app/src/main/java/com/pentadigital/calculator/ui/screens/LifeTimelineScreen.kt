@@ -271,9 +271,9 @@ fun TimelineCanvas(state: TimelineState) {
         }
     }
     
-    // Resolve strings for canvas
+    // Resolve strings for canvas outside of the Canvas scope (composable context)
     val eventsResolved = state.events.map { event ->
-        val title = event.titleRes?.let { androidx.compose.ui.platform.LocalContext.current.getString(it) } ?: event.title
+        val title = event.titleRes?.let { stringResource(it) } ?: event.title
         event to title
     }
 

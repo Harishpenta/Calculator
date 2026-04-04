@@ -27,7 +27,7 @@ object PdfGenerator {
         val paint = Paint()
 
         // Formatting
-        val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+        val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
         val titlePaint = Paint().apply {
             color = Color.BLACK
             textSize = 24f
@@ -122,7 +122,7 @@ object PdfGenerator {
         val canvas = page.canvas
 
         // Formatting
-        val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+        val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
         val titlePaint = Paint().apply {
             color = Color.BLACK
             textSize = 24f

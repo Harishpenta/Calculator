@@ -31,10 +31,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
-import androidx.compose.material3.TabRowDefaults
-import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -94,18 +92,12 @@ fun UnitConverterScreen(
                 .padding(padding)
         ) {
             // Category Tabs
-            TabRow(
+            PrimaryTabRow(
                 selectedTabIndex = state.category.ordinal,
                 containerColor = MaterialTheme.colorScheme.background,
-                contentColor = MaterialTheme.colorScheme.primary,
-                indicator = { tabPositions ->
-                    TabRowDefaults.Indicator(
-                        Modifier.tabIndicatorOffset(tabPositions[state.category.ordinal]),
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                }
+                contentColor = MaterialTheme.colorScheme.primary
             ) {
-                UnitCategory.values().forEach { category ->
+                UnitCategory.entries.forEach { category ->
                     Tab(
                         selected = state.category == category,
                         onClick = { onAction(UnitConverterEvent.UpdateCategory(category)) },
@@ -216,7 +208,7 @@ fun UnitConverterScreen(
                                     fontWeight = FontWeight.Medium
                                 )
                                 TechText(
-                                    text = String.format("%.4f", state.resultValue),
+                                    text = String.format(java.util.Locale.US, "%.4f", state.resultValue),
                                     color = MaterialTheme.colorScheme.secondary,
                                     fontSize = 48.sp,
                                     fontWeight = FontWeight.Bold
@@ -314,7 +306,7 @@ fun UnitConverterScreen(
                                 fontWeight = FontWeight.Medium
                             )
                             TechText(
-                                text = String.format("%.4f", state.resultValue),
+                                text = String.format(java.util.Locale.US, "%.4f", state.resultValue),
                                 color = MaterialTheme.colorScheme.secondary,
                                 fontSize = 48.sp,
                                 fontWeight = FontWeight.Bold

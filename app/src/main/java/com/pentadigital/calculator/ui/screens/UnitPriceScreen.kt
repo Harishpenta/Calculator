@@ -222,7 +222,7 @@ private fun UnitPriceInputs(
 
 @Composable
 private fun UnitPriceResults(state: UnitPriceState) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
 
     if (state.verdict.isNotEmpty()) {
         CyberpunkCard(
@@ -243,7 +243,7 @@ private fun UnitPriceResults(state: UnitPriceState) {
                 if (state.savings > 0) {
                     Spacer(modifier = Modifier.height(8.dp))
                     TechText(
-                        text = "${stringResource(R.string.savings).uppercase()}: ${String.format("%.1f", state.savings)}%",
+                        text = "${stringResource(R.string.savings).uppercase()}: ${String.format(java.util.Locale.US, "%.1f", state.savings)}%",
                         color = NeonGreen.copy(alpha = 0.8f),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium

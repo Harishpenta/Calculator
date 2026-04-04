@@ -38,7 +38,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.foundation.layout.WindowInsets
 
 private fun sharePrepaymentResult(context: Context, state: LoanPrepaymentState) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
     val subject = context.getString(R.string.prepayment_share_subject)
     val body = context.getString(
         R.string.prepayment_share_body,
@@ -257,7 +257,7 @@ private fun PrepaymentInputs(
 
 @Composable
 private fun PrepaymentResults(state: LoanPrepaymentState) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
 
     // Savings Card
     CyberpunkCard(

@@ -101,7 +101,7 @@ fun CyberpunkWeightGauge(
             
             // Draw current value text large
             drawContext.canvas.nativeCanvas.drawText(
-                String.format("%.1f %s", value, unit),
+                String.format(java.util.Locale.US, "%.1f %s", value, unit),
                 centerX,
                 height * 0.3f,
                 android.graphics.Paint().apply {
@@ -186,7 +186,7 @@ fun CyberpunkHeightRuler(
             
             // Draw current value
              drawContext.canvas.nativeCanvas.drawText(
-                String.format("%.1f cm", value),
+                String.format(java.util.Locale.US, "%.1f cm", value),
                 width * 0.2f,
                 centerY + 15,
                 android.graphics.Paint().apply {

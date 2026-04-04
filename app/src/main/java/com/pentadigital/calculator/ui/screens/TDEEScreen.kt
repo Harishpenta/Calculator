@@ -194,7 +194,7 @@ private fun TDEEInputs(
                 )
                 CyberpunkWeightGauge(
                     value = state.weight.toFloatOrNull() ?: 70f,
-                    onValueChange = { onAction(TDEEEvent.UpdateWeight(String.format("%.1f", it))) },
+                    onValueChange = { onAction(TDEEEvent.UpdateWeight(String.format(java.util.Locale.US, "%.1f", it))) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(120.dp)
@@ -212,7 +212,7 @@ private fun TDEEInputs(
                 Spacer(modifier = Modifier.height(8.dp))
                 CyberpunkHeightRuler(
                     value = state.height.toFloatOrNull() ?: 170f,
-                    onValueChange = { onAction(TDEEEvent.UpdateHeight(String.format("%.1f", it))) },
+                    onValueChange = { onAction(TDEEEvent.UpdateHeight(String.format(java.util.Locale.US, "%.1f", it))) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(200.dp)
@@ -235,7 +235,7 @@ private fun TDEEInputs(
                     readOnly = true,
                     label = { TechText(stringResource(R.string.activity_level), color = CyberpunkTextSecondary) },
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                    modifier = Modifier.menuAnchor().fillMaxWidth(),
+                    modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, true).fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = MaterialTheme.colorScheme.primary,
                         unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
@@ -253,7 +253,7 @@ private fun TDEEInputs(
                     onDismissRequest = { expanded = false },
                     modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, MaterialTheme.colorScheme.primary)
                 ) {
-                    ActivityLevel.values().forEach { level ->
+                    ActivityLevel.entries.forEach { level ->
                         DropdownMenuItem(
                             text = { TechText(level.label, color = MaterialTheme.colorScheme.onSurface) },
                             onClick = {

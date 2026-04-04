@@ -190,7 +190,7 @@ private fun DiscountInputs(
 
 @Composable
 private fun DiscountResults(state: DiscountState) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
 
     CyberpunkCard(
         borderColor = MaterialTheme.colorScheme.secondary,
