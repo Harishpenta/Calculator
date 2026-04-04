@@ -7,13 +7,13 @@ import com.pentadigital.calculator.domain.model.ContributionType
 import java.util.Locale
 
 enum class CurrencyInfo(val symbol: String, val code: String, val locale: Locale) {
-    INR("₹", "INR", Locale("en", "IN")),
+    INR("₹", "INR", Locale.Builder().setLanguage("en").setRegion("IN").build()),
     USD("$", "USD", Locale.US),
     EUR("€", "EUR", Locale.FRANCE),
     GBP("£", "GBP", Locale.UK),
     JPY("¥", "JPY", Locale.JAPAN),
-    AUD("A$", "AUD", Locale("en", "AU")),
-    CAD("C$", "CAD", Locale("en", "CA"))
+    AUD("A$", "AUD", Locale.Builder().setLanguage("en").setRegion("AU").build()),
+    CAD("C$", "CAD", Locale.Builder().setLanguage("en").setRegion("CA").build())
 }
 
 data class CompoundInterestState(

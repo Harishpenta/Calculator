@@ -84,9 +84,9 @@ fun SipScreen(
                             "₹${state.monthlyInvestment}",
                             "${state.expectedReturnRate}",
                             "${state.timePeriodYears}",
-                            "₹${String.format("%.2f", state.investedAmount)}",
-                            "₹${String.format("%.2f", state.estimatedReturns)}",
-                            "₹${String.format("%.2f", state.totalValue)}"
+                            "₹${String.format(java.util.Locale.US, "%.2f", state.investedAmount)}",
+                            "₹${String.format(java.util.Locale.US, "%.2f", state.estimatedReturns)}",
+                            "₹${String.format(java.util.Locale.US, "%.2f", state.totalValue)}"
                         )
                         shareResult(context, shareTitle, shareBody)
                     }) {
@@ -244,7 +244,7 @@ private fun SipResults(state: SipState) {
                     fontWeight = FontWeight.Medium
                 )
                 TechText(
-                    text = NumberFormat.getCurrencyInstance(Locale("en", "IN")).format(state.totalValue),
+                    text = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build()).format(state.totalValue),
                     color = MaterialTheme.colorScheme.secondary,
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
@@ -258,7 +258,7 @@ private fun SipResults(state: SipState) {
 
 @Composable
 private fun ResultRow(label: String, amount: Double) {
-    val format = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val format = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
     val formattedAmount = format.format(amount)
 
     Row(

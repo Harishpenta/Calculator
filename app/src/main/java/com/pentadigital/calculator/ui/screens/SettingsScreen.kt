@@ -45,6 +45,7 @@ import com.pentadigital.calculator.ui.theme.MediumGray
 import com.pentadigital.calculator.ui.theme.Orange
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.MenuDefaults
@@ -129,7 +130,7 @@ fun SettingsScreen(
                         title = stringResource(R.string.app_theme),
                         content = {
                             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                AppTheme.values().forEach { theme ->
+                                AppTheme.entries.forEach { theme ->
                                     ThemeOptionRow(
                                         text = when(theme) {
                                             AppTheme.System -> stringResource(R.string.system_default)
@@ -159,7 +160,7 @@ fun SettingsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                AccentColor.values().forEach { accent ->
+                                AccentColor.entries.forEach { accent ->
                                     val color = when (accent) {
                                         AccentColor.Orange -> Orange
                                         AccentColor.Blue -> PrimaryBrand
@@ -316,7 +317,7 @@ fun SettingsScreen(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
-                            AccentColor.values().forEach { accent ->
+                            AccentColor.entries.forEach { accent ->
                                 val color = when (accent) {
                                     AccentColor.Orange -> Orange
                                     AccentColor.Blue -> PrimaryBrand
@@ -436,7 +437,7 @@ fun LanguageDropdown(
                 cursorColor = MaterialTheme.colorScheme.primary
             ),
             modifier = Modifier
-                .menuAnchor()
+                .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, true)
                 .fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
             textStyle = androidx.compose.ui.text.TextStyle(
@@ -450,7 +451,7 @@ fun LanguageDropdown(
             onDismissRequest = { expanded = false },
             modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(4.dp))
         ) {
-            AppLanguage.values().forEach { language ->
+            AppLanguage.entries.forEach { language ->
                 DropdownMenuItem(
                     text = {
                         TechText(

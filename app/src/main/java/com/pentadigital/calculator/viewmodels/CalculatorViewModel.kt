@@ -148,12 +148,12 @@ class CalculatorViewModel(private val repository: HistoryRepository) : ViewModel
         if (result.isInfinite() || result.isNaN()) return "Error"
         return when {
             result >= Long.MAX_VALUE || result <= Long.MIN_VALUE -> {
-                val scientific = String.format("%.${MAX_DIGITS - 7}e", result)
+                val scientific = String.format(java.util.Locale.US, "%.${MAX_DIGITS - 7}e", result)
                 scientific.replace("e", "E")
             }
             result == result.toLong().toDouble() -> result.toLong().toString()
             result.toString().length > MAX_DIGITS -> {
-                val scientific = String.format("%.${MAX_DIGITS - 7}e", result)
+                val scientific = String.format(java.util.Locale.US, "%.${MAX_DIGITS - 7}e", result)
                 scientific.replace("e", "E")
             }
             else -> result.toString().take(MAX_DIGITS)

@@ -193,8 +193,8 @@ private fun FuelCostInputs(
 
 @Composable
 private fun FuelCostResults(state: FuelCostState) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
-    val numberFormat = NumberFormat.getInstance(Locale("en", "IN")).apply {
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
+    val numberFormat = NumberFormat.getInstance(Locale.Builder().setLanguage("en").setRegion("IN").build()).apply {
         maximumFractionDigits = 2
     }
 

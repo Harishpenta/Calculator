@@ -89,7 +89,7 @@ fun CurrencyScreen(
                             shareBodyTemplate,
                             "${state.amount}",
                             state.fromCurrency,
-                            String.format("%.2f", state.convertedAmount),
+                            String.format(java.util.Locale.US, "%.2f", state.convertedAmount),
                             state.toCurrency
                         )
                         shareResult(context, shareTitle, shareBody)
@@ -186,7 +186,7 @@ fun CurrencyScreen(
                                 fontSize = 16.sp
                             )
                             TechText(
-                                text = "${String.format("%.2f", state.convertedAmount)} ${state.toCurrency}",
+                                text = "${String.format(java.util.Locale.US, "%.2f", state.convertedAmount)} ${state.toCurrency}",
                                 color = MaterialTheme.colorScheme.secondary,
                                 fontSize = 36.sp,
                                 fontWeight = FontWeight.Bold
@@ -195,7 +195,7 @@ fun CurrencyScreen(
                                 text = stringResource(
                                     com.pentadigital.calculator.R.string.exchange_rate_display,
                                     state.fromCurrency,
-                                    String.format("%.4f", state.convertedAmount / (state.amount.toDoubleOrNull() ?: 1.0)),
+                                    String.format(java.util.Locale.US, "%.4f", state.convertedAmount / (state.amount.toDoubleOrNull() ?: 1.0)),
                                     state.toCurrency
                                 ).uppercase(),
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -278,7 +278,7 @@ fun CurrencyScreen(
                             fontSize = 16.sp
                         )
                         TechText(
-                            text = "${String.format("%.2f", state.convertedAmount)} ${state.toCurrency}",
+                            text = "${String.format(java.util.Locale.US, "%.2f", state.convertedAmount)} ${state.toCurrency}",
                             color = MaterialTheme.colorScheme.secondary,
                             fontSize = 36.sp,
                             fontWeight = FontWeight.Bold
@@ -287,7 +287,7 @@ fun CurrencyScreen(
                             text = stringResource(
                                 com.pentadigital.calculator.R.string.exchange_rate_display,
                                 state.fromCurrency,
-                                String.format("%.4f", state.convertedAmount / (state.amount.toDoubleOrNull() ?: 1.0)),
+                                String.format(java.util.Locale.US, "%.4f", state.convertedAmount / (state.amount.toDoubleOrNull() ?: 1.0)),
                                 state.toCurrency
                             ).uppercase(),
                             color = MaterialTheme.colorScheme.onSurfaceVariant,

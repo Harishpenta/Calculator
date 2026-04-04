@@ -90,7 +90,7 @@ private fun GeometryTabSelector(
             .padding(16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        GeometryTab.values().forEach { tab ->
+        GeometryTab.entries.forEach { tab ->
             CyberpunkCard(
                 modifier = Modifier
                     .weight(1f)
@@ -120,7 +120,7 @@ private fun Shapes2DContent(
         if (isLandscape) {
             // Left Panel: Shape Selector
             LazyColumn(modifier = Modifier.weight(0.2f).fillMaxHeight().padding(start = 16.dp)) {
-                items(Shape2D.values()) { shape ->
+                items(Shape2D.entries) { shape ->
                     Shape2DItem(shape, state.selected2DShape == shape) { onAction(GeometryEvent.Select2DShape(shape)) }
                 }
             }
@@ -150,7 +150,7 @@ private fun Shapes2DContent(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         contentPadding = PaddingValues(vertical = 8.dp)
                     ) {
-                        items(Shape2D.values()) { shape ->
+                        items(Shape2D.entries) { shape ->
                             FilterChip(
                                 selected = state.selected2DShape == shape,
                                 onClick = { onAction(GeometryEvent.Select2DShape(shape)) },
@@ -333,7 +333,7 @@ private fun ResultsCard2D(state: GeometryState) {
             ) {
                 TechText("Area:", color = CyberpunkTextSecondary)
                 TechText(
-                    text = String.format("%.2f", state.area2D),
+                    text = String.format(java.util.Locale.US, "%.2f", state.area2D),
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Bold
                 )
@@ -345,7 +345,7 @@ private fun ResultsCard2D(state: GeometryState) {
             ) {
                 TechText("Perimeter:", color = CyberpunkTextSecondary)
                 TechText(
-                    text = String.format("%.2f", state.perimeter2D),
+                    text = String.format(java.util.Locale.US, "%.2f", state.perimeter2D),
                     color = MaterialTheme.colorScheme.tertiary,
                     fontWeight = FontWeight.Bold
                 )
@@ -364,7 +364,7 @@ private fun Shapes3DContent(
         if (isLandscape) {
             // Left Panel: Shape Selector
             LazyColumn(modifier = Modifier.weight(0.2f).fillMaxHeight().padding(start = 16.dp)) {
-                items(Shape3D.values()) { shape ->
+                items(Shape3D.entries) { shape ->
                     Shape3DItem(shape, state.selected3DShape == shape) { onAction(GeometryEvent.Select3DShape(shape)) }
                 }
             }
@@ -431,7 +431,7 @@ private fun Shapes3DContent(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         contentPadding = PaddingValues(vertical = 8.dp)
                     ) {
-                        items(Shape3D.values()) { shape ->
+                        items(Shape3D.entries) { shape ->
                             FilterChip(
                                 selected = state.selected3DShape == shape,
                                 onClick = { onAction(GeometryEvent.Select3DShape(shape)) },
@@ -649,7 +649,7 @@ private fun ResultsCard3D(state: GeometryState) {
             ) {
                 TechText("Volume:", color = CyberpunkTextSecondary)
                 TechText(
-                    text = String.format("%.2f", state.volume),
+                    text = String.format(java.util.Locale.US, "%.2f", state.volume),
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Bold
                 )
@@ -661,7 +661,7 @@ private fun ResultsCard3D(state: GeometryState) {
             ) {
                 TechText("Surface Area:", color = CyberpunkTextSecondary)
                 TechText(
-                    text = String.format("%.2f", state.surfaceArea),
+                    text = String.format(java.util.Locale.US, "%.2f", state.surfaceArea),
                     color = MaterialTheme.colorScheme.tertiary,
                     fontWeight = FontWeight.Bold
                 )

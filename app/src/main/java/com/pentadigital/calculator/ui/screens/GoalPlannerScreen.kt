@@ -38,7 +38,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.foundation.layout.WindowInsets
 
 private fun shareGoalResult(context: Context, state: GoalPlannerState) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
     val subject = context.getString(R.string.goal_share_subject)
     val body = context.getString(
         R.string.goal_share_body,
@@ -205,7 +205,7 @@ private fun GoalInputs(
 
 @Composable
 private fun GoalResults(state: GoalPlannerState) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
 
     // Required Monthly Investment Card
     CyberpunkCard(

@@ -156,7 +156,7 @@ private fun WaterIntakeInputs(
             Spacer(modifier = Modifier.height(8.dp))
             CyberpunkWeightGauge(
                 value = state.weight.toFloatOrNull() ?: 70f,
-                onValueChange = { onAction(WaterIntakeEvent.UpdateWeight(String.format("%.1f", it))) },
+                onValueChange = { onAction(WaterIntakeEvent.UpdateWeight(String.format(java.util.Locale.US, "%.1f", it))) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(120.dp)
@@ -190,7 +190,7 @@ private fun WaterIntakeInputs(
                         unfocusedContainerColor = MaterialTheme.colorScheme.background
                     ),
                     modifier = Modifier
-                        .menuAnchor()
+                        .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, true)
                         .fillMaxWidth()
                 )
                 ExposedDropdownMenu(
@@ -198,7 +198,7 @@ private fun WaterIntakeInputs(
                     onDismissRequest = { expanded = false },
                     modifier = Modifier.background(MaterialTheme.colorScheme.surface).border(1.dp, MaterialTheme.colorScheme.primary)
                 ) {
-                    ActivityLevel.values().forEach { level ->
+                    ActivityLevel.entries.forEach { level ->
                         DropdownMenuItem(
                             text = { TechText(level.name.replace("_", " ").lowercase().replaceFirstChar { it.titlecase() }, color = CyberpunkTextPrimary) },
                             onClick = {
@@ -284,7 +284,7 @@ private fun WaterIntakeResults(state: WaterIntakeState) {
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 TechText(
-                    text = "${String.format("%.1f", state.waterIntakeLiters)} L",
+                    text = "${String.format(java.util.Locale.US, "%.1f", state.waterIntakeLiters)} L",
                     color = MaterialTheme.colorScheme.primary,
                     fontSize = 64.sp,
                     fontWeight = FontWeight.Bold

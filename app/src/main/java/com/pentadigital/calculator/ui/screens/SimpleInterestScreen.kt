@@ -74,8 +74,8 @@ fun SimpleInterestScreen(
                             "₹${state.principal}",
                             "${state.rate}",
                             "${state.timeYears}",
-                            "₹${String.format("%.2f", state.interest)}",
-                            "₹${String.format("%.2f", state.totalAmount)}"
+                            "₹${String.format(java.util.Locale.US, "%.2f", state.interest)}",
+                            "₹${String.format(java.util.Locale.US, "%.2f", state.totalAmount)}"
                         )
                         shareResult(context, shareTitle, shareBody)
                     }) {
@@ -254,7 +254,7 @@ private fun SimpleInterestResult(state: SimpleInterestState) {
                     fontWeight = FontWeight.Medium
                 )
                 TechText(
-                    text = NumberFormat.getCurrencyInstance(Locale("en", "IN")).format(state.totalAmount),
+                    text = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build()).format(state.totalAmount),
                     color = MaterialTheme.colorScheme.secondary,
                     fontSize = 40.sp,
                     fontWeight = FontWeight.Bold
@@ -277,7 +277,7 @@ private fun ResultRow(label: String, value: Double) {
             fontSize = 14.sp
         )
         TechText(
-            text = NumberFormat.getCurrencyInstance(Locale("en", "IN")).format(value),
+            text = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build()).format(value),
             color = MaterialTheme.colorScheme.onSurface,
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold

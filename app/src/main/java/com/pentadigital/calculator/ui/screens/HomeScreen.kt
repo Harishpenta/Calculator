@@ -125,52 +125,67 @@ fun HomeScreen(
     }
 
     val primaryColor = MaterialTheme.colorScheme.primary
-    val categories = remember(primaryColor) {
+    
+    // Resolve strings via stringResource (outside remember) for proper Compose recomposition
+    val catAlgebra = stringResource(R.string.cat_algebra)
+    val subAlgebra = stringResource(R.string.sub_algebra)
+    val catGeometry = stringResource(R.string.cat_geometry)
+    val subGeometry = stringResource(R.string.sub_geometry)
+    val catUnitConverters = stringResource(R.string.cat_unit_converters)
+    val subUnitConverters = stringResource(R.string.sub_unit_converters)
+    val catFinance = stringResource(R.string.cat_finance)
+    val subFinance = stringResource(R.string.sub_finance)
+    val catHealth = stringResource(R.string.cat_health)
+    val subHealth = stringResource(R.string.sub_health)
+    val catDatetime = stringResource(R.string.cat_datetime)
+    val subDatetime = stringResource(R.string.sub_datetime)
+
+    val categories = remember(primaryColor, catAlgebra, subAlgebra, catGeometry, subGeometry, catUnitConverters, subUnitConverters, catFinance, subFinance, catHealth, subHealth, catDatetime, subDatetime) {
         listOf(
             CalculatorCategory(
                 id = "algebra",
-                name = context.getString(R.string.cat_algebra),
-                subtitle = context.getString(R.string.sub_algebra),
+                name = catAlgebra,
+                subtitle = subAlgebra,
                 iconRes = R.drawable.ic_algebra,
                 backgroundColor = Color.Transparent,
                 iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "geometry",
-                name = context.getString(R.string.cat_geometry),
-                subtitle = context.getString(R.string.sub_geometry),
+                name = catGeometry,
+                subtitle = subGeometry,
                 iconRes = R.drawable.ic_geometry,
                 backgroundColor = Color.Transparent,
                 iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "unit_converters",
-                name = context.getString(R.string.cat_unit_converters),
-                subtitle = context.getString(R.string.sub_unit_converters),
+                name = catUnitConverters,
+                subtitle = subUnitConverters,
                 iconRes = R.drawable.ic_unit_converter,
                 backgroundColor = Color.Transparent,
                 iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "finance",
-                name = context.getString(R.string.cat_finance),
-                subtitle = context.getString(R.string.sub_finance),
+                name = catFinance,
+                subtitle = subFinance,
                 iconRes = R.drawable.ic_finance,
                 backgroundColor = Color.Transparent,
                 iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "health",
-                name = context.getString(R.string.cat_health),
-                subtitle = context.getString(R.string.sub_health),
+                name = catHealth,
+                subtitle = subHealth,
                 iconRes = R.drawable.ic_health,
                 backgroundColor = Color.Transparent,
                 iconTint = primaryColor
             ),
             CalculatorCategory(
                 id = "datetime",
-                name = context.getString(R.string.cat_datetime),
-                subtitle = context.getString(R.string.sub_datetime),
+                name = catDatetime,
+                subtitle = subDatetime,
                 iconRes = R.drawable.ic_datetime,
                 backgroundColor = Color.Transparent,
                 iconTint = primaryColor

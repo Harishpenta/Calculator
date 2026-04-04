@@ -247,7 +247,7 @@ private fun TipInputs(
 
 @Composable
 private fun TipResults(state: TipState) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.Builder().setLanguage("en").setRegion("IN").build())
 
     CyberpunkCard(
         borderColor = MaterialTheme.colorScheme.secondary,
