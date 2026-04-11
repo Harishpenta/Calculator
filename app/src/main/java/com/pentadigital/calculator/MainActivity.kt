@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         
         // Initialize Microsoft Clarity
-        val clarityConfig = com.microsoft.clarity.ClarityConfig(projectId = "wa0hd5srvc")
+        val clarityConfig = com.microsoft.clarity.ClarityConfig(projectId = BuildConfig.CLARITY_PROJECT_ID)
         com.microsoft.clarity.Clarity.initialize(applicationContext, clarityConfig)
         
         enableEdgeToEdge()

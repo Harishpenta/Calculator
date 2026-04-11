@@ -26,6 +26,7 @@ android {
         }
 
         buildConfigField("String", "INTERSTITIAL_AD_UNIT_ID", "\"ca-app-pub-3360377725254476/8667008833\"")
+        buildConfigField("String", "CLARITY_PROJECT_ID", "\"wa0hd5srvc\"")
     }
 
     signingConfigs {
