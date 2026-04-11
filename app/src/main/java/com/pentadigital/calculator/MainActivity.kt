@@ -39,9 +39,13 @@ import com.pentadigital.calculator.utils.InterstitialAdManager
 import com.pentadigital.calculator.ui.screens.compound.CompoundInterestViewModel
 
 class MainActivity : ComponentActivity() {
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Initialize Microsoft Clarity
+        val clarityConfig = com.microsoft.clarity.ClarityConfig(projectId = "wa0hd5srvc")
+        com.microsoft.clarity.Clarity.initialize(applicationContext, clarityConfig)
+        
         enableEdgeToEdge()
         setContent {
             val navController = androidx.navigation.compose.rememberNavController()

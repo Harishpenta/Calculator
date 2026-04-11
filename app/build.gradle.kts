@@ -17,7 +17,7 @@ android {
         applicationId = "com.pentadigital.calculator"
         minSdk = 28
         targetSdk = 36
-        versionCode = 7
+        versionCode = 8
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -132,6 +132,8 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
+
+    implementation("com.microsoft.clarity:clarity-compose:3.8.1")
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {
